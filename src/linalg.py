@@ -85,7 +85,7 @@ class csr_matrix:
 
 def norm(x, order=2):
     order = float(order)
-    return sum([xi ** order for xi in x]) ** (1. / order)
+    return sum([abs(xi) ** order for xi in x]) ** (1. / order)
 
 
 # LEVEL 2

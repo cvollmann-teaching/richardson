@@ -34,32 +34,31 @@
 
 ## Initialize a git repository
 
-1. ssh keys
-2. github
-3. .gitignore
+1. get account on github, set up ssh keys
+2. create repo
+3. local machine: git clone
+4. .gitignore
 
 ## Plan modularity and setup directory structure
 
-1. src
-2. tests
-3. examples
-4. docs
-5. ...
-
 ```bash
 |-- code
+    |-- data
     |-- docs
     |-- src
     |   |-- linalg.py
-    |   |-- iterSolver.py
-    |   |-- helpers.py
+    |   |-- iterative_solver.py
+    |   |-- utils.py
     |-- examples
     |   |-- confEx1.py
     |   |-- confEx2.py
     |   |-- confTest.py
+    |-- tests
+    |   |-- test_csr.py
     |-- output
     |-- main.py
-    |-- README.rst
+    |-- README.md
+    |-- LICENSE
     |-- requirements.txt
     |-- .git
     |-- .idea
@@ -67,124 +66,186 @@
 
 
 
-## Working environment: The IDE PyCharm
+## Working Environment: The IDE PyCharm
 
-1. If applicable: Get **educational account** with jetbrains under https://www.jetbrains.com/shop/eform/students
-2. **Install PyCharm** (professional edition): https://www.jetbrains.com/help/pycharm/installation-guide.html
+1. Get **educational account** with JetBrains: https://www.jetbrains.com/shop/eform/students
+2. **Install PyCharm** (Professional edition): https://www.jetbrains.com/help/pycharm/installation-guide.html
 3. Set up a **PyCharm Project**: https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
+   - Open the directory `code`using the application PyCharm or to play around create any other project.
+
 4. Set up **virtual environment**: https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html
-   1. In the Settings/Preferences dialog: Ctrl+Alt+S | Project: <project name> | \textbf{Python Interpreter} | 
-   2. inherit site-packages: Optional können wir auch Pakete von der lokalen systemweiten Python Installation vererben
-   3. Pakete  hinzufügen
+   - Optional: You may want to inherit site-packages from local Python installation
+   - Install some packages
+   - Add it to `.gitignore`
 5. Run Code: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
-   1. Run | Edit Configuration
-6. Sync requirements.txt: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
-   1. \textbf{Tools} | \textbf{Sync Python requirements}
-   2. Mal ein anderes Paket installieren \textbf{und} verwenden/importieren.\ Dann \texttt{requirements.txt} updaten. Wurde das Paket hinzugefügt?
+   - Familiarize with Python and run some code.
+   - Create a Run Configuration
+6. Use the Debugger: https://www.jetbrains.com/help/pycharm/debugging-code.html
+7. Sync `requirements.txt`: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
+   - Tools| Sync Python requirements
+   - Import some package and update the `requirements.txt`. Did it work?
+8. Check out the hidden project directory `.idea`
+   - Add it to `.gitignore`
 
 
 
-## Implement class `vector`
 
-1. inherit from `list` 
+## Implement class `vector` 
+
+In `src/linalg.py`:
+
+1. Inherit from `list` 
 
    ```python
    class vector(list)
    ```
 
-   Warum list() (anstatt z.B. tuple())? Da wir Vektoren und Matrizen durch numerische Berechnungen und Verfahren manipulieren möchten, liegt es nahe, dass wir einen \textit{veränderlichen} Datentyp wählen.
+   We use mutable data type `list()`over `tuple()`as we will later manipulate entries in the vector.
 
-2. overload the operators +, @, * by defining the magic methods
-   - `__add__`
-   - `__matmul__`
-   - `__mul__`
-   - `__rmul__`
+2. Overload the operators `+, @` and `*` by implementing the following magic methods which all expect another vector- or scalar-type say `other`:
+   - `__add__(self, other)` ($x+y$)
+   - `__matmul__(self, other)` ($x^Ty$)
+   - `__mul__(self, other)` ($\alpha \cdot x$)
+   - `__rmul__(self, other)` ($x\cdot\alpha $)
    - Also See Level 1 BLAS Routines:
      - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
      - http://www.netlib.org/blas
 
-3. Write tests
+3. Write appropriate test files `test_*.py` which you put into the directory `tests`
+
+   - Create Run Configuration for your tests
+
 
 ## Euklidische Norm:   
 
-$\mathbb{R}^n \to [0,+\infty),~x \mapsto \|x\|_2 := \sqrt{\sum_{i=1}^n x_i^2}$
+In `src/linalg.py`:
 
-​		$$\texttt{nrm(x : list)}$$
+1. Implement a function `norm(x, order=2)` which expects a vector `x` and computes its $p$-Norm:
+
+$$
+\mathbb{R}^n \to [0,+\infty),~x \mapsto \|x\|_2 := \left({\sum_{i=1}^n |x_i|^p}\right)^{\frac{1}{p}}
+$$
 
 ## Implement class `csr_matrix`
 
-1. initialize with CSR-Format (Compressed Sparse Row) tuple `(data, indices,indptr)` and `shape`
-2. attributes
-   1. data, indices, indptr, shape
-3. implement magic methods
-   1. `__matmul__(self, x)`
-      - Diese magische Methode nimmt einen Vektor \texttt{x} als Liste entgegen und berechnet das Matrix--Vektor Produkt $A\cdot x$. Durch die Operatorüberladung gilt dann für ein Objekt \texttt{A} der hiesigen Klasse die Gleichung
+In `src/linalg.py`:
+
+1. initialize with CSR-Format (Compressed Sparse Row) tuple `(data, indices,indptr)` and `shape`. Implement at least the following attributes: attributes: `data, indices, indptr, shape`. You can use the following code snippet.
+
+   ```python
+   class csr_matrix:
+       """
+       CSR matrix class
+       ...
+       """
+       def __init__(self, csr_tuple, shape=None):
+           _data, _indices, _indptr = csr_tuple
+           self.data = _data
+           self.indices = _indices
+           self.indptr = _indptr
+   ```
+
+2. implement magic methods
+   1. `__matmul__(self, x : vector) -> vector`
+      - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
         						$$\texttt{A @ x = A.\_\_matmul\_\_(x)} $$
-      - Die magische Funktion \texttt{\_\_matmul\_\_($self$, x)} (und damit der Operator \texttt{@}) kann typischerweise auch das Matrix--Matrix Produkt auswerten. Das vernachlässigen wir hier der Einfachheit halber.
-      - Level 2 BLAS Routines:
+      - For simplicity we neglect the capability of evaluating also the matrix--matrix product.
+      - This next level of complexity can be classified into Level 2 BLAS Routines:
         - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
         - http://www.netlib.org/blas
-   2. `__toarray__()`
-      - ​	Eine Methode, welche eine Liste mit den Zeilen der Matrix (wiederum als Liste) ausgibt.
-4. write tests
+   2. `__toarray__(self, col_dim)`
+      - A method which outputs a list with the rows of the matrix (again as a list).
+
+3. Write appropriate test files `test_*.py` which you put into the directory `tests`
+
+   - Create Run Configuration for your tests
 
 ## Implement helper function `csrTridiagToep(n, data)` 
 
-to instantiate tridiag toeplitz matrix in csr format
+In `src/linalg.py`:
 
-- Implementieren Sie eine Funktion $$\texttt{A = csrTridiagToep(n, data)},$$ die ein Objekt \texttt{A} der obigen Klasse \texttt{csr\_matrix} automatisch erzeugt für eine Tridiagonal-Matrix deren Diagonalen konstant sind:
-  $$\left(\begin{array}{rrrrr}                                
+In order to run some examples later on, it would be nice to have a function which creates certain CSR-tuples. For matrices with some particular structure the CSR-lists can be easily obtained. In fact, we implement a function which builds [tridiagonal Toeplitz matrices](https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix).
+
+- Implement a function 
+
+  ```python
+  csrTridiagToep(n : int, data : tuple) -> csr_matrix
+  ```
+
+  that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
+  $$
+  \left(\begin{array}{rrrrr}                                
   b & c  &0   & \cdots   & 0 \\                                               
   a &  b & c  &    &   \vdots \\                                               
   0&  \ddots &  \ddots &\ddots  &0  \\ 
   \vdots  &    &  a &  b & c  \\ 
   0 &   \cdots  & 0& a  &  b \\
-  \end{array}\right)\in \mathbb{R}^{n \times n}.$$
-- Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratischen Matrix an und der Parameter \texttt{data} enthält die entsprechenden Diagonaleinträge (zum Beispiel in Form einer Liste \texttt{[a,b,c]}).
-- Überlegen Sie sich zunächst wie die drei CSR--Listen \texttt{data, indices, indptr} hier im Allgemeinen (d.h. für allgemeine Parameter \texttt{n, data}) aussehen und implementieren Sie diese anschließend als Funktion abhängig von \texttt{(n, data)}. Zur Instanzerzeugung müssen Sie diese drei Listen dann nur noch an den Konstruktor der obigen Klasse \texttt{csr\_matrix} übergeben.
-- https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix
+  \end{array}\right)\in \mathbb{R}^{n \times n}.
+  $$
+  
+
+- Accordingly, the parameter `n` specifies the dimension of the square matrix and the parameter `data` contains the corresponding diagonal entries in the form of a tuple `data = (a,b,c)`.
+
+- First consider how the three CSR- lists `data, indices, indptr` look like for general parameters `(n, data)` and then implement them as a function depending on `(n, data)`. For instantiation, you then just need to pass these three lists to the constructor of the above class `csr\_matrix`.
 
 ## Implement Richardson iteration
 
-1. interface: `richardson(A : csr_matrix, b : list, x0 : list, theta=.1, maxiter=500, tol=1e-08)`
+In `src/iterative_solver.py`:
 
-2. die das relaxierte Richardson-Verfahren
-   $$x_{k+1} = x_k - \theta (Ax_k -b)$$ implementiert. Als Eingabe wird
-   erwartet:
+1. Implement the relaxed Richardson iteration 
 
-   -   `A` : invertierbare Matrix aus $\R^{n\times n}$ als Objekt der
-       Klasse **`csr_matrix`**
+   $x_{k+1} = x_k - \theta (Ax_k -b)$ 
 
-   -   : rechte Seite aus $\Rn$ als Python-Liste der Länge $n$
+   as a function
 
-   -   : Startvektor aus $\Rn$ als Python-Liste der Länge $n$
+   ```python
+   x, error, numiter = richardson(A : csr_matrix, b : vector, x0 : vector, theta=.1, maxiter=500, tol=1e-08) --> (vector, list, int)
+   ```
 
-   -   : Relaxationsparameter $\theta$ als float
+   which expects as input
 
-   -   : maximale Iterationszahl als int
+   -   `A` : invertible matrix in $\mathbb{R}^{n\times n}$ as object of class **`csr_matrix`**
 
-   -   : Fehlertoleranz als float
+   -   `b` : rhs in $\mathbb{R}^n$ as object of class `vector` of size $n$
 
-   und folgende Ausgabe tätigt
+   -   `x0` : initial guess in $\mathbb{R}^n$ as object of class `vector` of size $n$
 
-   -   : die aktuelle Iterierte (approximierte Lösung) als Python-Liste der
-       Länge $n$
+   -   `theta` : relax. parameter/stepsize $\theta$ as `float`
 
-   -   : Python-Liste mit allen Residuen $\|Ax_k-b\|_2$
+   -   `maxiter` : maximal number of iterations as `int`
 
-   -   : Anzahl an Iterationen, die durchgeführt wurden, als int
+   -   `tol` : error tolerance as `float`
 
-3. Das Verfahren soll abbrechen, sobald das Residuum hinreichend klein ist, d.h.
-   $$\|Ax_k-b\|_2 < \ttt{tol}$$
-   oder die maximale Anzahl \ttt{maxiter} an Iterationsschritten erreicht ist. 
+   and outputs
 
-4. see LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPAC
+   -   `x` : the last iterate (approxiamte solution) as object of class `vector` of size $n$
 
-## Run examples
+   -   `error` : Python list of all residuals $\|Ax_k-b\|_2$
 
-1. heat equation
+   -   `numiter` : number of iterations that have  been performed
 
-    Lösen Sie	
+2. The procedure should terminate as soon as the residual is sufficiently small, i.e. $\|Ax_k-b\|_2 < \texttt{tol}$ or the maximum number `maxiter` of iteration steps is reached.
+
+See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
+
+
+
+## Utils
+
+In `src/utils.py`:
+
+Implement:
+
+1. A function to plot a univariate function (in our case the vector of residuals `error`) using `matplotlib.pyplot`.
+2. A function that uses the Python package `tabulate`to generate a LaTex table into an external text file with two columns being iteration number and corresponding entry in the residual vector `error` that you can import later on into your paper. (Optional third column would be the rate of convergence)
+
+
+
+## Run first examples
+
+1. **Heat Equation**
+
+    Solve $A_1x =b$, with
    $$
    A_1 = n^2 \left(\begin{array}{rrrrr}                                
    		2 & -1  &0   & \cdots   & 0 \\                                               
@@ -208,60 +269,52 @@ to instantiate tridiag toeplitz matrix in csr format
    		0  \\ 
    		\end{array}\right) \in \mathbb{R}^{n},
    $$
-   für \underline{verschiedene} Dimensionen $n$.
+   for different dimensions $n$ (should be a parameter in your config script).
 
-2. regularized heat equation
+2. **Regularized Heat Equation**
 
-   Ersetzen Sie $A_1$ im obigen Beispiel durch
-   		$$
-   		A_2 = A_1 + \delta I$$
-   		für $\delta > 0$ und $I \in \Rnn$ die Identitätsmatrix. Lassen Sie Ihre Beispiele von 1. nochmal laufen mit verschiedenen $\delta$.   Beobachten Sie dabei die Anzahl benötigter Iterationen bei steigendem $\delta$. Wie sieht es nun mit der Konvergenz aus?
+   Replace $A_1$ in the above example with
+   $$
+   A_2 = A_1 + \delta I
+   $$
 
-3. tests
+   for $\delta > 0$ and $I \in \mathbb{R}^{n\times n}$ the identity matrix. Run your examples from 1. again with different $\delta$.   Observe the number of iterations needed as $\delta$ increases. What about the convergence now?
 
--   Falls Ihr Verfahren nicht konvergiert, versuchen Sie es mit einem
-    (sehr) kleinen Relaxationsparameter $\theta$ und einer großen
-    maximalen Iterationsanzahl `maxiter`. Die obige Matrix $A_1$ ist
-    "schlecht konditioniert" und das Richardson--Verfahren kann (sehr!)
-    viele Iterationsschritte benötigen, um einen hinreichend kleinen
-    Fehler zu erzielen. Bei der Matrix $A_2$ sollten Sie hingegen für
-    steigende $\delta$ eine deutliche Verbesserung beobachten.
 
--   Die Matrizen $A_1$ und $A_2$ sind jeweils
-    Tridiagonal--Toeplitz--Matrizen. Sie können also Ihre Funktion
-    `csrTridiagToep` von oben zur Instanziierung der Klasse `csr_matrix`
-    verwenden.
+**Remarks:**
 
--   Die Matrix $A_1$ werden Sie später als Finite--Differenzen
-    Diskretisierung der eindimensionalen Poisson-Gleichung auf regulären
-    Gittern mit homogenen Dirichlet--Randwerten wiedererkennen. Und die
-    Matrix $A_2$ als Tikhonov--Regularisierung davon.
+-   Put the configuration for these examples in `examples/example1.py` etc. and run your examples in `main.py` where you mainly call the function `richardson`with the input parameters defined in the example files.
+    
+-   If your method does not converge, try it with a (very) small relaxation parameter $\theta$ and a large
+    maximum number of iterations `maxiter`. The matrix $A_1$ above is "ill-conditioned" and the Richardson method may need (very!) many iterations to achieve a sufficiently small error. For matrix $A_2$, on the other hand, you should observe a significant improvement for increasing $\delta$.
+    
+-   The matrices $A_1$ and $A_2$ are respectively tridiagonal--Toeplitz- matrices. So you can use your `csrTridiagToep` function from above to instantiate the `csr_matrix` class.
+    
+-   You will recognize the matrix $A_1$ later as a finite-difference discretization of the one-dimensional Poisson equation on regular grids with homogeneous Dirichlet boundary values. And the matrix $A_2$ as a Tikhonov-regularization of it.
 
-## Utils for PageRank
+## Utils for PageRank (optional)
 
 1. read from file a network structure as adjacency graph
    1. write tests
 2. compute google matrix
    1. write tests
 
-## Pagerank
+## Pagerank (optional)
 
 1. Implement interface to the data (you can use the Scipy Stack here)
 2. Apply Richardson Iteration
 
 
 
-## Code Documentation
+## Code Documentation with Sphinx
 
-1.  Lesen Sie die offizielle Dokumentation:
+1.  Consult the official documentation: https://www.sphinx-doc.org/en/master/index.html
 
-    <https://www.sphinx-doc.org/en/master/index.html>
+2.  Generate an html documentation of your code using `sphinx`. Implement at least the following points:
 
-2.  Generieren Sie eine html--Dokumentation Ihres Codes mithilfe von `sphinx`. Setzen Sie dabei mindestens die folgenden Punkte um:
+    -   Deliberately choose an `html_theme`
 
-    -   Wählen Sie bewusst ein `html_theme`
-
-    -   Verwenden Sie mindestens die folgenden Direktiven:
+    -   At a minimum, use the following directives:
 
         -   `.. toctree::`
 
@@ -275,36 +328,19 @@ to instantiate tridiag toeplitz matrix in csr format
 
         -   `.. math::`
 
-    -   Verwenden Sie die extension `sphinx.ext.viewcode`
+    -   Use the extension `sphinx.ext.viewcode`
 
-    -   Legen Sie mindestens eine weitere Unterseite an und verlinken Sie diese.
+    -   Create at least one more subpage and link to it.
         
-    -   Verwenden Sie konsistente docstrings in einem festen Format.
+    -   Use consistent docstrings in a fixed format.
+3.  Use github pages to expose your documentation.
+4.  Link your documentation later on in your paper.
 
-3.  Setzen Sie später in Ihrem Aufsatz einen Link auf die entsprechende html--Datei. Links auf eine lokale `html` Dateien können sie wie folgt
-    in LaTex setzen: $$\latexCommand{url}{file://<ABSOLUTER-DATEIPFAD>}$$
+## Software Packaging (optional)
 
-4.  Use at least
+create a python package.
 
-    - `.. toctree::`
-
-    - `.. autosummary::`
-
-    - `.. code-block::`
-
-    - `.. autofunction::`
-
-    - `.. autoclass::`
-
-    - `.. math::`
-
-5.  Use github pages to expose your documentation.
-
-## Software Packaging
-
-1. ...
-
-## Write Paper with LaTeX
+## Write a Paper with LaTeX (optional)
 
 **LaTeX über die Konsole**\
  \
