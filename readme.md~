@@ -1,6 +1,11 @@
+
+
+
 # Python Project: Richardson Iteration from Scratch and the PageRank
 
 (Under Construction)
+
+
 
 
 - In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch -- an iterative solver for linear systems: 
@@ -107,7 +112,7 @@
 
 ## Euklidische Norm:   
 
-$\mathbb{R}^n \to [0,+\infty),~x \mapsto \|x\|_2 := \sqrt{\sum_{i=1}^n x_i^2}$
+$\Rn \to [0,+\infty),~x \mapsto \|x\|_2 := \sqrt{\sum_{i=1}^n x_i^2}$
 
 ​		$$\texttt{nrm(x : list)}$$
 
@@ -134,11 +139,11 @@ to instantiate tridiag toeplitz matrix in csr format
 
 - Implementieren Sie eine Funktion $$\texttt{A = csrTridiagToep(n, data)},$$ die ein Objekt \texttt{A} der obigen Klasse \texttt{csr\_matrix} automatisch erzeugt für eine Tridiagonal-Matrix deren Diagonalen konstant sind:
   $$\left(\begin{array}{rrrrr}                                
-  b & c  &0   & \cdots   & 0 \\                                               
+  b & c  &0   & \hdots   & 0 \\                                               
   a &  b & c  &    &   \vdots \\                                               
   0&  \ddots &  \ddots &\ddots  &0  \\ 
   \vdots  &    &  a &  b & c  \\ 
-  0 &   \cdots  & 0& a  &  b \\
+  0 &   \hdots  & 0& a  &  b \\
   \end{array}\right)\in \mathbb{R}^{n \times n}.$$
 - Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratischen Matrix an und der Parameter \texttt{data} enthält die entsprechenden Diagonaleinträge (zum Beispiel in Form einer Liste \texttt{[a,b,c]}).
 - Überlegen Sie sich zunächst wie die drei CSR--Listen \texttt{data, indices, indptr} hier im Allgemeinen (d.h. für allgemeine Parameter \texttt{n, data}) aussehen und implementieren Sie diese anschließend als Funktion abhängig von \texttt{(n, data)}. Zur Instanzerzeugung müssen Sie diese drei Listen dann nur noch an den Konstruktor der obigen Klasse \texttt{csr\_matrix} übergeben.
