@@ -1,2 +1,3 @@
-from . import example1
-from . import example2
+from . import small
+from . import heat_equation
+from . import pagerank_small

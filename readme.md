@@ -3,14 +3,28 @@
 (Under Construction)
 
 
+- This repo contains: the small tutorials (just notes for inclass development, in german), the corresponding instructions (below) and the almost complete worked examples.
+  
 - In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch -- an iterative solver for linear systems: 
   $$
-  x^{k+1} = x^k + \theta p^k=x^k - \theta(Ax^k - b),~~~~\theta > 0~\text{klein}
+  x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
   $$
 
 - We will implement our own classes for vectors and CSR matrices (later you can easily substitute them with the corresponding numpy.ndarray and scipy.sparse.csr_matrix).
 
 - We finally apply the code to compute the PageRank (note: for column stochastic matrices and with step size 1 the Richardson iteraton is equal to the power iteration with l1-normalization and a discrete probability distribution as initial guess).
+
+
+
+## Syllabus
+
+1 week block course:
+
+
+
+
+
+
 
 
 {:toc}
@@ -22,10 +36,8 @@
     
 -   Testen Sie jede einzelne Funktion ausführlich.
 
--   Verwenden Sie bei allen Funktionen und Objekten aussagekräftige Namen und  Docstrings in einem einheitlichen Format (NumPy, Google, reStructuredText).
+-   
     
--   Kommentieren Sie Ihren Code, sodass er für andere gut lesbar ist.
-
 -   Verwenden Sie für sämtliche Vektor-- und Matrix--Rechenoperationen nur die von Ihnen implementierten Python--Funktionen (und keine externen Pakete wie z.B. Numpy).
     
 -   Numpy und Scipy können verwendet werden, um die Implementierung zu überprüfen.
@@ -47,7 +59,7 @@
     |-- docs
     |-- src
     |   |-- linalg.py
-    |   |-- iterative_solver.py
+    |   |-- iterative_methods.py
     |   |-- utils.py
     |-- examples
     |   |-- confEx1.py
@@ -87,6 +99,33 @@
 8. Check out the hidden project directory `.idea`
    - Add it to `.gitignore`
 
+9. Further reading:
+
+   - seek and destroy: https://www.jetbrains.com/help/pycharm/auto-completing-code.html
+
+   - refactor https://www.jetbrains.com/help/pycharm/refactoring-source-code.html
+
+   - Code Completion https://www.jetbrains.com/help/pycharm/auto-completing-code.html
+
+   - Konsole https://www.jetbrains.com/help/pycharm/working-with-consoles.html
+
+   - Local History https://www.jetbrains.com/help/pycharm/local-history.html
+
+   - Compare Files https://www.jetbrains.com/help/pycharm/comparing-files-and-folders.html
+
+   - Code Inspection https://www.jetbrains.com/help/pycharm/code-inspection.html
+
+
+
+## Clean Code
+
+- Read PEP8 Style Guide: https://www.python.org/dev/peps/pep-0008/
+- Good names; 
+- Python formatter: `black`
+- Code inspection in PyCharm: https://www.jetbrains.com/help/pycharm/tutorial-code-quality-assistance-tips-and-tricks.html#ddc30fc6
+- Verwenden Sie bei allen Funktionen und Objekten aussagekräftige Namen und  Docstrings in einem einheitlichen Format (NumPy, Google, reStructuredText).
+- consistent docstring (important later for documentation generation). Kommentieren Sie Ihren Code, sodass er für andere gut lesbar ist.
+
 
 
 
@@ -102,15 +141,16 @@ In `src/linalg.py`:
 
    We use mutable data type `list()`over `tuple()`as we will later manipulate entries in the vector.
 
-2. Overload the operators `+, @` and `*` by implementing the following magic methods which all expect another vector- or scalar-type say `other`:
+2. Overload the operators `+, -, @` and `*` by implementing the following magic methods which all expect another vector- or scalar-type say `other`:
    - `__add__(self, other)` ($x+y$)
+   - `__sub__(self, other)` ($x-y$)
    - `__matmul__(self, other)` ($x^Ty$)
    - `__mul__(self, other)` ($\alpha \cdot x$)
    - `__rmul__(self, other)` ($x\cdot\alpha $)
    - Also See Level 1 BLAS Routines:
      - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
      - http://www.netlib.org/blas
-
+   
 3. Write appropriate test files `test_*.py` which you put into the directory `tests`
 
    - Create Run Configuration for your tests
@@ -166,14 +206,14 @@ In `src/linalg.py`:
 
 In order to run some examples later on, it would be nice to have a function which creates certain CSR-tuples. For matrices with some particular structure the CSR-lists can be easily obtained. In fact, we implement a function which builds [tridiagonal Toeplitz matrices](https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix).
 
-- Implement a function 
+1. Implement a function 
 
   ```python
   csrTridiagToep(n : int, data : tuple) -> csr_matrix
   ```
 
   that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
-  $$
+$$
   \left(\begin{array}{rrrrr}                                
   b & c  &0   & \cdots   & 0 \\                                               
   a &  b & c  &    &   \vdots \\                                               
@@ -181,12 +221,16 @@ In order to run some examples later on, it would be nice to have a function whic
   \vdots  &    &  a &  b & c  \\ 
   0 &   \cdots  & 0& a  &  b \\
   \end{array}\right)\in \mathbb{R}^{n \times n}.
-  $$
-  
+$$
 
-- Accordingly, the parameter `n` specifies the dimension of the square matrix and the parameter `data` contains the corresponding diagonal entries in the form of a tuple `data = (a,b,c)`.
+  - Accordingly, the parameter `n` specifies the dimension of the square matrix and the parameter `data` contains the corresponding diagonal entries in the form of a tuple `data = (a,b,c)`.
 
-- First consider how the three CSR- lists `data, indices, indptr` look like for general parameters `(n, data)` and then implement them as a function depending on `(n, data)`. For instantiation, you then just need to pass these three lists to the constructor of the above class `csr\_matrix`.
+  - First consider how the three CSR- lists `data, indices, indptr` look like for general parameters `(n, data)` and then implement them as a function depending on `(n, data)`. For instantiation, you then just need to pass these three lists to the constructor of the above class `csr\_matrix`.
+
+2. Write appropriate test files `test_*.py` which you put into the directory `tests`
+
+   - Create Run Configuration for your tests
+
 
 ## Implement Richardson iteration
 
@@ -194,8 +238,9 @@ In `src/iterative_solver.py`:
 
 1. Implement the relaxed Richardson iteration 
 
-   $x_{k+1} = x_k - \theta (Ax_k -b)$ 
-
+   $$
+   x_{k+1} = x_k - \theta (Ax_k -b)
+   $$
    as a function
 
    ```python
@@ -224,24 +269,19 @@ In `src/iterative_solver.py`:
 
    -   `numiter` : number of iterations that have  been performed
 
-2. The procedure should terminate as soon as the residual is sufficiently small, i.e. $\|Ax_k-b\|_2 < \texttt{tol}$ or the maximum number `maxiter` of iteration steps is reached.
+   The procedure should terminate as soon as the residual is sufficiently small, i.e. $\|Ax_k-b\|_2 < \texttt{tol}$ or the maximum number `maxiter` of iteration steps is reached.
+
+2. Write appropriate test files `test_*.py` which you put into the directory `tests`
+
+   - Create Run Configuration for your tests
 
 See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
 
 
 
-## Utils
-
-In `src/utils.py`:
-
-Implement:
-
-1. A function to plot a univariate function (in our case the vector of residuals `error`) using `matplotlib.pyplot`.
-2. A function that uses the Python package `tabulate`to generate a LaTex table into an external text file with two columns being iteration number and corresponding entry in the residual vector `error` that you can import later on into your paper. (Optional third column would be the rate of convergence)
 
 
-
-## Run first examples
+## Run first examples: 1d Heat Equation
 
 1. **Heat Equation**
 
@@ -292,17 +332,63 @@ Implement:
     
 -   You will recognize the matrix $A_1$ later as a finite-difference discretization of the one-dimensional Poisson equation on regular grids with homogeneous Dirichlet boundary values. And the matrix $A_2$ as a Tikhonov-regularization of it.
 
-## Utils for PageRank (optional)
+## Utils
 
-1. read from file a network structure as adjacency graph
-   1. write tests
-2. compute google matrix
-   1. write tests
+In `src/utils.py`:
 
-## Pagerank (optional)
+Implement:
 
-1. Implement interface to the data (you can use the Scipy Stack here)
-2. Apply Richardson Iteration
+1. A function to plot a univariate function (in our case the vector of residuals `error`) using `matplotlib.pyplot`.
+
+   Erstellen Sie mindestens einen Plot. Zum Beispiel könnten Sie die Funktion
+   k 7→ kAx k − bk 2 (= error[k]),
+   also den Fehler-Verlauf, zeichnen. Speichern Sie die Grafik mit einem aussagekräftigen Namen als .pdf-Datei
+   im Ordner ‘code/output/’, um sie in Ihr L A TEX-Dokument zu importieren.
+   → Dafür benötigen Sie die Liste error und das Modul matplotlib.pyplot (savefig()).
+
+2. Optional: A function that uses the Python package `tabulate`to generate a LaTex table into an external text file with two columns being iteration number and corresponding entry in the residual vector `error` that you can import later on into your paper. (Optional third column would be the rate of convergence)
+
+## Utils for PageRank
+
+- Recommended Reading: [Deeper Inside PageRank](https://www.stat.uchicago.edu/~lekheng/meetings/mathofranking/ref/langville.pdf) by Langville and Meyer.
+
+- create a script `src.pagerank_utils` (or similar)
+
+  
+
+1. Read edgle list into scipy sparse csr
+
+2. Normalize rows
+
+3. Deal with dangling nodes (pdf pages or similar)
+
+4. Implement google_matrix as class with correct matmul
+
+5. For richardson: Implement a second version with the following adatption
+
+6. combine everything
+
+7. Write appropriate test files `test_*.py` which you put into the directory `tests`
+
+   - Create Run Configuration for your tests
+
+8. Optional: Write further utils to draw the graphs, create a video, ...
+
+   
+
+## Compute the Pagerank
+
+1. **PageRank of your own Graph**
+   1. Draw your own small and write the corresponding list of edges textfile: `examples/pagerank_small.edges`
+   2. Create an example config like `example/pagerank_small`
+   3. 
+
+2. **Download real data:** https://networkrepository.com/web.php
+
+## Implement the Power Iteration (optional)
+
+1. Implement a function `power_iteration(A,...)`
+2. Re-run your Page-Rank using the power iteration and the Google matrix.
 
 
 
@@ -342,7 +428,25 @@ create a python package.
 
 ## Write a Paper with LaTeX (optional)
 
-**LaTeX über die Konsole**\
+Read the Overleaf Tutorials by starting here: https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+
+9.4
+Setzen von Text
+https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.3
+9.5
+Setzen von mathematischen Formeln
+https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.4
+9.6
+Setzen von Bildern
+https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.5
+9.7
+Seitenaufbau
+https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
+
+
+
+### Warmup: LaTeX via Command Line
+
  \
 (evlt. inclass vorführen mit GUI und Terminal nebeneinander)
 
@@ -383,14 +487,13 @@ create a python package.
 
    sftp://vollmann@syrma.uni-trier.de
 
-** TexStudio installieren und nutzen**\
+### Working Environment: The IWE TexStudio 
 
 1.  Laden Sie  herunter und installiere es auf Deinem System: <https://www.texstudio.org/#Download>
 
-2.  Führen Sie die Schritte von oben nun mit  anstatt über die Konsole
-    aus.
+2.  Führen Sie die Schritte von oben nun mit  TexStudio anstatt über die Konsole aus.
 
-**Text--Projekt modularisieren**
+### Plan Modularity 
 
 ```bash
 |-- text/
@@ -520,6 +623,4 @@ $$\texttt{<PATH>/text/}$$
 
 mit LaTeX über das Richardson--Verfahren und stellen Sie Ihre numerischen Ergebnisse vor. Modularisieren Sie Ihr LaTeX--Projekt sinnvoll und setzen Sie die oben erwähnten **Mindestanforderungen** um.
 
-## Run your examples with Scipy Stack
-
-1. ...
+## Run your examples with Scipy Stack (optional)

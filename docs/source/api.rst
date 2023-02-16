@@ -5,4 +5,4 @@ Reference Guide
     :toctree: generated
 
     src.linalg
-    src.iterative_solver
+    src.iterative_methods

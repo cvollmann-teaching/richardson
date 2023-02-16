@@ -4,7 +4,7 @@
 from src.linalg import *
 
 
-def richardson(A : csr_matrix, b :vector, x : vector, theta=.1, maxiter=50, tol=1e-06):
+def richardson(A: csr_matrix, b: vector, x: vector, theta=0.1, maxiter=50, tol=1e-06):
     """
     solves a system Ax = b, where A is assumed to be invertible,
     with relaxed splitting methods: Jacobi, Richardson
@@ -15,10 +15,8 @@ def richardson(A : csr_matrix, b :vector, x : vector, theta=.1, maxiter=50, tol=
          system matrix
     b : list of length n (or numpy.ndarray)
          right-hand side
-    x0: list of length n (or numpy.ndarray)
+    x: list of length n (or numpy.ndarray)
          initial guess
-    method : string
-             indicates method: "Richardson" (=default)
     theta : number (int or float)
             relaxation parameter (step length) default theta = 0.1
     tol : number (float)
@@ -43,12 +41,43 @@ def richardson(A : csr_matrix, b :vector, x : vector, theta=.1, maxiter=50, tol=
     #     pk = vec_scaling(ek,theta)
     #     x = vec_diff(x, pk)
     # return x, error, k
-
+    b = vector(b)
+    x = vector(x)
     error = []
     for k in range(maxiter):
         ek = A @ x - b
         error += [norm(ek)]
         if error[-1] < tol:
             return x, error, k
-        x = x - (theta * ek)
+        x = x - theta * ek
     return x, error, k
+
+
+def power_iteration(A, m, p=1):
+    """
+    Solves eigenvalue problem via Power Method
+    Expects the largerst eigenvalue of A to be scritly larger
+
+    Parameters
+    ----------
+    A : (n,n) ndarray
+        matrix
+    m : int
+        number of iterations
+    p : int or numpy.inf, optional
+        specifying the order of the p-Norm used for normalization
+
+    Returns
+    -------
+    x : (n,1) ndarray
+        normalized (with p-Norm) eigenvector for largest eigenvalue
+    mu : float
+         the largest eigenvalue
+    """
+    n = A.shape[1]
+    x = [1.0 / n] * n
+    for k in range(m):
+        z = A @ x
+        x = (1.0 / norm(z, order=p)) * z
+        mu = (x @ z) / (x @ x)
+    return x, mu

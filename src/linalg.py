@@ -14,6 +14,9 @@ class vector(list):
     def __add__(self, other):
         return vector([other_i + self_i for other_i, self_i in zip(other, self)])
 
+    def __sub__(self, other):
+        return vector([self_i - other_i for other_i, self_i in zip(other, self)])
+
     def __matmul__(self, other):
         if not isinstance(other, (tuple, list)):
             raise ValueError("use vector like types")
@@ -32,6 +35,7 @@ class csr_matrix:
     """
     CSR matrix class
     """
+
     def __init__(self, csr_tuple, shape=None):
         _data, _indices, _indptr = csr_tuple
         self.data = _data
@@ -57,7 +61,9 @@ class csr_matrix:
         """
         y = [0] * (len(self.indptr) - 1)
         for i, pair in enumerate(zip(self.indptr[0:-1], self.indptr[1:])):
-            for a_ij, j in zip(self.data[pair[0]:pair[1]], self.indices[pair[0]:pair[1]]):
+            for a_ij, j in zip(
+                self.data[pair[0] : pair[1]], self.indices[pair[0] : pair[1]]
+            ):
                 y[i] += a_ij * x[j]
         return vector(y)
 
@@ -70,26 +76,25 @@ class csr_matrix:
         A_dense: list in which each row is densely stored as list
         """
         row_dim = len(self.indptr) - 1
-        #        col_dim = self.indptr[0]
-        print(col_dim)
+        #  col_dim = self.indptr[0]
         # we store each row of the matrix as a list in the list A_dense
         A_dense = []
         for i in range(row_dim):
             A_dense += [[0] * col_dim]
-            nonzero_values = self.data[self.indptr[i]:self.indptr[i + 1]]
-            col_indices = self.indices[self.indptr[i]:self.indptr[i + 1]]
+            nonzero_values = self.data[self.indptr[i] : self.indptr[i + 1]]
+            col_indices = self.indices[self.indptr[i] : self.indptr[i + 1]]
             for j in range(len(col_indices)):
                 A_dense[i][col_indices[j]] = nonzero_values[j]
-        return A_dense  # str(A_dense).replace("],", "]\n")
+        return str(A_dense).replace("],", "]\n")  # A_dense  #
 
 
 def norm(x, order=2):
     order = float(order)
-    return sum([abs(xi) ** order for xi in x]) ** (1. / order)
+    return sum([abs(xi) ** order for xi in x]) ** (1.0 / order)
 
 
 # LEVEL 2
-def matvec(A : csr_matrix, x : vector) -> vector:
+def matvec(A: csr_matrix, x: vector) -> vector:
     """
     computes the matrix vector product
     INPUT:
@@ -108,7 +113,7 @@ def matvec(A : csr_matrix, x : vector) -> vector:
     """
     y = [0] * (len(A.indptr) - 1)
     for i, pair in enumerate(zip(A.indptr[0:-1], A.indptr[1:])):
-        for a_ij, j in zip(A.data[pair[0]:pair[1]], A.indices[pair[0]:pair[1]]):
+        for a_ij, j in zip(A.data[pair[0] : pair[1]], A.indices[pair[0] : pair[1]]):
             y[i] += a_ij * x[j]
     return vector(y)
 
@@ -120,7 +125,7 @@ def average_vector(x: vector) -> vector:
     where x is an n-dim vector and 1 is the n-dim one-vector
     """
     length = len(x)
-    average = 1. / length * sum(x)
+    average = 1.0 / length * sum(x)
     return [average] * length
 
 
@@ -136,9 +141,8 @@ def diag_quad_csr(A, col_dim):
 
     pointer_count = 0
     for i in range(row_dim):
-
-        nonzero_values = data[indptr[i]:indptr[i + 1]]
-        col_indices = indices[indptr[i]:indptr[i + 1]]
+        nonzero_values = data[indptr[i] : indptr[i + 1]]
+        col_indices = indices[indptr[i] : indptr[i + 1]]
         if i in col_indices:
             data_diag += [nonzero_values[col_indices.index(i)]]
             indices_diag += [i]
@@ -167,11 +171,10 @@ def inv_diag_quad_csr(A, col_dim):
 
     pointer_count = 0
     for i in range(row_dim):
-
-        nonzero_values = data[indptr[i]:indptr[i + 1]]
-        col_indices = indices[indptr[i]:indptr[i + 1]]
+        nonzero_values = data[indptr[i] : indptr[i + 1]]
+        col_indices = indices[indptr[i] : indptr[i + 1]]
         if i in col_indices:
-            data_diag += [1. / nonzero_values[col_indices.index(i)]]
+            data_diag += [1.0 / nonzero_values[col_indices.index(i)]]
             indices_diag += [i]
             pointer_count += 1
 
@@ -197,15 +200,15 @@ def csc_to_dense(A, row_dim):
     A_dense = []
     for i in range(col_dim):
         A_dense += [[0] * row_dim]
-        nonzero_values = data[indptr[i]:indptr[i + 1]]
-        row_indices = indices[indptr[i]:indptr[i + 1]]
+        nonzero_values = data[indptr[i] : indptr[i + 1]]
+        row_indices = indices[indptr[i] : indptr[i + 1]]
         for j in range(len(row_indices)):
             A_dense[i][row_indices[j]] = nonzero_values[j]
     return A_dense
 
 
 def indices_of_occurences(liste, element):
-    """get all indices where element appears in liste """
+    """get all indices where element appears in liste"""
     result = []
     if element in liste:
         num_of_occ = liste.count(element)
@@ -260,10 +263,9 @@ def matmat(A, B):
     indptr_C = [0]
 
     for i in range(col_dim_B):
-
         col_i_B = [0] * col_dim_A
-        nonzero_values = data_B[indptr_B[i]:indptr_B[i + 1]]
-        row_indices = indices_B[indptr_B[i]:indptr_B[i + 1]]
+        nonzero_values = data_B[indptr_B[i] : indptr_B[i + 1]]
+        row_indices = indices_B[indptr_B[i] : indptr_B[i + 1]]
         for j in range(len(row_indices)):
             col_i_B[row_indices[j]] = nonzero_values[j]
         # print(col_i_B)

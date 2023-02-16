@@ -1,3 +1,3 @@
 from . import linalg
-from . import iterative_solver
+from . import iterative_methods
 from . import utils

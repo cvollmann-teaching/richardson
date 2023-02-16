@@ -10,8 +10,9 @@ def test_add():
         x = vector(x)
         y = vector(y)
         z = x + y
-        assert any([zi == zi_exp for zi, zi_exp in
-                    zip(z, z_exp)]), "example {} incorrect".format(i)
+        assert any(
+            [zi == zi_exp for zi, zi_exp in zip(z, z_exp)]
+        ), "example {} incorrect".format(i)
 
 
 def test_matmul():
@@ -34,21 +35,25 @@ def test_mul():
         x = vector(x)
         # test mul
         z = x * scalar
-        assert any([zi == zi_exp for zi, zi_exp in
-                    zip(z, z_exp)]), "example {} incorrect".format(i)
+        assert any(
+            [zi == zi_exp for zi, zi_exp in zip(z, z_exp)]
+        ), "example {} incorrect".format(i)
         # test rmul
         z = scalar * x
-        assert any([zi == zi_exp for zi, zi_exp in
-                    zip(z, z_exp)]), "example {} incorrect".format(i)
+        assert any(
+            [zi == zi_exp for zi, zi_exp in zip(z, z_exp)]
+        ), "example {} incorrect".format(i)
 
 
 def test_average():
     from src.linalg import average_vector
+
     data = [[1] * 100, [2, 4]]
     expected = [[1] * 100, [3, 3]]
     for i, data in enumerate(zip(data, expected)):
         x, z_exp = data
         x = vector(x)
         z = average_vector(x)
-        assert any([zi == zi_exp for zi, zi_exp in
-                    zip(z, z_exp)]), "example {} incorrect".format(i)
+        assert any(
+            [zi == zi_exp for zi, zi_exp in zip(z, z_exp)]
+        ), "example {} incorrect".format(i)
