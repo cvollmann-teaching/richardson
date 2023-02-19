@@ -9,15 +9,19 @@ from src.linalg import vector
 # x0 = [4, 1.4]
 # b = n * [0]
 
-
+save_path = "examples/out/heat_equation.gif"
 n = 50
 A = n**2 * (2 * scs.eye(n, k=0) - scs.eye(n, k=-1) - scs.eye(n, k=1))
+# A[0,0] = 1
+# A[0,1] = 0
+# A[-1, -1] =  1
+# A[-1, -2] = 0
 # A = float(n**2) * A
 # A[0,0] = 1
 # A[-1,-1] = 1
 x0 = vector([0] * n)
 b = vector([1] * n)
-maxiter = 100000
+maxiter = 10000
 theta = 0.0001
 # A = A + 0.01 * scs.eye(n)
 
