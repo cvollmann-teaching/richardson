@@ -1,8 +1,10 @@
+import matplotlib.collections
 import scipy.sparse as sparse
 import networkx as nx
 import numpy as np
 import src.linalg
 import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 
 def read_edgelist_to_csr(filename: str) -> sparse.csr_matrix:
@@ -16,13 +18,50 @@ def read_edgelist_to_csr(filename: str) -> sparse.csr_matrix:
     return g
 
 
-def draw_graph_from_edgeslist(filename: str):
-    g = nx.read_edgelist(filename, nodetype=int, create_using=nx.DiGraph)
+def draw_graph_from_edgeslist(edges_filename: str, title="Graph"):
+    g = nx.read_edgelist(edges_filename, nodetype=int, create_using=nx.DiGraph)
     fig, ax = plt.subplots()
-    nx.draw_networkx(g, pos=nx.kamada_kawai_layout(g))
+    nx.draw_networkx(g, pos=nx.kamada_kawai_layout(g))  # nx.kamada_kawai_layout(g)
     ax.axis("Off")
-    ax.set_title("{title}".format(title="Example Graph"))
+    ax.set_title(title)
     plt.show()
+    return None
+
+
+def save_pagerank_gif(
+    edges_filename: str, pagerank_iterates: list, save_path: str, **kwargs
+):
+    g = nx.read_edgelist(edges_filename, nodetype=int, create_using=nx.DiGraph)
+    pos = nx.kamada_kawai_layout(g)
+    numiter = len(pagerank_iterates)
+    frames = zip(pagerank_iterates, list(range(len(pagerank_iterates))))
+
+    def func(frame):
+        import matplotlib
+
+        pagerank_iterate, it = frame
+        nx.draw_networkx(
+            g,
+            pos=pos,
+            ax=ax,
+            node_color=pagerank_iterate,
+            alpha=1,
+            node_size=400,
+            cmap=matplotlib.pyplot.cm.Blues,
+            vmin=1e-10,
+            vmax=0.4,
+        )
+        ax.axis("off")
+        ax.set_title(f"Iteration {it}")
+
+    fig, ax = plt.subplots()
+    ani = FuncAnimation(fig, func, frames=frames, interval=1000, save_count=numiter)
+    fig.suptitle(
+        "Page Rank with damping factor {damping_factor}".format(
+            damping_factor=kwargs.get("damping_factor")
+        )
+    )
+    ani.save(save_path, writer="imagemagick")
     return None
 
 
@@ -49,6 +88,14 @@ def un_dangle(G):
     diag[row_sum == 0] = 1
     G += sparse.diags(diag.flatten())
     return G
+
+
+class callback_iterates:
+    def __init__(self, disp=True):
+        self.iterates = []
+
+    def __call__(self, other):
+        self.iterates += [other]
 
 
 class google_matrix:

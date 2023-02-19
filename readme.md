@@ -14,6 +14,8 @@
 
 - We finally apply the code to compute the PageRank (note: for column stochastic matrices and with step size 1 the Richardson iteraton is equal to the power iteration with l1-normalization and a discrete probability distribution as initial guess).
 
+![pagerank_small](examples/out/pagerank_small.gif)
+
 
 
 ## Syllabus
