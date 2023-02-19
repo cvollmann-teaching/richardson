@@ -2,9 +2,10 @@ import scipy.sparse as sparse
 import networkx as nx
 import numpy as np
 import src.linalg
+import matplotlib.pyplot as plt
 
 
-def read_edgelist_tocsr(filename: str) -> sparse.csr_matrix:
+def read_edgelist_to_csr(filename: str) -> sparse.csr_matrix:
     """
     reads directed graph from textfile in list of edges format
     returns scipy sparse csr matrix
@@ -13,6 +14,16 @@ def read_edgelist_tocsr(filename: str) -> sparse.csr_matrix:
     g = nx.to_scipy_sparse_array(g)
     g = sparse.csr_matrix(g)
     return g
+
+
+def draw_graph_from_edgeslist(filename: str):
+    g = nx.read_edgelist(filename, nodetype=int, create_using=nx.DiGraph)
+    fig, ax = plt.subplots()
+    nx.draw_networkx(g, pos=nx.kamada_kawai_layout(g))
+    ax.axis("Off")
+    ax.set_title("{title}".format(title="Example Graph"))
+    plt.show()
+    return None
 
 
 def normalize_rows(g: sparse.csr_matrix) -> sparse.csr_matrix:
@@ -61,8 +72,12 @@ class google_matrix:
         return result
 
 
-class google_matrix_2:
+class transition_rate_matrix:
     """
+    for richardson: (I - P)
+    transition rate matrix for Markov chain is acutally the M-matrix: Q:=(P-I)
+    Thus in each richardson step we do: x_new = x_old + Q*x_old
+
     expects normalized, undangled and transposed adjacency matrix P
     and damping factor \alpha
 
@@ -85,7 +100,7 @@ class google_matrix_2:
 
 
 def read_google_matrix(filename, alpha=0.75):
-    G = read_edgelist_tocsr(filename)
+    G = read_edgelist_to_csr(filename)
     G = normalize_rows(G)
     G = un_dangle(G)
     G = G.transpose()
@@ -93,10 +108,10 @@ def read_google_matrix(filename, alpha=0.75):
     return P
 
 
-def read_google_matrix_2(filename, alpha=0.75):
-    G = read_edgelist_tocsr(filename)
+def read_transition_rate_matrix(filename, alpha=0.75):
+    G = read_edgelist_to_csr(filename)
     G = normalize_rows(G)
     G = un_dangle(G)
     G = G.transpose()
-    P = google_matrix_2(G, alpha)
+    P = transition_rate_matrix(G, alpha)
     return P
