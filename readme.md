@@ -6,6 +6,7 @@
 - This repo contains: the small tutorials (just notes for inclass development, in german), the corresponding instructions (below) and the almost complete worked examples.
   
 - In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch -- an iterative solver for linear systems: 
+
   $$
   x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
   $$
@@ -215,6 +216,7 @@ In order to run some examples later on, it would be nice to have a function whic
   ```
 
   that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
+  
 $$
   \left(\begin{array}{rrrrr}                                
   b & c  &0   & \cdots   & 0 \\                                               
@@ -243,6 +245,7 @@ In `src/iterative_solver.py`:
    $$
    x_{k+1} = x_k - \theta (Ax_k -b)
    $$
+   
    as a function
 
    ```python
@@ -288,6 +291,7 @@ See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
 1. **Heat Equation**
 
     Solve $A_1x =b$, with
+    
    $$
    A_1 = n^2 \left(\begin{array}{rrrrr}                                
    		2 & -1  &0   & \cdots   & 0 \\                                               
@@ -311,11 +315,13 @@ See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
    		0  \\ 
    		\end{array}\right) \in \mathbb{R}^{n},
    $$
+   
    for different dimensions $n$ (should be a parameter in your config script).
 
 2. **Regularized Heat Equation**
 
    Replace $A_1$ in the above example with
+   
    $$
    A_2 = A_1 + \delta I
    $$
