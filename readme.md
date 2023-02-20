@@ -190,12 +190,12 @@ In `src/linalg.py`:
 
 2. implement magic methods
    1. `__matmul__(self, x : vector) -> vector`
-      - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
-        						$$\texttt{A @ x = A.\_\_matmul\_\_(x)} $$
-      - For simplicity we neglect the capability of evaluating also the matrix--matrix product.
-      - This next level of complexity can be classified into Level 2 BLAS Routines:
-        - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
-        - http://www.netlib.org/blas
+     - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
+     - `A @ x = A.__matmul__(x)`                   
+     - For simplicity we neglect the capability of evaluating also the matrix--matrix product.
+     - This next level of complexity can be classified into Level 2 BLAS Routines:
+          - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
+          - http://www.netlib.org/blas
    2. `__toarray__(self, col_dim)`
       - A method which outputs a list with the rows of the matrix (again as a list).
 
@@ -217,15 +217,15 @@ In order to run some examples later on, it would be nice to have a function whic
 
   that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
   
-$$
-  \left(\begin{array}{rrrrr}                                
+```math
+  \begin{pmatrix}                              
   b & c  &0   & \cdots   & 0 \\                                               
   a &  b & c  &    &   \vdots \\                                               
   0&  \ddots &  \ddots &\ddots  &0  \\ 
   \vdots  &    &  a &  b & c  \\ 
   0 &   \cdots  & 0& a  &  b \\
-  \end{array}\right)\in \mathbb{R}^{n \times n}.
-$$
+  \end{pmatrix}\in \mathbb{R}^{n \times n}.
+```
 
   - Accordingly, the parameter `n` specifies the dimension of the square matrix and the parameter `data` contains the corresponding diagonal entries in the form of a tuple `data = (a,b,c)`.
 
@@ -290,31 +290,31 @@ See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
 
 1. **Heat Equation**
 
-    Solve $A_1x =b$, with
+   Solve $A_1x =b$, with
     
-   $$
-   A_1 = n^2 \left(\begin{array}{rrrrr}                                
+```math
+      A_1 = n^2 \begin{pmatrix}                                
    		2 & -1  &0   & \cdots   & 0 \\                                               
    		-1 &  2 & -1  &    &   \vdots \\                                               
    		0&  \ddots &  \ddots &\ddots  &0  \\ 
    		\vdots  &    &  -1 &  2 & -1  \\ 
    		0 &   \cdots  & 0& -1  &  2 \\
-   		\end{array}\right)\in \mathbb{R}^{n \times n}, 
-   		~~~~b = \left(\begin{array}{rrrrr}                                
+   		\end{pmatrix}\in \mathbb{R}^{n \times n},
+   	  ~~~b = \begin{pmatrix}                                
    		1 \\                                               
    		\\                                               
    		\vdots  \\ 
    		\\ 
    		1  \\ 
-   		\end{array}\right) \in \mathbb{R}^{n}, 
-   		~~~x_0 =  \left(\begin{array}{rrrrr}                                
+   		\end{pmatrix} \in \mathbb{R}^{n}, 
+   		~~~x_0 =  \begin{pmatrix}                             
    		0 \\                                               
    		\\                                               
    		\vdots  \\ 
    		\\ 
    		0  \\ 
-   		\end{array}\right) \in \mathbb{R}^{n},
-   $$
+   		\end{pmatrix}\in \mathbb{R}^{n},
+```
    
    for different dimensions $n$ (should be a parameter in your config script).
 
@@ -322,11 +322,11 @@ See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
 
    Replace $A_1$ in the above example with
    
-   $$
+$$
    A_2 = A_1 + \delta I
-   $$
+$$
 
-   for $\delta > 0$ and $I \in \mathbb{R}^{n\times n}$ the identity matrix. Run your examples from 1. again with different $\delta$.   Observe the number of iterations needed as $\delta$ increases. What about the convergence now?
+for $\delta > 0$ and $I \in \mathbb{R}^{n\times n}$ the identity matrix. Run your examples from 1. again with different $\delta$.   Observe the number of iterations needed as $\delta$ increases. What about the convergence now?
 
 
 **Remarks:**
