@@ -1,9 +1,10 @@
 from src.iterative_methods import richardson
 from src import utils
-import examples.heat_equation as conf
-from src.pagerank_utils import callback_iterates
+import numpy as np
+from src.utils import callback_iterates, save_1d_gif
 from src.pagerank_utils import save_pagerank_gif
-from src.utils import save_1d_gif
+
+import examples.pagerank_small as conf
 
 
 def main(save_path=None):
@@ -24,13 +25,14 @@ def main(save_path=None):
     utils.plot1d(error, save_path="examples/out/conf1.pdf")
     utils.plot1d(sol, save_path="")
     if save_path:
-        # save_pagerank_gif(
-        #     conf.filename,
-        #     callback.iterates,
-        #     save_path=conf.save_path,
-        #     damping_factor=conf.alpha,
-        # )
-        save_1d_gif(callback.iterates[::100], save_path=conf.save_path)
+        save_pagerank_gif(
+            conf.filename,
+            callback.iterates,
+            save_path=conf.save_path,
+            damping_factor=conf.alpha,
+            vmax=np.max(callback.iterates),
+        )
+        # save_1d_gif(callback.iterates[::100], save_path=conf.save_path)
     return sol, error, numit, callback
 
 

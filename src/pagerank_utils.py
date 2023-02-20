@@ -35,6 +35,7 @@ def save_pagerank_gif(
     pos = nx.kamada_kawai_layout(g)
     numiter = len(pagerank_iterates)
     frames = zip(pagerank_iterates, list(range(len(pagerank_iterates))))
+    vmax = kwargs.get("vmax", 0.5)
 
     def func(frame):
         import matplotlib
@@ -48,14 +49,19 @@ def save_pagerank_gif(
             alpha=1,
             node_size=400,
             cmap=matplotlib.pyplot.cm.Blues,
-            vmin=1e-10,
-            vmax=0.4,
+            vmin=0,
+            vmax=vmax,
         )
         ax.axis("off")
         ax.set_title(f"Iteration {it}")
 
     fig, ax = plt.subplots()
-    ani = FuncAnimation(fig, func, frames=frames, interval=1000, save_count=numiter)
+    plt.colorbar(
+        matplotlib.cm.ScalarMappable(
+            matplotlib.colors.Normalize(vmin=0, vmax=vmax), matplotlib.pyplot.cm.Blues
+        )
+    )
+    ani = FuncAnimation(fig, func, frames=frames, interval=800, save_count=numiter)
     fig.suptitle(
         "Page Rank with damping factor {damping_factor}".format(
             damping_factor=kwargs.get("damping_factor")
@@ -88,14 +94,6 @@ def un_dangle(G):
     diag[row_sum == 0] = 1
     G += sparse.diags(diag.flatten())
     return G
-
-
-class callback_iterates:
-    def __init__(self, disp=True):
-        self.iterates = []
-
-    def __call__(self, other):
-        self.iterates += [other]
 
 
 class google_matrix:
