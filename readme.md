@@ -1,4 +1,4 @@
-# Python Project: Richardson Iteration from Scratch and the PageRank
+# Python Project: Richardson Iteration from Scratch applied to Heat Equation and the PageRank
 
 (Under Construction)
 
@@ -11,7 +11,14 @@
   x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
   $$
 
-- We will implement our own classes for vectors and CSR matrices (later you can easily substitute them with the corresponding numpy.ndarray and scipy.sparse.csr_matrix).
+- We will implement our own classes for vectors and CSR matrices and overload common operators such as `+/-, *, @` (later you can easily substitute them with the corresponding numpy.ndarray and scipy.sparse.csr_matrix).
+
+- Heat equation: explicit Euler 
+
+<img src="examples/out/static/heat_equation.gif" alt="heat_equation" style="zoom:60%;" />
+
+
+
 
 - We finally apply the code to compute the PageRank (note: for column stochastic matrices and with step size 1 the Richardson iteraton is equal to the power iteration with l1-normalization and a discrete probability distribution as initial guess).
 
@@ -21,7 +28,33 @@
 
 ## Syllabus
 
-1 week block course:
+| Time      |       |       | Content                                      | Instructions                        |
+| :-------- | ----- | ----- | -------------------------------------------- | ----------------------------------- |
+| **Day 1** |       |       |                                              |                                     |
+| Session 1 | 10:00 | 11:00 | Mathematical Background I                    |                                     |
+| Session 2 |       |       | git, ssh (keys), github                      | [git](#initialize-a-git-repository) |
+| Session 3 |       |       | Project Planing and Initialization           |                                     |
+| **Day 2** |       |       |                                              |                                     |
+| Session 1 | 10:00 | 11:00 | Working Environment                          |                                     |
+| Session 2 |       |       | Clean Code                                   |                                     |
+| Session 3 |       |       | Software Tests                               |                                     |
+| Session 4 |       |       | Implementation: `linalg`                     |                                     |
+| **Day 3** |       |       |                                              |                                     |
+| Session 1 | 10:00 | 11:00 | Implementation: `linalg`, `iterative_solver` |                                     |
+| Session 2 |       |       | Implementation: `example` (Heat Equation 1d) |                                     |
+| Session 3 |       |       | Code Documentation with Sphinx               |                                     |
+| **Day 4** |       |       |                                              |                                     |
+| Session 1 | 10:00 | 11:00 | Mathematical Background II: PageRank         |                                     |
+| Session 2 |       |       | Implementation: Pagerank utils and Examples  |                                     |
+| Session 3 |       |       | Misc: License, readme, docs,...              |                                     |
+| **Day 5** |       |       |                                              |                                     |
+| Session 1 | 10:00 | 11:00 | Numpy                                        |                                     |
+| Session 2 |       |       | Scipy                                        |                                     |
+| Session 3 |       |       | Matplotlib                                   |                                     |
+
+
+
+
 
 
 
@@ -36,15 +69,9 @@
 ## General Project Instructions
 
 -   Strukturieren Sie Ihre Implementierung sinnvoll. Orientieren Sie sich dabei an der während des Kurses entwickelten Modularisierung.
-    
 -   Testen Sie jede einzelne Funktion ausführlich.
-
--   
-    
 -   Verwenden Sie für sämtliche Vektor-- und Matrix--Rechenoperationen nur die von Ihnen implementierten Python--Funktionen (und keine externen Pakete wie z.B. Numpy).
-    
 -   Numpy und Scipy können verwendet werden, um die Implementierung zu überprüfen.
-    
 -   Bonus\*: Versuchen Sie mögliche Fehleingaben des Nutzers zu antizipieren und mit geeigneten Fehlermeldungen abzupuffern. (Zum Beispiel könnten Dimensionen von $A$ und $b$ nicht zusammenpassen, ein Nutzer könnte die Matrix im falschem Format übergeben, sodass das übergebene Objekt nicht die drei Attribute 'data', 'indices','indptr' aufweist, etc.)
 
 ## Initialize a git repository
@@ -92,17 +119,18 @@
    - Optional: You may want to inherit site-packages from local Python installation
    - Install some packages
    - Add it to `.gitignore`
-5. Run Code: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
+5. **Run Code**: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
    - Familiarize with Python and run some code.
    - Create a Run Configuration
-6. Use the Debugger: https://www.jetbrains.com/help/pycharm/debugging-code.html
-7. Sync `requirements.txt`: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
+6. Use the **Debugger**: https://www.jetbrains.com/help/pycharm/debugging-code.html
+7. Sync **`requirements.txt`**: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
    - Tools| Sync Python requirements
    - Import some package and update the `requirements.txt`. Did it work?
-8. Check out the hidden project directory `.idea`
+8. **git in PyCharm**
+9. Check out the hidden project directory `.idea`
    - Add it to `.gitignore`
 
-9. Further reading:
+10. Further reading:
 
    - seek and destroy: https://www.jetbrains.com/help/pycharm/auto-completing-code.html
 
@@ -150,7 +178,7 @@ In `src/linalg.py`:
    - `__matmul__(self, other)` ($x^Ty$)
    - `__mul__(self, other)` ($\alpha \cdot x$)
    - `__rmul__(self, other)` ($x\cdot\alpha $)
-   - Also See Level 1 BLAS Routines:
+   - Side remark: Also See Level 1 BLAS Routines:
      - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
      - http://www.netlib.org/blas
    
@@ -159,7 +187,7 @@ In `src/linalg.py`:
    - Create Run Configuration for your tests
 
 
-## Euklidische Norm:   
+## Euclidean Norm
 
 In `src/linalg.py`:
 
@@ -193,7 +221,7 @@ In `src/linalg.py`:
      - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
      - `A @ x = A.__matmul__(x)`                   
      - For simplicity we neglect the capability of evaluating also the matrix--matrix product.
-     - This next level of complexity can be classified into Level 2 BLAS Routines:
+     - Side remark: This next level of complexity can be classified into Level 2 BLAS routines:
           - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
           - http://www.netlib.org/blas
    2. `__toarray__(self, col_dim)`
@@ -203,7 +231,7 @@ In `src/linalg.py`:
 
    - Create Run Configuration for your tests
 
-## Implement helper function `csrTridiagToep(n, data)` 
+## Implement helper function `csr_tridiag_toep(n, data)` 
 
 In `src/linalg.py`:
 
@@ -212,11 +240,11 @@ In order to run some examples later on, it would be nice to have a function whic
 1. Implement a function 
 
   ```python
-  csrTridiagToep(n : int, data : tuple) -> csr_matrix
+  csr_tridiag_toep(n : int, data : tuple) -> csr_matrix
   ```
 
   that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
-  
+
 ```math
   \begin{pmatrix}                              
   b & c  &0   & \cdots   & 0 \\                                               
@@ -291,31 +319,31 @@ See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
 1. **Heat Equation**
 
    Solve $A_1x =b$, with
-    
-```math
-      A_1 = n^2 \begin{pmatrix}                                
-   		2 & -1  &0   & \cdots   & 0 \\                                               
-   		-1 &  2 & -1  &    &   \vdots \\                                               
-   		0&  \ddots &  \ddots &\ddots  &0  \\ 
-   		\vdots  &    &  -1 &  2 & -1  \\ 
-   		0 &   \cdots  & 0& -1  &  2 \\
-   		\end{pmatrix}\in \mathbb{R}^{n \times n},
-   	  ~~~b = \begin{pmatrix}                                
-   		1 \\                                               
-   		\\                                               
-   		\vdots  \\ 
-   		\\ 
-   		1  \\ 
-   		\end{pmatrix} \in \mathbb{R}^{n}, 
-   		~~~x_0 =  \begin{pmatrix}                             
-   		0 \\                                               
-   		\\                                               
-   		\vdots  \\ 
-   		\\ 
-   		0  \\ 
-   		\end{pmatrix}\in \mathbb{R}^{n},
-```
    
+```math
+A_1 = n^2 \begin{pmatrix}                                
+2 & -1  &0   & \cdots   & 0 \\                                               
+-1 &  2 & -1  &    &   \vdots \\                                               
+0&  \ddots &  \ddots &\ddots  &0  \\ 
+\vdots  &    &  -1 &  2 & -1  \\ 
+0 &   \cdots  & 0& -1  &  2 \\
+\end{pmatrix}\in \mathbb{R}^{n \times n},
+~~~b = \begin{pmatrix}                                
+1 \\                                               
+\\                                               
+\vdots  \\ 
+\\ 
+1  \\ 
+\end{pmatrix} \in \mathbb{R}^{n}, 
+~~~x_0 =  \begin{pmatrix}                             
+0 \\                                               
+\\                                               
+\vdots  \\ 
+\\ 
+0  \\ 
+\end{pmatrix}\in \mathbb{R}^{n},
+```
+
    for different dimensions $n$ (should be a parameter in your config script).
 
 2. **Regularized Heat Equation**
