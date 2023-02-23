@@ -1,0 +1,356 @@
+\section{Daten Management}
+Wir wollen uns gegen den Verlust wertvoller Daten durch bspw. Hardware-Versagen, Hausbrand oder irreversibler Datei-Löschung schützen. Zudem möchten wir mit mehreren Endgeräten auf einem einzigen synchronen Datenbestand arbeiten. Dazu werden wir im Folgenden einige Begrifflichkeiten und Konzepte in diesem Kontext erklären und letztlich \seafile~als unseren Lösungsansatz implementieren.
+%\begin{itemize}
+%	\item Sicherung (backup): Daten sind redundant gespeichert
+%	\item Verfügbarkeit (filesharing): Zugriff auf die daten ist durch mehrere endgeräte möglich
+%	\item synchronisation vs mount
+%	\item browserbasiert
+%	\item Bereitstellung (software, speicher, etc...)
+%	\item Zusammenarbeit
+%	\item Entkopplung/Modularisierung: Daten ,Endgerät, System! neues betriebssystem kein thema
+%	\item (versionskontrolle)
+%\end{itemize}
+\subsection{Der Begriff Datensicherung (\textit{backup})}
+\link{https://de.wikipedia.org/wiki/Datensicherung}{Datensicherung} \textit{bezeichnet das Kopieren von Daten in der Absicht, diese im Fall eines Datenverlustes zurückkopieren zu können}. Wir unterscheiden die Funktionen
+\begin{itemize}
+	\item \textbf{backup} (Sicherungskopie): Daten redundant auf einem Speichermedium sichern.
+	\item \textbf{restore} (Datenwiederherstellung): Originaldaten aus einer Sicherungskopie wiederherstellen.
+\end{itemize}
+\textit{Bemerkung:} Wir werden uns nicht mit der Sicherung im Sinne von Verschlüsselung beschäftigen.
+%~\\
+%
+%
+\subsubsection{Arten der Datensicherung}
+\begin{itemize}
+	\item \underline{Vollsicherung}:\\ 
+	Die reinen Daten (ohne Dateisystem usw.) einer Festplatte/Partition o.ä. werden komplett auf das Speichermedium kopiert.
+	\begin{itemize}
+		\item[+] Sehr einfach zu verstehen und implementieren
+		\item[--] Speicher- und Zeitbedarf
+	\end{itemize}
+	\item \underline{Differenzielle Sicherung}:\\ Nur die Dateien werden gespeichert, die seit der letzten Vollsicherung geändert wurden oder neu hinzugekommen sind.
+	\begin{itemize}
+		\item[+] Reduzierter Speicher- und Zeitbedarf
+		\item[--] Sichert trotz nur kleiner Änderungen die ganze Datei nochmals
+	\end{itemize}
+	\item \underline{Inkrementelle Sicherung}:\\ Nur die Dateien oder \textit{Teile} von Dateien werden gespeichert, die seit der letzten inkrementellen Sicherung geändert wurden oder neu hinzugekommen sind. Das kann bei Blockgeräten (Festplatte) auf Block-Level passieren.\\
+	Tools unter Linux: \texttt{duplicity, rdiff-backup}
+	\begin{itemize}
+		\item[+] Sehr geringe Speicher- und Zeitbedarf; eignet sich daher für die Datensicherung in Netzwerken/Cloud
+		\item[--] Prinzipbedingt sind alle Inkremente miteinander verkettet:\\
+		Originaldaten = restore(Komplettsicherung, inkrement. Sicherung 1,...,n)\\ 
+		$\to$ Rechenaufwand bei \textit{restore}
+	\end{itemize}
+	\item \underline{Speicherabbildsicherung} (\textit{image backup}):\\ 
+Der komplette Datenträger wird durch ein 1-zu-1-Abbild gesichert, also das gesamte Dateisystem, inklusive Betriebssystem, Benutzereinstellungen etc.
+\begin{itemize}
+	\item[+] Klonen oder Wiederherstellen eines kompletten Systems möglich
+	\item[--] 
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Speicher--Hardware}
+\url{https://en.wikipedia.org/wiki/Backup#Storage_media}
+\subsubsection{Strategien der Datensicherung}
+\url{https://de.wikipedia.org/wiki/Datensicherung#Backupstrategien}
+\link{https://www.storage-insider.de/was-ist-die-3-2-1-backup-regel-a-782641/}{3-2-1 backup Regel}
+\subsubsection{Software}
+\url{https://de.wikipedia.org/wiki/Liste_von_Datensicherungsprogrammen}\\
+duplicity, rdiff-backup, rsync, sync-clients, unison,...
+\subsubsection{Datenmanipulation}
+\url{https://en.wikipedia.org/wiki/Backup#Manipulation_of_data_and_dataset_optimization}\\
+Kompression, Verschlüsselung, usw.
+
+
+\homework{\textbf{Hausaufgaben}
+	\begin{enumerate}
+		\item Lesen Sie die Informationen vom ZIMK unter IT-Dienste und -Services/Datensicherung:
+		\begin{itemize}
+			\item[] 		\url{https://www.uni-trier.de/universitaet/wichtige-anlaufstellen/zimk/gemeinsame-seiteninhalte/datensicherung}
+		\end{itemize}
+		\item Siehe auch \link{https://www.storage-insider.de/was-ist-die-3-2-1-backup-regel-a-782641/}{3-2-1 backup Regel}
+	\end{enumerate}
+}
+
+\subsection{Outsourcing: Online-Datensicherung}
+Als \link{https://de.wikipedia.org/wiki/Online-Datensicherung}{Online-Datensicherung} (\link{https://en.wikipedia.org/wiki/Remote_backup_service}{\textit{Cloud-Backup}}) \textit{bezeichnet man eine Datensicherung über das Internet (...) auf Datenspeichern eines Internetdienstanbieters}/Unternehmens. Wir können Drittanbieter bezahlen (hfftl. vertrauenswürdige Spezialisten), die Datensicherung für uns zu übernehmen.~\\~\\
+\textbf{Technische Voraussetzungen}
+\begin{itemize}
+	\item Internetzugang (idealerweise mit verschlüsselter Verbindung; z.B. \texttt{https})
+	\item Dienste/Protokolle auf Server und Client Seite mit Benutzerkennung über ein Verzeichniszugriffsprotokoll (ldap, AD, auch in Kombination mit Shibboleth o.ä), um Zugriffsrechte etc. zu verwalten.
+	\item Datenmanipulation: Datenübertragung über Internet langsamer als über direkte Schnittstellen zum Speichermedium, daher
+	\begin{itemize}
+		\item Datenkompression
+		\item Inkrementelle Datensicherung
+	\end{itemize}
+\end{itemize}
+%
+Das Konzept des delokalisierten Speichers (Stichwort: Modularisierung) bringt neben der Sicherung generell viele weitere Vorteile mit sich: Hochverfügbarkeit, Verfügbarkeit auf vielen Endgeräten, Zusammenarbeit, Webbasiertes Zugreifen usw. (in Abschnitt \ref{sec:syncclient} mehr dazu)
+
+
+
+
+
+
+\subsection{Konzept 1: Externes Dateisystem einhängen}
+\textit{Hier: \textit{mounten} via \texttt{nfs} und \ttt{smb} und der \ttt{sftp} Prompt}\\~\\
+In einem Netzwerk (z.B. das Uni--Netz) befindet sich ein zentraler, massiv abgesicherter Speicher, auf dem alle Nutzer im Netzwerk Daten (Text, Bilder, Emails, Kalendar,...) ablegen können oder auf dem die Administratoren bestimmte Software zur Verfügung stellen können. Wir dazu brauchen unter anderem die folgenden Komponenten:
+\begin{itemize}
+	\item \textbf{Verzeichniszugriffsprotokoll:}\\ Damit user Bob nicht die Daten von user Alice einsehen kann, werden bestimmte Zugriffsrechte über eine Benutzer-Kennung samt Passwort (z.B. ZIMK-Kennung) von einem dafür zuständigen (vermutlich virtuellen; Stichwort: Modularisierung) Server verwaltet (z.B. Active Directory Service).
+	\item \textbf{Fileserver:}\\ Um den zentralen Speicher zu verwalten, gibt es auf Seiten des Dienstleisters einen sogenannten Fileserver, der sich u.a. mit dem Verzeichnisverwalter über die Zugriffsrechte austauscht.
+	\item \textbf{Protokoll und dessen Implementierung:}\\ 
+	Für die Datenübertragung zwischen zwei Rechnern im Netzwerk werden bestimmte Netzwerkprotokolle verwendet (z.B. smb, nfs,...). Diese Protokolle werden von einer Software implementiert (z.B. Samba für smb, nfs-kernel-server/nfs-common)
+\end{itemize}
+Ein Nutzer (\textit{client}), also ein Rechner im Netzwerk mit einer bestimmten IP-Addresse, kann dann über die vom Fileserver angebotenen Protokolle (z.B. smb, nfs,...) Daten zwischen seinem und dem zentralen Speicher transferieren.\\ 
+Andererseits kann man auch gleich auf diesem (eingehangen; man spricht von \textit{mount}\footnote{engl. anbringen, montieren}) Datenbestand arbeiten: Das externe Dateisystem wird einfach in das lokale Dateisystem eingehangen (zB in Windows als neues Laufwerk) und ist aus Nutzersicht allenfalls an der Zugriffsgeschwindigkeit von den anderen Dateien zu unterscheiden.~\\
+~\\
+\textit{Beispiel:} \textbf{Das ``U-Laufwerk''}
+\begin{itemize}
+	\item Studierende der Universität Trier möchten Rechner-Ressourcen (CIP-Pools,..) nutzen. Dabei sollte es idealerweise möglich sein, sowohl auf dem Campus im CIP-Pool, als auch zuhause am Privatrechner auf demselben Datensatz zu operieren ohne diesen über Email, USB-Stick o.ä. mühselig hin und her zu kopieren.
+\item Das Rechenzentrum der Universität hat einen zentralen Speicher, auf dem die Studierenden ihre Daten ablegen. Die Zugriffsrechte auf diese Daten werden durch die ZIMK-Kennung über ein Active Directory sichergestellt. Diese dort abgelegten Daten werden von der Universität sogar (mittels geeigneter Netzwerkprotokolle) über das Internet exportiert, sodass Angehörige der Uni auch zuhause auf Ihre Daten zugreifen können: Das sog. \ttt{U-Laufwerk}.
+\end{itemize}
+~\\
+\textbf{Vorteil:} Sofern die Datenübertragung hinreichend schnell ist (zB Glasfasernetz innerhalb eines Unternehmens) braucht man am Client lokal kaum noch Speicherplatz. Das kann man auf die Spitze treiben (Software, OS etc. alles auslagern) und landet bei dem Konzept der sogenannten \textit{thin clients}.\\~\\
+\textbf{Nachteil:} Man kann nur bei bestehender Verbindung (zB via Internet) zum Fileserver auf den Daten arbeiten.\\ $\to$ Daher: Zusätzliche Synchronisation.\\
+\demo{~~smb
+\\~\\
+\textbf{smb-share}: U-Laufwerk der Uni mounten über smb (unter Linux wird cifs synonym verwendet)\\
+\footnotesize
+~\\
+\textbf{Vorraussetzung}: VPN Verbindung, Uni-LAN oder ZIMKFunkLan
+~\\~\\
+Die entsprechenden \textbf{Parameter} für das smb-Protokoll lauten:\\~\\
+address=ifsp.uni-trier.de/u ~~~~~\# (uni-trier.de/dfs anderer Ort auf den ich noch Zugriff habe)\\
+domain=urt\\
+vers=3.0\\
+username=<ZIMK-Nutzerkennung>\\
+password=<Pwd Ihrer ZIMK-Nutzerkennung>
+\begin{itemize}
+	\item \textbf{Terminal}\\
+	(\$ sudo apt-get install smbclient)\\
+	\$ sudo apt-get install cifs-utils ~~~~\# notwendige Software installieren\\
+	\$ mkdir <myMountPoint>~~~~\# "Montagepunkt" zum einhängen erstellen\\
+	\$ df -Th\\
+	\$ sudo mount -t cifs -o username=vollmann,domain=urt,vers=3.0 //ifsp.uni-trier.de/u  <myMountPoint>\\
+	\$ df -Th\\
+	\$ sudo umount <myMountPoint>   \# un-mount\\
+	\$ df -Th\\
+	~\\
+	Bemerkung: CIFS wird öfter als Synonym für das SMB-Protokoll oder sogar dessen ganze Protokollfamilie verwendet.
+	\item \textbf{Dateimanager} (\url{https://www.uni-trier.de/index.php?id=73271})\\
+	``mit Server verbinden'': smb://ifsp.uni-trier.de/u\\		
+\end{itemize}
+}
+
+
+\demo{~~nfs~\\~\\
+\textbf{nfs-share:} Mathe-Software /usr/local\\
+	\textit{~[wird bei Ihnen nicht funktionieren da fehlende Rechte]}
+	\footnotesize
+\begin{itemize}
+	\item \textbf{Terminal}\\	
+	\$ showmount -e mathetest\\
+	\$ sudo apt install nfs-common\\
+	\$ sudo mkdir <myMountPoint>\\
+	\$ sudo mount -t nfs mathetest.uni-trier.de:/usrlocal <myMountPoint>\\
+	\item \textbf{Dateimanager}\\
+	analog zu smb
+\end{itemize}
+~\\
+Bemerkung: Damit wir unser home-Verzeichnis von syrma per nfs/smb auf unsere lokale Maschine mounten können, müssten die entsprechenden Dienste auf Server und Client installiert und konfiguriert werden! (\$ sudo apt-install nfs-common nfs-kernel-server \#(?) ...)
+}
+
+\demo{~~sftp~\\~\\
+\textbf{sftp:} Dateitransfer zwischen local und syrma\footnotesize
+\begin{itemize}
+	\item \textbf{Terminal}\\
+	\$ sftp vollmann@syrma.uni-trier.de\\
+	~~\# es öffnet sich ein sftp prompt, siehe zB \link{https://www.digitalocean.com/community/tutorials/how-to-use-sftp-to-securely-transfer-files-with-a-remote-server}{dieses Tutorial}; navigieren mit cd, ls, ...\\
+\$ get remoteFile~~~~\# Kopie ins aktuelle Verzeichnis, von dem aus man sftp prompt geöffnet hat\\
+\$ get remoteFile localFile~~~~~~\# Andere Richtung mit ``put''\\
+\item \textbf{Dateimanager}\\
+\$ sftp://vollmann@syrma.uni-trier.de/home/vollmann
+\end{itemize}
+}
+
+
+
+
+\homework{
+	\textbf{Hausaufgabe:\begin{center}
+		\large	 \textbf{U-Laufwerk}
+	\end{center}}
+	\begin{enumerate}
+		\item Hängen Sie Ihr sogenanntes ``U-Laufwerk'' von der Universität Trier manuell auf Ihrem Privatrechner ein:\\~\\ \url{https://www.uni-trier.de/fileadmin/urt/IT-Dienste-Home-Office-Telearbeit/Netzlaufwerke_verbinden_MSWindows.pdf}
+\end{enumerate}}
+
+\subsection{Konzept 2: Externes Dateisystem lokal spiegeln durch Dateisynchronisation}
+\link{https://de.wikipedia.org/wiki/Dateisynchronisation}{Dateisynchronisation} (\textit{Filesyncing}) \textit{ist die Übertragung von Dateien (...) zur Erzeugung eines einheitlichen Datenbestands an unterschiedlichen Orten}.\\
+~\\
+Insbesondere bei mobilen Geräten von Vorteil. Fest installierte Rechner im Intranet haben in der Regel über \ttt{nfs/smb} stabilen Zugriff auf die Daten.\\
+~\\
+Wir disktutieren zwei Umsetzungen:
+\subsubsection{Unter Linux: \ttt{mount/ssh+rsync} oder app wie \ttt{unison}}
+Mit dem Linux-Tool \ttt{rsync} lässt sich unidirektionale Dateisynchronisation leicht über Kommandozeilen umsetzen.
+\begin{itemize}
+\item Variante 1: Manuell
+\begin{itemize}
+	\item Verbindung herstellen:\\
+	\texttt{mount:} (physisch) externes Dateisystem mounten per nfs, smb,...\\
+	\texttt{ssh:} Falls man Zugriff auf den externen Server hat, so kann auch eine ssh Verbindung verwendet werden
+	\item Dateisynchronisation:\\
+	Das eingehangene Dateisystem kann nun mithilfe von \ttt{rsync} mit einem (physisch) lokalen Dateisystem synchronisiert werden\\~\\
+	(eventuell direkt Zugriff per rsync)
+\end{itemize}
+\demo{\footnotesize
+	\begin{itemize}
+		\item \textbf{ssh+rsync:}\\
+		Anwendungsbeispiel: Die Seiteninhalte auf dem externen web-Server möchte ich lokal erstellen. Die Daten sollten synchron sein.
+		\begin{itemize}
+			\item executable erstellen ``pushWWW.sh''\\
+			$$\texttt{\$ nano/gedit pushWWW.sh}$$
+			pdflatex ... [.tex to .pdf]\\
+			rsync ... [push from local to remote]
+			\item Ausführbar machen $$\texttt{\$ chmod +x pushWWW.sh}$$
+			\item Lokaler Rechner: Änderungen im Texteditor tätigen
+			\item Auf WWW-Server ``pushen'':$$\texttt{\$ ./pushWWW.sh}$$
+			\item Beobachten auf remote:\\ \url{https://www.math.uni-trier.de/~vollmann/prog/script/prog-teil-2.pdf}
+		\end{itemize}
+		\item \textbf{mount+rsync:}\\ U-Laufwerk mit einem Ordner lokal per \ttt{rsync} synchronisieren
+
+\end{itemize}
+}
+\item Variante 2: (Halb-)Automatisiert\\
+In der ersten Variante haben wir die Schritte zu Fuß einmalig umgesetzt. In der Praxis sollten diese Schritte besser anhand von bestimmten Auslösern (Zeitrhythmus, Dateiänderung,...) automatisiert ausgeführt werden.
+\begin{itemize}
+	\item Ggf. Automatisches mounten: Die Konfigurationsdatei \ttt{fstab} (Abkürzung für file system table, deutsch ‚Dateisystemtabelle‘) wird während des Bootens vom Befehl \texttt{mount} zeilenweise gelesen. Diese Konfigurationsdatei liegt im Verzeichnis \ttt{etc} und enthält eine Liste aller zu einzuhängender Datenspeicher. 
+	\item Synchronisation des eingehangenen Dateisystem per \ttt{rsync} (ggf. über \texttt{ssh}) automatisierten mithilfe des Cron-Daemon\footnote{Als Daemon bezeichnet man unter unixartigen Systemen einen Prozess, der im Hintergrund abläuft und bestimmte Dienste zur Verfügung stellt.}. Dieser dient allgemein der zeitbasierten Ausführung von Prozessen in unixartigen Betriebssystemen, um wiederkehrende Aufgaben (=\textit{Cronjobs}) zu automatisieren.
+\end{itemize}
+\demo{
+\ttt{\$ cat /etc/fstab}
+}
+%\textbf{Nachteile:} Zur Synchronisation und Dateiabgleich muss ganzes externes Dateisystem immer per nfs oder smb übertragen werden
+\item Variante 3: Automatisiert
+\begin{itemize}
+	\item Für diesen Einsatzzweck geschaffene Anwendungen wie \ttt{unison} verwenden, die ggf noch mit einer GUI daherkommen.
+\end{itemize}
+\textbf{Vorteil:} Eine Anwendung wie \ttt{unison} läuft auch auf dem externen System und kann den Stand jeder Datei zentral monitoren. Dadurch entsteht deutlich weniger Netzwerkverkehr.
+\end{itemize}
+\subsubsection{Sync Clients mit browser backend} \label{sec:syncclient}
+Was durch die bisherigen 3 Variante noch nicht umgesetzt sind u.a.: Zugriffsrechteverwaltung (share-link etc), browserbasiertes Arbeiten, OS-Unabhängigket usw. Daher jetzt:
+~\\~\\
+Variante 4: Eine mächtige \link{https://de.wikipedia.org/wiki/Dateisynchronisation\#Anbieter\_von\_Filesynchronisation}{Software} wie Nextcloud, ownCloud, Seafile bzw. die von Anbietern wie Dropbox\footnote{Bemerkung: Der Dropbox service unter linux in Python3 geschrieben}, Google Drive, iCloud oder MS OneDrive nutzen, die folgende Features bereitstellt:
+\begin{itemize}
+	\item \textbf{Dateisynchronisation} mit einem externen Speicher
+	\item \textbf{Sync clients} für verschiedene Betriebssysteme $\to$ können auf jeglichen Endgeräten arbeiten
+	\item \textbf{Versionskonflikte:} Wenn verschiedene Benutzer gleichzeitig dieselbe Datei verändern oder Internetverbindung an einem Client ausfällt, wird das von 
+	dem System bemerkt und es speichert Kopien der veränderten Datei unter einem modifizierten Namen, der auf die Inkonsistenz aufmerksam macht
+	\item \textbf{Zusammenarbeit}: Statt Dateien per Email zu verschicken, kann man dem Empfänger bspw. einfach einen link auf diese Dateien senden.
+	\item \textbf{Dateiversionierung und Snapshots}
+	\item \textbf{Online Bearbeitung von Dateien:}
+	Zusätzlich werden Browserbasierte Programme bereitgestellt um E-Mails, Textdokumente, Präsentationen und
+	Tabellenkalkulationen zu bearbeiten, ohne dazu eigene Verarbeitungsprogramme zu
+	verwenden. \\
+	$\to$ Browserbasierte (und damit OS unabhängige) Konzepte sind aktuell häufig vorzufinden (zB jupyter notebooks)
+	\item \textbf{APIs:}\footnote{application programming interface, für Programmierschnittstelle} Es gibt Schnittstellen zu anderen Anwendungen, zB können Sie evtl. die Daten Ihres Fahrradcomputers oder von Gootnotes in Ihrer Dropbox ablegen
+	\item \textbf{Unterstützung weitere Protokolle:} Oftmals wird der Datenbestand auch mittels anderer Protokolle exportiert. So können wir auch via WebDAV (Vorteil: Verbindung geht über den meist freigeschalteten http-Port 80) auf unsere Seafile-Daten zugreifen.
+\end{itemize}
+\demo{~~\ttt{\$ vi/nano/gedit /bin/dropbox}}
+~\\
+\textbf{Vorsicht}: Datenschutzgesetze in anderen Ländern\\
+Die Speicherung von Daten in einer Cloud setzt Vertrauen zu den Anbietern dieser Dienste voraus, wenn man ihnen Daten und Dokumente \textit{ohne eigene} Verschlüsselung\footnote{Es gibt Möglichkeiten: \ttt{cryFS, veracrypt}} anvertraut.
+\begin{itemize}
+	\item Einige Lösungen unterhalten Ihre Serverstruktur ausschließlich in Deutschland, weshalb der gesamte Datenverkehr den strengen deutschen Datenschutzgesetzen untersteht, mit der Folge zusätzlicher Sicherung gegen nicht autorisierten Zugriff. 
+	\item Wenige Lösungen bieten darüber hinaus noch eine Ende-zu-Ende-Verschlüsselung, durch welche die Daten bereits lokal auf dem eigenen Rechner verschlüsselt werden und somit bereits auf dem Weg zum Server hin sicher verschlüsselt sind. 
+\begin{itemize}
+	\item[$\to$] schützt gegen Abfangen der Daten in Form eines man-in-the-middle Angriffs
+	\item[$\to$] Aber: Anbieter können Daten entschlüsseln und zum Anfertigen von Benutzerprofilen verwenden -- das ist der Preis für kostenlosen Speicher inkl. Tools. Alleinige Verschlüsselung durch den Anbieter ist daher für wichtige Daten nicht zu empfehlen. 
+\end{itemize}
+\end{itemize}
+~\\
+\textbf{``IT as a service''} 
+Softwareanbieter brauchen ihre Programme nicht mehr zu verkaufen, sie stellen
+sie auf ihren eigenen Rechnern zur Verfügung und der Benutzer zahlt je nach Nutzung. Auch Hardware kann man sich nach Bedarf aus dem Netz holen. Rechenintensive Tasks werden unsichtbar auf Großrechner in der Wolke verlagert und der Benutzer zahlt nach CPU-Sekunden. Solche und ähnliche Angebote gibt es von Firmen wie Google, Amazon, IBM und anderen. Das Geschäftsmodell heißt: ``IT as a service''.
+%
+%\textbf{wieder thin clients:}\\
+%Sowohl die Daten als auch die Programme befinden sich aus Benutzersicht in einer
+%„Infrastruktur-Wolke“. Solange eine gute Internetverbindung besteht, kann es dem
+%Benutzer auch egal sein, wo welche CPU welche Teilaufgabe übernimmt.
+%Theoretisch wäre es denkbar, dass auf dem Anwenderrechner lediglich ein Web-
+%Browser läuft, der sich mit Google-Docs oder einem ähnlichen System verbindet. Nicht
+%einmal ein lokaler Speicher wäre vonnöten. Das minimalistische Betriebssystem Chro-
+%me OS bietet gerade eine ausreichende Plattform für eine solche Unterstützung von
+%Web-Anwendungen
+
+\homework{\textbf{Hausaufgaben}
+\begin{enumerate}
+		\item Siehe zum Beispiel die Angebote des ZIMKs: \url{https://www.uni-trier.de/index.php?id=53078}
+\end{enumerate}
+}
+
+\subsubsection{\seafile}
+Bei den Anbietern  Dropbox, Google Drive, iCloud oder MS OneDrive lernen wir in der Regel nur die Kundenseite kennen. Es gibt jedoch auch freie Software, die exakt diese Dienste bereitstellen und uns damit ermöglicht einen eigenen unabhängigen Cloud-Speicher auf eigenen Servern mit völliger Kontrolle über die Daten aufzusetzen.\\ 
+~\\
+Bekannte Software ist: Nextcloud, ownCloud und eben auch \link{https://www.seafile.com/en/about/}{\seafile} \footnote{seafile ist ein chinesisches Unternehmen mit Sitz in Beijing,
+	China, first release 2012; Siehe auch https://www.seafile.com/en/about/}.\\~\\
+Die Rechenzentrumsallianz Rheinland-Pfalz (RARP) administriert einen eben solchen \seafile-Server und alle Angehörigen einer Universität oder Hochschule in Rheinland-Pfalz haben Zugriff darauf. Ähnlich wie Sie sich mit Ihrem Google-Account bei Google-Drive anmelden, so können sie sich auf
+ 			\begin{center}
+ 	\url{https://seafile.rlp.net/}
+ \end{center}
+mit ihrer ZIMK Kennung anmelden und es stehen Ihnen als StudentIn 16GB Cloud--Speicher zur Verfügung. Dazu wird über Shibboleth das Active Directory der Uni Trier angezapft.
+
+
+\homework{ \textbf{Hausaufgabe:}
+\begin{center}
+		\textbf{\large\seafile~einrichten}
+\end{center}
+\begin{enumerate}
+		\item Lesen Sie die Informationen auf den Seiten der RARP:\\
+		\url{https://rarp.rlp.net/services/seafile}
+		\item Mit ZIMK Kennung anmelden auf: 
+			\begin{center}
+					\url{https://seafile.rlp.net/}
+			\end{center}
+		\begin{itemize}
+			\item My Libraries \textbf{+ New Library} <ProjektName>
+			\item Erstellen Sie eine Markdown-, Excel- sowie Word-Datei im Browser zum testen.
+			\item Welche Optionen haben Sie, um diese Bibliothek mit anderen zu teilen?
+		\end{itemize}
+		\item Download Desktop \textbf{Syncing} Client (\textbf{nicht} Desktop Drive Client): 
+			\begin{center}
+					\url{https://www.seafile.com/en/download/}
+			\end{center}
+		\begin{itemize}
+			\item Beim Konfigurieren müssen Sie die Server-Adresse von oben angeben
+			\item {\color{red}Vorsicht:} Nur Libraries und deren Unterordner werden vom Desktop Client synchronisiert.
+			\item Suchen Sie Ihre Library \texttt{/home/user/Seafile/<ProjektName>/}
+		\end{itemize}
+		\item In Ihrem \textbf{\filemanager} unter \texttt{/home/user/Seafile/<ProjektName>/}
+		\begin{itemize}
+			\item Teilweise Verzeichnisstruktur von Abb. \ref{fig:vz-struktur-code} und \ref{fig:vz-struktur-text} anlegen 
+		\end{itemize}
+		\item Richten Sie WebDAV ein: \link{https://rarp.rlp.net/services/seafile/seafile-hilfe/seafile-hilfe-bedienung-der-seafile-webseite/seafile-hilfe-webdav}{Anleitung} der RARP
+		\begin{itemize}
+			\item WebDav Passwort setzen: Settings > WebDav Password
+			\item Die benötigten WebDAV Parameter für Ihren entsprechenden Client (zb Browser, Dateimanager) sind dann:
+			\begin{itemize}
+				\item server=seafile.rlp.net/seafdav
+				\item username=<ZIMK-Kennung>@uni-trier.de
+				\item password=<das-oben-gesetzte-Pwd>
+			\end{itemize}
+			\item Zugriff
+			\begin{itemize}
+				\item im Browser: https://seafile.rlp.net/seafdav
+				\item im Dateimanager Nautilus: davs://seafile.rlp.net/seafdav
+			\end{itemize}
+		\end{itemize}
+			\item Durchstöbern Sie den versteckten Ordner \texttt{.seafile-data}
+	\item Auch nützlich: Mobile Client für Android oder iOS installieren.
+\end{enumerate}}
+~\\
+\textbf{Zusammenfassung:}
+\begin{itemize}
+	\item Speichermedien und backup: Wo liegen letztlich die Daten physisch. Kriterien: Redundanz, Geografisch getrennt, regelmäßige Speicherungen etc.
+	\item Dateiübertragungsprotokolle und Dateisynchronisation: Wie können Dateien zwischen zwei Computern übertragen werden? Wie können Datenbestände synchron gehalten werden? (smb, nfs, ftp, webdav, rsync,...)
+	\item Umsetzung und Arbeiten auf dem Datenbestand: Wie wird letztlich auf den Datenbestand zugegriffen und damit gearbeitet? (sync client, browser-basierte Tools, share-Funktionalitäten,...)
+\end{itemize}

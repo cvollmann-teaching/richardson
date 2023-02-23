@@ -1,0 +1,493 @@
+% !TeX spellcheck = de_AT_frami
+\newpage
+\section{Code Dokumentation mit	\texttt{sphinx}}
+
+Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterricht. Einen geeigneten Einstieg finden wir in der offiziellen Dokumentation 
+\begin{center}
+	\url{https://www.sphinx-doc.org/en/master/usage/quickstart.html}
+\end{center}
+
+
+
+%\hypertarget{verzeichnisstruktur-aufbauen}{%
+%	\subsection{Verzeichnisstruktur
+%		aufbauen}\label{verzeichnisstruktur-aufbauen}}
+%
+%\begin{itemize}
+%	\item
+%	kleines skript fürs verzeichnis struktur bauen?
+%	\item
+%	seafile library anlegen
+%	\item
+%	verzeichnisstruktur anlegen in dateimanager o.ä
+%\end{itemize}
+%
+%\begin{verbatim}
+%|-- code
+%|-- docs
+%|-- src
+%|-- examples
+%|-- output
+%|-- main.py
+%|-- README.rst
+%\end{verbatim}
+%
+%\begin{itemize}
+%	\item
+%	verzeichnis code mit PyCharm öffnen
+%	\item
+%	python venv interpreter einrichten
+%	\item
+%	Docstring Format \textbf{str alt s \textbar{} Tools \textbar{} Python
+%		Integrated Tools} \textbar{} Docstrings \textgreater{} Docstring
+%	Format: NumPy
+%	\item
+%	in \texttt{src/}
+%	
+%	\begin{itemize}
+%		\item
+%		\textbf{init}
+%		\item
+%		linalg.py
+%		
+%		\begin{itemize}
+%			
+%			\item
+%			class csr\_matrix
+%			\item
+%			def axpy()
+%			\item
+%			def scal()
+%			\item
+%			def nrm()
+%			\item
+%			def csrmv()
+%		\end{itemize}
+%		\item
+%		in \textbf{main.py}
+%		
+%		\begin{itemize}
+%			
+%			\item
+%			import src
+%			\item
+%			if \textbf{name}\_
+%			\item
+%			\ldots{}.
+%			\item
+%			edit config: run with console
+%		\end{itemize}
+%		\item
+%		linalg.py etwas ausbauen
+%		
+%		\begin{itemize}
+%			
+%			\item
+%			\texttt{def\ tests()}\ldots{}
+%		\end{itemize}
+%		\item
+%		in \textbf{main.py}
+%		
+%		\begin{itemize}
+%			
+%			\item
+%			import src
+%			\item
+%			run tests
+%		\end{itemize}
+%		\item
+%		\textbf{Terminal} Reiter
+%		
+%		\begin{itemize}
+%			
+%			\item
+%			ggf. \texttt{source\ .venv/bin/active}
+%			
+%			\begin{itemize}
+%				
+%				\item
+%				source runs code from file in current bash session
+%			\end{itemize}
+%			\item
+%			sonst: nochmal in den Einstellungen schauen
+%			\item
+%			hier könnten wir mit pip pakete installieren
+%			
+%			\begin{itemize}
+%				
+%				\item
+%				import numpy --\textgreater{} fails
+%				\item
+%				siehe .venv/lib/site-packages
+%				\item
+%				pip3 install numpy
+%				\item
+%				siehe .venv/lib/site-packages
+%				\item
+%				import numpy
+%			\end{itemize}
+%		\end{itemize}
+%		\item
+%		requirements.txt
+%		
+%		\begin{itemize}
+%			
+%			\item
+%			ggf. plugin installieren
+%			\item
+%			dann import und requirements.txt updaten
+%		\end{itemize}
+%	\end{itemize}
+%\end{itemize}
+
+
+\begin{itemize}
+	\item
+	Beliebige Python--Dokumentation im Webbrowser finden: Unten im Footer meist Info über verwendete Software
+	\item
+	Allgemein wollen wir u.a.:
+		\begin{itemize}
+			\item
+			Automatisierung
+			\item
+			Information nur an einer Stelle und daher Synchronisation von Code und Dokumentation
+			\item ggf. mathematische Formeln (brauchen entsprechende Markup Language)
+		\end{itemize}
+	\item Wir verwenden dazu in diesem Kurs die Software \texttt{sphinx} (geschrieben in Python)
+	\item	Dokumentation: \url{https://www.sphinx-doc.org/en/master/index.html}
+	\item	Installation
+	\begin{itemize}
+		\item
+		GUI: strg+alt+s: project, interpreter --\textgreater{} install
+		sphinx
+		\item
+		CLI: \texttt{\$ pip3 install sphinx}
+	\end{itemize}
+\end{itemize}
+
+\hypertarget{getting-started}{%
+	\subsection{\texorpdfstring{Getting
+				Started}{Getting Started}}\label{getting-started}}
+
+\begin{itemize}
+	\item
+	PyCharm Terminal (.venv) \$
+	\item
+	Zum Beispiel Version checken: \texttt{sphinx-build\ -\/-version}
+\end{itemize}
+%
+\texttt{in \texttt{code/}}
+\begin{itemize}
+	\item \texttt{\$ mkdir docs}
+	\item \texttt{\$ sphinx-quickstart\ \textless{}PATH-to-ROOTDIR\textgreater{}}
+	(hier einfach \texttt{docs/})	
+	\begin{itemize}	
+		\item Separieren source and build [y]
+		\item name: ...
+		\item release: 0.1
+	\end{itemize}
+	\item Nun mal	Verzeichnis \texttt{code/docs/} inspizieren	
+	\begin{itemize}
+		
+		\item
+		\texttt{code/docs/source/}		
+		\begin{itemize}
+			
+			\item
+			hier liegen die Quelldateien um die Dokumentation zu steuern
+			\item 
+			\texttt{conf.py}
+			
+			\begin{itemize}
+				
+				\item
+				hier können wir die Dokumentation konfigurieren
+				\item
+				u.a. wurden unsere Antworten der interaktiven Abfrage von \texttt{sphinx-quickstart} dort gespeichert
+			\end{itemize}
+			\item
+			\texttt{index.rst} ist unsere Startseite (unsere Hauptdatei/``Kleber'')		
+			\begin{itemize}
+				
+				\item
+				rst wie reStructuredText (ähnlich wie markdown)
+				\item
+				Direktiven und deren Optionen
+				\item
+				Überschriften \texttt{===,\ -\/-\/-\/-}
+				\item
+				setze zB \texttt{..\ note::}
+			\end{itemize}
+		\end{itemize}
+		\item
+		\texttt{code/docs/build/}		
+		\begin{itemize}			
+			\item Dieses Verzeichnis ist noch leer
+			\item Das ändern wir nun
+		\end{itemize}
+		\item
+	\textbf{build}
+	
+	\begin{itemize}
+		
+		\item
+		\texttt{\$ sphinx-build\ -b\ html\ docs/source/\ docs/build/html}
+		\item
+		in \texttt{build/} Verzeichnis schauen
+		\item
+		Wir finden nun einen Ordner \texttt{html}
+		\item
+		Wir öffnen die Datei \texttt{index.html} mit einer geeigneten
+		Software (= Browser)
+		\item
+		\texttt{index.rst} {[}in reStructuredText{]} wird zu \texttt{index.html}\\
+\textit{			The file index.rst created by sphinx-quickstart is the root
+			document, whose main function is to serve as a welcome page and to
+			contain the root of the ``table of contents tree'' (or toctree).
+			alternativer build command ist nun: \texttt{make\ html} in docs/}
+	\end{itemize}
+	\end{itemize}
+
+	\item
+	Bemerkung zu den \texttt{sphinx-}binaries:
+	
+	\begin{itemize}
+		
+		\item
+		Diese befinden sich in unserer virtuellen Python Umgebung unter:
+		venv\texttt{/code/.\textless{}VENV-NAME\textgreater{}/bin}
+		\item
+		siehe auch: \texttt{\$\ locate\ sphinx-*} (ggf.
+		\texttt{\$ sudo\ updatedb} notwendig) (alternativ:
+		\texttt{\$ type\ sphinx-*})
+	\end{itemize}
+\end{itemize}
+
+\subsection{Maßschneiderung in \texttt{conf.py}}
+
+\textbf{\texttt{extensions\ =\ {[}{]}}}
+
+\begin{itemize}
+	
+	\item
+	Erweiterungen stellen zusätzliche Funktionalitäten bereit.
+	\item
+	Hier können wir u.a. leicht Schalter setzen, um das Erscheinungsbild zu
+	steuern.
+\end{itemize}
+
+\hypertarget{allgemeines-erscheinungsbild-html_theme}{%
+	\subsection{\texorpdfstring{\textbf{Allgemeines Erscheinungsbild:
+				\texttt{html\_theme}}}{Allgemeines Erscheinungsbild: html\_theme}}\label{allgemeines-erscheinungsbild-html_theme}}
+
+\begin{itemize}	
+	\item
+	\textbf{builtin schemes}	
+	\begin{itemize}	
+		\item siehe:
+		\url{https://www.sphinx-doc.org/en/master/usage/theming.html\#builtin-themes}
+		\item
+		Beispiel: \texttt{classic}
+		\item
+		in \texttt{conf.py}:\\ \hspace*{0.5cm}
+		\texttt{html\_theme\ =\ \textquotesingle{}classic\textquotesingle{}}
+		\item Neu bauen:
+		\ldots{}\texttt{docs/\ \$\ make\ html}
+	\end{itemize}
+	\item
+	\textbf{third-party schemes}
+	\begin{itemize}
+		\item siehe:
+		\url{https://sphinx-themes.org/}
+		\item
+		Beispiel: \texttt{sphinx-rtd-theme\ (read\ the\ docs)}
+		\item
+		Diese müssen extra installiert werden, da nicht in Standard-Sphinx-Installation
+		enthalten
+		\begin{itemize}
+			
+			\item
+			\texttt{pip\ install\ sphinx-rtd-theme} oder über GUI
+		\end{itemize}
+		\item
+		in \texttt{conf.py}:\\ \hspace*{0.5cm}
+		\texttt{html\_theme\ =\ \textquotesingle{}sphinx\_rtd\_theme\textquotesingle{}}
+	\end{itemize}
+\end{itemize}
+
+
+\subsection{Struktur ausbauen}
+
+\begin{itemize}
+	\item
+	Neue Unterseiten anlegen, zB \texttt{docs/source/usage.rst}
+%	\begin{Shaded}
+%		\begin{Highlighting}[]
+%			\NormalTok{Überschrift}
+%			\NormalTok{===========}
+%			
+%			\NormalTok{Etwas Text, blabla}
+%			
+%			\DataTypeTok{.. code-block:: console}
+%			
+%			\DataTypeTok{   (.venv) $ pip install sphinx}
+%			\end{Highlighting}
+%			\end{Shaded}
+			\item Neu bauen:
+			\ldots{}\texttt{docs/\ \$\ make\ html}
+			\item
+			Warnung:\\
+			\texttt{checking\ consistency...\ /.../usage.rst:\ WARNING:\ document\ isn\textquotesingle{}t\ included\ in\ any\ toctree}\\
+			>> Diese Seite möchte noch verlinkt werden damit wir darauf zugreifen
+			können
+			\item
+			In unserer Hauptdatei zum Inhaltsbaum hinzufügen:\\~\\
+			\texttt{.. toctree::}\\
+			\texttt{\hspace*{0.5cm}  usage}
+\end{itemize}
+		
+\subsection{Synchronisation von Code und	Dokumentation:
+						\texttt{autodoc}}	
+		\begin{itemize}			
+			\item
+			Nun wollen wir in der Dokumentation den Code beschreiben und dabei auf
+			vorhandene docstrings zurückgreifen.
+			\item Das ist eine zusätzliche Funktionalität, die durch eine Erweiterung
+			bereitgestellt wird.
+			\begin{itemize}		
+				\item
+				genauer \texttt{autodoc}:
+				\url{https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html}
+			\end{itemize}
+			\item
+			aktivieren in \texttt{docs/source/conf.py}			
+			\begin{itemize}		
+				\item
+				zur Liste hinzufügen:
+				\texttt{extensions\ =\ {[}\textquotesingle{}sphinx.ext.autodoc\textquotesingle{},\ {]}}
+				\item
+				sonst Fehler wie
+				\texttt{ERROR:\ Unknown\ directive\ type\ ``autofunction''.}
+			\end{itemize}
+			\item
+			Nun können wir zum Beispiel folgende Direktiven verwenden:\\
+				\texttt{ .. autofunction:: }\texttt{src.linalg.axpy}\\
+				\texttt{ .. autoclass:: }\texttt{src.linalg.csr\_matrix}
+\end{itemize}
+		\begin{itemize}
+			\item
+			Wir bekommen weiterhin Fehler, da die relativen Pfade src.linalg nicht
+			erkannt werden. Daher den absoluten Pfad zu
+			\texttt{\textless{}PATH\textgreater{}/code/} dem .venv Interpreter
+			mitgeben. Anpassung in \texttt{conf.py}:	\\		
+					\texttt{import}\texttt{ pathlib}\\
+					\texttt{import}\texttt{ sys}\\
+					\texttt{sys.path.insert(0, pathlib.Path(\_\_file\_\_).parents[2].resolve().as\_posix())}\\
+
+	>> Der String
+	\texttt{pathlib.Path(\_\_file\_\_).parents{[}2{]}.resolve().as\_posix()} sollte dann
+	genau den Pfad zu \texttt{/.../code/} enthalten
+	\item
+	Wir bekommen weiterhin einen Fehler, da unsere docstrings nicht im
+	reStructuredText Format sind, sondern NumPy Format\\
+	>> Diesen Fehler beheben wir im nächsten Schritt
+\end{itemize}
+
+
+\subsection{docstring Style: reStructuredText, NumPy, Google}
+\begin{itemize}
+	\item Dokumentation lesen: \url{https://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html}
+	\item
+	für NumPy Format: \texttt{sphinxcontrib-napoleon}
+	\item
+	Installation: GUI oder in CLI via \texttt{(.venv)\ \$\ pip\ install\ sphinxcontrib-napoleon}
+	\item
+	conf.py: extension hinzufügen
+	\item Type Annotations: \url{https://sphinxcontrib-napoleon.readthedocs.io/en/latest/index.html#type-annotations}
+	\item
+	Examples in docstring, Code-Zeile hinter
+	\texttt{\textgreater{}\textgreater{}\textgreater{}}
+	\item Tipp:	Docstring Format in PyCharm Settings setzen:\\\textbf{str alt s \textbar{} Tools \textbar{} Python
+			Integrated Tools} \textbar{} Docstrings \textgreater{} Docstring
+		Format: NumPy
+	\item Nun auch nochmal \textbf{Indices} schauen: global, module, Search	Page
+\end{itemize}
+		
+
+
+\hypertarget{reference-guide-automatisch-alle-code-bestandteile-auflisten-mit-..-autosummary}{%
+	\subsection{\texorpdfstring{Reference Guide: Automatisch alle
+			Code-Bestandteile auflisten mit
+			\texttt{..\ autosummary::}}{Reference Guide: Automatisch alle Code-Bestandteile auflisten mit .. autosummary::}}\label{reference-guide-automatisch-alle-code-bestandteile-auflisten-mit-..-autosummary}}
+		
+\begin{itemize}
+	\item \texttt{'sphinx.ext.autosummary'}
+	\item
+	API references/Reference Guide VS User Guide
+	\item
+	Wir legen dazu eine neue Unterseite an, zum Beispiel: \texttt{api.rst}
+	\item
+	toctree--Direktive in \texttt{index.rst} ergänzen
+	\item
+	Die Direktive \texttt{..\ autosummary::} wird durch die Extension
+	\texttt{sphinx.ext.autosummary} freigeschaltet
+	\item
+	In \texttt{docs/source/api.rst} zum Beispiel:\\
+	\begin{verbatim}
+	Reference Guide
+	===============
+	
+	.. autosummary::
+	    :toctree: generated
+	
+	    src.linalg
+	\end{verbatim}
+\end{itemize}
+		
+		\hypertarget{links-zwischen-quellcode-und-docs-source-docs}{%
+			\subsection{\texorpdfstring{Links zwischen Quellcode und docs:
+					\texttt{{[}source{]},\ {[}docs{]}}}{Links zwischen Quellcode und docs: {[}source{]}, {[}docs{]}}}\label{links-zwischen-quellcode-und-docs-source-docs}}
+		
+\begin{itemize}
+	
+	\item
+	extension aktivieren: \texttt{sphinx.ext.viewcode}
+\end{itemize}
+
+\hypertarget{crossreferences-links-innerhalb-der-dokumentation}{%
+	\subsection{\texorpdfstring{\textbf{Cross--References: Links innerhalb
+				der
+				Dokumentation}}{Cross--References: Links innerhalb der Dokumentation}}\label{crossreferences-links-innerhalb-der-dokumentation}}
+
+\begin{itemize}
+	
+	\item
+	Label setzen vor Überschrift \texttt{..\ \_LABEL-TAG:}
+	\item
+	Referenz auf den markierten Abschnitt: 	:ref:\texttt{LINK-NAME\ \textless{}LABEL-TAG\textgreater{}}
+\end{itemize}
+
+
+%%%%
+\subsection{Mathematische Formeln \texttt{..\ math::}}
+Zum Beispiel können wir dann \LaTeX\ verwenden setzen:
+\begin{verbatim}
+.. math::
+
+    x\in\mathbb{R}^n
+\end{verbatim}
+
+
+%%
+\subsection{Andere Build-Formate}
+Zum Beispiel können wir auch mit dem Builder \texttt{latex} eine PDF--Dokumentation erstellen:
+\begin{itemize}
+	\item
+	Im Verzeichnis \texttt{code/docs/}: \texttt{\$ make\ latexpdf}
+	\item
+	Alternativ im Verzeichnis \texttt{code/}: \texttt{\$ sphinx-build\ -b\ latex\ docs/source/\ docs/build/latex/}
+\end{itemize}
+
+
+
+

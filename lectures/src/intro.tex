@@ -1,0 +1,74 @@
+% !TeX spellcheck = de_AT_frami
+\section*{Überblick, Lernziele und Organisation}
+
+Die Kerninhalte des praktisch orientierten zweiten Teils sind:
+\begin{enumerate}
+	\item Code:~\textbf{Programmieren mit Python in \pycharm}
+	\item Text:~\textbf{Mathematische Textverarbeitung mit \LaTeX~in \texstudio}
+	\item IT/Backup:~\textbf{Daten-Management} in der Rheinland-Pfalz-cloud \seafile\ und \textbf{Versionskontrolle} mit \git~auf dem \gitlab~Server der Universität Trier
+\end{enumerate}
+Wir lernen diese Komponenten nicht nur isoliert kennen, sondern werden uns sukzessive eine \textbf{integrierte Arbeitsumgebung} bauen, die das fließende Zusammenspiel dieser Komponenten erlaubt und Sie damit technisch vorbereitet auf zum Beispiel:
+\begin{itemize}
+	\item Numerik-Veranstaltungen (Code)
+	\item Seminararbeiten (Vortrag, Text, Code, IT/Backup)
+	\item Praktikumsbericht (Text, IT/Backup)
+	\item Bachelor- und Master-Arbeiten (Text, Code, IT/Backup)
+	\item Doktorarbeit und Forschung (Vortrag, Text, Code, IT/Backup,...)
+\end{itemize}
+Da wir beim Programmieren unumgänglich mit dem Computer arbeiten, werden wir auch ein Grundverständnis für IT-bezogene Themen aufbauen und dabei Begrifflichkeiten klären wie:
+\begin{itemize}
+	\item Betriebssystem (Linux, Windows, macOS)
+	\item GUI vs CLI; Benutzeroberfläche samt Dateimanager VS. Shell/Terminalemulator
+	\item Virtualisierung (VM, Container, VPN)
+	\item Netzwerke, VPN, ssh, nfs, rsync, webdav, www/internet und https, cloud
+\end{itemize}
+Projekt:
+\begin{itemize}
+	\item Um das Erlernte an einem Fallbeispiel praktisch anzuwenden, werden wir uns ein bestimmtes mathematisches Problem vornehmen und dieses mit geeigneten numerischen Methoden lösen.
+	\item Genauer werden wir einen iterativen Löser für lineare Gleichungssysteme implementieren. Das wird bereits ein Vorgeschmack auf die spannenden Numerik-Veranstaltungen im weiteren Studiumsverlauf.
+	\item Anschließend wenden wir unseren Löser auf ein Netzwerk an, um dessen PageRank zu berechnen.
+\end{itemize}
+\clearpage
+\textbf{Der Ablauf}
+\begin{itemize}
+	\item \textbf{Mathematisches Problem}
+	\item \textbf{Numerische Methode} entwickeln/auswählen
+	\item \textbf{Projektaufbau} planen
+	\begin{itemize}
+		\item Modularisierung Code und Text
+		\item Ordnerstruktur
+	\end{itemize}
+	\item Hinweis zur Organisation und Prüfung
+	\item \textbf{IT/Backup}: 
+	\begin{itemize}
+		\item  Hardware, Betriebssystem, Netzwerke, Virtualisierung
+		\item \seafile\ (\texttt{.seafile-data}): Ordnerstruktur in der Cloud anlegen 
+	\end{itemize}
+	\item \textbf{CODE}: Implementierung (in Python)
+	\begin{itemize}
+		\item \textbf{IDE} \pycharm~(\texttt{.idea})
+		\item \textbf{Modularisierung} umsetzen:
+		\begin{itemize}
+			\item Formate für Vektoren und Matrizen: Python Listen und CSR Klasse
+			\item ``Level 1 BLAS Routinen'': Skalarmultiplikation, Addition, Euklidische Norm
+			\item ``Level 2 BLAS Rotuinen'': Matrix--Vektor Produkt
+			\item ``LAPACK'': rel. Richardson aufbauend auf Level 1 und Level 2 Routinen
+		\end{itemize}
+		\item {\color{gray}\textbf{Versionskontrolle}: \git\ und \gitlab~ (\texttt{.git})}
+		\item \textbf{Dokumentation}
+		\item \textbf{Tests/Beispiele} für alle Komponenten
+	\end{itemize}
+	\item \textbf{TEXT}: Wissenschaftliche Arbeit verfassen
+	\begin{itemize}
+		\item \textbf{\LaTeX}, IWE \texstudio
+		\item \textbf{Modularisierung} umsetzen	
+		\item Numerische Ergebnisse auswerten: Tabelle und Grafik
+	\end{itemize}
+	\item {\color{gray}\textbf{Kontinuierliche Integration}: CODE und TEXT (Prozesse in Schleifen)
+	\begin{itemize}
+		\item Grafiken: \texttt{matplotlib} > \texttt{savefig} > \latexCommand{includegraphics}{imagefile}
+		\item Tabellen: Python Liste > Markdown > \texttt{pandoc} > \latexCommand{input}{table.tex} 
+	\end{itemize}
+}
+\end{itemize}
+

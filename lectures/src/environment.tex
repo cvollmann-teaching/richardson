@@ -1,0 +1,175 @@
+% !TeX spellcheck = de_AT_igerman98
+\section{Entwicklungsumgebung}
+Eine \link{https://de.wikipedia.org/wiki/Integrierte_Entwicklungsumgebung}{\textbf{integrierte Entwicklungsumgebung}} (IDE, integrated development environment) \textit{ist eine Sammlung von Computerprogrammen, mit denen die Aufgaben der Softwareentwicklung möglichst ohne ``Medienbrüche''} (zB. zwischen Texteditor, Dateimanager, Terminalemulator, Bildbetrachter...) \textit{bearbeitet werden können.} ~\\
+~\\
+\textbf{Integriert vs. nicht integriert:} Um diesen Unterschied zu ``erleben'', setzen  wir die folgenden möglichen Arbeitsabläufe der Softwareentwicklung um:
+\begin{itemize}
+	\item Nicht integriert: Texteditor + Terminal + Interpreter + Bildbetrachter + ...
+	\item Integriert: IDE
+	\item Browserbasiert
+\end{itemize}
+Anschließend befassen wir uns intensiver mit der IDE \pycharm von \jetbrains.
+%
+%
+%
+
+\subsection{Nicht integriert: Texteditor + Terminal + Interpreter + ...}
+\homework{\textbf{Hausaufgaben:}
+\begin{center}
+\Large	\textbf{Programmieren über die Konsole}
+\end{center} ~\\
+~[Demo: CLI und GUI parallel]
+\begin{enumerate}
+	\item VPN Verbindung herstellen
+	\item Anmelden auf \remoteServer\ [ssh oder über Webinterface guacamole]
+	\item Im home-Verzeichnis:
+		\begin{itemize}
+			\item Ein .py-Skript mit einem Editor (z.B. \texttt{nano}) erstellen.
+			\item Erste Zeile \textit{Shebang/Hash-Bang setzen:}  \texttt{\#!<PATH-to-PythonInterpreter>}\\ zum Beispiel \texttt{/usr/bin/python3}
+			\item Endlos--Schleife bauen mit einem print-Befehl im Schleifenkörper
+		\end{itemize}
+	\item Das .py-Skript mit dem Interpreter \texttt{python3} ausführen.
+	\item Das Programm vorzeitig abbrechen mit \texttt{strg+c}.
+	\item Aus Endlos--Schleife eine ``sehr lange'' Schleife machen, die sicher abbricht.
+	\item Mit \texttt{python3} ausführen und Standard-Output via ``>'' in eine Textdatei wegschreiben.
+	\item Nochmal mit \texttt{python3} ausführen und Standard-Output diesmal via ``> >'' in eine Textdatei wegschreiben.
+\end{enumerate}
+}
+~\\
+Als \textit{nicht integriert}, trotzdem gelegentlich \textit{Entwicklungsumgebung} genannt, gilt der Einsatz einzelner Programmierwerkzeuge innerhalb eines Arbeitsablaufes, zum Beispiel: 
+\begin{itemize}
+	\item Texteditor (zB \ttt{nano})
+	\item Terminalemulator
+	\item Compiler bzw. Interpreter (zB \ttt{python3})
+	\item Linker, Debugger,...
+	\item Dateimanager, Bildbetrachter,....
+\end{itemize}
+$\to$ Entwickler muss die einzelnen Arbeitsschritte gezielt anstoßen (siehe Hausaufgabenkasten oben)
+
+
+\subsection{Integriert: Integrated Development Environment (IDE)}
+Die einzelnen Programmierwerkzeuge (Texteditor, Terminal, Interpreter, Dateimanager,...) können auch in eine mächtige Software mit grafischer Oberfläche \textit{integriert} werden; man spricht von einer \textit{integrierten Entwicklungsumgebung}.\\~\\ 
+Typischerweise bieten diese noch diverse weitere sehr nützliche Features, wie Interpreter via ssh, Syntax-Highlighting, Virtuelle Python--Interpreter \texttt{venv}, Versionskontrolle (VC) mittels zB git, Debugging tools, History, Styleguide--Inspektion u.v.m.\\
+\demo{
+	\begin{enumerate}
+		\item \texttt{tmux}
+		\item Spyder3
+		\item \pycharm 
+	\end{enumerate}
+}
+
+
+
+
+\subsection{Browserbasiert}
+Wir haben bisher eine andere Programmierumgebung genutzt: \textbf{Jupyter Notebook}
+\begin{itemize}
+	\item Jupyter Notebook ist eine web-basierte (=``läuft im Browser'') interaktive (=``wir lassen gleich einzelne Teile des Codes laufen'') Umgebung.
+	\item Wurde entworfen um schnelle Code-Prototypen zu entwicklen, Text (markdown, Latex) einzubinden, Präsentationen zu erstellen, unterschiedliche Programmiersprachen zu nutzen,...\\
+	$\to$ Daher besonders gut zum Einstieg und für die Lehre geeignet.
+	\item Eher ungeeignet für die Entwicklung eines aufwendigeren Projekts.
+	\item Siehe auch Nachfolger \textbf{JuypterLab}
+\end{itemize}
+
+
+\subsection{Die IDE PyCharm von jetbrains}
+\link{https://www.jetbrains.com/}{\jetbrains} ist ein russisch-tschechisches Software-Unternehmen, das 2000 gegründet wurde und u.a. folgende Produkte anbietet:
+\begin{itemize}
+	\item \textbf{\pycharm}:~IDE für Python
+	\item Tutorials: \link{https://www.jetbrains.com/edu-products/learning/python/}{PyCharm Edu}
+	\item \textbf{CLion}:~IDE für C und C++
+	\item \textbf{IntelliJ IDEA}: IDE für Java
+	\item ...
+\end{itemize}
+
+
+\textbf{\pycharm~download and configure}
+%
+
+
+
+
+
+\textbf{PyCharm Projekt anlegen}
+\homework{\begin{center}
+		\textbf{\color{black}\Large \pycharm~Projekt anlegen}
+	\end{center}
+	\begin{enumerate}
+	\item \textbf{PyCharm Projekt} anlegen:\\~\\
+	$\to$ Dazu Ordner \ttt{Seafile/<ProjektName>/code} mit PyCharm als Anwendung öffnen\\~\\
+	\url{https://www.jetbrains.com/help/pycharm/setting-up-your-project.html}\\~\\
+	PyCharm legt einen Ordner \texttt{\bf.idea} an
+	\end{enumerate}	
+}
+Der Projektordner (bei uns \ttt{Seafile/<ProjektName>/code}) beinhaltet das Verzeichnis \ttt{\bf.idea} mit den folgenden Dateien:
+\begin{itemize}
+	\item .iml Datei $\to$ Projektstruktur
+	\item workspace.xml Datei $\to$ workspace Einstellungen
+	\item Einige  weitere .xml--Dateien:
+	Jede .xml Datei ist verwantwortlich für die sich aus dem Dateinamen ableitbaren Einstellungen, zB vcs.xml für Version Control System (wir verwenden später \git)
+\end{itemize}
+Alle Einstellungsdateien aus dem .idea Ordner sollten unter Versionskontrolle gesetzt werden; außer workspace.xml, da dort die \textit{lokalen} Einstellungen gesetzt werden (von Programmierer zu Programmierer unterschiedlich). Die Datei workspace.xml sollte also vom VCS (bei uns \git) ignoriert werden. Das regelt \pycharm~für uns; siehe zB \ttt{.idea/.gitignore}
+
+
+\textbf{Interpreter und .venv}
+[Siehe in diesem Zusammenhang auch: Das Python Kapitel über \textbf{\textit{Modularisierung}}]\\~\\
+Dazu hier ein Ausschnitt aus den \link{https://docs.python.org/3/tutorial/venv.html}{Python Tutorials} zu \textbf{venv's} :~\\
+{
+\it
+Python applications will often use packages and modules that don’t come as part of the \link{https://docs.python.org/3/library/}{standard library}. Applications will sometimes need a specific \textbf{version of a library}, because the application may require that a \textit{particular bug} has been fixed or the application may be written using an \textit{obsolete version} of the library’s interface.~\\
+~\\
+This means it may \textbf{not be possible for one Python installation to meet the requirements of every application}. If application A needs version 1.0 of a particular module but application B needs version 2.0, then the requirements are in conflict and installing either version 1.0 or 2.0 will leave one application unable to run.~\\
+~\\
+The solution for this problem is to create a virtual environment, a \textbf{self-contained directory tree} that contains a Python installation for a particular version of Python, plus a number of additional packages.
+}
+
+\demo{
+\begin{enumerate}
+	\item Vergleich: venv VS. systemweite Installation
+\end{enumerate}
+}
+\begin{lstlisting}
+>>> import sys
+>>> sys.path
+['', '/usr/lib/python38.zip', '/usr/lib/python3.8', '/usr/lib/python3.8/lib-dynload', '/home/vollmann/.local/lib/python3.8/site-packages', '/usr/local/lib/python3.8/dist-packages', '/usr/lib/python3/dist-packages']
+\end{lstlisting}
+
+
+\textbf{requirements.txt}
+Die Pakete, die für unser Projekt benötigt werden, können hier erwähnt werden. 
+
+
+
+\textbf{Arbeiten mit \pycharm}
+\homework{~\\ 
+\begin{center}
+		\textbf{\color{black}\Large Arbeiten mit \pycharm}
+\end{center}
+	~\\~\\
+	Programmieren Sie mindestens 2 Aufgaben aus den Übungen der Vorlesung in \pycharm~ und üben Sie dabei den Umgang mit dieser IDE.\\~\\
+	Lesen Sie dazu gründlich die unten verlinkten Dokumentations-Schnipsel und wenden Sie diese an.\\~\\% Legen Sie vor allem Wert auf den Punkt: \textbf{\color{red}Debugging}\\~\\
+	Sie können Ihre Python-Skripte in einen neuen Ordner innerhalb Ihres Projektordners ablegen, z.B. \texttt{.../<ProjektName>/code/\textbf{playground}} und den oben konfigurierten venv-Interpreter verwenden.
+	
+	\begin{enumerate}
+		\item \textbf{Mit Quellcode arbeiten:}\\ \url{https://www.jetbrains.com/help/pycharm/working-with-source-code.html}\\~\\
+		Durchstöbern Sie hier insbesondere:
+	\begin{itemize}
+		\item Python-Datei anlegen etc...	
+		\item seek and destroy\\ \url{https://www.jetbrains.com/help/pycharm/auto-completing-code.html}
+		\item \textbf{refactor}\\ \url{https://www.jetbrains.com/help/pycharm/refactoring-source-code.html}
+		\item Code Completion\\ \url{https://www.jetbrains.com/help/pycharm/auto-completing-code.html}		
+		\item Konsole\\
+		\url{https://www.jetbrains.com/help/pycharm/working-with-consoles.html}
+		\item \textbf{Local History}\\
+		\url{https://www.jetbrains.com/help/pycharm/local-history.html}
+		\item \textbf{Compare Files}\\
+		\url{https://www.jetbrains.com/help/pycharm/comparing-files-and-folders.html}
+		\item Code Inspection\\
+		\url{https://www.jetbrains.com/help/pycharm/code-inspection.html}
+	\end{itemize}	
+	\item \textbf{Debugging}\\
+	\url{https://www.jetbrains.com/help/pycharm/debugging-code.html}
+	\end{enumerate}
+}
+
+

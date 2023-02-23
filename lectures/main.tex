@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+% Preamble
+\setcounter{page}{0}
+\input{macros/usepackages}
+\input{macros/commands}
+\begin{document}
+% Title
+\maketitle
+\input{src/abstract.tex}
+\thispagestyle{empty}
+% ToC, LoF, LoT
+\pagestyle{empty}
+\newpage\setcounter{tocdepth}{2}\tableofcontents
+\listoffigures
+\listoftables
+% Content
+\newpage\pagenumbering{arabic}\pagestyle{plain}
+%\input{src/intro} 
+\clearpage\input{src/richardson.tex}
+\clearpage\input{src/ssh.tex}
+\clearpage\input{src/version_control.tex}
+\clearpage\input{src/environment.tex}
+\clearpage\input{src/clean_code.tex}
+\clearpage\input{src/documentation.tex}
+\clearpage\input{src/tests}
+\clearpage\input{src/packaging}
+%%LaTex
+\clearpage\input{src/latex.tex}
+\clearpage\input{src/instructions.tex}
+% Bibliography
+\clearpage
+\bibliographystyle{plain}
+\bibliography{src/literature.bib}
+\appendix
+\clearpage\input{src/computer_basics.tex}
+\clearpage\input{src/data_management.tex}
+\end{document}
+
+
+

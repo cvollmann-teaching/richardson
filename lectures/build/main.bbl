@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{gumm3}
+H.-P. Gumm and M.~Sommer.
+\newblock {\em Einführung in die Informatik}.
+\newblock Oldenbourg Wissenschaftsverlag GmbH, München, 2013.
+
+\bibitem{gumm1}
+H.-P. Gumm and M.~Sommer.
+\newblock {\em Informatik -- Band 1 Programmierung, Algorithmen und
+  Datenstrukturen}.
+\newblock De Gruyter, Oldenbourg, 2016.
+
+\bibitem{gumm2}
+H.-P. Gumm and M.~Sommer.
+\newblock {\em Informatik -- Band 2 Rechnerarchitektur, Betriebssysteme,
+  Rechnernetze}.
+\newblock De Gruyter, Oldenbourg, 2017.
+
+\bibitem{latex1}
+J.~Knappen.
+\newblock {\em Schnell ans Ziel mit Latex 2e}.
+\newblock De Gruyter, München, 2009.
+
+\bibitem{Meister}
+A.~Meister.
+\newblock {\em Numerik linearer Gleichungssysteme}.
+\newblock Springer Spektrum, Wiesbaden, 2015.
+
+\end{thebibliography}

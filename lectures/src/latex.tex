@@ -1,0 +1,486 @@
+% !TeX spellcheck = de_AT_frami
+\section{Mathematische Textverarbeitung mit \LaTeX~und TeXstudio (Skip)}
+Ein Lehrbuch zu \LaTeX~bietet die Quelle: 
+$$\textit{Schnell ans Ziel mit LaTeX 2e \cite{latex1}},$$ 
+von Jörg Knappen, auf das wir mithilfe der ZIMK-Kennung beim De Gruyter Verlag Zugriff haben.\\ 
+Eine Zusammenfassung finden wir hier:
+\begin{center}
+	\link{https://dante-ev.github.io/l2kurz/l2kurz.pdf}{\textit{LaTeX 2e Kurzbeschreibung}}
+\end{center}
+Klar strukturierte und verständliche Tutorials/Dokumentationen finden wir auf der Homepage des startup Unternehmens \textit{overleaf}:
+\begin{center}
+	\url{https://www.overleaf.com/learn/latex/Main_Page}
+\end{center}
+Diese Quellen nehmen wir als Grundlage für die folgenden Notizen.\\
+\demo{~\\ Online--Literatur--Ressourcen mithilfe der ZIMK Kennung nutzen:  \begin{center}
+		\url{https://tricat.uni-trier.de/}
+\end{center}}
+
+
+\subsection{Einführung}
+\begin{itemize}
+	\item \TeX: Computerprogamm zum Setzen von Texten und mathematischen Formeln von Donald E. Knuth; Erscheinungsjahr 1978\\~\\
+	Ein auch hier sehr passendes Zitat von ihm:
+	\begin{center}
+	\textit{	Man versteht etwas nicht wirklich, wenn man nicht versucht, es zu implementieren.}
+	\end{center}
+	
+\item \LaTeX: Computerprogramm aufbauend auf TEX von Leslie Lamport; Erscheinungsjahr 1984
+\item \LaTeXe: ist die aktuelle Version
+\end{itemize}
+
+\subsubsection{Unterschied zu Programmen wie Word}
+\begin{itemize}
+	\item \textbf{\LaTeX:}\\ kann als Buch-Designer verstanden werden: Mithilfe von ``Befehlen'' geben wir dem Computer-Programm \LaTeX~zu erkennen, was zB eine Überschrift sein soll (der Befehl lautet dann z.B. \latexCommand{section}{Überschrift}), was ein Zitat (der Befehl lautet dann z.B. \latexCommand{cite}{Quelle}), etc.\\ 
+	Sofern wir dem Programm \LaTeX~diese logische Struktur zu erkennen geben, kann dieses für uns die Gestaltung übernehmen (dabei können wir das Design auch konfigurieren).\\[0.1cm]
+	$\to$ bei der Eingabe ins Programm (Texteditor), sehen wir in der Regel noch nicht sofort, wie der Text nach dem Formatieren aussehen wird \\
+	\item \textbf{Visuell orientierte Textverarbeitungsprogramme (z.B. Word):}\\ Autor legt das Layout des Textes gleich bei der interaktiven Eingabe fest\\[0.1cm]
+	$\to$ nach dem Prinzip wysiwyg (``what you see is what you get'')
+\end{itemize}
+
+\subsubsection{Vorteile von \LaTeX}
+\begin{itemize}
+	\item wir geben nur logische Struktur vor, z.B. \latexCommand{section}{Kapitel}, \latexCommand{subsection}{Unterkapitel},.. und \LaTeX\ übernimmt die sinnvolle Gestaltung für uns, zB soll die Schriftgröße der Kapitelüberschrift größer sein, als die des Unterkapitels. Zudem soll die Nummerierung automatisch ablaufen samt Erzeugung des Inhaltsverzeichnisses etc.
+	\item Setzen von \textbf{mathematischen Formeln}, Fußnoten, Literaturverzeichnisse, Tabellen etc. sehr leicht
+\end{itemize}
+\subsection{Mögliche Arbeitsabläufe}
+\begin{enumerate}
+	\item \textbf{Nicht integriert über die Konsole:}
+	\begin{enumerate}
+		\item Texteditor: Eingabedatei (``Quellcode'') mit \LaTeX~Befehlen schreiben\\ $\to$ \ttt{text.tex}
+		\item Kompilieren: diese Datei mit \LaTeX-Compiler~bearbeiten\\
+		$\to$ dabei wird eine Datei erzeugt, die den gesetzten Text in einem geräteunabhängigen Format speichert\\
+		$\to$ zB \ttt{text.pdf}
+		\item Vorschau: \ttt{text.pdf} mit einem PDF-Betrachter oder im Terminal anschauen
+		\item Falls nötig: Zurück zu (a) und Korrekturen einarbeiten
+	\end{enumerate}
+	
+\item \textbf{Integriert:} \textbf{Eine IWE (Integrated Writing Environment): \LaTeX~Editor}
+\begin{itemize}
+	\item Ähnlich wie eine IDE können die obigen Arbeitsschritte aus einer einzigen Software, eine IWE oder in diesem Fall auch einfach \LaTeX~Editor genannt, heraus gesteuert werden. Zudem kommt diese mit einer ganzen Menge weiterer Features (Syntax-Highlighting, Tab Completion, ...) daher. 
+\item Wir werden in dieser Veranstaltung das Programm \texstudio~verwenden.
+\item Andere beliebte Editoren: TeXmaker (multi-platform), TeXnicCenter (speziell für Windows entwickelt)
+\end{itemize}
+
+\item \textbf{Webbrowserbasiert: Online \LaTeX~Editor}
+\begin{itemize}
+	\item web-basiertes Arbeiten ist besonders hilfreich, wenn man zusammen am selben Dokument arbeitet und die Dateien auf einem zentralen Server berarbeiten möchten
+	\item bei uns sehr beliebt ist zurzeit \link{https://www.overleaf.com}{\textbf{Overleaf}}:\\\textit{``Overleaf is a collaborative cloud-based LaTeX editor used for writing, editing and publishing scientific documents.''}
+\end{itemize}
+\demo{~\\~~~~~\textbf{Overleaf} präsentieren}
+\end{enumerate}
+
+
+\subsection{Die \ttt{.tex}-Eingabedatei}
+Das Eingabedatei für \LaTeX~ist eine Textdatei mit der Endung \ttt{.tex}. Diese Datei wird mit einem Texteditor erstellt und enthält sowohl den \textbf{Text}, der gedruckt werden soll, als auch die \textbf{Befehle}, aus denen \LaTeX~erfährt, wie der Text gesetzt werden soll.
+%
+\subsubsection{Leerstellen}
+``Unsichtbare'' Zeichen wie das Leerzeichen, mehrere Leerzeichen, Tabulatoren und das Zeilenende werden von \LaTeX~ einheitlich als Leerzeichen behandelt.
+%
+\subsubsection{\LaTeX~Befehle}
+Format von \LaTeX~Befehlen:
+\begin{enumerate}
+	\item Standard:
+	\begin{center}
+		\latexCommand{Befehlsname}{ggf. Parameter}
+	\end{center}
+\begin{itemize}
+	\item Startzeichen: Backslash ``\textbackslash''
+	\item Befehlsname: Besteht nur aus Buchstaben (case-sensitive!)
+	\item  ggf. \{Parameter\}
+	\item Ende: Leerzeichen oder Sonderzeichen
+\end{itemize}
+	Wenn man nach einem Befehlsnamen eine Leerstelle erhalten will: 	
+	\begin{center}
+		\latexCommand{Befehlsname}{}~~~ oder~~~ \ttt{\textbackslash Befehlsname}{\textbackslash}~~~ oder~~~ \ttt{\textbackslash Befehlsname}{$\sim$}
+	\end{center}
+\item Backslash ``\textbackslash'' + Sonderzeichen, z.B.
+\begin{center}
+\texttt{	\textbackslash\#,~~\textbackslash\&,~~\textbackslash\{, $\ldots$}
+\end{center}
+\end{enumerate}
+%
+\subsubsection{Gruppen}
+Gruppen werden erzeugt durch Einrahmung mit geschweiften Klammern 
+\begin{center}
+	{		\color{red}\{ }
+	~~~~~~~~~~~~~~...\\
+	~~~~\textit{Gruppeninhalt}\\
+	~~~~...~~~~~~~~~~~~~~
+	{\color{red}\}
+	}
+\end{center}
+\begin{itemize}
+	\item Befehle innerhalb einer Gruppe, wirken nur innerhalb der Gruppe
+	\item Beispiel: \latexCommands{bf}, \latexCommand{color}{Farbe}
+\end{itemize}
+
+
+\subsubsection{Umgebungen}
+Die Kennzeichnung von speziellen Textteilen, die anders als im normalen Blocksatz gesetzt werden sollen, erfolgt mittels sogenannter Umgebungen (environments) in der Form\\
+~\\
+\hspace*{0.5cm}	\latexCommand{begin}{\ttt{Umgebungsname}}\\
+\hspace*{1cm}	 ....\textit{Umgebungskörper}.... \\
+\hspace*{0.5cm}	 \latexCommand{end}{Umgebungsname}\\
+\begin{itemize}
+	\item Umgebungen sind \textit{Gruppen}.
+	\item Verschachtlung möglich.
+\end{itemize}
+
+%
+\subsubsection{Kommentare}
+Alles, was hinter einem Prozentzeichen \% steht (bis zum Ende der Eingabezeile), wird von \LaTeX\ ignoriert.\\~\\
+Aus...\\~\\
+\hspace*{0.5cm} \ttt{Die Funktion \$f\latexCommands{colon}\latexCommand{mathbb}{R}\latexCommands{to}\latexCommand{mathbb}{R}\$}{\color{gray}~~\texttt{\% dieser Text wird ignoriert}}
+~\\~\\
+wird...\\~\\
+\hspace*{0.5cm} Die Funktion $f\colon \mathbb{R}\to\mathbb{R}$
+~\\~\\
+%
+%
+\subsubsection{Aufbau}
+Die Eingabedatei hat folgende Struktur:\\~\\
+\hspace*{0.5cm}\latexCommand{documentclass}{Dokumentklasse}\\ \ttt{\color{gray} \hspace*{0.5cm}\%so muss jede Eingabedatei starten; legt Art des Schriftstücks fest}
+\hspace*{0.5cm}~\\
+\hspace*{0.5cm}\hspace*{1cm}$\vdots$\\
+\hspace*{0.5cm}\hspace*{0.5cm}	\ttt{Präambel} \ttt{\color{gray} \% Makropakete laden, ...}\\
+\hspace*{0.5cm}\hspace*{1cm}$\vdots$
+\hspace*{0.5cm}~\\
+\hspace*{0.5cm}\latexCommand{begin}{document}\\
+\hspace*{0.5cm}\hspace*{1cm}$\vdots$\\
+\hspace*{0.5cm}\hspace*{0.5cm}	\ttt{Setzen des Schriftstücks}\\
+\hspace*{0.5cm}\hspace*{1cm}$\vdots$
+\hspace*{0.5cm}~\\
+\hspace*{0.5cm}\latexCommand{end}{document} \ttt{\color{gray} \% alles nach diesem Befehl wird von \LaTeX~ignoriert}\\
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{../../readme/Beamer-appearance-cheat-sheet}
+%	\caption{Beamer Cheat Sheet}
+%	\label{fig:beamer-appearance-cheat-sheet}
+%\end{figure}
+%~\\~\\
+%
+%
+\subsubsection{Dokumentklassen}
+Der Start einer jeden Eingabedatei lautet
+\begin{center}
+	\latexCommandL{documentclass}{<optionen>}{<klasse>}
+\end{center}
+\begin{itemize}
+	\item \textbf{Klassen:}  enthält Vereinbarungen über das Layout und die logischen Strukturen, z.B. die Gliederungseinheiten (Kapitel etc.), die für alle Dokumente dieses Typs gemeinsam sind\\
+	$\to$ \textit{\textbf{muss}} angegeben werden
+	\begin{table}[h!]
+		\centering\small
+		\begin{tabular}{ll}
+		\ttt{article} &für Artikel in wissenschaftlichen Zeitschriften, kürzere Berichte,...\\
+		\ttt{beamer} & für Präsentationen
+		\end{tabular}
+		\caption{Für uns interessante Dokumentklassen}
+	\end{table}
+~\\
+	\item \textbf{Optionen:} Zwischen den eckigen Klammern können, durch Kommas getrennt, \textit{können} Optionen für das Klassenlayout angegeben werden\\
+		\begin{table}[h!]
+		\centering\small
+		\begin{tabular}{ll}
+			\ttt{Xpt} & wählt die normale Schriftgröße des Dokuments aus (default: \ttt{X = 10})\\
+			\ttt{a4paper} & für Papier im DIN A4-Format (default: amerikanisches Papierformat)
+		\end{tabular}
+		\caption{Für uns interessante Klassenoptionen}
+	\end{table}~\\
+\end{itemize}
+
+
+\subsubsection{Pakete}
+Mit dem Befehl
+\begin{center}
+	\latexCommandL{usepackage}{<optionen>}{<paket>}
+\end{center}
+können in der Präambel ergänzende Makropakete (\textit{packages}) geladen werden, die 
+\begin{itemize}
+	\item das Layout der Dokumentklasse modifizieren,
+	\item oder zusätzliche Funktionalitäten bereitstellen.
+\end{itemize}
+In meinem Ubuntu--System habe ich sämtliche Pakete installiert via
+\begin{center}
+	\$ sudo apt-get install texlive-full.
+\end{center} 
+%\textbf{Kpathsea} is a library and utility programs which provide path searching facilities for TeX file types, including the self-locating feature required for movable installations, layered on top of a general search mechanism. It is not distributed separately, but rather is released and maintained as part of the\\
+%\textbf{kpsewhich}  - standalone path lookup and and expansion for kpathsea
+Ein Teil der Makropakete finde ich bei mir unter
+\begin{center}
+	\texttt{/usr/share/texlive/texmf-dist/tex/latex/}
+\end{center}
+Der Befehl
+\begin{center}
+	\latexCommand{usepackage}{amsmath}
+\end{center}
+lädt dann das Makropaket \ttt{amsmath}, dessen \ttt{.sty} Datei unter
+\begin{center}
+	\texttt{/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty}
+\end{center}
+zu finden ist. In der Tabelle \ref{tab:latex-pakete} finden wir weitere häufig verwendete Pakete.
+~\\~\\
+\begin{table}[h!]
+	\centering \small
+	\begin{tabular}{ll}
+		\ttt{amsmath, amssymb} & Mathematischer Formelsatz mit erweiterten Fähigkeiten, zusätzliche\\
+		&mathematische  Schriften und Symbole,...\\
+		 &\\
+		\ttt{babel} & Anpassungen für viele verschiedene Sprachen.\\
+	&	Die gewählten Sprachen werden als Optionen angegeben\\
+		 & \latexCommandL{usepackage}{ngerman}{babel}\\
+		 &\\
+		\ttt{fontenc} &font encoding: Erlaubt die Verwendung von Schriften mit \\
+	&unterschiedlicher Kodierung (Zeichenvorrat, Anordnung)\\
+	& \latexCommandL{usepackage}{T1}{fontenc}\\		 
+		 &\\
+\ttt{geometry} & Manipulation des Seitenlayouts. \\
+%& \latexCommandL{usepackage}{T1}{fontenc}\\	
+&\\
+\ttt{graphicx} & Einbindung von extern erzeugten Graphiken \\
+&\\
+\ttt{hyperref} & Ermöglicht Hyperlinks zwischen Textstellen und zu externen Dokumenten \\
+		 &\\
+\ttt{inputenc} & input encoding: Eingabekodierung \\
+	 & \latexCommandL{usepackage}{utf8}{inputenc} (UTF-8 als Eingabekodierung)\\
+		 &\\
+\ttt{listings} & Zur Code Darstellung (Syntax-Highlighting kann festgelegt werden) \\
+	\end{tabular}
+	\caption{Eine kleine Auswahl häufig verwendeter Pakete}
+	\label{tab:latex-pakete}
+\end{table}~\\
+
+
+
+
+
+~\\
+\homework{
+\begin{center}
+	\Large \textbf{\LaTeX~Dokumentation lesen}
+\end{center}
+%Mindestens lesen:
+\subsection{Setzen von Text}
+\url{https://dante-ev.github.io/l2kurz/l2kurz.pdf\#section.3}
+
+\subsection{Setzen von mathematischen Formeln}
+\url{https://dante-ev.github.io/l2kurz/l2kurz.pdf\#section.4}
+
+\subsection{Setzen von Bildern}
+\url{https://dante-ev.github.io/l2kurz/l2kurz.pdf\#section.5}
+
+\subsection{Seitenaufbau}
+\url{https://dante-ev.github.io/l2kurz/l2kurz.pdf\#section.6}
+}
+
+
+\subsection{Literatur}
+Zur Literaturverwaltung brauchen wir eine Datenbank und einen Mechanismus, der diese Datenbank verarbeiten kann.
+\subsubsection{Datenbank: Textdatei literature.bib}
+\begin{itemize}
+	\item In einer Textdatei mit Endung \ttt{.bib} können wir alle Quellen sammeln, die wir für ein bestimmtes Projekt zitieren möchten.
+ \item Die Einträge müssen dabei mit einer bestimmten \textbf{Syntax} getätigt werden, siehe Listing \ref{ex-bibentry}. Welche Einträge möglich sind können wir beispielsweise auf\\ \url{https://de.overleaf.com/learn/latex/Bibliography_management_with_biblatex#Reference_guide}\\ nachlesen.
+ \item Für die ``automatisierte'' Verwaltung von Literaturdatenbanken existieren auch Computerprogramme mit GUI.
+\end{itemize}
+\lstinputlisting[language = Tex, caption=Beispiel Einträge in der \ttt{.bib}--Datei, label=ex-bibentry]{src/listing_bibentry.txt}
+
+
+\demo{~\\ Oft kann man die .bib-Einträge beim Verlag (oder \url{https://tricat.uni-trier.de/}) exportieren (suchen nach ``Cite this document'') und muss diese nicht manuell eintragen.\\~\\
+Beispiel: \url{https://www.degruyter.com/document/doi/10.1524/9783486850468/html}}
+\subsubsection{Verarbeitung: \link{https://ctan.org/tex-archive/biblio/bibtex/contrib/doc/}{BibTEX} und \link{http://mirrors.ibiblio.org/CTAN/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf}{biblatex}}
+\begin{itemize}
+	\item \textbf{BibTEX:} muss i.d.R nicht extra geladen werden
+	\begin{itemize}
+		\item klassische Variante in Verbindung mit einem Literaturverzeichnisstil\\
+		$\to$ eine gute Übersicht zu den Stilen bietet:
+		\begin{center}
+		 \url{https://de.overleaf.com/learn/latex/bibtex_bibliography_styles}
+		\end{center}
+		\item Anpassung an die eigenen Bedürfnisse schwierig
+	\end{itemize}
+		Im Dokumentkörper:\\
+		\hspace*{0.5cm}\latexCommand{cite}{<bibfile-nametag>}\\
+		\hspace*{0.5cm}\latexCommand{bibliographystyle}{<style>} {\color{gray}\ttt{\% style $\in$ \{plain,..\}}, meist am Ende}\\
+		\hspace*{0.5cm}\latexCommand{bibliography}{<mybibfile>.bib}
+	\item \textbf{biblatex:} wird als Makropaket geladen
+	\begin{itemize}
+		\item alternativ zu BibTEX kann dieses Makropaket das mächtigere Programm \textit{biber} nutzen
+		\item erlaubt die Manipulation des Literaturverzeichnisses auf \LaTeX-Ebene
+		\item \textbf{Vorteile gegenüber bibTEX:}
+		\begin{itemize}
+			\item man kann den Literaturverzeichnisstil leicht anpassen
+			\item kann UTF-8
+			\item man ist dadurch flexibel hinsichtlich ``style guides'' (Stilvorgaben des Verlags, Zeitschrift, Betreuer,...)
+		\end{itemize}
+		\item siehe auch die Dokumentation von overleaf:\\
+		\url{https://www.overleaf.com/learn/latex/bibliography_management_with_biblatex}
+	\end{itemize}
+	In der Präambel\\
+	\hspace*{0.5cm}\latexCommandL{usepackage}{style=<somebiblatexstyle>,<other options>}{biblatex}\\
+	\hspace*{0.5cm}\latexCommandL{addbibresource}{<options for bib resources>}{<mybibfile>.bib}\\
+	Im Dokumentkörper:\\
+	\hspace*{0.5cm}\latexCommand{cite}{<bibfile-nametag>}\\
+	\hspace*{0.5cm}\latexCommandL{printbibliography}{<options for printing>}{}
+	\item es gibt auch noch das Makropaket \textbf{natbib}
+\end{itemize}
+
+
+
+
+
+\subsection{Modularisierung und Maßschneiderung}
+Siehe hierzu auch
+\begin{itemize}
+	\item das Kapitel ``Planung eines \LaTeX-Projektes'' in \cite[Kapitel 11]{latex1}
+	\item \url{https://de.overleaf.com/learn/latex/Management_in_a_large_project}
+	\item \url{https://en.wikibooks.org/wiki/LaTeX/Modular_Documents}
+\end{itemize}  
+
+
+\subsubsection{Aufteilung des Textes auf mehrere Dateien: \latexCommands{input} (, \latexCommands{include}, \latexCommands{usepackage})}
+\begin{itemize}
+	\item Der Befehl \latexCommand{input}{InputFile.tex} fügt die Datei \ttt{InputFile.tex} an einer bestimmten Stelle des Quelltextes ein. 
+	\item Die eingefügte Datei wird als normaler Teil des Quelltextes mitverarbeitet und sollte daher ebenfalls aus einer Folge von LaTeX-Befehlen bestehen, jedoch ohne Präambel und ohne \latexCommand{begin}{document}, \latexCommand{end}{document}.
+	\item Verschachtlung von mehreren \latexCommand{input}{}--Befehlen ist möglich
+\end{itemize}
+Beispielsweise können wir das Projekt wie folgt aufteilen:
+\begin{itemize}
+	\item \textbf{main}: Haupteingabedatei, auf die \LaTeX~angewendet wird und alle Komponenten ``zusammenklebt''
+	\item \textbf{meta}: Metadaten wie Autorname, Datum, Titel,...
+	\item \textbf{abstract}: Kurze Zusammenfassung des Texts
+	\item \textbf{usepackages}: Laden aller benötigter (externer oder eigener) Makropakete
+	\item \textbf{style}: Eigene Farben, Theorem-Umgebungen anpassen,...\\
+		($\to$ könnte man ggf. zu \textbf{usepackages} packen)
+	\item \textbf{commands}: Eigene Befehle (Makros)
+	\item \textbf{content}: Beispielsweise für jedes Kapitel eine eigene \ttt{.tex}-Eingabedatei
+\end{itemize}
+
+
+
+\subsubsection{Definition eigener Makros: Der Befehl \latexCommands{newcommand} (,\latexCommands{newenvironment})}
+Mit dem Befehl
+\begin{center}
+	\latexCommandXL{newcommand}{<Befehlsname>}{<Anzahl>}{<Definition>}
+\end{center}
+können wir eigene Befehle/Makros definieren. Es sind maximal 9 Argumente möglich und diese können innerhalb der Befehlsdefinition mit \#1 bis \#9 benutzt werden. \\
+Das ist aus vielen Gründen sinnvoll, z.B.,
+\begin{itemize}
+	\item \textbf{Abkürzungen:} Häufig verwendete Makros wie\footnote{Der Befehl \latexCommands{mathbb} ist im Makropaket \ttt{amssymb} enthalten.}
+	\begin{center}
+		\latexCommand{mathbb}{R}\^{}n 
+	\end{center}
+	für $\Rn$, könnte man abkürzen durch
+	\begin{center}
+	\latexCommandLr{newcommand}{\latexCommands{Rn}}{\latexCommand{mathbb}{R}\^{}n}
+\end{center}	
+	dann können wir mit \$\latexCommands{Rn}\$ das Symbol $\Rn$ setzen.
+	\item \textbf{Wichtige Variablennamen:} Variablennamen sollten stets durchdacht gewählt werden, sodass der Leser schon durch den Namen intuitiv das Objekt einschätzen kann. Zum Beispiel ist es typisch für Matrizen Großbuchstaben zu verwenden, etwa $S$ für symmetrische Matrizen, $O$ für orthogonale Matrizen,...\\
+	Möchte man am Ende allerdings $Q$ anstatt $O$ für orthogonale Matrizen verwenden, so müsste man per seach+replace mühsam die Stellen finden, an denen der Buchstabe ``O'' tatsächlich nur als Variablenname für orthogonale Matrizen auftaucht. Sinnvoll ist es daher wichtige (oder gleich alle) Variablennamen vorab als Befehl zu definieren, z.B.,
+		\begin{center}
+		\latexCommandLr{newcommand}{\latexCommands{oMat}}{O}
+	\end{center}
+	Möchte wir nun aus ``O'' ein ``Q'' machen, so müssen wir dies nur an einer einzigen Stelle tun!
+\end{itemize}
+
+%beachte: nicht immer lässt sich das Projekt so disjunkt aufteilen (zB style kann nicht article und beamer gleichermaßen bedienen, manchmal bestimmte usepackages, das nur in article aber nicht in beamer funktioniert,...)\\
+
+
+
+
+
+
+
+
+\subsection{Ausgewählte Beispiele und Tipps}
+\subsubsection{Allgemein}
+\begin{itemize}
+	\item \textbf{Kapitelgliederung}\\
+	section, subsection,...
+	\item \textbf{Referenzen}\\
+	 (eq)ref, label, gute namen: fig-, eq-, tab- 
+	\item \textbf{Tabellen}\\
+	table, tabular
+	\item \textbf{Grafiken}\\
+	figure, includegraphics, insb width, trim, height,.
+	\item \textbf{Beschreibung anpassen:} \latexCommandL{usepackage}{font=small, labelfont=bf}{caption}\\
+	captionsetup{width=0.8 linewidth}
+	%
+	\item \textbf{Schriftstil}\\
+	textbf, texttt, textit, text
+	\item \textbf{Code}\\
+	listing, algorithm
+	\item \textbf{Aufzählungen}\\
+	itemize, enumerate
+	\item \textbf{Hyperlinks}\\
+	url, hyperref
+	\item \textbf{Verzeichnisse:}\\
+	Inhalt tableofcontent, Abb. listoffigures, Tabellen listoftables
+	%
+	\item \textbf{Fußnote:} \latexCommand{footnote}{<Text>}
+	%
+	\item \textbf{Leerstellen:}\\
+	vspace, hspace*,...\\
+\end{itemize}
+
+\subsubsection{Mathematik}
+LaTeX trennt das Setzen von normalem Text und mathematischen Formeln mithilfe von zwei Modi: \textit{paragraph} und \textit{math mode}
+\begin{itemize}
+	\item \textbf{math mode:}\\
+	\$ und \$\$, \latexCommands{[}, \latexCommands{]}
+	%
+	\item \textbf{Gleichungen:} \latexCommand{usepackage}{amsmath}\\
+	equation(*), align(*),
+	%
+	\item \textbf{Symbole:} \latexCommand{usepackage}{amssymb}\\
+	griechische Buchstaben $\mu$, $\eta$, $\mathbb{R}$
+	%
+	\item \textbf{Summen/Produkt/Integral-Zeichen}\\
+	sum, prod, int,... \_ und \^{} 
+	%	
+	\item \textbf{Quantoren}\\
+	forall, exist
+	%
+	\item \textbf{Theoreme:} \latexCommand{usepackage}{amsthm}\\
+	theorem, lemma,...
+	%
+	\item \textbf{Mehrdimensionale Arrays:}\\
+	pmatrix, array,...
+\end{itemize}
+
+
+\subsubsection{Arbeiten im Editor}
+\begin{itemize}
+	\item pdf preview: strg+enter
+	\item input >> Strg+Enter
+	\item \text{shortcuts:} auskommentieren strg+u/t, fett strg+b, kursiv strg+i,...
+	\item environments: Doppelklick und Name ändern
+	\item Tab--Completion: strg+tab (Umgebungsname, Befehlsname,...)
+	\item \texttt{strg+Enter} für \textbackslash\textbackslash
+	\item copy-paste Dateien: pdf, png,...
+	\item korrekte Anführungszeichen `` ''
+\end{itemize}
+
+
+\subsubsection{Grafiken ertellen}
+\link{https://inkscape.org/de/}{\textbf{inkscape}}\\
+Hochwertige Vektorgrafiken können mit der freien Software \textbf{inkscape} erzeugt werden. Zudem bietet inkscape einen geeigneten \LaTeX-Export an, sodass man mathematische Formeln im \textit{math mode} verwenden kann und die Grafik leicht in sein \LaTeX-Dokument einbinden kann.
+
+
+%\subsection{Schreibstil}
+%Zu diesem Thema sind lesenswert
+%\begin{itemize}
+%	\item Von \textbf{Prof. Dr. Volker Schulz}: Leitfaden für eine wissenschaftliche Arbeit in der Arbeitsgruppe Schulz\\ \url{https://www.math.uni-trier.de/~vollmann/prog/script/Schulz-2008-wiss-arbeit.pdf}
+%	\item Von \textbf{Prof. Dr. Mirjam Dür} über mathematisches Schreiben im Allgemeinen:\\
+%	\url{https://www.math.uni-trier.de/~vollmann/prog/script/Duer-2014-MathSchreiben.pdf}
+%\end{itemize}
+
+\subsection{Sonstige Dokumentklassen}
+\subsubsection{Folienpräsentation erstellen}
+\link{http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{\latexCommand{documentclass}{beamer}}
+
+\subsubsection{Poster ertellen}
+ \link{https://ctan.org/pkg/tikzposter}{\latexCommand{documentclass}{tikzposter}}
+%%%
+
+\subsubsection{Lebenslauf}
+\link{https://ctan.org/pkg/moderncv?lang=de}{\latexCommand{documentclass}{moderncv}}

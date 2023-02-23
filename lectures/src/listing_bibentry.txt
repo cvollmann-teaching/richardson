@@ -1,0 +1,26 @@
+% Latex
+@book{latex1,
+	author="J. Knappen",
+	title="Schnell ans Ziel mit Latex 2e",
+	doi="https://www.degruyter.com/document/doi/10.1524/9783486850468/html",
+	year="2009",
+	publisher="De Gruyter",
+	address="Muenchen"
+}
+% Artikel
+@article{einstein,
+    author   = "Albert Einstein",
+    title    = "{Zur Elektrodynamik bewegter K{\"o}rper}",
+    journal  = "Annalen der Physik",
+    volume   = "322",
+    number   = "10",
+    pages    = "891--921",
+    year     = "1905",
+    DOI      = "http://dx.doi.org/10.1002/andp.19053221004"
+}
+% Sonstiges
+@misc{knuthwebsite,
+    author    = "Donald Knuth",
+    title     = "Knuth: Computers and Typesetting",
+    url       = "http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html"
+}

@@ -1,0 +1,129 @@
+\babel@toc {ngerman}{}
+\contentsline {section}{\numberline {1}Die mathematische Problemstellung}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Eigenwerte und der Spektralradius}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Lineare Fixpunktiteration}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Das relaxierte Richardson-Verfahren}{3}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Relaxierte Variante}{4}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Zur numerischen Umsetzung: Abbruchkriterien}{5}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Allgemeine Splitting--Verfahren}{5}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Speicherung dünnbesetzter Matrizen}{5}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Compressed Row Storage (CRS) Format}{6}{subsubsection.1.4.1}%
+\contentsline {subsubsection}{\numberline {1.4.2}Sonstiges}{7}{subsubsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.5}Anwendung: PageRank}{8}{subsection.1.5}%
+\contentsline {subsubsection}{\numberline {1.5.1}Compute Page Rank matrix}{9}{subsubsection.1.5.1}%
+\contentsline {subsubsection}{\numberline {1.5.2}Implementation Issues}{9}{subsubsection.1.5.2}%
+\contentsline {section}{\numberline {2}Projektaufbau planen}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Code}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Text (skip)}{11}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Secure Shell (SSH)}{13}{section.3}%
+\contentsline {section}{\numberline {4}Versionskontrolle}{14}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Allgemein}{14}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}git}{14}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}github, gitlab}{14}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Entwicklungsumgebung}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Nicht integriert: Texteditor + Terminal + Interpreter + ...}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Integriert: Integrated Development Environment (IDE)}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Browserbasiert}{16}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Die IDE PyCharm von jetbrains}{16}{subsection.5.4}%
+\contentsline {section}{\numberline {6}Clean Code}{19}{section.6}%
+\contentsline {section}{\numberline {7}Code Dokumentation mit \texttt {sphinx}}{20}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Getting Started}{20}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Maßschneiderung in \texttt {conf.py}}{21}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}\textbf {Allgemeines Erscheinungsbild: \texttt {html\_theme}}}{21}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Struktur ausbauen}{21}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Synchronisation von Code und Dokumentation: \texttt {autodoc}}{21}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}docstring Style: reStructuredText, NumPy, Google}{22}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Reference Guide: Automatisch alle Code-Bestandteile auflisten mit \texttt {..\ autosummary::}}{22}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Links zwischen Quellcode und docs: \texttt {{[}source{]},\ {[}docs{]}}}{22}{subsection.7.8}%
+\contentsline {subsection}{\numberline {7.9}\textbf {Cross--References: Links innerhalb der Dokumentation}}{23}{subsection.7.9}%
+\contentsline {subsection}{\numberline {7.10}Mathematische Formeln \texttt {..\ math::}}{23}{subsection.7.10}%
+\contentsline {subsection}{\numberline {7.11}Andere Build-Formate}{23}{subsection.7.11}%
+\contentsline {section}{\numberline {8}Software Tests (skip)}{24}{section.8}%
+\contentsline {section}{\numberline {9}Software Packaging}{25}{section.9}%
+\contentsline {section}{\numberline {10}Mathematische Textverarbeitung mit \LaTeX ~und TeXstudio (Skip)}{26}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Einführung}{26}{subsection.10.1}%
+\contentsline {subsubsection}{\numberline {10.1.1}Unterschied zu Programmen wie Word}{26}{subsubsection.10.1.1}%
+\contentsline {subsubsection}{\numberline {10.1.2}Vorteile von \LaTeX }{26}{subsubsection.10.1.2}%
+\contentsline {subsection}{\numberline {10.2}Mögliche Arbeitsabläufe}{27}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Die \texttt {.tex}-Eingabedatei}{27}{subsection.10.3}%
+\contentsline {subsubsection}{\numberline {10.3.1}Leerstellen}{27}{subsubsection.10.3.1}%
+\contentsline {subsubsection}{\numberline {10.3.2}\LaTeX ~Befehle}{27}{subsubsection.10.3.2}%
+\contentsline {subsubsection}{\numberline {10.3.3}Gruppen}{28}{subsubsection.10.3.3}%
+\contentsline {subsubsection}{\numberline {10.3.4}Umgebungen}{28}{subsubsection.10.3.4}%
+\contentsline {subsubsection}{\numberline {10.3.5}Kommentare}{28}{subsubsection.10.3.5}%
+\contentsline {subsubsection}{\numberline {10.3.6}Aufbau}{28}{subsubsection.10.3.6}%
+\contentsline {subsubsection}{\numberline {10.3.7}Dokumentklassen}{28}{subsubsection.10.3.7}%
+\contentsline {subsubsection}{\numberline {10.3.8}Pakete}{29}{subsubsection.10.3.8}%
+\contentsline {subsection}{\numberline {10.4}Setzen von Text}{30}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Setzen von mathematischen Formeln}{30}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Setzen von Bildern}{30}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Seitenaufbau}{30}{subsection.10.7}%
+\contentsline {subsection}{\numberline {10.8}Literatur}{30}{subsection.10.8}%
+\contentsline {subsubsection}{\numberline {10.8.1}Datenbank: Textdatei literature.bib}{30}{subsubsection.10.8.1}%
+\contentsline {subsubsection}{\numberline {10.8.2}Verarbeitung: \hyperref {https://ctan.org/tex-archive/biblio/bibtex/contrib/doc/}{}{}{BibTEX} und \hyperref {http://mirrors.ibiblio.org/CTAN/info/translations/biblatex/de/biblatex-de-Benutzerhandbuch.pdf}{}{}{biblatex}}{31}{subsubsection.10.8.2}%
+\contentsline {subsection}{\numberline {10.9}Modularisierung und Maßschneiderung}{32}{subsection.10.9}%
+\contentsline {subsubsection}{\numberline {10.9.1}Aufteilung des Textes auf mehrere Dateien: \texttt {\color {navy}\textbackslash \texttt {input}} (, \texttt {\color {navy}\textbackslash \texttt {include}}, \texttt {\color {navy}\textbackslash \texttt {usepackage}})}{32}{subsubsection.10.9.1}%
+\contentsline {subsubsection}{\numberline {10.9.2}Definition eigener Makros: Der Befehl \texttt {\color {navy}\textbackslash \texttt {newcommand}} (,\texttt {\color {navy}\textbackslash \texttt {newenvironment}})}{32}{subsubsection.10.9.2}%
+\contentsline {subsection}{\numberline {10.10}Ausgewählte Beispiele und Tipps}{33}{subsection.10.10}%
+\contentsline {subsubsection}{\numberline {10.10.1}Allgemein}{33}{subsubsection.10.10.1}%
+\contentsline {subsubsection}{\numberline {10.10.2}Mathematik}{33}{subsubsection.10.10.2}%
+\contentsline {subsubsection}{\numberline {10.10.3}Arbeiten im Editor}{34}{subsubsection.10.10.3}%
+\contentsline {subsubsection}{\numberline {10.10.4}Grafiken ertellen}{34}{subsubsection.10.10.4}%
+\contentsline {subsection}{\numberline {10.11}Sonstige Dokumentklassen}{34}{subsection.10.11}%
+\contentsline {subsubsection}{\numberline {10.11.1}Folienpräsentation erstellen}{34}{subsubsection.10.11.1}%
+\contentsline {subsubsection}{\numberline {10.11.2}Poster ertellen}{34}{subsubsection.10.11.2}%
+\contentsline {subsubsection}{\numberline {10.11.3}Lebenslauf}{34}{subsubsection.10.11.3}%
+\contentsline {section}{\numberline {11}Instructions: Iterative Solver from Scratch and the PageRank}{35}{section.11}%
+\contentsline {subsection}{\numberline {11.1}The Problem Formulation}{35}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Project Planing and Modularization}{35}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Working Environment}{35}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Software Tests (with \texttt {pytest})}{36}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Implement Linear Algebra Routine}{36}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Software Packaging}{39}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}Code Documentation}{39}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}Write Paper with \LaTeX }{40}{subsection.11.8}%
+\contentsline {section}{\numberline {12}Allgemeiner Aufbau}{41}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Seafile~-- Datenmanagement über die cloud}{42}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}PyCharm~konfigurieren}{42}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}\LaTeX ~ mit TeXstudio}{44}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Versionskontrolle mit git}{45}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Code Documentation}{46}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}Iterative Löser}{46}{subsection.12.6}%
+\contentsline {section}{\numberline {A}Grundlagen der Informatik}{48}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Hardwarekomponenten}{48}{subsection.A.1}%
+\contentsline {subsubsection}{\numberline {A.1.1}Netzteile}{48}{subsubsection.A.1.1}%
+\contentsline {subsubsection}{\numberline {A.1.2}Hauptplatine (Motherboard) und Bootvorgang}{48}{subsubsection.A.1.2}%
+\contentsline {subsubsection}{\numberline {A.1.3}Arbeitsspeicher (RAM)}{50}{subsubsection.A.1.3}%
+\contentsline {subsubsection}{\numberline {A.1.4}Prozessor und CPU}{51}{subsubsection.A.1.4}%
+\contentsline {subsubsection}{\numberline {A.1.5}Speicher}{52}{subsubsection.A.1.5}%
+\contentsline {subsubsection}{\numberline {A.1.6}Peripheriegeräte}{53}{subsubsection.A.1.6}%
+\contentsline {subsubsection}{\numberline {A.1.7}(Geräte-)Treiber}{53}{subsubsection.A.1.7}%
+\contentsline {subsection}{\numberline {A.2}Betriebssysteme}{55}{subsection.A.2}%
+\contentsline {subsubsection}{\numberline {A.2.1}Betriebssystemkern (\textit {kernel})}{55}{subsubsection.A.2.1}%
+\contentsline {subsubsection}{\numberline {A.2.2}Dateisysteme (\textit {file system})}{56}{subsubsection.A.2.2}%
+\contentsline {subsubsection}{\numberline {A.2.3}Schnittstelle zwischen Mensch und Betriebssystem: CLI VS GUI}{56}{subsubsection.A.2.3}%
+\contentsline {subsection}{\numberline {A.3}Netzwerke}{59}{subsection.A.3}%
+\contentsline {subsubsection}{\numberline {A.3.1}Rechner-Verbindungen}{59}{subsubsection.A.3.1}%
+\contentsline {subsubsection}{\numberline {A.3.2}Netze}{59}{subsubsection.A.3.2}%
+\contentsline {subsubsection}{\numberline {A.3.3}Netze von Netzen}{59}{subsubsection.A.3.3}%
+\contentsline {subsubsection}{\numberline {A.3.4}Protokolle}{59}{subsubsection.A.3.4}%
+\contentsline {subsubsection}{\numberline {A.3.5}Internet und die TCP/IP Protokolle}{60}{subsubsection.A.3.5}%
+\contentsline {subsubsection}{\numberline {A.3.6}Internetadressen}{60}{subsubsection.A.3.6}%
+\contentsline {subsubsection}{\numberline {A.3.7}Dienste im Internet}{63}{subsubsection.A.3.7}%
+\contentsline {subsection}{\numberline {A.4}Virtualisierung}{65}{subsection.A.4}%
+\contentsline {subsubsection}{\numberline {A.4.1}Softwarevirtualisierung}{65}{subsubsection.A.4.1}%
+\contentsline {subsubsection}{\numberline {A.4.2}Hardwarevirtualisierung}{66}{subsubsection.A.4.2}%
+\contentsline {subsubsection}{\numberline {A.4.3}Netzwerkvirtualisierung}{66}{subsubsection.A.4.3}%
+\contentsline {section}{\numberline {B}Daten Management}{68}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}Der Begriff Datensicherung (\textit {backup})}{68}{subsection.B.1}%
+\contentsline {subsubsection}{\numberline {B.1.1}Arten der Datensicherung}{68}{subsubsection.B.1.1}%
+\contentsline {subsubsection}{\numberline {B.1.2}Speicher--Hardware}{68}{subsubsection.B.1.2}%
+\contentsline {subsubsection}{\numberline {B.1.3}Strategien der Datensicherung}{68}{subsubsection.B.1.3}%
+\contentsline {subsubsection}{\numberline {B.1.4}Software}{68}{subsubsection.B.1.4}%
+\contentsline {subsubsection}{\numberline {B.1.5}Datenmanipulation}{69}{subsubsection.B.1.5}%
+\contentsline {subsection}{\numberline {B.2}Outsourcing: Online-Datensicherung}{69}{subsection.B.2}%
+\contentsline {subsection}{\numberline {B.3}Konzept 1: Externes Dateisystem einhängen}{69}{subsection.B.3}%
+\contentsline {subsection}{\numberline {B.4}Konzept 2: Externes Dateisystem lokal spiegeln durch Dateisynchronisation}{71}{subsection.B.4}%
+\contentsline {subsubsection}{\numberline {B.4.1}Unter Linux: \texttt {mount/ssh+rsync} oder app wie \texttt {unison}}{71}{subsubsection.B.4.1}%
+\contentsline {subsubsection}{\numberline {B.4.2}Sync Clients mit browser backend}{72}{subsubsection.B.4.2}%
+\contentsline {subsubsection}{\numberline {B.4.3}Seafile}{73}{subsubsection.B.4.3}%

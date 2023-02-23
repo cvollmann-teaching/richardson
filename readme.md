@@ -24,33 +24,36 @@
 
 <img src="examples/out/static/pagerank_small.gif" alt="pagerank_small" style="zoom:80%;" />
 
+- Interpretation as gradient method?
+
 
 
 ## Syllabus
 
-| Time      |       |       | Content                                      | Instructions                        |
-| :-------- | ----- | ----- | -------------------------------------------- | ----------------------------------- |
-| **Day 1** |       |       |                                              |                                     |
-| Session 1 | 10:00 | 11:00 | Mathematical Background I                    |                                     |
-| Session 2 |       |       | git, ssh (keys), github                      | [git](#initialize-a-git-repository) |
-| Session 3 |       |       | Project Planing and Initialization           |                                     |
-| **Day 2** |       |       |                                              |                                     |
-| Session 1 | 10:00 | 11:00 | Working Environment                          |                                     |
-| Session 2 |       |       | Clean Code                                   |                                     |
-| Session 3 |       |       | Software Tests                               |                                     |
-| Session 4 |       |       | Implementation: `linalg`                     |                                     |
-| **Day 3** |       |       |                                              |                                     |
-| Session 1 | 10:00 | 11:00 | Implementation: `linalg`, `iterative_solver` |                                     |
-| Session 2 |       |       | Implementation: `example` (Heat Equation 1d) |                                     |
-| Session 3 |       |       | Code Documentation with Sphinx               |                                     |
-| **Day 4** |       |       |                                              |                                     |
-| Session 1 | 10:00 | 11:00 | Mathematical Background II: PageRank         |                                     |
-| Session 2 |       |       | Implementation: Pagerank utils and Examples  |                                     |
-| Session 3 |       |       | Misc: License, readme, docs,...              |                                     |
-| **Day 5** |       |       |                                              |                                     |
-| Session 1 | 10:00 | 11:00 | Numpy                                        |                                     |
-| Session 2 |       |       | Scipy                                        |                                     |
-| Session 3 |       |       | Matplotlib                                   |                                     |
+| Time      |       |       | Content                                                      | Section | Instructions                        |
+| :-------- | ----- | ----- | ------------------------------------------------------------ | ------- | ----------------------------------- |
+| **Day 1** |       |       |                                                              |         |                                     |
+| Session 1 | 10:00 | 11:00 | Mathematical Background I                                    |         |                                     |
+| Session 2 |       |       | Project Planing (short)                                      |         |                                     |
+| Session 3 |       |       | ssh, working remote, ssh keys                                |         |                                     |
+| Session 3 |       |       | git, github                                                  |         | [git](#initialize-a-git-repository) |
+| **Day 2** |       |       |                                                              |         |                                     |
+| Session 1 | 10:00 | 11:00 | Working Environment                                          |         |                                     |
+| Session 2 |       |       | Clean Code (short)                                           |         |                                     |
+| Session 3 |       |       | Software Tests (short)                                       |         |                                     |
+| Session 4 |       |       | Implementation: `linalg`                                     |         |                                     |
+| **Day 3** |       |       |                                                              |         |                                     |
+| Session 1 | 10:00 | 11:00 | Code Documentation with Sphinx                               |         |                                     |
+| Session 2 |       |       | Implementation:  `linalg`, `iterative_solver`, `example` (Heat Equation 1d) |         |                                     |
+| Session 3 |       |       | -- \|\| --                                                   |         |                                     |
+| **Day 4** |       |       |                                                              |         |                                     |
+| Session 1 | 10:00 | 11:00 | Mathematical Background II: PageRank                         |         |                                     |
+| Session 2 |       |       | Implementation: Pagerank utils and Examples                  |         |                                     |
+| Session 3 |       |       | Misc: License, readme, docs,...                              |         |                                     |
+| **Day 5** |       |       |                                                              |         |                                     |
+| Session 1 | 10:00 | 11:00 | Numpy                                                        |         |                                     |
+| Session 2 |       |       | Scipy                                                        |         |                                     |
+| Session 3 |       |       | Matplotlib                                                   |         |                                     |
 
 
 
@@ -381,6 +384,8 @@ Implement:
    also den Fehler-Verlauf, zeichnen. Speichern Sie die Grafik mit einem aussagekräftigen Namen als .pdf-Datei
    im Ordner ‘code/output/’, um sie in Ihr L A TEX-Dokument zu importieren.
    → Dafür benötigen Sie die Liste error und das Modul matplotlib.pyplot (savefig()).
+
+   - matplotlib.pyplot.savefig()
 
 2. Optional: A function that uses the Python package `tabulate`to generate a LaTex table into an external text file with two columns being iteration number and corresponding entry in the residual vector `error` that you can import later on into your paper. (Optional third column would be the rate of convergence)
 
