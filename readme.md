@@ -28,6 +28,10 @@
 
 
 
+
+
+
+
 ## Syllabus
 
 | Time      |       |       | Content                                                      | Section | Instructions                        |
@@ -77,12 +81,73 @@
 -   Numpy und Scipy können verwendet werden, um die Implementierung zu überprüfen.
 -   Bonus\*: Versuchen Sie mögliche Fehleingaben des Nutzers zu antizipieren und mit geeigneten Fehlermeldungen abzupuffern. (Zum Beispiel könnten Dimensionen von $A$ und $b$ nicht zusammenpassen, ein Nutzer könnte die Matrix im falschem Format übergeben, sodass das übergebene Objekt nicht die drei Attribute 'data', 'indices','indptr' aufweist, etc.)
 
+
+
+## Secure Shell (SSH)
+
+1. Find out the IP or hostname of your neighbor's computer and log in via
+
+   ```bash
+   ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
+   ```
+
+2. **Generate ssh keys**
+
+   ```bash 
+   ssh-keygen -t ed25519 -f [FILENAME] -C "your_email@example.com"
+   ```
+
+   - e.g., `FILENAME=.ssh/github`
+
+   - Use mail address which you will later use for your GitHub account
+
+   - Use a strong passphrase to encrypt your private key
+
+   - Checkout the files
+
+     ```bash
+     cd ~/.ssh
+     ls -al
+     cat [FILENAME]
+     ```
+
+   Validate key
+
+   ```bash
+   ssh-keygen -y -f [FILENAME]
+   ```
+
+   Enter passphrase and it should print the content of the public key in  `FILENAME.pub`
+
+3. **Copy public key to remote**
+
+   ```bash
+   ssh-copy-id -i [FILENAME] [IP_ADDRESS or HOSTNAME]	
+   ```
+
+   or
+
+   ```bash
+   cat [FILENAME] | ssh [USERNAME]@[IP_ADDRESS or HOSTNAME] 'cat >> ~/.ssh/authorized_keys'
+   ```
+
+   Now login again via
+
+   ```bash
+   ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
+   ```
+
+   You should now provide the passphrase instead of the password
+
+   
+
 ## Initialize a git repository
 
-1. get account on github, set up ssh keys
-2. create repo
-3. local machine: git clone
-4. .gitignore
+1. get account on github
+2. set up ssh keys
+3. create repo
+4. local machine: git clone
+5. .gitignore
 
 ## Plan modularity and setup directory structure
 
@@ -159,6 +224,7 @@
 - Code inspection in PyCharm: https://www.jetbrains.com/help/pycharm/tutorial-code-quality-assistance-tips-and-tricks.html#ddc30fc6
 - Verwenden Sie bei allen Funktionen und Objekten aussagekräftige Namen und  Docstrings in einem einheitlichen Format (NumPy, Google, reStructuredText).
 - consistent docstring (important later for documentation generation). Kommentieren Sie Ihren Code, sodass er für andere gut lesbar ist.
+- pre-commit hooks
 
 
 
@@ -219,7 +285,7 @@ In `src/linalg.py`:
            self.indptr = _indptr
    ```
 
-2. implement magic methods
+2. Implement magic methods
    1. `__matmul__(self, x : vector) -> vector`
      - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
      - `A @ x = A.__matmul__(x)`

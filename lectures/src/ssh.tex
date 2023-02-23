@@ -1,1 +1,92 @@
+% !TeX spellcheck = de_AT_frami
 \section{Secure Shell (SSH)}
+SSH ist ein Protokoll für \textit{verschlüsselte} Verbindungen auf andere Rechner:
+\begin{itemize}
+	\item SSH kann die Kommandozeile eines entfernten Rechners lokal zur Verfügung stellen,
+	\item SSH kann Dateien über das Netzwerk transferieren,
+	\item SSH kann grafische Fenster des entfernten Rechners anzeigen.
+\end{itemize}
+Warum ist das für uns interessant?
+\begin{itemize}
+	\item Für rechenintensive Programme verwenden wir \textit{number cruncher} (Remote-Server mit viel Rechenleistung). Dafür müssen Dateien wie Quellcode, Inputdaten etc. verschlüsselt zwischen Rechnern transferiert werden.
+	\item Wir verwalten unser Projekt auf \url{github.com}. Wir transferieren unsere Dateien sicher über einen verschlüsselten SSH--Tunnel zwischen diesem Server und unserer lokalen Maschine. 
+\end{itemize}
+Demo:
+\begin{itemize}
+	\item  ssh auf remote
+\item remote: Programm ausführen
+ \item scp zum kopieren von Daten
+\end{itemize}
+Weitere Bemerkungen:
+\begin{itemize}
+	\item SSH wurde erstmals 1995 von dem finnischen Informatiker Tatu Ylönen entwickelt und ist heute die gängigste Methode für den Zugriff auf Remote-Linux-Server.
+	\item SSH ist das allgemeine Protokoll. Die de facto Standardimplementierung ist OpenSSH (1999 von den OpenBSD-Entwicklern als Open-Source-Software veröffentlicht).
+	\item Client Server Modell
+	\begin{itemize}
+		\item client (lokal): ssh
+		\item server (entfernt): sshd
+	\end{itemize}
+\end{itemize}
+Wiederholung Public-Key-Verschlüsselungsverfahren (asymmetrisch)
+\begin{itemize}
+	\item Schlüsselpaar $(k_\text{pub}, k_\text{priv})$
+	\begin{itemize}
+		\item öffentlicher Schlüssel $k_\text{pub}$ kann geteilt werden
+		\item privater Schlüssel $k_\text{priv}$ muss geheim gehalten werden
+	\end{itemize}
+		\item Verschlüsselung mit öffentlichem Schlüssel: $y = E(x, k_\text{pub})$
+\item Entschlüsselung mit privatem Schlüssel: $D(y, k_\text{priv}) = x$
+\item Vorteil gegenüber symmetrischer Verschlüsselung (bei der für $E$ und $D$ derselbe Schlüssel verwendet wird): Alice und Bob müssen sich vor Kommunikation nicht nachts im Wald treffen, um sich auf ein Geheimnis zu einigen
+\item Berühmtes Beispiel: RSA (siehe etwa Zertifikate im Browser)
+\end{itemize}
+%
+%
+\subsection{Verwendung}
+\textbf{Passwort-basierte Authentifizierung:}
+\begin{verbatim}
+$ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
+\end{verbatim}
+
+\begin{itemize}
+	\item IP\_ADDRESS or HOSTNAME: Postanschrift des entfernten Rechners
+	\item USERNAME: Benutzername des Accounts auf dem entfernen Rechner
+	\item Passwort-Prompt
+\end{itemize}
+%
+~\\
+\textbf{Schlüsselbasierte Authentifizierung:}
+\begin{itemize}
+	\item Erstellen eines Schlüsselpaars: SSH-Schlüssel werden typischerweise auf dem lokalen Computer erstellt:
+	\begin{verbatim}
+	ssh-keygen -t ed25519 -C "your_email@example.com"
+	\end{verbatim}
+	-- Speicherort: \texttt{\$HOME/.ssh}\\
+	-- Passphrase, um den privaten Schlüssel zu schützen
+	\item Dateien anschauen
+	\begin{verbatim}
+	cd ~/.ssh
+	ls -al
+	cat [FILENAME]
+	\end{verbatim}
+	\item Schlüssel auf remote kopieren
+	\begin{verbatim}
+	ssh-copy-id -i [PUBKEY] [IP_ADDRESS or HOSTNAME]
+	\end{verbatim}
+	Server speichert den öffentlichen Schlüssel in \texttt{.ssh/authorized\_keys}
+	\item Nun einfach:
+	\begin{verbatim}
+	$ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
+	\end{verbatim}
+\end{itemize}
+
+
+
+
+
+\subsection{Quellen}
+\begin{itemize}
+	\item \url{https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server}
+	\item \url{https://en.wikipedia.org/wiki/Secure_Shell}
+	\item \url{https://en.wikibooks.org/wiki/OpenSSH}
+	\item \url{https://en.wikipedia.org/wiki/Public-key_cryptography#}
+\end{itemize}

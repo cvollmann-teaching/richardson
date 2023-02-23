@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.18)  23 FEB 2023 13:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.10)  23 FEB 2023 23:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -52,7 +52,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
 (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2020-02-14 L3 programming layer (loader)
+Package: expl3 2020-02-14 L3 programming layer (loader) 
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
@@ -251,7 +251,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/chancery.sty
-Package: chancery 2005/04/12 PSNFSS-v9.2a (SPQR)
+Package: chancery 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
@@ -821,7 +821,7 @@ e
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes:
+* modes: 
 * h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
 * v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
@@ -890,7 +890,7 @@ LaTeX Font Info:    Trying to load font information for U+lasy on input line 9.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) (./src/abstract.tex
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
 7.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
@@ -898,14 +898,14 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )) [0
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (build/main.toc
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-9.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 3
+1.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 29.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 31.
  [1])
 \tf@toc=\write5
 \openout5 = `main.toc'.
@@ -934,10 +934,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
-<to be read again>
-                   \relax
+<to be read again> 
+                   \relax 
 l.66 $$\Rn \to \Rn, ~x \mapsto A\cdot x $$
                                            [1
 
@@ -966,10 +966,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--105
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
-<to be read again>
-                   \relax
+<to be read again> 
+                   \relax 
 l.105 ...olge $$x^{k+1} := f(x^k) := Mx^k + Nb. $$
                                                    [2]
 Underfull \hbox (badness 10000) in paragraph at lines 133--136
@@ -1017,12 +1017,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 207--211
  []
 
 [5]
-<./media//sparse_matrix.png, id=488, 109.208pt x 109.208pt>
+<./media//sparse_matrix.png, id=498, 109.208pt x 109.208pt>
 File: ./media//sparse_matrix.png Graphic file (type png)
 <use ./media//sparse_matrix.png>
 Package pdftex.def Info: ./media//sparse_matrix.png  used on input line 220.
 (pdftex.def)             Requested size: 193.47578pt x 193.4831pt.
-<media/csr-matrix.png, id=492, 445.61955pt x 128.99513pt>
+<media/csr-matrix.png, id=502, 445.61955pt x 128.99513pt>
 File: media/csr-matrix.png Graphic file (type png)
 <use media/csr-matrix.png>
 Package pdftex.def Info: media/csr-matrix.png  used on input line 253.
@@ -1061,7 +1061,7 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 
 Overfull \hbox (9.38327pt too wide) in paragraph at lines 346--347
-[][]
+[][] 
  []
 
 [8]
@@ -1073,14 +1073,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 408--411
 
 pdfTeX warning: /usr/bin/pdflatex (file ./media//ProjectMindMap2.pdf): PDF incl
 usion: found PDF version <1.7>, but at most version <1.5> allowed
-<./media//ProjectMindMap2.pdf, id=526, 1195.34581pt x 844.83629pt>
+<./media//ProjectMindMap2.pdf, id=536, 1195.34581pt x 844.83629pt>
 File: ./media//ProjectMindMap2.pdf Graphic file (type pdf)
 <use ./media//ProjectMindMap2.pdf>
 Package pdftex.def Info: ./media//ProjectMindMap2.pdf  used on input line 427.
 (pdftex.def)             Requested size: 628.8074pt x 444.4223pt.
 
 Overfull \hbox (145.11053pt too wide) in paragraph at lines 426--428
- [][]
+ [][] 
  []
 
 
@@ -1095,9 +1095,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 519--522
 
  []
 
-[11]) [12] (./src/ssh.tex) [13
+[11]) [12] (./src/ssh.tex [13
 
-] (./src/version_control.tex
+]
+Overfull \hbox (33.93396pt too wide) in paragraph at lines 88--89
+[][]$\T1/cmtt/m/n/10 https : / / www . digitalocean . com / community / tutoria
+ls / how-[]to-[]use-[]ssh-[]to-[]connect-[]to-[]a-[]remote-[]server$[] 
+ []
+
+) [14] (./src/version_control.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--2
 
  []
@@ -1137,7 +1143,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
-) [14
+) [15
 
 ] (./src/environment.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--6
@@ -1159,7 +1165,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 51--60
 
  []
 
-[15
+[16
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 103--103
@@ -1181,7 +1187,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--103
 
  []
 
-[16]
+[17]
 Underfull \hbox (badness 10000) in paragraph at lines 114--125
 
  []
@@ -1237,12 +1243,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 173--173
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 143--174
+)
+Underfull \hbox (badness 10000) in paragraph at lines 143--23
 
  []
 
-[17]) [18] (./src/clean_code.tex
+[18] [19] (./src/clean_code.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--5
 
  []
@@ -1253,17 +1259,17 @@ Overfull \hbox (6.19037pt too wide) in paragraph at lines 8--9
 l-[]code-[]quality-[]assistance-[]tips-[]and-[]tricks .
  []
 
-) [19
+) [20
 
 ] (./src/documentation.tex
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 3.
- [20
+ [21
 
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 266.
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
 293.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -1273,7 +1279,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 344--347
 
  []
 
-[21]
+[22]
 Underfull \hbox (badness 10000) in paragraph at lines 379--386
 
  []
@@ -1282,13 +1288,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 379--386
 Overfull \hbox (56.04214pt too wide) in paragraph at lines 406--408
 []\T1/cmss/m/n/10 Type An-no-ta-ti-ons: []$\T1/cmtt/m/n/10 https : / / sphinxco
 ntrib-[]napoleon . readthedocs . io / en / latest / index . html # type-[]annot
-ations$[]
+ations$[] 
  []
 
 
 Overfull \hbox (15.50368pt too wide) in paragraph at lines 421--421
 []\T1/cmss/bx/n/12 Reference Gui-de: Au-to-ma-tisch al-le Code-Bestandteile auf
--lis-ten mit \T1/cmtt/m/n/12 .. autosummary::
+-lis-ten mit \T1/cmtt/m/n/12 .. autosummary:: 
  []
 
 
@@ -1296,9 +1302,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
-[22]) [23] (./src/tests.tex) [24
+[23]) [24] (./src/tests.tex) [25
 
-] (./src/packaging.tex) [25
+] (./src/packaging.tex) [26
 
 ] (./src/latex.tex
 Underfull \hbox (badness 10000) in paragraph at lines 14--18
@@ -1315,7 +1321,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--37
 
  []
 
-[26
+[27
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 70--71
@@ -1328,7 +1334,7 @@ Overfull \hbox (5.23445pt too wide) in paragraph at lines 78--80
 zei-chen, Ta-bu-la-to-ren und das Zei-lenen-de wer-den von L[]T[]X  ein-
  []
 
-[27]
+[28]
 Underfull \hbox (badness 10000) in paragraph at lines 120--125
 
  []
@@ -1386,7 +1392,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 170--181
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[28]
+[29]
 Underfull \hbox (badness 10000) in paragraph at lines 181--190
 
  []
@@ -1414,10 +1420,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 257--275
 
  []
 
-[29]
+[30]
 Overfull \hbox (8.43909pt too wide) in paragraph at lines 282--283
 []$\T1/cmtt/m/n/10 https : / / de . overleaf . com / learn / latex / Bibliograp
-hy _ management _ with _ biblatex # Reference _ guide$[]
+hy _ management _ with _ biblatex # Reference _ guide$[] 
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1453,7 +1459,7 @@ File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 285.
 
-(./src/listing_bibentry.txt [30])
+(./src/listing_bibentry.txt [31])
 Underfull \hbox (badness 10000) in paragraph at lines 289--289
 
  []
@@ -1463,12 +1469,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 289--290
 
  []
 
-[31] [32]
+[32] [33]
 Underfull \hbox (badness 10000) in paragraph at lines 421--423
 
  []
 
-[33]) [34] (./src/instructions.tex
+[34]) [35] (./src/instructions.tex
 Underfull \hbox (badness 10000) in paragraph at lines 53--56
 
  []
@@ -1483,7 +1489,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
-[35
+[36
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 82--85
@@ -1521,9 +1527,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 122--126
  []
 
 
-LaTeX Warning: Reference `csr-class' on page 36 undefined on input line 132.
+LaTeX Warning: Reference `csr-class' on page 37 undefined on input line 132.
 
-[36]
+[37]
 Underfull \hbox (badness 10000) in paragraph at lines 168--174
 
  []
@@ -1558,7 +1564,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--220
 
  []
 
-[37]
+[38]
 Underfull \hbox (badness 10000) in paragraph at lines 239--245
 
  []
@@ -1580,7 +1586,7 @@ ML/cmm/m/it/10 A[]$ \T1/cmss/m/n/10 sind je-weils Tridiagonal--Toeplitz--Matriz
 en. Sie kön-nen al-so Ih-re Funk-ti-on \T1/cmtt/m/n/10 csrTridiagToep
  []
 
-[38]
+[39]
 Underfull \hbox (badness 10000) in paragraph at lines 290--291
 
  []
@@ -1601,7 +1607,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 340--343
 
  []
 
-[39]
+[40]
 Underfull \hbox (badness 10000) in paragraph at lines 351--357
 
  []
@@ -1616,7 +1622,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
-[40]
+[41]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 432.
 
@@ -1669,7 +1675,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 524--525
 
  []
 
-[41] [42]
+[42] [43]
 Underfull \hbox (badness 10000) in paragraph at lines 576--582
 
  []
@@ -1692,7 +1698,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
 Overfull \hbox (67.03088pt too wide) in paragraph at lines 598--600
 []$\T1/cmtt/m/n/9 https : / / www . jetbrains . com / help / pycharm / configur
-ing-[]keyboard-[]and-[]mouse-[]shortcuts . html # add-[]keyboard-[]shortcut$[]
+ing-[]keyboard-[]and-[]mouse-[]shortcuts . html # add-[]keyboard-[]shortcut$[] 
 
  []
 
@@ -1701,7 +1707,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 613--614
 
  []
 
-[43]
+[44]
 Underfull \hbox (badness 10000) in paragraph at lines 676--677
 
  []
@@ -1711,7 +1717,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 678--679
 
  []
 
-[44]
+[45]
 Underfull \hbox (badness 10000) in paragraph at lines 714--716
 
  []
@@ -1726,7 +1732,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 750--754
 
  []
 
-[45]) [46] (build/main.bbl) [47
+[46]) [47] (build/main.bbl) [48
 
 ] (./src/computer_basics.tex
 Underfull \hbox (badness 5954) in paragraph at lines 20--20
@@ -1742,10 +1748,10 @@ Underfull \hbox (badness 6978) in paragraph at lines 20--20
 
 
 Overfull \hbox (2.05504pt too wide) in paragraph at lines 40--62
-[] []
+[] [] 
  []
 
-[48
+[49
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 98--101
@@ -1757,7 +1763,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--105
 
  []
 
-[49]
+[50]
 Underfull \hbox (badness 10000) in paragraph at lines 139--139
 
  []
@@ -1787,7 +1793,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 154--182
 
  []
 
-[50
+[51
 
 ]
 Overfull \hbox (29.09727pt too wide) in paragraph at lines 229--230
@@ -1795,7 +1801,7 @@ Overfull \hbox (29.09727pt too wide) in paragraph at lines 229--230
  mit meh-re-ren Gi-ga-byte, auf den mit CPU-Taktgeschwindigkeiten
  []
 
-[51]
+[52]
 Underfull \hbox (badness 10000) in paragraph at lines 243--243
 
  []
@@ -1810,7 +1816,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 253--254
 
  []
 
-<./media/hdd.jpg, id=1016, 1927.2pt x 958.58125pt>
+<./media/hdd.jpg, id=1037, 1927.2pt x 958.58125pt>
 File: ./media/hdd.jpg Graphic file (type jpg)
 <use ./media/hdd.jpg>
 Package pdftex.def Info: ./media/hdd.jpg  used on input line 258.
@@ -1820,7 +1826,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--284
 
  []
 
-[52 <./media/hdd.jpg>]
+[53 <./media/hdd.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 291--296
 
  []
@@ -1870,12 +1876,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 351--354
 
  []
 
-[53]
+[54]
 Underfull \hbox (badness 10000) in paragraph at lines 393--403
 
  []
 
-[54]
+[55]
 Underfull \hbox (badness 10000) in paragraph at lines 406--418
 
  []
@@ -1895,12 +1901,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 467--468
 
  []
 
-[55]
+[56]
 Underfull \hbox (badness 10000) in paragraph at lines 497--498
 
  []
 
-[56]
+[57]
 Underfull \hbox (badness 10000) in paragraph at lines 550--565
 
  []
@@ -1915,7 +1921,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 580--634
 
  []
 
-[57] [58]
+[58] [59]
 Underfull \hbox (badness 10000) in paragraph at lines 883--885
 
  []
@@ -1940,7 +1946,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 931--943
 
  []
 
-[59
+[60
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 953--956
@@ -1967,7 +1973,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 988--1001
 
  []
 
-[60]
+[61]
 Underfull \hbox (badness 10000) in paragraph at lines 1066--1066
 
  []
@@ -1987,7 +1993,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1066--1074
 
  []
 
-[61]
+[62]
 Underfull \hbox (badness 10000) in paragraph at lines 1087--1090
 
  []
@@ -1997,7 +2003,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1099--1102
 
  []
 
-[62]
+[63]
 Underfull \hbox (badness 10000) in paragraph at lines 1119--1121
 
  []
@@ -2007,7 +2013,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1181--1202
 
  []
 
-[63] [64]
+[64] [65]
 Underfull \hbox (badness 10000) in paragraph at lines 1206--1209
 
  []
@@ -2027,7 +2033,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1267--1270
 
  []
 
-[65
+[66
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 1313--1314
@@ -2064,17 +2070,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 1329--1335
 
  []
 
-[66]
+[67]
 Underfull \hbox (badness 10000) in paragraph at lines 1355--1356
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1365--1366
+)
+Underfull \hbox (badness 10000) in paragraph at lines 1365--36
 
  []
 
-) [67] (./src/data_management.tex
+[68] (./src/data_management.tex
 Underfull \hbox (badness 10000) in paragraph at lines 73--73
 [][]$\T1/cmtt/m/n/9 https : / / www . uni-[]trier . de / universitaet / wichtig
 e-[]anlaufstellen / zimk /
@@ -2085,7 +2091,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
 
-[68
+[69
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 76--78
@@ -2102,7 +2108,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--108
 
  []
 
-[69]
+[70]
 Underfull \hbox (badness 10000) in paragraph at lines 143--143
 
  []
@@ -2172,7 +2178,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 174--175
 
  []
 
-[70]
+[71]
 Underfull \hbox (badness 10000) in paragraph at lines 185--185
 
  []
@@ -2213,7 +2219,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 222--223
 
  []
 
-[71]
+[72]
 Underfull \hbox (badness 10000) in paragraph at lines 231--233
 
  []
@@ -2223,7 +2229,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--243
 
  []
 
-[72]
+[73]
 Underfull \hbox (badness 10000) in paragraph at lines 258--262
 
  []
@@ -2248,7 +2254,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 349--352
 
  []
 
-[73]) [74]
+[74]) [75]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 37.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 37.
  (build/main.aux)
@@ -2264,12 +2270,12 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
- )
+ ) 
 Here is how much of TeX's memory you used:
- 24740 strings out of 481239
- 457267 string characters out of 5920377
- 1046042 words of memory out of 5000000
- 38992 multiletter control sequences out of 15000+600000
+ 24745 strings out of 481239
+ 457334 string characters out of 5920376
+ 1046044 words of memory out of 5000000
+ 38994 multiletter control sequences out of 15000+600000
  568301 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,10n,73p,915b,2818s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2308,9 +2314,10 @@ public/cm-super/sfsx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx
 ublic/cm-super/sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1
 000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/
 texmf/fonts/type1/public/cm-super/sftt1440.pfb>
-Output written on build/main.pdf (77 pages, 2396269 bytes).
+Output written on build/main.pdf (78 pages, 2400877 bytes).
 PDF statistics:
- 1494 PDF objects out of 1728 (max. 8388607)
- 1341 compressed objects within 14 object streams
- 420 named destinations out of 1000 (max. 500000)
- 609 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1515 PDF objects out of 1728 (max. 8388607)
+ 1361 compressed objects within 14 object streams
+ 423 named destinations out of 1000 (max. 500000)
+ 625 words of extra memory for PDF output out of 10000 (max. 10000000)
+
