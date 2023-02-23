@@ -5,14 +5,14 @@ from src.linalg import *
 
 
 def richardson(
-    A: csr_matrix,
-    b: vector,
-    x: vector,
-    theta=0.1,
-    maxiter=50,
-    tol=1e-06,
-    callback=None,
-    **kwargs
+        A: csr_matrix,
+        b: vector,
+        x: vector,
+        theta=0.1,
+        maxiter=50,
+        tol=1e-06,
+        callback=None,
+        **kwargs
 ):
     """
     solves a system Ax = b, where A is assumed to be invertible,

@@ -36,7 +36,7 @@
 | Session 1 | 10:00 | 11:00 | Mathematical Background I                                    |         |                                     |
 | Session 2 |       |       | Project Planing (short)                                      |         |                                     |
 | Session 3 |       |       | ssh, working remote, ssh keys                                |         |                                     |
-| Session 3 |       |       | git, github                                                  |         | [git](#initialize-a-git-repository) |
+| Session 3 |       |       | git, github, commit hooks                                    |         | [git](#initialize-a-git-repository) |
 | **Day 2** |       |       |                                                              |         |                                     |
 | Session 1 | 10:00 | 11:00 | Working Environment                                          |         |                                     |
 | Session 2 |       |       | Clean Code (short)                                           |         |                                     |
