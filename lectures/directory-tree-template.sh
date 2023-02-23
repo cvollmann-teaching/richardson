@@ -12,8 +12,12 @@ mkdir $projectName/code/src
 mkdir $projectName/code/examples
 mkdir $projectName/code/output
 touch $projectName/code/main.py
-touch $projectName/code/README.rst
+touch $projectName/code/README.md
 touch $projectName/code/src/linalg.py
+touch $projectName/code/.gitignore
+touch $projectName/code/LICENSE
+touch $projectName/code/.pre-commit-config.yaml 
+touch 
 # TEXT:
 mkdir $projectName/text
 mkdir $projectName/text/src
