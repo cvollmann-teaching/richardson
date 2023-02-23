@@ -3,16 +3,16 @@
 
 .. automodule:: src.linalg
 
-   
-   
-   
 
-   
-   
+
+
+
+
+
    .. rubric:: Functions
 
    .. autosummary::
-   
+
       average_vector
       csc_to_csr
       csc_to_dense
@@ -22,23 +22,14 @@
       matmat
       matvec
       norm
-   
-   
 
-   
-   
+
+
+
+
    .. rubric:: Classes
 
    .. autosummary::
-   
+
       csr_matrix
       vector
-   
-   
-
-   
-   
-   
-
-
-

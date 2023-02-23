@@ -2,7 +2,7 @@
 \newpage
 \section{Code Dokumentation mit	\texttt{sphinx}}
 
-Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterricht. Einen geeigneten Einstieg finden wir in der offiziellen Dokumentation 
+Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterricht. Einen geeigneten Einstieg finden wir in der offiziellen Dokumentation
 \begin{center}
 	\url{https://www.sphinx-doc.org/en/master/usage/quickstart.html}
 \end{center}
@@ -43,15 +43,15 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %	Format: NumPy
 %	\item
 %	in \texttt{src/}
-%	
+%
 %	\begin{itemize}
 %		\item
 %		\textbf{init}
 %		\item
 %		linalg.py
-%		
+%
 %		\begin{itemize}
-%			
+%
 %			\item
 %			class csr\_matrix
 %			\item
@@ -65,9 +65,9 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %		\end{itemize}
 %		\item
 %		in \textbf{main.py}
-%		
+%
 %		\begin{itemize}
-%			
+%
 %			\item
 %			import src
 %			\item
@@ -79,17 +79,17 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %		\end{itemize}
 %		\item
 %		linalg.py etwas ausbauen
-%		
+%
 %		\begin{itemize}
-%			
+%
 %			\item
 %			\texttt{def\ tests()}\ldots{}
 %		\end{itemize}
 %		\item
 %		in \textbf{main.py}
-%		
+%
 %		\begin{itemize}
-%			
+%
 %			\item
 %			import src
 %			\item
@@ -97,14 +97,14 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %		\end{itemize}
 %		\item
 %		\textbf{Terminal} Reiter
-%		
+%
 %		\begin{itemize}
-%			
+%
 %			\item
 %			ggf. \texttt{source\ .venv/bin/active}
-%			
+%
 %			\begin{itemize}
-%				
+%
 %				\item
 %				source runs code from file in current bash session
 %			\end{itemize}
@@ -112,9 +112,9 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %			sonst: nochmal in den Einstellungen schauen
 %			\item
 %			hier könnten wir mit pip pakete installieren
-%			
+%
 %			\begin{itemize}
-%				
+%
 %				\item
 %				import numpy --\textgreater{} fails
 %				\item
@@ -129,9 +129,9 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %		\end{itemize}
 %		\item
 %		requirements.txt
-%		
+%
 %		\begin{itemize}
-%			
+%
 %			\item
 %			ggf. plugin installieren
 %			\item
@@ -180,35 +180,35 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 \begin{itemize}
 	\item \texttt{\$ mkdir docs}
 	\item \texttt{\$ sphinx-quickstart\ \textless{}PATH-to-ROOTDIR\textgreater{}}
-	(hier einfach \texttt{docs/})	
-	\begin{itemize}	
+	(hier einfach \texttt{docs/})
+	\begin{itemize}
 		\item Separieren source and build [y]
 		\item name: ...
 		\item release: 0.1
 	\end{itemize}
-	\item Nun mal	Verzeichnis \texttt{code/docs/} inspizieren	
+	\item Nun mal	Verzeichnis \texttt{code/docs/} inspizieren
 	\begin{itemize}
-		
+
 		\item
-		\texttt{code/docs/source/}		
+		\texttt{code/docs/source/}
 		\begin{itemize}
-			
+
 			\item
 			hier liegen die Quelldateien um die Dokumentation zu steuern
-			\item 
+			\item
 			\texttt{conf.py}
-			
+
 			\begin{itemize}
-				
+
 				\item
 				hier können wir die Dokumentation konfigurieren
 				\item
 				u.a. wurden unsere Antworten der interaktiven Abfrage von \texttt{sphinx-quickstart} dort gespeichert
 			\end{itemize}
 			\item
-			\texttt{index.rst} ist unsere Startseite (unsere Hauptdatei/``Kleber'')		
+			\texttt{index.rst} ist unsere Startseite (unsere Hauptdatei/``Kleber'')
 			\begin{itemize}
-				
+
 				\item
 				rst wie reStructuredText (ähnlich wie markdown)
 				\item
@@ -220,16 +220,16 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 			\end{itemize}
 		\end{itemize}
 		\item
-		\texttt{code/docs/build/}		
-		\begin{itemize}			
+		\texttt{code/docs/build/}
+		\begin{itemize}
 			\item Dieses Verzeichnis ist noch leer
 			\item Das ändern wir nun
 		\end{itemize}
 		\item
 	\textbf{build}
-	
+
 	\begin{itemize}
-		
+
 		\item
 		\texttt{\$ sphinx-build\ -b\ html\ docs/source/\ docs/build/html}
 		\item
@@ -250,9 +250,9 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 
 	\item
 	Bemerkung zu den \texttt{sphinx-}binaries:
-	
+
 	\begin{itemize}
-		
+
 		\item
 		Diese befinden sich in unserer virtuellen Python Umgebung unter:
 		venv\texttt{/code/.\textless{}VENV-NAME\textgreater{}/bin}
@@ -268,7 +268,7 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 \textbf{\texttt{extensions\ =\ {[}{]}}}
 
 \begin{itemize}
-	
+
 	\item
 	Erweiterungen stellen zusätzliche Funktionalitäten bereit.
 	\item
@@ -280,10 +280,10 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 	\subsection{\texorpdfstring{\textbf{Allgemeines Erscheinungsbild:
 				\texttt{html\_theme}}}{Allgemeines Erscheinungsbild: html\_theme}}\label{allgemeines-erscheinungsbild-html_theme}}
 
-\begin{itemize}	
+\begin{itemize}
 	\item
-	\textbf{builtin schemes}	
-	\begin{itemize}	
+	\textbf{builtin schemes}
+	\begin{itemize}
 		\item siehe:
 		\url{https://www.sphinx-doc.org/en/master/usage/theming.html\#builtin-themes}
 		\item
@@ -305,7 +305,7 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 		Diese müssen extra installiert werden, da nicht in Standard-Sphinx-Installation
 		enthalten
 		\begin{itemize}
-			
+
 			\item
 			\texttt{pip\ install\ sphinx-rtd-theme} oder über GUI
 		\end{itemize}
@@ -325,11 +325,11 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 %		\begin{Highlighting}[]
 %			\NormalTok{Überschrift}
 %			\NormalTok{===========}
-%			
+%
 %			\NormalTok{Etwas Text, blabla}
-%			
+%
 %			\DataTypeTok{.. code-block:: console}
-%			
+%
 %			\DataTypeTok{   (.venv) $ pip install sphinx}
 %			\end{Highlighting}
 %			\end{Shaded}
@@ -345,23 +345,23 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 			\texttt{.. toctree::}\\
 			\texttt{\hspace*{0.5cm}  usage}
 \end{itemize}
-		
+
 \subsection{Synchronisation von Code und	Dokumentation:
-						\texttt{autodoc}}	
-		\begin{itemize}			
+						\texttt{autodoc}}
+		\begin{itemize}
 			\item
 			Nun wollen wir in der Dokumentation den Code beschreiben und dabei auf
 			vorhandene docstrings zurückgreifen.
 			\item Das ist eine zusätzliche Funktionalität, die durch eine Erweiterung
 			bereitgestellt wird.
-			\begin{itemize}		
+			\begin{itemize}
 				\item
 				genauer \texttt{autodoc}:
 				\url{https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html}
 			\end{itemize}
 			\item
-			aktivieren in \texttt{docs/source/conf.py}			
-			\begin{itemize}		
+			aktivieren in \texttt{docs/source/conf.py}
+			\begin{itemize}
 				\item
 				zur Liste hinzufügen:
 				\texttt{extensions\ =\ {[}\textquotesingle{}sphinx.ext.autodoc\textquotesingle{},\ {]}}
@@ -379,7 +379,7 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 			Wir bekommen weiterhin Fehler, da die relativen Pfade src.linalg nicht
 			erkannt werden. Daher den absoluten Pfad zu
 			\texttt{\textless{}PATH\textgreater{}/code/} dem .venv Interpreter
-			mitgeben. Anpassung in \texttt{conf.py}:	\\		
+			mitgeben. Anpassung in \texttt{conf.py}:	\\
 					\texttt{import}\texttt{ pathlib}\\
 					\texttt{import}\texttt{ sys}\\
 					\texttt{sys.path.insert(0, pathlib.Path(\_\_file\_\_).parents[2].resolve().as\_posix())}\\
@@ -412,14 +412,14 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 		Format: NumPy
 	\item Nun auch nochmal \textbf{Indices} schauen: global, module, Search	Page
 \end{itemize}
-		
+
 
 
 \hypertarget{reference-guide-automatisch-alle-code-bestandteile-auflisten-mit-..-autosummary}{%
 	\subsection{\texorpdfstring{Reference Guide: Automatisch alle
 			Code-Bestandteile auflisten mit
 			\texttt{..\ autosummary::}}{Reference Guide: Automatisch alle Code-Bestandteile auflisten mit .. autosummary::}}\label{reference-guide-automatisch-alle-code-bestandteile-auflisten-mit-..-autosummary}}
-		
+
 \begin{itemize}
 	\item \texttt{'sphinx.ext.autosummary'}
 	\item
@@ -436,20 +436,20 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 	\begin{verbatim}
 	Reference Guide
 	===============
-	
+
 	.. autosummary::
 	    :toctree: generated
-	
+
 	    src.linalg
 	\end{verbatim}
 \end{itemize}
-		
+
 		\hypertarget{links-zwischen-quellcode-und-docs-source-docs}{%
 			\subsection{\texorpdfstring{Links zwischen Quellcode und docs:
 					\texttt{{[}source{]},\ {[}docs{]}}}{Links zwischen Quellcode und docs: {[}source{]}, {[}docs{]}}}\label{links-zwischen-quellcode-und-docs-source-docs}}
-		
+
 \begin{itemize}
-	
+
 	\item
 	extension aktivieren: \texttt{sphinx.ext.viewcode}
 \end{itemize}
@@ -460,7 +460,7 @@ Der folgende Abschnitt ist nur ein Leitfaden für die Präsentation im Unterrich
 				Dokumentation}}{Cross--References: Links innerhalb der Dokumentation}}\label{crossreferences-links-innerhalb-der-dokumentation}}
 
 \begin{itemize}
-	
+
 	\item
 	Label setzen vor Überschrift \texttt{..\ \_LABEL-TAG:}
 	\item
@@ -487,7 +487,3 @@ Zum Beispiel können wir auch mit dem Builder \texttt{latex} eine PDF--Dokumenta
 	\item
 	Alternativ im Verzeichnis \texttt{code/}: \texttt{\$ sphinx-build\ -b\ latex\ docs/source/\ docs/build/latex/}
 \end{itemize}
-
-
-
-

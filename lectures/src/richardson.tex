@@ -6,10 +6,10 @@ Wir möchten das folgende mathematische Problem numerisch lösen:\\
 	\begin{tabular}{ll}
 	\textbf{Input:} &Eine invertierbare Matrix $A\in \Rnn$ und ein Vektor $b\in \Rn$. ~\\
 \textbf{Output:} &Der Vektor $x\in \Rn$, sodass
-\end{tabular} 
+\end{tabular}
 $$Ax = b.$$
 \end{center}
-Bemerkungen: 
+Bemerkungen:
 \begin{itemize}
 	\item Da $A$ invertierbar ist, existiert für jede rechte Seite $b$ genau eine eindeutige Lösung $x = A^{-1}b$.
 	\item Die Berechnung der inversen Matrix $A^{-1}$ ist sehr teuer (z.B. $n$ mal Lösen mit Einheitsvektoren) und wird in der Praxis stets vermieden, da man meist nur an $b \mapsto A^{-1}b$ interessiert ist.
@@ -60,9 +60,9 @@ Wünschenswert:
 
 
 \subsection{Eigenwerte und der Spektralradius}
-Es sei $A = [a_1,\ldots, a_n]\in\Rnn$ eine Matrix mit $n$ Spalten $a_i \in \Rn$ und $x \in \Rn$ ein $n$-dimensionaler Vektor. Betrachten wir das Matrix--Vektor Produkt 
+Es sei $A = [a_1,\ldots, a_n]\in\Rnn$ eine Matrix mit $n$ Spalten $a_i \in \Rn$ und $x \in \Rn$ ein $n$-dimensionaler Vektor. Betrachten wir das Matrix--Vektor Produkt
 $$b := A\cdot x = \sum_{i=1}^n x_i a_i,$$
-so erhalten wir einen Vektor $b \in \Rn$. Daher können wir eine Matrix stets als (lineare) Abbildung 
+so erhalten wir einen Vektor $b \in \Rn$. Daher können wir eine Matrix stets als (lineare) Abbildung
 $$\Rn \to \Rn, ~x \mapsto A\cdot x $$
 verstehen.~\\~\\
 \textbf{Beispiel}\\
@@ -72,18 +72,18 @@ A = \begin{pmatrix}
 \end{pmatrix}
 $$
 [Tafel: Grafik mit ein paar Beispielen $A\cdot x$]\\~\\
-Interessante Beobachtung: 
+Interessante Beobachtung:
 \begin{itemize}
-	\item Es gibt Vektoren, deren Richtung von der Matrix nicht verändert werden. Diese werden allenfalls um einen bestimmten Faktor skaliert (vergrößert, verkleinert oder identisch abgebildet). 
+	\item Es gibt Vektoren, deren Richtung von der Matrix nicht verändert werden. Diese werden allenfalls um einen bestimmten Faktor skaliert (vergrößert, verkleinert oder identisch abgebildet).
 	\item Solche Vektoren nennen wir Eigenvektoren der Matrix und die zugehörigen Skalierungsfaktoren Eigenwerte. Sie werden später lernen, dass Eigenwerte wesentliche Eigenschaften der Matrix kodieren und damit von zentraler Bedeutung sind.
 \end{itemize}
-\textbf{Definition.} Es sei $A\in \C^{n \times n}$ eine Matrix. Dann nennen wir eine Zahl $\lambda \in \C$ Eigenwert von $A$, falls ein (Eigen-)Vektor $v \in  \C^n$ mit $v \neq 0$ existiert, sodass 
+\textbf{Definition.} Es sei $A\in \C^{n \times n}$ eine Matrix. Dann nennen wir eine Zahl $\lambda \in \C$ Eigenwert von $A$, falls ein (Eigen-)Vektor $v \in  \C^n$ mit $v \neq 0$ existiert, sodass
 $$Av = \lambda v. $$
 %
 \textbf{Bemerkung}
 \begin{itemize}
 	\item $Av = \lambda v ~~\Leftrightarrow~~ (A-\lambda I)v = 0 ~~\Leftrightarrow~~ v \in \text{ker}(A-\lambda I)=\{v \in \Rn\colon (A-\lambda I)v = 0\} $
-	\item Man kann zeigen, dass eine $n \times n$ Matrix maximal $n$ verschiedene Eigenwerte besitzt (zum Beispiel mit dem Fundamentalsatz der Algebra). 
+	\item Man kann zeigen, dass eine $n \times n$ Matrix maximal $n$ verschiedene Eigenwerte besitzt (zum Beispiel mit dem Fundamentalsatz der Algebra).
 	\item Den betraglich größten Eigenwert nennt man \textbf{Spektralradius} der Matrix $A$ und wird mit $\rho(A)$ bezeichnet. Genauer
 	$$\rho(A) := \max\{|\lambda|: \lambda ~\text{Eigenwert von}~A\} .$$
 	\item Siehe auch: \cite[Def. 2.30]{Meister}
@@ -98,17 +98,17 @@ Dann $\lambda = 1,-2$ (Eigenvektoren hier Vielfachen der Einheitsvektoren) und $
 
 \subsection{Lineare Fixpunktiteration}
 Grob gesprochen besagt der Banach'sche Fixpunktsatz (siehe \cite[Kap. 2.4]{Meister}) folgendes: Wenn eine Funktion $f$ den Abstand (wir brauchen metrische Räume) zwischen zwei beliebigen Punkten verkleinert (\textbf{Kontraktion}), so besitzt $f$ genau einen \textbf{Fixpunkt} $x^* = f(x^*)$.\\
-Nützlich für die Numerik ist der konstruktive Beweis: Die Folge 
+Nützlich für die Numerik ist der konstruktive Beweis: Die Folge
 $$~x^0\in\Rn~\text{bel.},~~x^{k+1} := f(x^k),~  ~~~~~\text{(Fixpunktiteration)}$$
 konvergiert gegen diesen Fixpunkt. Diese Aussage ist in der Numerik von enormer Bedeutung und taucht in vielen Facetten immer wieder auf.\\~\\
 Bevor wir die Fixpunktiteration für unser Problem zur Anwendung bringen, konkretisieren wir diesen Sachverhalt zunächst durch folgenden Satz \cite[Satz 4.5]{Meister}:\\~\\
 \textbf{Satz (Lineare Fixpunktiteration).} Es seien $M\in \Rnn$, $N\in \Rnn$, $b\in \Rn$ und $x^0\in\Rn$ ein beliebiger Startvektor. Zudem definieren wir die Folge $$x^{k+1} := f(x^k) := Mx^k + Nb. $$
-Dann gilt 
+Dann gilt
 $$ \rho(M)<1~~~ \text{($f$ Kontraktion)} ~~~\Leftrightarrow~~~\lim_{k \to \infty}x^k =x^* = f(x^*). $$
-%Bemerkung: Mit dem Banach'schen Fixpunktsatz erhalten wir zudem, dass genau ein Fixpunkt $x^*$ existiert. 
+%Bemerkung: Mit dem Banach'schen Fixpunktsatz erhalten wir zudem, dass genau ein Fixpunkt $x^*$ existiert.
 
 \subsection{Das relaxierte Richardson-Verfahren}
-Um ein iteratives Verfahren zur Lösung von $Ax=b$ zu entwickeln, versuchen wir nun die Fixpunktiteration anzuwenden. Dazu brauchen wir eine geeignete Funktion $f\colon \Rn \to \Rn$ der Form $$f(x) = Mx+Nb$$ mit 
+Um ein iteratives Verfahren zur Lösung von $Ax=b$ zu entwickeln, versuchen wir nun die Fixpunktiteration anzuwenden. Dazu brauchen wir eine geeignete Funktion $f\colon \Rn \to \Rn$ der Form $$f(x) = Mx+Nb$$ mit
 \begin{itemize}
 	\item Kontraktiv: $\rho(M)<1$, sodass Fixpunkt $x^* = f(x^*)$ eindeutig existiert,
 	\item Fixpunkt löst das Problem: $Ax^* = b$.
@@ -119,17 +119,17 @@ Ax = b  &\Leftrightarrow (x-x) + Ax = b \\
 &\Leftrightarrow x = I\cdot x - A \cdot x + b\\
  &\Leftrightarrow x = (I-A)x + b =: f(x).
 \end{align*}
-Mit obigem Satz (wähle $M=I-A,~ N=I$) gilt nun: Falls für den Spektralradius $\rho(I-A)<1$ gilt, dann konvergiert die Folge 
+Mit obigem Satz (wähle $M=I-A,~ N=I$) gilt nun: Falls für den Spektralradius $\rho(I-A)<1$ gilt, dann konvergiert die Folge
 \begin{equation} \label{eq:Richardson}
- x^{k+1} := f(x^k) = (I-A)x^k + b  
-\end{equation} 
-für jeden beliebigen Startvektor $x^0 \in \Rn$ gegen den eindeutigen Fixpunkt 
+ x^{k+1} := f(x^k) = (I-A)x^k + b
+\end{equation}
+für jeden beliebigen Startvektor $x^0 \in \Rn$ gegen den eindeutigen Fixpunkt
 $$x^* = f(x^*) ~~~\Leftrightarrow~~~Ax^* = b. $$
 Die Iterationsvorschrift in \eqref{eq:Richardson} beschreibt das sogenannte \textbf{Richardson-Verfahren}\footnote{Benannt nach dem britischen Meteorologen Lewis Fry Richardson (1881--1953), der dieses Verfahren 1910 entwickelte. (Wikipedia)} (siehe \cite[Kap. 4.1.4]{Meister}) und lässt sich umformulieren zu
-\begin{equation*} 
-x^{k+1} = x^k - (Ax^k - b) = x^k + p^k, ~~~\text{mit}~~p^k = - (Ax^k - b).  
+\begin{equation*}
+x^{k+1} = x^k - (Ax^k - b) = x^k + p^k, ~~~\text{mit}~~p^k = - (Ax^k - b).
 \end{equation*}
-Entscheidend für die Konvergenz des Verfahrens ist die Bedingung 
+Entscheidend für die Konvergenz des Verfahrens ist die Bedingung
 $$\rho(I-A)<1,$$
 welche im Allgemeinen nicht erfüllt sein muss; auch nicht für invertierbare Matrizen $A$. Das bedeutet: Das Gleichungssystem $Ax=b$ kann eine eindeutige Lösung haben, aber das Richardson Verfahren muss nicht konvergieren.\\~\\
 Dazu ein \textbf{Beispiel}
@@ -137,7 +137,7 @@ $$A = \begin{pmatrix}2&0\\0&2\end{pmatrix},~~b = \begin{pmatrix}2\\2\end{pmatrix
 sodass $$x^* = \begin{pmatrix}1\\1\end{pmatrix}.$$
 Allerdings
 $$I - A =  \begin{pmatrix}-1&0\\0&-1\end{pmatrix} = -I$$
-mit Eigenwerten $\lambda_1 = -1, \lambda_2 = -1$, sodass 
+mit Eigenwerten $\lambda_1 = -1, \lambda_2 = -1$, sodass
 $$\rho(I-A) = 1 ~~(!). $$ In diesem Beispiel ergibt sich die Iteration
 $$x^{k+1} = (I-A)x^k+b = -x^k+b.$$
 Betrachten wir beispielsweise $x^0 = 0$, dann ergeben sich für die ersten Iterationen
@@ -153,16 +153,16 @@ Offensichtlich konvergiert diese (alternierende) Folge nicht gegen die Lösung $
 [Tafel: Am Bild der alternierenden Folge motivieren]\\~\\
 Oftmals kann es ausreichen den Schritt hinreichend klein zu wählen, um ein konvergentes (aber ggf. langsames) Verfahren zu erhalten:
 \homework{\begin{equation} \label{eq:relRichardson}
-x^{k+1} = x^k + \theta p^k=x^k - \theta(Ax^k - b),~~~~\theta > 0~\text{klein} .  
+x^{k+1} = x^k + \theta p^k=x^k - \theta(Ax^k - b),~~~~\theta > 0~\text{klein} .
 \end{equation}}
 Dieses Verfahren nennt man \textbf{relaxiertes Richardson Verfahren}.
 Da $$x^{k+1} = x^k - \theta(Ax^k - b) = (I-\theta A)x^k + \theta b,$$ konvergiert das rel. Richardson Verfahren genau dann, wenn $$\rho(I-\theta A) < 1. $$
-Das relaxierte Verfahren ist gerade das ursprüngliche Richardson-Verfahren angewendet auf das äquivalente Gleichungssystem 
+Das relaxierte Verfahren ist gerade das ursprüngliche Richardson-Verfahren angewendet auf das äquivalente Gleichungssystem
 $$\theta Ax = \theta b~~(\theta > 0 ) ~~~\Leftrightarrow~~~Ax = b,$$
 sodass wir auch sicher sein können, dass wir das originale Problems $Ax=b$ lösen.
 ~\\~\\
 Am \textbf{Beispiel} von oben:\\
-Wählen wir beispielsweise $\theta = \frac{1}{2}$, so erhalten wir die Folge 
+Wählen wir beispielsweise $\theta = \frac{1}{2}$, so erhalten wir die Folge
 $$x^{k+1} = (I-\theta A)x^k + \theta b = \begin{pmatrix}1-\theta 2&0\\0&1-\theta 2\end{pmatrix}x^k + \theta\begin{pmatrix}2\\2\end{pmatrix} = \begin{pmatrix}1\\1\end{pmatrix}. $$
 Damit sind wir für einen beliebigen Startvektor $x^0\in\Rn$ sogar schon nach einem Schritt fertig, denn
 $$x^1 =  \begin{pmatrix}1\\1\end{pmatrix}  = x^*. $$
@@ -204,7 +204,7 @@ Bemerkung: In der Praxis werden Splitting-Verfahren meist nicht direkt als Löse
 
 
 \subsection{Speicherung dünnbesetzter Matrizen} \label{sec:sparseMatrix}
-\textbf{Definition}. 
+\textbf{Definition}.
 Eine \textbf{dünnbesetzte} oder schwachbesetzte Matrix (engl. \textit{sparse matrix}) ist eine Matrix mit ``vielen'' Nulleinträgen\footnote{Laut Wikipedia: Der Begriff wurde erstmals 1971 von James Hardy Wilkinson verwendet.}. Das Gegenstück zu einer dünnbesetzten Matrix wird \textbf{vollbesetzte/dichte} Matrix (engl. \textit{dense matrix}) genannt.
 ~\\~\\
 \textbf{Bemerkung}
@@ -218,7 +218,7 @@ Eine \textbf{dünnbesetzte} oder schwachbesetzte Matrix (engl. \textit{sparse ma
 \begin{figure}[h!]
 	\centering
 		\includegraphics[width=0.4\linewidth]{./media//sparse_matrix}
-		\caption[Dünnbesetztheitsstruktur]{Dünnbesetztheitsstruktur einer Finite Elemente Matrix.\\ Quelle: \url{https://de.wikipedia.org/wiki/Dünnbesetzte_Matrix}}		
+		\caption[Dünnbesetztheitsstruktur]{Dünnbesetztheitsstruktur einer Finite Elemente Matrix.\\ Quelle: \url{https://de.wikipedia.org/wiki/Dünnbesetzte_Matrix}}
 		\label{fig:sparseFEM}
 \end{figure}
 Unser \textbf{Ziel} ist es nun, ein Format zur Speicherung dünnbesetzter Matrizen zu entwickeln, welches die folgenden zwei Kriterien erfüllt:
@@ -234,13 +234,13 @@ a_1^\top x \\ \vdots \\a_m^\top x
 \end{pmatrix} =:\begin{pmatrix}
 b_1  \\ \vdots \\b_m
 \end{pmatrix}= b,$$
-wobei für $i \in \{1,\ldots, m\}$ (Zeile für Zeile) die Skalarprodukte 
+wobei für $i \in \{1,\ldots, m\}$ (Zeile für Zeile) die Skalarprodukte
 $$b_i = a_i^\top x = \sum_{j=1}^n a_{ij} x_j = \sum_{j \in I_i} a_{ij}x_j ~~~,~I_i := \{j: a_{ij} \neq 0\},$$
 berechnet werden müssen.\\
 Beobachtung: Wir müssen für jede Zeile von $A$ nur die Nichtnulleinträge und deren Spalten-Position ($I_i$) kennen. Dies führt zu folgendem Format mit den drei Listen
 \begin{itemize}
 	\item \texttt{data}\\
-	Wir speichern die Nichtnulleinträge 
+	Wir speichern die Nichtnulleinträge
 	\item \texttt{indices}\\
 	Die zugehörigen Spalten-Indizes
 	\item \texttt{indptr}\\
@@ -264,13 +264,13 @@ Können wir die \textbf{Matrix-Dimension} aus diesem Format ablesen?
 \end{itemize}
 ~\\
 Wann sparen wir \textbf{Speicherplatz}?\\
-Wir definieren $$\texttt{nnz} := \texttt{len(data)} = \text{Anzahl der Nichtnulleinträge}.$$ 
+Wir definieren $$\texttt{nnz} := \texttt{len(data)} = \text{Anzahl der Nichtnulleinträge}.$$
 Dann muss in den entsprechenden Formaten folgende Anzahl an Zahlen gespeichert werden:
 \begin{itemize}
 	\item Dense: $m\cdot n$
 	\item CSR: $2 \cdot \texttt{nnz} + (m+1)$
 \end{itemize}
-Und daher 
+Und daher
 $$2 \cdot \texttt{nnz} + (m+1) < m\cdot n ~~~\Leftrightarrow~~~ \texttt{nnz} < \frac{(n-1)m - 1}{2}$$
 ~\\~\\
 \textbf{Beispiel:} Tridiagonalmatrix\\~
@@ -302,19 +302,19 @@ Die entsprechende Bibliothek in Python ist \textbf{\texttt{scipy.sparse}}\\
 
 \textbf{Aim:} To rank results of a web search engine (such as Google) according to the \textit{``importance''} of the web pages.\\
 
-\textbf{1998:} For this purpose, Larry Page and Sergei Brin developed the PageRank algorithm as the basis of the 
-Google empire.\\ 
+\textbf{1998:} For this purpose, Larry Page and Sergei Brin developed the PageRank algorithm as the basis of the
+Google empire.\\
 
 \textbf{Assumption:} \textit{``important''} means more links from other (important) web pages.\\
 
 
-\textbf{ Idea:} 
-Let us think of the web as a directed graph, i.e., web pages are nodes and links from one page to another, i.e, from one node to another, are modeled as directed edges. For example a web structure consisting of 11 web pages could look as follows: 
+\textbf{ Idea:}
+Let us think of the web as a directed graph, i.e., web pages are nodes and links from one page to another, i.e, from one node to another, are modeled as directed edges. For example a web structure consisting of 11 web pages could look as follows:
 \begin{center}
 	\begin{minipage}[c]{0.5\textwidth}
 		%	Potential Web Structure:
 		\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.9cm,	semithick]
-		\tikzstyle{every state}=[fill=red,draw=none,text=white]	
+		\tikzstyle{every state}=[fill=red,draw=none,text=white]
 		\node[state,fill=blue] (A)                   {$1$};
 		\node[state,scale=2.2] (B)    [right of=A]               {$2$};
 		\node[state,fill=yellow,scale=1.8] (C)    [right of=B]    {\color{black}$3$};
@@ -325,7 +325,7 @@ Let us think of the web as a directed graph, i.e., web pages are nodes and links
 		\node[state,fill=purple,scale=0.7] (H)    [right of=G]               {$8$};
 		\node[state,fill=purple,scale=0.7] (I)    [right of=H]               {$9$};
 		\node[state,fill=purple,scale=0.7] (J)    [right of=I]               {$10$};
-		\node[state,fill=purple,scale=0.7] (K)    [right of=J]               {$11$};	
+		\node[state,fill=purple,scale=0.7] (K)    [right of=J]               {$11$};
 		\path (B) edge [bend left=15pt]  (C)
 		(C) edge [bend left=15pt]  (B);
 		\path (D) edge   (A)
@@ -342,9 +342,9 @@ Let us think of the web as a directed graph, i.e., web pages are nodes and links
 		\path (I) edge   (B)
 		(I) edge [bend right=5pt](E);
 		\path (J) edge [bend right=5pt](E);
-		\path (K) edge [bend left=2pt](E);	
+		\path (K) edge [bend left=2pt](E);
 		\end{tikzpicture}
-		
+
 	\end{minipage}
 \end{center}
 
@@ -352,24 +352,24 @@ We now randomly place a random surfer according to the initial probability distr
 \begin{itemize}
 	\item[(1)] ...with probability $\alpha \in (0,1)$ according to the link structure (with equal preferences to outgoing links)
 	\item[(2)] ...with probability $(1-\alpha)$ he can teleport to a random page (with equal probability) to prevent stranding in deadlocks
-	\item[$\rightarrow$] Pages, where the random surfer is more likely to appear in the long run based on the web's structure are considered more important. 
+	\item[$\rightarrow$] Pages, where the random surfer is more likely to appear in the long run based on the web's structure are considered more important.
 \end{itemize}
 
 These two movements can be described by multiplying the current probability distribution with the two following matrices:
-$$P_1={ 
+$$P_1={
 	\left(  \begin{tabular}{cccccccccccc}
 	~ & 1    & 2   & 3    & 4    & 5    & 6 & 7     & 8   & 9  & 10   & 11    \\
 	1 & 1    &~     &  ~   & 1/2  &    ~ & ~ & ~     &  ~  &  ~   & ~ &    ~  \\
 	2 & ~    & ~    &  1   & 1/2  & 1/3  &   & 1/2   & 1/2 & 1/2 &   &    \\
 	3 & ~    & 1    &  ~   &      &      &   &       &     &     &   &    \\
-	4 & ~    &  ~   & ~    &      &  1/3 &   &       &     &     &   &  \\  
-	5 & ~    &  ~   & ~    &      &      & 1 & 1/2   & 1/2 & 1/2 & 1 & 1 \\  
-	6 & ~    &  ~   &  ~   &      & 1/3  &   &       &     &     &   &  \\  
-	7 & ~    & ~    &  ~   &      &      &   &       &     &     &   &  \\  
-	8 &~     & ~    &  ~   &      &      &   &       &     &     &   &  \\  
-	9 & ~    &  ~   &  ~   &      &      &   &       &     &     &   &  \\  
-	10 & ~    &  ~   & ~    &      &      &   &       &     &     &   &  \\  
-	11 & ~    &  ~   & ~    &      &      &   &       &     &     &   &     
+	4 & ~    &  ~   & ~    &      &  1/3 &   &       &     &     &   &  \\
+	5 & ~    &  ~   & ~    &      &      & 1 & 1/2   & 1/2 & 1/2 & 1 & 1 \\
+	6 & ~    &  ~   &  ~   &      & 1/3  &   &       &     &     &   &  \\
+	7 & ~    & ~    &  ~   &      &      &   &       &     &     &   &  \\
+	8 &~     & ~    &  ~   &      &      &   &       &     &     &   &  \\
+	9 & ~    &  ~   &  ~   &      &      &   &       &     &     &   &  \\
+	10 & ~    &  ~   & ~    &      &      &   &       &     &     &   &  \\
+	11 & ~    &  ~   & ~    &      &      &   &       &     &     &   &
 	\end{tabular} \right)
 },
 ~~~~P_2 := \frac{1}{n}ee^T= \left(\frac{1}{n}\right)_{ij}$$
@@ -380,15 +380,15 @@ More precisely,
 	\item[(2)] \textbf{Jumps:}  $P_2$ is the probability matrix (column stochastic) defined by\\
 	$P_2^{ij} := \frac{1}{n}$= Probability that random surfer jumps from page $j$ to page $i$
 \end{itemize}
-The movement of the random surfer is then completely defined by the probability matrix 
+The movement of the random surfer is then completely defined by the probability matrix
 $$P = \alpha P_1 + (1-\alpha)P_2 .$$
 This matrix is also known as the \textit{\textbf{Google Matrix}}. For the next time instances we therefore obtain
 \begin{align*}
 x^1 &=  \alpha P_1 x^0 + (1-\alpha) P_2 x^0 = Px^0  \\
 x^2 &=  \alpha P_1 x^1 + (1-\alpha) P_2 x^1 = Px^1 \\[0.1cm]
 x^{k+1} &=  \alpha P_1 x^k + (1-\alpha) P_2 x^k = Px^k = P^{k+1}x^0 \\[0.1cm]
-x^* &=  \lim_{k\to \infty} x^k =: \textbf{\textit{PageRank}} 
-\end{align*} 
+x^* &=  \lim_{k\to \infty} x^k =: \textbf{\textit{PageRank}}
+\end{align*}
 \textbf{Observations:}
 \begin{itemize}
 	\item One can easily show that $P_1$, $P_2$ and thus $P$ are column stochastic (i.e., $e^TP = e^T$)
@@ -437,8 +437,8 @@ How to implement $P_2 x$?
 %sodass $x_k  \to x$ für $k \to \infty$. Unterschiedliche Wahl von $M$ und $N$ liefert unterschiedliche Verfahren.}
 %~\\
 
-\subsection{Code} 
-Nachdem Sie die Fragestellung verstanden haben, versuchen Sie zunächst einmal numerische Ergebnisse zu produzieren. Dazu überlegen Sie sich idealerweise eine vernünftige Code-Infrastruktur, z.B.: 
+\subsection{Code}
+Nachdem Sie die Fragestellung verstanden haben, versuchen Sie zunächst einmal numerische Ergebnisse zu produzieren. Dazu überlegen Sie sich idealerweise eine vernünftige Code-Infrastruktur, z.B.:
 
 %CODE
 \begin{itemize}
@@ -468,13 +468,13 @@ Nachdem Sie die Fragestellung verstanden haben, versuchen Sie zunächst einmal n
 	%
 	\item Sie schreiben Tests, welche der Code mindestens bestehen muss.\\ \texttt{pytest, unittests}\\
 	{\beispiel Sie testen ihren Löser auf verschiedenen Beispielen $(A,b;x)$, bei denen Sie die Lösung $x =A^{-1}b$ kennen oder diese gar nicht existiert.}
-	% 
+	%
 	\item Dokumentation und clean Code\\
 	{\beispiel PEP 8, \texttt{sphinx},...}
 \end{itemize}
 Wenn Ihr Betreuer in der Besprechung nach anderen Beispielen verlangt, können Sie diese nun bequem über Ihre Konfigurationsschnittstelle einspeisen.
 
-%\subsubsection{Katastrophen vermeiden} 
+%\subsubsection{Katastrophen vermeiden}
 %\textbf{Szenario 1}\\
 %Stellen Sie sich vor die Platte Ihres Rechners versagt kurz vor Abgabe der Abschlussarbeit und Ihre Daten sind ganz oder teilweise verloren, da Sie diese gar nicht oder nur sporadisch/manuell auf einem anderen Medium (z.B. externe Festplatte oder USB-Stick) abgesichert haben. Damit Sie von diesem Szenario verschont bleiben, synchronsieren Sie gleich Ihre Daten automatisiert (d.h. mithilfe eines geeigneten Client/Software) in einer Cloud (zentraler Dateispeicher). Mit Ihrer ZIMK-Kennung stehen Ihnen 16GB Speicherplatz auf dem \seafile-Server des Landes Rheinland-Pfalz in Mainz zu Verfügung. Damit sind Ihren Daten nicht nur abgesichert, sondern stehen auch auf sämtlichen Endgeräten redundant zur Verfügung.\\
 %~\\
@@ -545,7 +545,7 @@ Insgesamt erhalten Sie möglicherweise eine Verzeichnisstruktur wie in Abb. \ref
     |   |   |-- section1.tex
     |   |   |-- section2.tex
     |   |   |-- listing.py
-    |   |   |-- ...    
+    |   |   |-- ...
     |-- media/
     |   |-- picture.png
     |   |-- picture.jpg
@@ -553,9 +553,9 @@ Insgesamt erhalten Sie möglicherweise eine Verzeichnisstruktur wie in Abb. \ref
     |-- literature/
     |   |-- literature.bib
     |   |-- pdfs/
-    |   |   |-- book.pdf      
-    |   |   |-- paper.pdf   
-    |   |   |-- ... 
+    |   |   |-- book.pdf
+    |   |   |-- paper.pdf
+    |   |   |-- ...
     |-- main.tex
 \end{verbatim}
 %    |-- talk/
@@ -578,11 +578,3 @@ Insgesamt erhalten Sie möglicherweise eine Verzeichnisstruktur wie in Abb. \ref
 %	\label{fig:vz-struktur}
 %\end{figure}
 %
-
-
-
-
-
-
-
-

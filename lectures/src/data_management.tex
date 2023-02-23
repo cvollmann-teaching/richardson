@@ -22,7 +22,7 @@ Wir wollen uns gegen den Verlust wertvoller Daten durch bspw. Hardware-Versagen,
 %
 \subsubsection{Arten der Datensicherung}
 \begin{itemize}
-	\item \underline{Vollsicherung}:\\ 
+	\item \underline{Vollsicherung}:\\
 	Die reinen Daten (ohne Dateisystem usw.) einer Festplatte/Partition o.ä. werden komplett auf das Speichermedium kopiert.
 	\begin{itemize}
 		\item[+] Sehr einfach zu verstehen und implementieren
@@ -38,14 +38,14 @@ Wir wollen uns gegen den Verlust wertvoller Daten durch bspw. Hardware-Versagen,
 	\begin{itemize}
 		\item[+] Sehr geringe Speicher- und Zeitbedarf; eignet sich daher für die Datensicherung in Netzwerken/Cloud
 		\item[--] Prinzipbedingt sind alle Inkremente miteinander verkettet:\\
-		Originaldaten = restore(Komplettsicherung, inkrement. Sicherung 1,...,n)\\ 
+		Originaldaten = restore(Komplettsicherung, inkrement. Sicherung 1,...,n)\\
 		$\to$ Rechenaufwand bei \textit{restore}
 	\end{itemize}
-	\item \underline{Speicherabbildsicherung} (\textit{image backup}):\\ 
+	\item \underline{Speicherabbildsicherung} (\textit{image backup}):\\
 Der komplette Datenträger wird durch ein 1-zu-1-Abbild gesichert, also das gesamte Dateisystem, inklusive Betriebssystem, Benutzereinstellungen etc.
 \begin{itemize}
 	\item[+] Klonen oder Wiederherstellen eines kompletten Systems möglich
-	\item[--] 
+	\item[--]
 \end{itemize}
 \end{itemize}
 
@@ -98,10 +98,10 @@ In einem Netzwerk (z.B. das Uni--Netz) befindet sich ein zentraler, massiv abges
 \begin{itemize}
 	\item \textbf{Verzeichniszugriffsprotokoll:}\\ Damit user Bob nicht die Daten von user Alice einsehen kann, werden bestimmte Zugriffsrechte über eine Benutzer-Kennung samt Passwort (z.B. ZIMK-Kennung) von einem dafür zuständigen (vermutlich virtuellen; Stichwort: Modularisierung) Server verwaltet (z.B. Active Directory Service).
 	\item \textbf{Fileserver:}\\ Um den zentralen Speicher zu verwalten, gibt es auf Seiten des Dienstleisters einen sogenannten Fileserver, der sich u.a. mit dem Verzeichnisverwalter über die Zugriffsrechte austauscht.
-	\item \textbf{Protokoll und dessen Implementierung:}\\ 
+	\item \textbf{Protokoll und dessen Implementierung:}\\
 	Für die Datenübertragung zwischen zwei Rechnern im Netzwerk werden bestimmte Netzwerkprotokolle verwendet (z.B. smb, nfs,...). Diese Protokolle werden von einer Software implementiert (z.B. Samba für smb, nfs-kernel-server/nfs-common)
 \end{itemize}
-Ein Nutzer (\textit{client}), also ein Rechner im Netzwerk mit einer bestimmten IP-Addresse, kann dann über die vom Fileserver angebotenen Protokolle (z.B. smb, nfs,...) Daten zwischen seinem und dem zentralen Speicher transferieren.\\ 
+Ein Nutzer (\textit{client}), also ein Rechner im Netzwerk mit einer bestimmten IP-Addresse, kann dann über die vom Fileserver angebotenen Protokolle (z.B. smb, nfs,...) Daten zwischen seinem und dem zentralen Speicher transferieren.\\
 Andererseits kann man auch gleich auf diesem (eingehangen; man spricht von \textit{mount}\footnote{engl. anbringen, montieren}) Datenbestand arbeiten: Das externe Dateisystem wird einfach in das lokale Dateisystem eingehangen (zB in Windows als neues Laufwerk) und ist aus Nutzersicht allenfalls an der Zugriffsgeschwindigkeit von den anderen Dateien zu unterscheiden.~\\
 ~\\
 \textit{Beispiel:} \textbf{Das ``U-Laufwerk''}
@@ -138,7 +138,7 @@ password=<Pwd Ihrer ZIMK-Nutzerkennung>
 	~\\
 	Bemerkung: CIFS wird öfter als Synonym für das SMB-Protokoll oder sogar dessen ganze Protokollfamilie verwendet.
 	\item \textbf{Dateimanager} (\url{https://www.uni-trier.de/index.php?id=73271})\\
-	``mit Server verbinden'': smb://ifsp.uni-trier.de/u\\		
+	``mit Server verbinden'': smb://ifsp.uni-trier.de/u\\
 \end{itemize}
 }
 
@@ -148,7 +148,7 @@ password=<Pwd Ihrer ZIMK-Nutzerkennung>
 	\textit{~[wird bei Ihnen nicht funktionieren da fehlende Rechte]}
 	\footnotesize
 \begin{itemize}
-	\item \textbf{Terminal}\\	
+	\item \textbf{Terminal}\\
 	\$ showmount -e mathetest\\
 	\$ sudo apt install nfs-common\\
 	\$ sudo mkdir <myMountPoint>\\
@@ -223,7 +223,7 @@ Mit dem Linux-Tool \ttt{rsync} lässt sich unidirektionale Dateisynchronisation 
 \item Variante 2: (Halb-)Automatisiert\\
 In der ersten Variante haben wir die Schritte zu Fuß einmalig umgesetzt. In der Praxis sollten diese Schritte besser anhand von bestimmten Auslösern (Zeitrhythmus, Dateiänderung,...) automatisiert ausgeführt werden.
 \begin{itemize}
-	\item Ggf. Automatisches mounten: Die Konfigurationsdatei \ttt{fstab} (Abkürzung für file system table, deutsch ‚Dateisystemtabelle‘) wird während des Bootens vom Befehl \texttt{mount} zeilenweise gelesen. Diese Konfigurationsdatei liegt im Verzeichnis \ttt{etc} und enthält eine Liste aller zu einzuhängender Datenspeicher. 
+	\item Ggf. Automatisches mounten: Die Konfigurationsdatei \ttt{fstab} (Abkürzung für file system table, deutsch ‚Dateisystemtabelle‘) wird während des Bootens vom Befehl \texttt{mount} zeilenweise gelesen. Diese Konfigurationsdatei liegt im Verzeichnis \ttt{etc} und enthält eine Liste aller zu einzuhängender Datenspeicher.
 	\item Synchronisation des eingehangenen Dateisystem per \ttt{rsync} (ggf. über \texttt{ssh}) automatisierten mithilfe des Cron-Daemon\footnote{Als Daemon bezeichnet man unter unixartigen Systemen einen Prozess, der im Hintergrund abläuft und bestimmte Dienste zur Verfügung stellt.}. Dieser dient allgemein der zeitbasierten Ausführung von Prozessen in unixartigen Betriebssystemen, um wiederkehrende Aufgaben (=\textit{Cronjobs}) zu automatisieren.
 \end{itemize}
 \demo{
@@ -243,7 +243,7 @@ Variante 4: Eine mächtige \link{https://de.wikipedia.org/wiki/Dateisynchronisat
 \begin{itemize}
 	\item \textbf{Dateisynchronisation} mit einem externen Speicher
 	\item \textbf{Sync clients} für verschiedene Betriebssysteme $\to$ können auf jeglichen Endgeräten arbeiten
-	\item \textbf{Versionskonflikte:} Wenn verschiedene Benutzer gleichzeitig dieselbe Datei verändern oder Internetverbindung an einem Client ausfällt, wird das von 
+	\item \textbf{Versionskonflikte:} Wenn verschiedene Benutzer gleichzeitig dieselbe Datei verändern oder Internetverbindung an einem Client ausfällt, wird das von
 	dem System bemerkt und es speichert Kopien der veränderten Datei unter einem modifizierten Namen, der auf die Inkonsistenz aufmerksam macht
 	\item \textbf{Zusammenarbeit}: Statt Dateien per Email zu verschicken, kann man dem Empfänger bspw. einfach einen link auf diese Dateien senden.
 	\item \textbf{Dateiversionierung und Snapshots}
@@ -260,15 +260,15 @@ Variante 4: Eine mächtige \link{https://de.wikipedia.org/wiki/Dateisynchronisat
 \textbf{Vorsicht}: Datenschutzgesetze in anderen Ländern\\
 Die Speicherung von Daten in einer Cloud setzt Vertrauen zu den Anbietern dieser Dienste voraus, wenn man ihnen Daten und Dokumente \textit{ohne eigene} Verschlüsselung\footnote{Es gibt Möglichkeiten: \ttt{cryFS, veracrypt}} anvertraut.
 \begin{itemize}
-	\item Einige Lösungen unterhalten Ihre Serverstruktur ausschließlich in Deutschland, weshalb der gesamte Datenverkehr den strengen deutschen Datenschutzgesetzen untersteht, mit der Folge zusätzlicher Sicherung gegen nicht autorisierten Zugriff. 
-	\item Wenige Lösungen bieten darüber hinaus noch eine Ende-zu-Ende-Verschlüsselung, durch welche die Daten bereits lokal auf dem eigenen Rechner verschlüsselt werden und somit bereits auf dem Weg zum Server hin sicher verschlüsselt sind. 
+	\item Einige Lösungen unterhalten Ihre Serverstruktur ausschließlich in Deutschland, weshalb der gesamte Datenverkehr den strengen deutschen Datenschutzgesetzen untersteht, mit der Folge zusätzlicher Sicherung gegen nicht autorisierten Zugriff.
+	\item Wenige Lösungen bieten darüber hinaus noch eine Ende-zu-Ende-Verschlüsselung, durch welche die Daten bereits lokal auf dem eigenen Rechner verschlüsselt werden und somit bereits auf dem Weg zum Server hin sicher verschlüsselt sind.
 \begin{itemize}
 	\item[$\to$] schützt gegen Abfangen der Daten in Form eines man-in-the-middle Angriffs
-	\item[$\to$] Aber: Anbieter können Daten entschlüsseln und zum Anfertigen von Benutzerprofilen verwenden -- das ist der Preis für kostenlosen Speicher inkl. Tools. Alleinige Verschlüsselung durch den Anbieter ist daher für wichtige Daten nicht zu empfehlen. 
+	\item[$\to$] Aber: Anbieter können Daten entschlüsseln und zum Anfertigen von Benutzerprofilen verwenden -- das ist der Preis für kostenlosen Speicher inkl. Tools. Alleinige Verschlüsselung durch den Anbieter ist daher für wichtige Daten nicht zu empfehlen.
 \end{itemize}
 \end{itemize}
 ~\\
-\textbf{``IT as a service''} 
+\textbf{``IT as a service''}
 Softwareanbieter brauchen ihre Programme nicht mehr zu verkaufen, sie stellen
 sie auf ihren eigenen Rechnern zur Verfügung und der Benutzer zahlt je nach Nutzung. Auch Hardware kann man sich nach Bedarf aus dem Netz holen. Rechenintensive Tasks werden unsichtbar auf Großrechner in der Wolke verlagert und der Benutzer zahlt nach CPU-Sekunden. Solche und ähnliche Angebote gibt es von Firmen wie Google, Amazon, IBM und anderen. Das Geschäftsmodell heißt: ``IT as a service''.
 %
@@ -289,7 +289,7 @@ sie auf ihren eigenen Rechnern zur Verfügung und der Benutzer zahlt je nach Nut
 }
 
 \subsubsection{\seafile}
-Bei den Anbietern  Dropbox, Google Drive, iCloud oder MS OneDrive lernen wir in der Regel nur die Kundenseite kennen. Es gibt jedoch auch freie Software, die exakt diese Dienste bereitstellen und uns damit ermöglicht einen eigenen unabhängigen Cloud-Speicher auf eigenen Servern mit völliger Kontrolle über die Daten aufzusetzen.\\ 
+Bei den Anbietern  Dropbox, Google Drive, iCloud oder MS OneDrive lernen wir in der Regel nur die Kundenseite kennen. Es gibt jedoch auch freie Software, die exakt diese Dienste bereitstellen und uns damit ermöglicht einen eigenen unabhängigen Cloud-Speicher auf eigenen Servern mit völliger Kontrolle über die Daten aufzusetzen.\\
 ~\\
 Bekannte Software ist: Nextcloud, ownCloud und eben auch \link{https://www.seafile.com/en/about/}{\seafile} \footnote{seafile ist ein chinesisches Unternehmen mit Sitz in Beijing,
 	China, first release 2012; Siehe auch https://www.seafile.com/en/about/}.\\~\\
@@ -307,7 +307,7 @@ mit ihrer ZIMK Kennung anmelden und es stehen Ihnen als StudentIn 16GB Cloud--Sp
 \begin{enumerate}
 		\item Lesen Sie die Informationen auf den Seiten der RARP:\\
 		\url{https://rarp.rlp.net/services/seafile}
-		\item Mit ZIMK Kennung anmelden auf: 
+		\item Mit ZIMK Kennung anmelden auf:
 			\begin{center}
 					\url{https://seafile.rlp.net/}
 			\end{center}
@@ -316,7 +316,7 @@ mit ihrer ZIMK Kennung anmelden und es stehen Ihnen als StudentIn 16GB Cloud--Sp
 			\item Erstellen Sie eine Markdown-, Excel- sowie Word-Datei im Browser zum testen.
 			\item Welche Optionen haben Sie, um diese Bibliothek mit anderen zu teilen?
 		\end{itemize}
-		\item Download Desktop \textbf{Syncing} Client (\textbf{nicht} Desktop Drive Client): 
+		\item Download Desktop \textbf{Syncing} Client (\textbf{nicht} Desktop Drive Client):
 			\begin{center}
 					\url{https://www.seafile.com/en/download/}
 			\end{center}
@@ -327,7 +327,7 @@ mit ihrer ZIMK Kennung anmelden und es stehen Ihnen als StudentIn 16GB Cloud--Sp
 		\end{itemize}
 		\item In Ihrem \textbf{\filemanager} unter \texttt{/home/user/Seafile/<ProjektName>/}
 		\begin{itemize}
-			\item Teilweise Verzeichnisstruktur von Abb. \ref{fig:vz-struktur-code} und \ref{fig:vz-struktur-text} anlegen 
+			\item Teilweise Verzeichnisstruktur von Abb. \ref{fig:vz-struktur-code} und \ref{fig:vz-struktur-text} anlegen
 		\end{itemize}
 		\item Richten Sie WebDAV ein: \link{https://rarp.rlp.net/services/seafile/seafile-hilfe/seafile-hilfe-bedienung-der-seafile-webseite/seafile-hilfe-webdav}{Anleitung} der RARP
 		\begin{itemize}

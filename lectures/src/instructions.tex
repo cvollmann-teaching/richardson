@@ -3,7 +3,7 @@
 \subsection{The Problem Formulation}
 
 \begin{equation} \label{eq:relRichardson}
-	x^{k+1} = x^k + \theta p^k=x^k - \theta(Ax^k - b),~~~~\theta > 0~\text{klein} .  
+	x^{k+1} = x^k + \theta p^k=x^k - \theta(Ax^k - b),~~~~\theta > 0~\text{klein} .
 	\end{equation}
 
 \subsection{Project Planing and Modularization}
@@ -14,9 +14,9 @@ Get an overview on all functionalities you need to implement:
 \end{enumerate}
 
 
-	
-		 
-	
+
+
+
 	\textbf{Modularisieren Set up directory structure}
 	\begin{enumerate}
 		\item \texttt{.../code/main.py}\\
@@ -36,11 +36,11 @@ Get an overview on all functionalities you need to implement:
 \subsection{Working Environment}
 
 		\textbf{PyCharm~Professional Edition installieren}
-	
+
 	\begin{enumerate}
 		\item Account anlegen mit ZIMK Kennung\\
 		\url{https://www.jetbrains.com/shop/eform/students}
-		\item Professional Edition herunterladen\\ 	
+		\item Professional Edition herunterladen\\
 		\url{https://www.jetbrains.com/help/pycharm/installation-guide.html}
 	\end{enumerate}
 
@@ -48,40 +48,40 @@ Get an overview on all functionalities you need to implement:
 %
 
 		\textbf{PyCharm~Projekt anlegen}
-	
+
 	\begin{enumerate}
 		\item \textbf{PyCharm Projekt} anlegen:\\
 		\url{https://www.jetbrains.com/help/pycharm/setting-up-your-project.html}\\~\\
 		PyCharm legt einen Ordner \texttt{\bf.idea} an
-	\end{enumerate}	
+	\end{enumerate}
 
 
 
 		\textbf{Virtual Environment Interpreter konfigurieren}~\\
-	
-	
+
+
 	Für jedes Projekt nutzen wir eine in sich geschlossene Komposition von Python Packages in Form einer python -venv (meist on-top zur Standard-Bibliothek)  \\~\\
 	In PyCharm~können wir das bequem aus der GUI heraus erledigen; dazu konfigurieren wir einen Interpreter:
 	\begin{enumerate}
 		\item[0.] \textbf{Voraussetzung:} Python muss systemweit installiert sein \url{https://www.python.org/downloads/}
-		\item \textbf{venv-Interpreter} konfigurieren: 
+		\item \textbf{venv-Interpreter} konfigurieren:
 		%	alle packages, die wir hier hinzufügen sind in dieser Umgebung immer vorhanden, sodass venv auch woanders benutzt werden kann
 		\begin{itemize}
 			\item \url{https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html}
 			\item strg+Alt+S (oder bei macOS:  \textbf{PyCharm} | \textbf{Preferences} )
-			\item In the Settings/Preferences dialog:\\ 
-			Ctrl+Alt+S | \textbf{Project: <project name>} | \textbf{Python Interpreter} | 
+			\item In the Settings/Preferences dialog:\\
+			Ctrl+Alt+S | \textbf{Project: <project name>} | \textbf{Python Interpreter} |
 			Click the The Configure project interpreter icon | select \textbf{Add...}
-			\item im Reiter \textbf{Virtual Environment} | New environment	
+			\item im Reiter \textbf{Virtual Environment} | New environment
 			\begin{itemize}
 				\item \textbf{Location: }/.../Projekt/.venv\\
 				$\to$ {\color{red}Wichtig:}  außerhalb von /.../Projekt/code anlegen, damit wir das nicht ständig syncen später mit \git
-				\item inherit site-packages: Optional können wir auch Pakete von der lokalen systemweiten Python Installation vererben		
+				\item inherit site-packages: Optional können wir auch Pakete von der lokalen systemweiten Python Installation vererben
 				%			 \item okay $\rightarrow$ Python 3.N (code)\\
 			\end{itemize}
 			\item  \textbf{Pakete} hinzufügen:\\~\\
 			Ctrl+Alt+S | \textbf{Project: <project name>} | \textbf{Python Interpreter} | +\\~\\
-			{\small \url{https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html}}		
+			{\small \url{https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html}}
 		\end{itemize}
 		\item \textbf{Run code:}\\ \url{https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html}
 		\begin{itemize}
@@ -90,11 +90,11 @@ Get an overview on all functionalities you need to implement:
 			\item Herumspielen: stop, run, see running processes
 		\end{itemize}
 	\end{enumerate}
-	
+
 
 
 		\textbf{requirements.txt automatisch synchronisieren}
-	
+
 	\begin{enumerate}
 		\item \textbf{requirements file:} \texttt{requirements.txt} with default configuration\\~\\
 		Unter:\\
@@ -103,7 +103,7 @@ Get an overview on all functionalities you need to implement:
 		siehe: \url{https://www.jetbrains.com/help/pycharm/managing-dependencies.html}\\~\\
 		$\to$ Mal ein anderes Paket installieren \textbf{und} verwenden/importieren.\\
 		$\to$ Dann \texttt{requirements.txt} updaten. Wurde das Paket hinzugefügt?
-	\end{enumerate}	
+	\end{enumerate}
 
 
 
@@ -115,20 +115,20 @@ Get an overview on all functionalities you need to implement:
 \subsection{Implement Linear Algebra Routine}
 
 
-	
+
 		\textbf{ Format für Matrizen und Vektoren}\\
-	
+
 	\begin{itemize}
 		\item \textbf{Vektoren:}\\ Implementieren Sie einen Vektor $x \in \Rn$ stets als Python-Liste (Basisdatentyp `list') der Länge $n$, deren Elemente (Vektoreinträge $x_i$ repräsentierend) vom Basisdatentyp `int' oder `float' sind.\\
-				{	 
+				{
 			~\\
 			Bemerkung: \vspace{-0.2cm}
 			\begin{itemize}
 				\item Warum list() (anstatt z.B. tuple())? Da wir Vektoren und Matrizen durch numerische Berechnungen und Verfahren manipulieren möchten, liegt es nahe, dass wir einen \textit{veränderlichen} Datentyp wählen.
 		\end{itemize}}
-	
+
 	 MAT
-	
+
 		\item \textbf{Matrizen:}\\ Implementieren Sie Matrizen wie in Abschnitt \ref{sec:sparseMatrix} beschrieben im CSR-Format (Compressed Sparse Row). Definieren Sie dafür eine Python Klasse $$\texttt{csr\_matrix}.$$ Sie können Listing \ref{csr-class} als Startpunkt verwenden. Implementieren Sie mindestens die folgenden Attribute und Methoden:
 		\begin{itemize}
 			\item \texttt{data, indices, indptr}
@@ -144,13 +144,13 @@ Get an overview on all functionalities you need to implement:
 				Eine Methode, welche eine Liste mit den Zeilen der Matrix (wiederum als Liste) ausgibt.
 			\end{itemize}
 		\end{itemize}
-			{	 
+			{
 		~\\
-		Bemerkung: 
+		Bemerkung:
 		\begin{itemize}
 			\item Die magische Funktion \texttt{\_\_matmul\_\_($self$, x)} (und damit der Operator \texttt{@}) kann typischerweise auch das Matrix--Matrix Produkt auswerten. Das vernachlässigen wir hier der Einfachheit halber.
 	\end{itemize}}
-	
+
 	\end{itemize}
 
 
@@ -159,18 +159,18 @@ Get an overview on all functionalities you need to implement:
 
 \textbf{Hilfsfunktion für Tridiagonal--Toeplitz--Matrizen}\\
 Implementieren Sie eine Funktion $$\texttt{A = csrTridiagToep(n, data)},$$ die ein Objekt \texttt{A} der obigen Klasse \texttt{csr\_matrix} automatisch erzeugt für eine Tridiagonal-Matrix deren Diagonalen konstant sind:
-$$\left(\begin{array}{rrrrr}                                
-b & c  &0   & \hdots   & 0 \\                                               
-a &  b & c  &    &   \vdots \\                                               
-0&  \ddots &  \ddots &\ddots  &0  \\ 
-\vdots  &    &  a &  b & c  \\ 
+$$\left(\begin{array}{rrrrr}
+b & c  &0   & \hdots   & 0 \\
+a &  b & c  &    &   \vdots \\
+0&  \ddots &  \ddots &\ddots  &0  \\
+\vdots  &    &  a &  b & c  \\
 0 &   \hdots  & 0& a  &  b \\
 \end{array}\right)\in \mathbb{R}^{n \times n}.$$
 Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratischen Matrix an und der Parameter \texttt{data} enthält die entsprechenden Diagonaleinträge (zum Beispiel in Form einer Liste \texttt{[a,b,c]}).\\~\\
 \textit{Hinweis:} Überlegen Sie sich zunächst wie die drei CSR--Listen \texttt{data, indices, indptr} hier im Allgemeinen (d.h. für allgemeine Parameter \texttt{n, data}) aussehen und implementieren Sie diese anschließend als Funktion abhängig von \texttt{(n, data)}. Zur Instanzerzeugung müssen Sie diese drei Listen dann nur noch an den Konstruktor der obigen Klasse \texttt{csr\_matrix} übergeben.\\
-		{	 
+		{
 	~\\
-	Bemerkung: 
+	Bemerkung:
 	\begin{itemize}
 		\item Eine Matrix, deren Diagonalen konstant sind, nennt man \textbf{Toeplitz} Matrix.
 		\item Siehe auch: \url{https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix}
@@ -180,12 +180,12 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 
 
-	
+
 		 \textbf{``Level 1'': Vektor--Rechenoperationen mit dem Basisdatentyp \texttt{list}}\\
-	
+
 	Implementieren Sie folgenden Funktionen geeignet als Python-Funktion und gehen Sie dabei davon aus, dass Vektoren in dem oben festgelegten Format (also als Python--Liste) an die Funktionen übergeben werden.
 	\begin{itemize}
-		\item Skalarmultiplikation: $\R \times \Rn \to \R,~(\lambda,x) \mapsto \alpha \cdot x$ 
+		\item Skalarmultiplikation: $\R \times \Rn \to \R,~(\lambda,x) \mapsto \alpha \cdot x$
 		$$\texttt{scal(alpha : float, x : list)}$$
 		\item Addition:  $\Rn \times \Rn \to \Rn,~(x,y) \mapsto \alpha x+y$
 		$$\texttt{axpy(x : list, y : list, alpha=1.)}$$
@@ -193,18 +193,18 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 		\item Euklidische Norm:   $\Rn \to [0,+\infty),~x \mapsto \|x\|_2 := \sqrt{\sum_{i=1}^n x_i^2}$
 		$$\texttt{nrm(x : list)}$$
 	\end{itemize}
-	~\\{ 
+	~\\{
 		Bemerkung:
 		Siehe auch Level 1 \link{https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms}{BLAS} Routines und \link{http://www.netlib.org/blas}{Official Website}}
 
 
 
-	
+
 		\textbf{ ``Level 2'': Matrix-Vektor Produkt}\\
 	~\\
-	Implementieren Sie eine Python--Funktion 
+	Implementieren Sie eine Python--Funktion
 	$$\texttt{y = csrmv(A : csr\_matrix, x : list),}$$ die als Input eine Matrix $A\in\Rmn$ (ein Objekt der Klasse \texttt{csr\_matrix}) und einen Vektor $x \in\Rn$ (eine Python--Liste) erwartet und als Ergebnis das Matrix-Vektor Produkt $y=Ax \in \Rm$ (als Python--Liste) ausgibt. Sehen Sie dazu auch nochmal Abschnitt \ref{sec:sparseMatrix}.\\
-	~\\~\\ 
+	~\\~\\
 	{
 		Bemerkung:
 		Siehe auch Level 2 \link{https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms}{BLAS} Routines und \link{http://www.netlib.org/blas}{Official Website}}
@@ -216,9 +216,9 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 		 \textbf{Iterativer Gleichungssystem-Löser mit dem Basisdatentyp \texttt{list}}\\
 	~\\
-	Implementieren Sie eine Python--Funktion 
+	Implementieren Sie eine Python--Funktion
 	$$\texttt{richardson(A : csr\_matrix, b : list, x0 : list, theta=.1, maxiter=500, tol=1e-08)},$$
-	die das relaxierte Richardson-Verfahren 
+	die das relaxierte Richardson-Verfahren
 	$$x_{k+1} = x_k - \theta (Ax_k -b) $$
 	implementiert. Als Eingabe wird erwartet:
 	\begin{itemize}
@@ -237,7 +237,7 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 	\end{itemize}
 	Das Verfahren soll abbrechen, sobald das Residuum hinreichend klein ist, d.h.
 	$$\|Ax_k-b\|_2 < \ttt{tol}$$
-	oder die maximale Anzahl \ttt{maxiter} an Iterationsschritten erreicht ist. 
+	oder die maximale Anzahl \ttt{maxiter} an Iterationsschritten erreicht ist.
 	~\\~\\
 	{
 		Siehe \link{https://de.wikipedia.org/wiki/LAPACK}{LAPACK} aufbauend auf BLAS\\
@@ -246,31 +246,31 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 
 
-	
+
 		 \textbf{Beispiele rechnen}\\
 	~\\
 	Wenden Sie Ihren Löser \textbf{\ttt{richardson(...)}} mindestens auf die folgenden zwei Beispiele an:
 	\begin{enumerate}
 		\item Lösen Sie	$$
-		A_1 = n^2 \left(\begin{array}{rrrrr}                                
-		2 & -1  &0   & \hdots   & 0 \\                                               
-		-1 &  2 & -1  &    &   \vdots \\                                               
-		0&  \ddots &  \ddots &\ddots  &0  \\ 
-		\vdots  &    &  -1 &  2 & -1  \\ 
+		A_1 = n^2 \left(\begin{array}{rrrrr}
+		2 & -1  &0   & \hdots   & 0 \\
+		-1 &  2 & -1  &    &   \vdots \\
+		0&  \ddots &  \ddots &\ddots  &0  \\
+		\vdots  &    &  -1 &  2 & -1  \\
 		0 &   \hdots  & 0& -1  &  2 \\
-		\end{array}\right)\in \mathbb{R}^{n \times n},~~~  
-		b = \left(\begin{array}{rrrrr}                                
-		1 \\                                               
-		\\                                               
-		\vdots  \\ 
-		\\ 
-		1  \\ 
-		\end{array}\right) \in \mathbb{R}^{n}, ~~~x_0 =  \left(\begin{array}{rrrrr}                                
-		0 \\                                               
-		\\                                               
-		\vdots  \\ 
-		\\ 
-		0  \\ 
+		\end{array}\right)\in \mathbb{R}^{n \times n},~~~
+		b = \left(\begin{array}{rrrrr}
+		1 \\
+		\\
+		\vdots  \\
+		\\
+		1  \\
+		\end{array}\right) \in \mathbb{R}^{n}, ~~~x_0 =  \left(\begin{array}{rrrrr}
+		0 \\
+		\\
+		\vdots  \\
+		\\
+		0  \\
 		\end{array}\right) \in \mathbb{R}^{n},$$ 	für \underline{verschiedene} Dimensionen $n$.
 		\item Ersetzen Sie $A_1$ im obigen Beispiel durch
 		$$
@@ -286,9 +286,9 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 
 
-  
+
 \textbf{Allgemeine Anforderungen an das Projekt:}\\
-	
+
 	\begin{itemize}
 		\item Strukturieren Sie Ihre Implementierung sinnvoll. Orientieren Sie sich dabei an der während des Kurses entwickelten Modularisierung.
 		\item Testen Sie jede einzelne Funktion ausführlich.
@@ -305,21 +305,21 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 \subsection{Code Documentation}
 
-	
+
  \textbf{Dokumentation erstellen mit \texttt{sphinx}}\\
-	
+
 	\begin{enumerate}
-		\item Lesen Sie die offizielle	Dokumentation:		
-		
+		\item Lesen Sie die offizielle	Dokumentation:
+
 			\url{https://www.sphinx-doc.org/en/master/index.html}
-		
+
 		\item Generieren Sie eine html--Dokumentation Ihres Codes mithilfe von \texttt{sphinx}. Setzen Sie dabei mindestens die folgenden Punkte um:
 		\begin{itemize}
 			\item Wählen Sie bewusst ein \texttt{html\_theme}
 			\item Verwenden Sie mindestens die folgenden Direktiven:
 			\begin{itemize}
 				\item \texttt{.. toctree::}
-				\item \texttt{.. autosummary::}	     
+				\item \texttt{.. autosummary::}
 				\item \texttt{.. code-block::}
 				\item \texttt{.. autofunction::}
 				\item \texttt{.. autoclass::}
@@ -336,7 +336,7 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 \subsection{Write Paper with \LaTeX}
 
-	
+
  \textbf{\LaTeX~über die Konsole}\\
 	~\\
 	(evlt. inclass vorführen mit GUI und Terminal nebeneinander)
@@ -345,9 +345,9 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 		\item ssh auf remote (syrma.uni-trier.de) [ggf. über web-interface guacamole]
 		\item im home-Verzeichnis:\\
 		Ein .tex-Skript mit einem Editor, zB nano, anlegen\
-		
+
 			\$ nano text.tex
-		
+
 		und ein paar \LaTeX-Befehle wie \latexCommand{section}{Kapitel} einbauen; Minimalbeispiel\\[0.1cm]
 		\hspace*{0.5cm}\latexCommand{documentclass}{article}\\
 		\hspace*{0.5cm}\latexCommand{begin}{document}\\
@@ -355,38 +355,38 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 		\hspace*{0.5cm}\hspace*{0.5cm}...\\
 		\hspace*{0.5cm}\latexCommand{end}{document}\\
 		\item \LaTeX-Compiler, hier \texttt{pdflatex}, auf diese Datei anwenden
-		
+
 			\$ pdflatex text.tex
-		
+
 		\item Datei im Terminal anschauen z.B. via
-		
+
 			\$ less text.pdf
-		
+
 		oder, falls X-Window vorhanden, mit einem pdf-Betrachter anschauen, zB:
-		
+
 			\$ xdg-open text.pdf
-		
+
 		\item .pdf Datei auf die lokale Maschine kopieren, zB via sftp:\\
 		via sftp prompt:
-		
+
 			\$ sftp vollmann@syrma.uni-trier.de
-			
+
 		oder im Dateimanager:
-		
+
 			sftp://vollmann@syrma.uni-trier.de
-		
+
 	\end{enumerate}
 
 
 
-	
+
 	\textbf{\texstudio~installieren und nutzen}\\
-	
+
 	\begin{enumerate}
 		\item Laden Sie \texstudio~herunter und installiere es auf Deinem System:
-		
+
 			\url{https://www.texstudio.org/\#Download}
-		
+
 		\item Führen Sie die Schritte von oben nun mit \texstudio~anstatt über die Konsole aus.
 	\end{enumerate}
 	~\\
@@ -396,9 +396,9 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 
 
-	
+
 	 \textbf{Text--Projekt modularisieren}\\
-	
+
 	Legen Sie die folgenden Verzeichnisse und Dateien von Abbildung \ref{fig:vz-struktur-text} an:
 	\begin{enumerate}
 		\item \texttt{<PATH>/meta.tex}
@@ -406,7 +406,7 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 			\item Mindestens folgende Variablen setzen: \\
 			\hspace*{0.5cm}\texttt{\textbackslash title\{<ProjektName>\}}\\
 			\hspace*{0.5cm}\texttt{\textbackslash author\{Name\}} mit \latexCommand{thanks}{...}\\
-			\hspace*{0.5cm}\texttt{\textbackslash date\{Jahr (, Datum, today)\}}	
+			\hspace*{0.5cm}\texttt{\textbackslash date\{Jahr (, Datum, today)\}}
 		\end{itemize}
 		\item \texttt{<PATH>/usepackages.tex}
 		\begin{itemize}\small
@@ -444,11 +444,11 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 			\item In dieser Datei: \texttt{\latexCommand{section}{Das ist ein Kapitel}}
 			\item mindestens einen bib Eintrag zitieren \latexCommand{cite}{bibTag}
 			%		\item  appendix \texttt{\latexCommand{section}{Appendix}}
-		\end{itemize}	
+		\end{itemize}
 		\item \texttt{<PATH>/main.tex}\\\small
 		Haupteingabedatei mithilfe derer wir alles zusammenkleben. Siehe Abbildung \ref{fig:main.tex} für einen möglichen Aufbau.\\
 		Die \textbf{Mindestanforderungen} an das Projekt sind:\vspace{-0.1cm}
-		\begin{itemize} 
+		\begin{itemize}
 			\item importiere .tex-Bausteine via \latexCommand{input}{...} (oder \latexCommand{include}{...}, \latexCommand{usepackage}{...},...)
 			\item Titelseite mit Abstract
 			\item Table of Content
@@ -469,9 +469,9 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 
 ~\\
 \begin{figure}[h!]
-	
+
 \textbf{\texttt{<PATH>/text/main.tex}}\\
-	
+
 	\hspace*{0.5cm}\latexCommand{\bf documentclass}{\bf article}
 	\ttt{\color{gray}\% mandatory start of a .tex file; determines type of text}\\
 	\hspace*{0.5cm}\ttt{\color{gray} \% Preamble: Load packages, ...}\\
@@ -511,12 +511,12 @@ Demnach gibt der Parameter \texttt{n} (\texttt{int}) die Dimension der quadratis
 \end{figure}
 
 
-	
+
 	\textbf{Mathematischer Aufsatz }\\
-	~\\Verfassen Sie einen kurzen mathematischen Aufsatz 
+	~\\Verfassen Sie einen kurzen mathematischen Aufsatz
 	$$	 \texttt{<PATH>/text/} $$
-	mit \LaTeX~über das Richardson--Verfahren und stellen Sie Ihre numerischen Ergebnisse vor. Modularisieren Sie Ihr \LaTeX--Projekt sinnvoll (siehe dazu \ref{fig:vz-struktur-text} und \ref{fig:main.tex}) und setzen Sie die oben erwähnten \textbf{Mindestanforderungen} um. \\	
-	
+	mit \LaTeX~über das Richardson--Verfahren und stellen Sie Ihre numerischen Ergebnisse vor. Modularisieren Sie Ihr \LaTeX--Projekt sinnvoll (siehe dazu \ref{fig:vz-struktur-text} und \ref{fig:main.tex}) und setzen Sie die oben erwähnten \textbf{Mindestanforderungen} um. \\
+
 	\textbf{Bemerkung:} Hierbei liegt der Schwerpunkt auf dem gesamten Arbeitsablauf und weniger auf dem Inhalt.
 
 
@@ -559,35 +559,35 @@ korrespondiere schritte auch übers terminal ausführen:\\
 	Ordner "code" mit PyCharm als Anwendung öffnen\\
 	PyCharm legt einen Ordner \texttt{.idea} an
 	A project in PyCharm is represented in the Directory Based Format. A project directory is marked with project icon icon.
-	
+
 	Such project directory contains the .idea directory, with the following files:
-	
+
 	.iml file that describes the project structure.
-	
+
 	workspace.xml file that contains your workspace preferences.
-	
+
 	A number of xml files. Each xml file is responsible for its own set of settings, that can be recognized by its name: projectCodeStyle.xml, encodings.xml, vcs.xml, and so on.
-	
+
 	Thus, for example, adding a new run/debug configuration and changing encoding will affect two different xml files. This helps avoid merge conflicts when the project settings are stored in a version control system and modified by the different team members.
-	
+
 	All the settings files in the .idea directory should be put under version control except workspace.xml, which stores your local preferences. The workspace.xml file should be marked as ignored by VCS.
-	
+
 	.idea directory is not visible in the Project view of the Project tool window.
 	\item \textbf{Interpreter}\\
 	können mehrere Interpreter festlegen\\
 	Python installiert? \url{https://www.python.org/downloads/}~\\~\\
 	\textbf{system}\\~\\
-	\textbf{venv} 
+	\textbf{venv}
 	alle packages die wir hier hinzufügen sind in dieser umgebung immer vorhanden, sodass venv auch woanders benutzt werden kann
 	\begin{itemize}
 		\item \url{https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html}
 		\item strg+Alt+S
-		\item In the Settings/Preferences dialog Ctrl+Alt+S, select Project <project name> | Python Interpreter. Click the The Configure project interpreter icon and select Add.	
+		\item In the Settings/Preferences dialog Ctrl+Alt+S, select Project <project name> | Python Interpreter. Click the The Configure project interpreter icon and select Add.
 		\item Location: /.../Projekt\_/.venv  (außerhalb von code anlegen, damit wir das nicht ständig syncen)
 		\item okay --> Python 3.8 (code)
 		\item inherit site-packages
 		\item \textbf{add packages}\\
-		\url{https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html}\\		
+		\url{https://www.jetbrains.com/help/pycharm/installing-uninstalling-and-upgrading-packages.html}\\
 	\end{itemize}
 	\item \textbf{requirements file:} \texttt{requirements.txt} with default configuration\\
 	\url{https://www.jetbrains.com/help/pycharm/managing-dependencies.html#populate_dependency_files}\\
@@ -609,13 +609,13 @@ korrespondiere schritte auch übers terminal ausführen:\\
 		\item Local History\\
 		\url{https://www.jetbrains.com/help/pycharm/local-history.html}
 	\end{itemize}
-	
+
 	\item \textbf{Run code:}\\ \url{https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html}\\
 	\begin{itemize}
 		\item edit config: fenster erklären --> Hälchen bei "run with python console"
 		\item stop, run, see running processes
 	\end{itemize}
-	
+
 	\item \textbf{Debug}\\
 	\url{https://www.jetbrains.com/help/pycharm/debugging-code.html#general-procedure}
 	\item \textbf{Test??}\\
@@ -637,7 +637,7 @@ korrespondiere schritte auch übers terminal ausführen:\\
 		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{customization}/commands.tex}
 		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{customization}/usepackages.tex}
 		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{customization}/style.tex}
-		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{literature}/literature.bib}			
+		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{literature}/literature.bib}
 		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{paper}/articleStyle.tex}
 		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{paper}/abstract.tex}
 		\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{paper}/articleContent1.tex}
@@ -651,7 +651,7 @@ korrespondiere schritte auch übers terminal ausführen:\\
 		\item Mindestens folgende Variablen setzen: \\
 		~~~\texttt{\textbackslash title\{ProjektName\}}\\
 		~~~\texttt{\textbackslash author\{Name\}} mit \latexCommand{thanks}{...}\\
-		~~~\texttt{\textbackslash date\{Jahr, Datum, today\}}	
+		~~~\texttt{\textbackslash date\{Jahr, Datum, today\}}
 	\end{itemize}
 	\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{customization}/commands.tex}
 	\begin{itemize}
@@ -681,7 +681,7 @@ korrespondiere schritte auch übers terminal ausführen:\\
 		\item mindestens einen bib Eintrag zitieren \latexCommand{cite}{bibTag}
 		\item  appendix \texttt{\latexCommand{section}{Appendix}}
 		\item \textbf{\color{red}Prinzipiell müssen wir für ein neues Projekt nur diese Dateien austauschen!}
-	\end{itemize}	
+	\end{itemize}
 	\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{paper}/abstract.tex}
 	\begin{itemize}
 		\item kleine Zfs des papers \latexCommand{begin}{abstract}...\latexCommand{end}{abstract}
@@ -689,7 +689,7 @@ korrespondiere schritte auch übers terminal ausführen:\\
 	\item \texttt{/home/user/Seafile/ProjektName/text/\textbf{paper}/main\_article.tex}
 	\begin{itemize}
 		\item hier wird das paper geschrieben
-		\item[] Mindestanforderung: 
+		\item[] Mindestanforderung:
 		\item globale \texttt{.tex} importieren
 		\item Titelseite
 		\item abstract
@@ -708,13 +708,13 @@ korrespondiere schritte auch übers terminal ausführen:\\
 	\end{figure}
 	Bemerkung: style sollte typischerweise erst nach usepackges importiert werden...
 	\item[] article documentclass modifizieren in style?
-	\begin{itemize}	
-		\item ...	
+	\begin{itemize}
+		\item ...
 	\end{itemize}
-	\item[] \textbf{Variable (Projekt-spezifisch) sind:} \texttt{meta, abtract, articleContent, beamerContent, literature}	
+	\item[] \textbf{Variable (Projekt-spezifisch) sind:} \texttt{meta, abtract, articleContent, beamerContent, literature}
 	~\\
-	\item[] \textbf{\large TALK}	
-	\item 
+	\item[] \textbf{\large TALK}
+	\item
 \end{enumerate}
 
 

@@ -52,7 +52,7 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 )
 (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2020-02-14 L3 programming layer (loader) 
+Package: expl3 2020-02-14 L3 programming layer (loader)
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
@@ -251,7 +251,7 @@ LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/chancery.sty
-Package: chancery 2005/04/12 PSNFSS-v9.2a (SPQR) 
+Package: chancery 2005/04/12 PSNFSS-v9.2a (SPQR)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
@@ -821,7 +821,7 @@ e
 * paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
+* modes:
 * h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
 * v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
 * \paperwidth=597.50787pt
@@ -890,7 +890,7 @@ LaTeX Font Info:    Trying to load font information for U+lasy on input line 9.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) (./src/abstract.tex
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line
 7.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
@@ -934,10 +934,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--60
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
-<to be read again> 
-                   \relax 
+<to be read again>
+                   \relax
 l.66 $$\Rn \to \Rn, ~x \mapsto A\cdot x $$
                                            [1
 
@@ -966,10 +966,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--105
 
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has
 been already used, duplicate ignored
-<to be read again> 
-                   \relax 
+<to be read again>
+                   \relax
 l.105 ...olge $$x^{k+1} := f(x^k) := Mx^k + Nb. $$
                                                    [2]
 Underfull \hbox (badness 10000) in paragraph at lines 133--136
@@ -1061,7 +1061,7 @@ Missing character: There is no . in font nullfont!
 Missing character: There is no 0 in font nullfont!
 
 Overfull \hbox (9.38327pt too wide) in paragraph at lines 346--347
-[][] 
+[][]
  []
 
 [8]
@@ -1080,7 +1080,7 @@ Package pdftex.def Info: ./media//ProjectMindMap2.pdf  used on input line 427.
 (pdftex.def)             Requested size: 628.8074pt x 444.4223pt.
 
 Overfull \hbox (145.11053pt too wide) in paragraph at lines 426--428
- [][] 
+ [][]
  []
 
 
@@ -1263,7 +1263,7 @@ LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 266.
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line
 293.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
@@ -1282,13 +1282,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 379--386
 Overfull \hbox (56.04214pt too wide) in paragraph at lines 406--408
 []\T1/cmss/m/n/10 Type An-no-ta-ti-ons: []$\T1/cmtt/m/n/10 https : / / sphinxco
 ntrib-[]napoleon . readthedocs . io / en / latest / index . html # type-[]annot
-ations$[] 
+ations$[]
  []
 
 
 Overfull \hbox (15.50368pt too wide) in paragraph at lines 421--421
 []\T1/cmss/bx/n/12 Reference Gui-de: Au-to-ma-tisch al-le Code-Bestandteile auf
--lis-ten mit \T1/cmtt/m/n/12 .. autosummary:: 
+-lis-ten mit \T1/cmtt/m/n/12 .. autosummary::
  []
 
 
@@ -1417,7 +1417,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 257--275
 [29]
 Overfull \hbox (8.43909pt too wide) in paragraph at lines 282--283
 []$\T1/cmtt/m/n/10 https : / / de . overleaf . com / learn / latex / Bibliograp
-hy _ management _ with _ biblatex # Reference _ guide$[] 
+hy _ management _ with _ biblatex # Reference _ guide$[]
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1692,7 +1692,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
 Overfull \hbox (67.03088pt too wide) in paragraph at lines 598--600
 []$\T1/cmtt/m/n/9 https : / / www . jetbrains . com / help / pycharm / configur
-ing-[]keyboard-[]and-[]mouse-[]shortcuts . html # add-[]keyboard-[]shortcut$[] 
+ing-[]keyboard-[]and-[]mouse-[]shortcuts . html # add-[]keyboard-[]shortcut$[]
 
  []
 
@@ -1742,7 +1742,7 @@ Underfull \hbox (badness 6978) in paragraph at lines 20--20
 
 
 Overfull \hbox (2.05504pt too wide) in paragraph at lines 40--62
-[] [] 
+[] []
  []
 
 [48
@@ -2264,7 +2264,7 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 37.
- ) 
+ )
 Here is how much of TeX's memory you used:
  24740 strings out of 481239
  457267 string characters out of 5920377
@@ -2314,4 +2314,3 @@ PDF statistics:
  1341 compressed objects within 14 object streams
  420 named destinations out of 1000 (max. 500000)
  609 words of extra memory for PDF output out of 10000 (max. 10000000)
-

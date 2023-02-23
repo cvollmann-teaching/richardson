@@ -23,6 +23,7 @@ class csr_matrix:
 
 
     """
+
     def __init__(self, csrTuple, shape=None):
         _data, _indices, _indptr = csrTuple
         if shape:
@@ -34,6 +35,5 @@ class csr_matrix:
     def toarray():
         pass
 
-    def __matmul__(a,b):
+    def __matmul__(a, b):
         pass
-

@@ -20,11 +20,11 @@
 - python venv interpreter einrichten
 
 - Docstring Format
-   **str alt s | Tools | Python Integrated Tools**  | Docstrings > Docstring Format: NumPy 
+   **str alt s | Tools | Python Integrated Tools**  | Docstrings > Docstring Format: NumPy
 
 - in `src/`
 
-    - __init__ 
+    - __init__
 
     - linalg.py
       - class csr_matrix
@@ -32,14 +32,14 @@
       - def scal()
       - def nrm()
       - def csrmv()
-    
+
 
    - in **main.py**
      - import src
      - if __name___
      - ....
      - edit config: run with console
-     
+
 
    - linalg.py etwas ausbauen
      - `def tests()`...
@@ -60,12 +60,12 @@
        - pip3 install numpy
        - siehe .venv/lib/site-packages
        - import numpy
-    
+
 
 
    - requirements.txt
      - ggf. plugin installieren
-     - dann import und requirements.txt updaten 
+     - dann import und requirements.txt updaten
 
 
 # Dokumentation mit `sphinx`
@@ -90,19 +90,19 @@
     - gui: strg+alt+s: project, interpreter --> install sphinx
     - terminal: pip3 install sphinx
 
-## **Getting Started** 
+## **Getting Started**
   - pycharm: terminal (.venv)  \$
 
    - Intressehalber Version checken: `sphinx-build --version`
 
-      
+
 
 **in `code/`**
 
    - `sphinx-quickstart <PATH-to-ROOTDIR>` (hier einfach `docs/`)
 
       - sep source and build: y
-      - name: 
+      - name:
       - release: 0.1
 
    - Verzeichnis docs/ inspizieren
@@ -127,7 +127,7 @@
    - wir öffnen die Datei `index.html`mit einer geeigneten Software (=Browser)
      - zB mal nach der Notiz suchen
    - `index.rst` [in reStructuredText] becomes index.html
-     - The file index.rst created by sphinx-quickstart is the root document, whose main function 
+     - The file index.rst created by sphinx-quickstart is the root document, whose main function
        is to serve as a welcome page and to contain the root of the “table of contents tree” (or toctree).
        alternativer build command ist nun: `make html` in docs/
 
@@ -137,7 +137,7 @@
    - siehe auch: ` $ locate sphinx-*` (ggf. `sudo updatedb` notwendig)
      (alternativ: `type sphinx-*`)
 
-   
+
 
 ## Maßschneiderung/Costumization `conf.py`
 
@@ -151,31 +151,31 @@
   - **builtin schemes**
     - https://www.sphinx-doc.org/en/master/usage/theming.html#builtin-themes
     - Zb `classic`
-    - in conf.py: `html_theme = 'classic'` 
+    - in conf.py: `html_theme = 'classic'`
     - ...`docs/ $ make html`
   - **third-party schemes**
     - https://sphinx-themes.org/
     - zB `sphinx-rtd-theme (read the docs)`
     - muss installiert werden (da nicht in standard sphinx installation enthalten)
       - `pip install sphinx-rtd-theme` oder über GUI
-    - in conf.py: `html_theme = 'sphinx_rtd_theme'` 
-    
-    
+    - in conf.py: `html_theme = 'sphinx_rtd_theme'`
+
+
 
 ## **Struktur ausbauen**
 
  - Neue Unterseiten anlegen, zB
    `docs/source/usage.rst`
-   
+
    mit Inhalt:
    ```reStructuredText
    Überschrift
    ===========
-   
+
    Etwas Text, blabla
-   
+
    .. code-block:: console
-   
+
       (.venv) $ pip install sphinx
    ```
  - build
@@ -184,11 +184,11 @@
  - in unserer Hauptdatei zum Inhaltsbaum hinzufügen:
    ```reStructuredText
    .. toctree::
-   
+
       usage
    ```
 
-    
+
 
 ## **Synchronisation von Code und Dokumentation: `autodoc`**
 
@@ -202,29 +202,29 @@
  - nun können wir zum Beispiel folgene Direktiven verwenden
   ```reStructuredText
    .. autofunction:: src.linalg.axpy
-   
+
    .. autoclass:: src.linalg.csr_matrix
   ```
 
 
  - Wir bekommen weiterhin Fehler, da die relativen Pfade src.linalg nicht erkannt werden, daher den absoluten Pfad zu `<PATH>/code/` dem .venv Interpreter mitgeben:
-   
+
 
    - **Pfade zum code hinzufügen in conf.py**
-   
+
    ```python
    import pathlib
    import sys
    sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
    ```
-   Der String `pathlib.Path(__file__).parents[2].resolve().as_posix()`sollte genau den Pfad zu `/.../code/` enthalten 
-   
+   Der String `pathlib.Path(__file__).parents[2].resolve().as_posix()`sollte genau den Pfad zu `/.../code/` enthalten
+
 
 
  - Wir bekommen weiterhin einen Fehler, da docstring kein reStructuredText sind
    sondern NumPy Format
-   
-   
+
+
 
 ## **docstring Style:** reStructuredText, NumPy, Google
 
@@ -246,11 +246,11 @@ Nun auch nochmal schauen:
  - module
  - Search Page
 
-   
+
 
 ## Reference Guide: Automatisch alle Code-Bestandteile auflisten mit `.. autosummary::`
 
-   - API references/Reference Guide VS User Guide 
+   - API references/Reference Guide VS User Guide
    - wir legen dazu eine neue Unterseite an:`api.rst`
    - toctree in `index.rst` ergänzen
    - Die Direktive `.. autosummary::` wird durch die Extension `sphinx.ext.autosummary` freigeschaltet
@@ -258,7 +258,7 @@ Nun auch nochmal schauen:
      ```reStructuredText
      .. autosummary::
          :toctree: generated
-     
+
          src.linalg
      ```
 
@@ -268,7 +268,7 @@ Nun auch nochmal schauen:
 
   - extension aktivieren: `sphinx.ext.viewcode`
 
-   
+
 
 ## **Cross--References: Links innerhalb der Dokumentation**
 
@@ -281,13 +281,12 @@ Nun auch nochmal schauen:
 
 ## **Mathematische Formeln** `.. math::`
 
-   
+
 
 ## **Andere Build-Formate**
 
  - in code/docs/
-   `make latexpdf` 
-   
+   `make latexpdf`
+
  - oder in code/
    `sphinx-build -b latex docs/source/ docs/build/latex/`
-

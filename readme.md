@@ -4,8 +4,8 @@
 
 
 - This repo contains: the small tutorials (just notes for inclass development, in german), the corresponding instructions (below) and the almost complete worked examples.
-  
-- In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch -- an iterative solver for linear systems: 
+
+- In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch -- an iterative solver for linear systems:
 
   $$
   x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
@@ -13,7 +13,7 @@
 
 - We will implement our own classes for vectors and CSR matrices and overload common operators such as `+/-, *, @` (later you can easily substitute them with the corresponding numpy.ndarray and scipy.sparse.csr_matrix).
 
-- Heat equation: explicit Euler 
+- Heat equation: explicit Euler
 
 <img src="examples/out/static/heat_equation.gif" alt="heat_equation" style="zoom:60%;" />
 
@@ -154,7 +154,7 @@
 ## Clean Code
 
 - Read PEP8 Style Guide: https://www.python.org/dev/peps/pep-0008/
-- Good names; 
+- Good names;
 - Python formatter: `black`
 - Code inspection in PyCharm: https://www.jetbrains.com/help/pycharm/tutorial-code-quality-assistance-tips-and-tricks.html#ddc30fc6
 - Verwenden Sie bei allen Funktionen und Objekten aussagekräftige Namen und  Docstrings in einem einheitlichen Format (NumPy, Google, reStructuredText).
@@ -163,11 +163,11 @@
 
 
 
-## Implement class `vector` 
+## Implement class `vector`
 
 In `src/linalg.py`:
 
-1. Inherit from `list` 
+1. Inherit from `list`
 
    ```python
    class vector(list)
@@ -184,7 +184,7 @@ In `src/linalg.py`:
    - Side remark: Also See Level 1 BLAS Routines:
      - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
      - http://www.netlib.org/blas
-   
+
 3. Write appropriate test files `test_*.py` which you put into the directory `tests`
 
    - Create Run Configuration for your tests
@@ -222,7 +222,7 @@ In `src/linalg.py`:
 2. implement magic methods
    1. `__matmul__(self, x : vector) -> vector`
      - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
-     - `A @ x = A.__matmul__(x)`                   
+     - `A @ x = A.__matmul__(x)`
      - For simplicity we neglect the capability of evaluating also the matrix--matrix product.
      - Side remark: This next level of complexity can be classified into Level 2 BLAS routines:
           - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
@@ -234,13 +234,13 @@ In `src/linalg.py`:
 
    - Create Run Configuration for your tests
 
-## Implement helper function `csr_tridiag_toep(n, data)` 
+## Implement helper function `csr_tridiag_toep(n, data)`
 
 In `src/linalg.py`:
 
 In order to run some examples later on, it would be nice to have a function which creates certain CSR-tuples. For matrices with some particular structure the CSR-lists can be easily obtained. In fact, we implement a function which builds [tridiagonal Toeplitz matrices](https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix).
 
-1. Implement a function 
+1. Implement a function
 
   ```python
   csr_tridiag_toep(n : int, data : tuple) -> csr_matrix
@@ -249,11 +249,11 @@ In order to run some examples later on, it would be nice to have a function whic
   that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
 
 ```math
-  \begin{pmatrix}                              
-  b & c  &0   & \cdots   & 0 \\                                               
-  a &  b & c  &    &   \vdots \\                                               
-  0&  \ddots &  \ddots &\ddots  &0  \\ 
-  \vdots  &    &  a &  b & c  \\ 
+  \begin{pmatrix}
+  b & c  &0   & \cdots   & 0 \\
+  a &  b & c  &    &   \vdots \\
+  0&  \ddots &  \ddots &\ddots  &0  \\
+  \vdots  &    &  a &  b & c  \\
   0 &   \cdots  & 0& a  &  b \\
   \end{pmatrix}\in \mathbb{R}^{n \times n}.
 ```
@@ -271,12 +271,12 @@ In order to run some examples later on, it would be nice to have a function whic
 
 In `src/iterative_solver.py`:
 
-1. Implement the relaxed Richardson iteration 
+1. Implement the relaxed Richardson iteration
 
    $$
    x_{k+1} = x_k - \theta (Ax_k -b)
    $$
-   
+
    as a function
 
    ```python
@@ -322,28 +322,28 @@ See also LAPACK built on BLAS: https://de.wikipedia.org/wiki/LAPACK
 1. **Heat Equation**
 
    Solve $A_1x =b$, with
-   
+
 ```math
-A_1 = n^2 \begin{pmatrix}                                
-2 & -1  &0   & \cdots   & 0 \\                                               
--1 &  2 & -1  &    &   \vdots \\                                               
-0&  \ddots &  \ddots &\ddots  &0  \\ 
-\vdots  &    &  -1 &  2 & -1  \\ 
+A_1 = n^2 \begin{pmatrix}
+2 & -1  &0   & \cdots   & 0 \\
+-1 &  2 & -1  &    &   \vdots \\
+0&  \ddots &  \ddots &\ddots  &0  \\
+\vdots  &    &  -1 &  2 & -1  \\
 0 &   \cdots  & 0& -1  &  2 \\
 \end{pmatrix}\in \mathbb{R}^{n \times n},
-~~~b = \begin{pmatrix}                                
-1 \\                                               
-\\                                               
-\vdots  \\ 
-\\ 
-1  \\ 
-\end{pmatrix} \in \mathbb{R}^{n}, 
-~~~x_0 =  \begin{pmatrix}                             
-0 \\                                               
-\\                                               
-\vdots  \\ 
-\\ 
-0  \\ 
+~~~b = \begin{pmatrix}
+1 \\
+\\
+\vdots  \\
+\\
+1  \\
+\end{pmatrix} \in \mathbb{R}^{n},
+~~~x_0 =  \begin{pmatrix}
+0 \\
+\\
+\vdots  \\
+\\
+0  \\
 \end{pmatrix}\in \mathbb{R}^{n},
 ```
 
@@ -352,7 +352,7 @@ A_1 = n^2 \begin{pmatrix}
 2. **Regularized Heat Equation**
 
    Replace $A_1$ in the above example with
-   
+
 $$
    A_2 = A_1 + \delta I
 $$
@@ -363,12 +363,12 @@ for $\delta > 0$ and $I \in \mathbb{R}^{n\times n}$ the identity matrix. Run you
 **Remarks:**
 
 -   Put the configuration for these examples in `examples/example1.py` etc. and run your examples in `main.py` where you mainly call the function `richardson`with the input parameters defined in the example files.
-    
+
 -   If your method does not converge, try it with a (very) small relaxation parameter $\theta$ and a large
     maximum number of iterations `maxiter`. The matrix $A_1$ above is "ill-conditioned" and the Richardson method may need (very!) many iterations to achieve a sufficiently small error. For matrix $A_2$, on the other hand, you should observe a significant improvement for increasing $\delta$.
-    
+
 -   The matrices $A_1$ and $A_2$ are respectively tridiagonal--Toeplitz- matrices. So you can use your `csrTridiagToep` function from above to instantiate the `csr_matrix` class.
-    
+
 -   You will recognize the matrix $A_1$ later as a finite-difference discretization of the one-dimensional Poisson equation on regular grids with homogeneous Dirichlet boundary values. And the matrix $A_2$ as a Tikhonov-regularization of it.
 
 ## Utils
@@ -395,7 +395,7 @@ Implement:
 
 - create a script `src.pagerank_utils` (or similar)
 
-  
+
 
 1. Read edgle list into scipy sparse csr
 
@@ -415,14 +415,14 @@ Implement:
 
 8. Optional: Write further utils to draw the graphs, create a video, ...
 
-   
+
 
 ## Compute the Pagerank
 
 1. **PageRank of your own Graph**
    1. Draw your own small and write the corresponding list of edges textfile: `examples/pagerank_small.edges`
    2. Create an example config like `example/pagerank_small`
-   3. 
+   3.
 
 2. **Download real data:** https://networkrepository.com/web.php
 
@@ -458,7 +458,7 @@ Implement:
     -   Use the extension `sphinx.ext.viewcode`
 
     -   Create at least one more subpage and link to it.
-        
+
     -   Use consistent docstrings in a fixed format.
 3.  Use github pages to expose your documentation.
 4.  Link your documentation later on in your paper.
@@ -497,7 +497,7 @@ https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
    guacamole\]
 
 3. im home-Verzeichnis:\
-   Ein .tex-Skript mit einem Editor, zB nano, anlegen 
+   Ein .tex-Skript mit einem Editor, zB nano, anlegen
 
    \$ nano text.tex
 
@@ -528,13 +528,13 @@ https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
 
    sftp://vollmann@syrma.uni-trier.de
 
-### Working Environment: The IWE TexStudio 
+### Working Environment: The IWE TexStudio
 
 1.  Laden Sie  herunter und installiere es auf Deinem System: <https://www.texstudio.org/#Download>
 
 2.  Führen Sie die Schritte von oben nun mit  TexStudio anstatt über die Konsole aus.
 
-### Plan Modularity 
+### Plan Modularity
 
 ```bash
 |-- text/
@@ -551,7 +551,7 @@ https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
     |   |   |-- section1.tex
     |   |   |-- section2.tex
     |   |   |-- listing.py
-    |   |   |-- ...    
+    |   |   |-- ...
     |-- media/
     |   |-- picture.png
     |   |-- picture.jpg
@@ -559,9 +559,9 @@ https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
     |-- literature/
     |   |-- literature.bib
     |   |-- pdfs/
-    |   |   |-- book.pdf      
-    |   |   |-- paper.pdf   
-    |   |   |-- ... 
+    |   |   |-- book.pdf
+    |   |   |-- paper.pdf
+    |   |   |-- ...
     |-- main.tex
 ```
 
@@ -584,7 +584,7 @@ reference="fig:vz-struktur-text"} an:
 
     -   hier können alle benötigten Pakete geladen werden
 
-    -   
+    -
 
 3.  `<PATH>/style.tex`
 
@@ -658,9 +658,9 @@ der Kontext ähnlich ist, müssen wir für ein neues Projekt nur diese
 Dateien austauschen!
 
 **Mathematischer Aufsatz**
-Verfassen Sie einen kurzen mathematischen Aufsatz 
+Verfassen Sie einen kurzen mathematischen Aufsatz
 
-$$\texttt{<PATH>/text/}$$ 
+$$\texttt{<PATH>/text/}$$
 
 mit LaTeX über das Richardson--Verfahren und stellen Sie Ihre numerischen Ergebnisse vor. Modularisieren Sie Ihr LaTeX--Projekt sinnvoll und setzen Sie die oben erwähnten **Mindestanforderungen** um.
 

@@ -1,8 +1,8 @@
 % !TeX spellcheck = de_AT_frami
 \section{Mathematische Textverarbeitung mit \LaTeX~und TeXstudio (Skip)}
-Ein Lehrbuch zu \LaTeX~bietet die Quelle: 
-$$\textit{Schnell ans Ziel mit LaTeX 2e \cite{latex1}},$$ 
-von Jörg Knappen, auf das wir mithilfe der ZIMK-Kennung beim De Gruyter Verlag Zugriff haben.\\ 
+Ein Lehrbuch zu \LaTeX~bietet die Quelle:
+$$\textit{Schnell ans Ziel mit LaTeX 2e \cite{latex1}},$$
+von Jörg Knappen, auf das wir mithilfe der ZIMK-Kennung beim De Gruyter Verlag Zugriff haben.\\
 Eine Zusammenfassung finden wir hier:
 \begin{center}
 	\link{https://dante-ev.github.io/l2kurz/l2kurz.pdf}{\textit{LaTeX 2e Kurzbeschreibung}}
@@ -24,14 +24,14 @@ Diese Quellen nehmen wir als Grundlage für die folgenden Notizen.\\
 	\begin{center}
 	\textit{	Man versteht etwas nicht wirklich, wenn man nicht versucht, es zu implementieren.}
 	\end{center}
-	
+
 \item \LaTeX: Computerprogramm aufbauend auf TEX von Leslie Lamport; Erscheinungsjahr 1984
 \item \LaTeXe: ist die aktuelle Version
 \end{itemize}
 
 \subsubsection{Unterschied zu Programmen wie Word}
 \begin{itemize}
-	\item \textbf{\LaTeX:}\\ kann als Buch-Designer verstanden werden: Mithilfe von ``Befehlen'' geben wir dem Computer-Programm \LaTeX~zu erkennen, was zB eine Überschrift sein soll (der Befehl lautet dann z.B. \latexCommand{section}{Überschrift}), was ein Zitat (der Befehl lautet dann z.B. \latexCommand{cite}{Quelle}), etc.\\ 
+	\item \textbf{\LaTeX:}\\ kann als Buch-Designer verstanden werden: Mithilfe von ``Befehlen'' geben wir dem Computer-Programm \LaTeX~zu erkennen, was zB eine Überschrift sein soll (der Befehl lautet dann z.B. \latexCommand{section}{Überschrift}), was ein Zitat (der Befehl lautet dann z.B. \latexCommand{cite}{Quelle}), etc.\\
 	Sofern wir dem Programm \LaTeX~diese logische Struktur zu erkennen geben, kann dieses für uns die Gestaltung übernehmen (dabei können wir das Design auch konfigurieren).\\[0.1cm]
 	$\to$ bei der Eingabe ins Programm (Texteditor), sehen wir in der Regel noch nicht sofort, wie der Text nach dem Formatieren aussehen wird \\
 	\item \textbf{Visuell orientierte Textverarbeitungsprogramme (z.B. Word):}\\ Autor legt das Layout des Textes gleich bei der interaktiven Eingabe fest\\[0.1cm]
@@ -54,10 +54,10 @@ Diese Quellen nehmen wir als Grundlage für die folgenden Notizen.\\
 		\item Vorschau: \ttt{text.pdf} mit einem PDF-Betrachter oder im Terminal anschauen
 		\item Falls nötig: Zurück zu (a) und Korrekturen einarbeiten
 	\end{enumerate}
-	
+
 \item \textbf{Integriert:} \textbf{Eine IWE (Integrated Writing Environment): \LaTeX~Editor}
 \begin{itemize}
-	\item Ähnlich wie eine IDE können die obigen Arbeitsschritte aus einer einzigen Software, eine IWE oder in diesem Fall auch einfach \LaTeX~Editor genannt, heraus gesteuert werden. Zudem kommt diese mit einer ganzen Menge weiterer Features (Syntax-Highlighting, Tab Completion, ...) daher. 
+	\item Ähnlich wie eine IDE können die obigen Arbeitsschritte aus einer einzigen Software, eine IWE oder in diesem Fall auch einfach \LaTeX~Editor genannt, heraus gesteuert werden. Zudem kommt diese mit einer ganzen Menge weiterer Features (Syntax-Highlighting, Tab Completion, ...) daher.
 \item Wir werden in dieser Veranstaltung das Programm \texstudio~verwenden.
 \item Andere beliebte Editoren: TeXmaker (multi-platform), TeXnicCenter (speziell für Windows entwickelt)
 \end{itemize}
@@ -90,7 +90,7 @@ Format von \LaTeX~Befehlen:
 	\item  ggf. \{Parameter\}
 	\item Ende: Leerzeichen oder Sonderzeichen
 \end{itemize}
-	Wenn man nach einem Befehlsnamen eine Leerstelle erhalten will: 	
+	Wenn man nach einem Befehlsnamen eine Leerstelle erhalten will:
 	\begin{center}
 		\latexCommand{Befehlsname}{}~~~ oder~~~ \ttt{\textbackslash Befehlsname}{\textbackslash}~~~ oder~~~ \ttt{\textbackslash Befehlsname}{$\sim$}
 	\end{center}
@@ -101,7 +101,7 @@ Format von \LaTeX~Befehlen:
 \end{enumerate}
 %
 \subsubsection{Gruppen}
-Gruppen werden erzeugt durch Einrahmung mit geschweiften Klammern 
+Gruppen werden erzeugt durch Einrahmung mit geschweiften Klammern
 \begin{center}
 	{		\color{red}\{ }
 	~~~~~~~~~~~~~~...\\
@@ -195,7 +195,7 @@ Mit dem Befehl
 \begin{center}
 	\latexCommandL{usepackage}{<optionen>}{<paket>}
 \end{center}
-können in der Präambel ergänzende Makropakete (\textit{packages}) geladen werden, die 
+können in der Präambel ergänzende Makropakete (\textit{packages}) geladen werden, die
 \begin{itemize}
 	\item das Layout der Dokumentklasse modifizieren,
 	\item oder zusätzliche Funktionalitäten bereitstellen.
@@ -203,7 +203,7 @@ können in der Präambel ergänzende Makropakete (\textit{packages}) geladen wer
 In meinem Ubuntu--System habe ich sämtliche Pakete installiert via
 \begin{center}
 	\$ sudo apt-get install texlive-full.
-\end{center} 
+\end{center}
 %\textbf{Kpathsea} is a library and utility programs which provide path searching facilities for TeX file types, including the self-locating feature required for movable installations, layered on top of a general search mechanism. It is not distributed separately, but rather is released and maintained as part of the\\
 %\textbf{kpsewhich}  - standalone path lookup and and expansion for kpathsea
 Ein Teil der Makropakete finde ich bei mir unter
@@ -232,10 +232,10 @@ zu finden ist. In der Tabelle \ref{tab:latex-pakete} finden wir weitere häufig 
 		 &\\
 		\ttt{fontenc} &font encoding: Erlaubt die Verwendung von Schriften mit \\
 	&unterschiedlicher Kodierung (Zeichenvorrat, Anordnung)\\
-	& \latexCommandL{usepackage}{T1}{fontenc}\\		 
+	& \latexCommandL{usepackage}{T1}{fontenc}\\
 		 &\\
 \ttt{geometry} & Manipulation des Seitenlayouts. \\
-%& \latexCommandL{usepackage}{T1}{fontenc}\\	
+%& \latexCommandL{usepackage}{T1}{fontenc}\\
 &\\
 \ttt{graphicx} & Einbindung von extern erzeugten Graphiken \\
 &\\
@@ -334,12 +334,12 @@ Siehe hierzu auch
 	\item das Kapitel ``Planung eines \LaTeX-Projektes'' in \cite[Kapitel 11]{latex1}
 	\item \url{https://de.overleaf.com/learn/latex/Management_in_a_large_project}
 	\item \url{https://en.wikibooks.org/wiki/LaTeX/Modular_Documents}
-\end{itemize}  
+\end{itemize}
 
 
 \subsubsection{Aufteilung des Textes auf mehrere Dateien: \latexCommands{input} (, \latexCommands{include}, \latexCommands{usepackage})}
 \begin{itemize}
-	\item Der Befehl \latexCommand{input}{InputFile.tex} fügt die Datei \ttt{InputFile.tex} an einer bestimmten Stelle des Quelltextes ein. 
+	\item Der Befehl \latexCommand{input}{InputFile.tex} fügt die Datei \ttt{InputFile.tex} an einer bestimmten Stelle des Quelltextes ein.
 	\item Die eingefügte Datei wird als normaler Teil des Quelltextes mitverarbeitet und sollte daher ebenfalls aus einer Folge von LaTeX-Befehlen bestehen, jedoch ohne Präambel und ohne \latexCommand{begin}{document}, \latexCommand{end}{document}.
 	\item Verschachtlung von mehreren \latexCommand{input}{}--Befehlen ist möglich
 \end{itemize}
@@ -367,12 +367,12 @@ Das ist aus vielen Gründen sinnvoll, z.B.,
 \begin{itemize}
 	\item \textbf{Abkürzungen:} Häufig verwendete Makros wie\footnote{Der Befehl \latexCommands{mathbb} ist im Makropaket \ttt{amssymb} enthalten.}
 	\begin{center}
-		\latexCommand{mathbb}{R}\^{}n 
+		\latexCommand{mathbb}{R}\^{}n
 	\end{center}
 	für $\Rn$, könnte man abkürzen durch
 	\begin{center}
 	\latexCommandLr{newcommand}{\latexCommands{Rn}}{\latexCommand{mathbb}{R}\^{}n}
-\end{center}	
+\end{center}
 	dann können wir mit \$\latexCommands{Rn}\$ das Symbol $\Rn$ setzen.
 	\item \textbf{Wichtige Variablennamen:} Variablennamen sollten stets durchdacht gewählt werden, sodass der Leser schon durch den Namen intuitiv das Objekt einschätzen kann. Zum Beispiel ist es typisch für Matrizen Großbuchstaben zu verwenden, etwa $S$ für symmetrische Matrizen, $O$ für orthogonale Matrizen,...\\
 	Möchte man am Ende allerdings $Q$ anstatt $O$ für orthogonale Matrizen verwenden, so müsste man per seach+replace mühsam die Stellen finden, an denen der Buchstabe ``O'' tatsächlich nur als Variablenname für orthogonale Matrizen auftaucht. Sinnvoll ist es daher wichtige (oder gleich alle) Variablennamen vorab als Befehl zu definieren, z.B.,
@@ -397,7 +397,7 @@ Das ist aus vielen Gründen sinnvoll, z.B.,
 	\item \textbf{Kapitelgliederung}\\
 	section, subsection,...
 	\item \textbf{Referenzen}\\
-	 (eq)ref, label, gute namen: fig-, eq-, tab- 
+	 (eq)ref, label, gute namen: fig-, eq-, tab-
 	\item \textbf{Tabellen}\\
 	table, tabular
 	\item \textbf{Grafiken}\\
@@ -435,8 +435,8 @@ LaTeX trennt das Setzen von normalem Text und mathematischen Formeln mithilfe vo
 	griechische Buchstaben $\mu$, $\eta$, $\mathbb{R}$
 	%
 	\item \textbf{Summen/Produkt/Integral-Zeichen}\\
-	sum, prod, int,... \_ und \^{} 
-	%	
+	sum, prod, int,... \_ und \^{}
+	%
 	\item \textbf{Quantoren}\\
 	forall, exist
 	%

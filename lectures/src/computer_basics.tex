@@ -1,5 +1,5 @@
 % !TeX spellcheck = de_AT_frami
-\section{Grundlagen der Informatik} 
+\section{Grundlagen der Informatik}
 In diesem Kapitel verschaffen wir uns einen groben Überblick zu grundlegenden Begrifflichkeiten aus der Informatik:
 \begin{itemize}
 	\item Hardwarekomponenten und Bootvorgang.
@@ -23,7 +23,7 @@ Die Inhalte sind fast baugleich entnommen aus den Lehrbüchern \cite{gumm3} und 
 %~\\
 \begin{itemize}
 	\item Aus Benutzersicht präsentiert sich der Computer (Stand-PC, Laptop, Tablet, Smartphone, Fahrradcomputer,...) über die Anwendungssoftware (\textit{apps}), die wir auf ihm ausführen und verwenden.
-	\item Hardware verarbeitet die von der Software beschriebenen Befehle und stellt Mechanismen für Speicherung sowie Eingabe und Ausgabe bereit. 
+	\item Hardware verarbeitet die von der Software beschriebenen Befehle und stellt Mechanismen für Speicherung sowie Eingabe und Ausgabe bereit.
 	\item Damit überhaupt eine Software auf einer bestimmten Hardware läuft, müssen geeignete Schnittstellen festgelegt werden; siehe dazu auch Abb. \ref{fig:betriebssystem}:
 	%
 	\begin{figure}[h!]
@@ -43,7 +43,7 @@ Wir schauen uns einige Hardwarekomponenten als eigenständige physische Geräte 
 	\subsubsection{Netzteile}
 	\begin{itemize}
 		\item Alle aktiven Komponenten in einem Computersystem benötigen zum Betrieb Strom.
-		\item Netzteile normalisieren verfügbare Energiequellen. 
+		\item Netzteile normalisieren verfügbare Energiequellen.
 		\item Standardisierte Spannungsanforderungen ermöglichen es Herstellern, Hardwarekomponenten zu entwickeln, die auf vielen Systemen laufen.
 		\item Bei der Nutzung von Strom entsteht Wärme, die abgeführt wird durch:
 		\begin{itemize}
@@ -69,7 +69,7 @@ Wir schauen uns einige Hardwarekomponenten als eigenständige physische Geräte 
 		\caption[Hauptplatine]{Hauptplatine. Quelle: https://de.wikipedia.org/wiki/Hauptplatine}
 	\end{figure}
 	\begin{itemize}
-		\item Sämtliche Hardware eines Systems muss miteinander verbunden sein. Die Hauptplatine (auch \textit{Motherboard} oder \textit{Mainboard} genannt) normiert diese Verbindung mit standardisierten Steckverbindungen und Formfaktoren. 
+		\item Sämtliche Hardware eines Systems muss miteinander verbunden sein. Die Hauptplatine (auch \textit{Motherboard} oder \textit{Mainboard} genannt) normiert diese Verbindung mit standardisierten Steckverbindungen und Formfaktoren.
 		\item Wird die Stromversorgung eingeschaltet, muss die mainboardspezifische Hardware konfiguriert und initialisiert werden, bevor das System laufen kann. Motherboards laden dazu Programme aus einem nichtflüchtigen Speicher (=bleibt erhalten unabhängig von Stromzufuhr), die als \textbf{\textit{Firmware}} oder \textbf{\textit{Basis--Software}} (\cite[2.1]{gumm2}) bezeichnet werden. Dabei handelt es sich noch nicht um Teile eines Betriebssystems.
 		\item Zunächst werden u.a. die Komponenten des Rechners (CPU, Peripheriegeräte,...) getestet. Sind keine Fehler aufgetreten, wird von der Festplatte oder einem anderen Laufwerk das Betriebssystem geladen; man spricht bei diesem Vorgang von \textbf{booten}\footnote{Da ein Computer während des Bootvorgangs schon ein Programm lädt, das er zum Funktionieren benötigt, zieht er sich bildlich gesprochen wie Münchhausen an den eigenen Haaren aus dem Sumpf; die englischen Redewendung dazu: an seinen Stiefelriemen (engl. bootstraps) selbst über einen Zaun.}.
 	\end{itemize}
@@ -80,7 +80,7 @@ In diesem Zusammenhang gibt es zwei wichtige Begriffe:
 	\item \textbf{BIOS}
 \begin{itemize}
 	\item Die ursprüngliche Form der Motherboard-Firmware wurde als BIOS (Basic Input/Output System) bezeichnet.
-	\item Aufgaben: Grundlegende Konfigurationseinstellungen sowie die Identifizierung, das Laden und die Übertragung des Betriebs auf ein Betriebssystem wie Linux. 
+	\item Aufgaben: Grundlegende Konfigurationseinstellungen sowie die Identifizierung, das Laden und die Übertragung des Betriebs auf ein Betriebssystem wie Linux.
 \end{itemize}
 \item \textbf{UEFI}
 \begin{itemize}
@@ -112,7 +112,7 @@ Unabhängig davon bezeichnen viele die Firmware des Motherboards immer noch als 
 \end{enumerate}
 \clearpage
 \demo{~\\
-	\texttt{UEFI firmware (Motherboard) [Einstellungsmenü]}\\ 
+	\texttt{UEFI firmware (Motherboard) [Einstellungsmenü]}\\
 	\texttt{> boot/efi/<distro>/grubx64.efi (Datenspeicher) [Bootmenü mit Kernelauswahl]} \\
 	\texttt{> kernel }
 	~\\~\\
@@ -127,11 +127,11 @@ Unabhängig davon bezeichnen viele die Firmware des Motherboards immer noch als 
 		$$
 		\texttt{linux	/boot/vmlinuz-5.11.0-44-generic root=UUID=(...) ro  \$vt\_handoff}
 		$$
-		Die Datei wird automatisch erzeugt mit den Einstellungen aus 
+		Die Datei wird automatisch erzeugt mit den Einstellungen aus
 		$$\texttt{/etc/default/grub}, $$
 		mit Einträgen wie
 		$$\texttt{GRUB\_CMDLINE\_LINUX\_DEFAULT=''quiet splash''},$$
-		die wir besser zu 
+		die wir besser zu
 		$$\texttt{GRUB\_CMDLINE\_LINUX\_DEFAULT=''''}$$
 		setzen, um einen gesprächigen Bootvorgang zu beobachten.
 		\item Im Verzeichnis \texttt{/boot} finden wir den Link auf den Kernel
@@ -184,7 +184,7 @@ Quelle: https://de.wikipedia.org/wiki/RAM
 	\centering
 	~\\
 %	\includegraphics[width=0.3\linewidth]{./media/i7} \\
-\caption[Intel Core i7]{	Intel Core i7. 
+\caption[Intel Core i7]{	Intel Core i7.
 	Quelle: \url{https://tr.wikipedia.org/wiki/Intel_Core}}
 \end{figure}
 
@@ -193,7 +193,7 @@ Quelle: https://de.wikipedia.org/wiki/RAM
 		\item Häufig werden der Begriff “Prozessor” und die Abkürzung CPU (Central Processing Unit) synonym gebraucht, was technisch nicht korrekt ist. Moderne Computer haben neben einer CPU oft auch weitere, aufgabenspezifische Prozessoren:\\
 		--  FPU (Floating Point Unit)\\
 		-- GPU (Graphical Processing Unit)\\
-		-- TPU (Tensor Porcessing Unit) von Google eigens entwickelt für TensorFlow 
+		-- TPU (Tensor Porcessing Unit) von Google eigens entwickelt für TensorFlow
 		\item Die CPU ist also ein Prozessor, aber nicht alle Prozessoren sind CPUs.
 	\end{itemize}
 
@@ -209,9 +209,9 @@ Die Kernmarkmale:
 	\begin{itemize}
 		\item \link{https://de.wikipedia.org/wiki/X86-Prozessor}{x86-Befehlssatzarchitektur}		\\
 		Verweist typischerweise auf die 32-Bit-Befehlssätze der 80386-Nachfolger. nach den Prozessoren der Intel 8086/8080--Reihe benannt.
-		\item	x64 (auch x86-64 genannt)\\		
+		\item	x64 (auch x86-64 genannt)\\
 		Referenzprozessoren, die sowohl die 32-Bit- als auch die 64-Bit-Anweisungen der x86-Familie unterstützen (rückwärtskompatibel).
-		\item	AMD	\\	
+		\item	AMD	\\
 		Verweist auf die x86-Unterstützung durch AMD-Prozessoren.
 		\item	AMD64, Intel64	\\
 		Verweist auf die x64-Unterstützung durch AMD-(Intel-)Prozessoren.
@@ -226,13 +226,13 @@ Die Kernmarkmale:
 \end{itemize}
 	\item \textbf{Cache:}
 \begin{itemize}
-	\item Die Kosten und der Stromverbrauch eines Arbeitsspeichers mit mehreren Gigabyte, auf den mit CPU-Taktgeschwindigkeiten zugegriffen werden kann, sind unerschwinglich. 
+	\item Die Kosten und der Stromverbrauch eines Arbeitsspeichers mit mehreren Gigabyte, auf den mit CPU-Taktgeschwindigkeiten zugegriffen werden kann, sind unerschwinglich.
 	\item Der CPU-Cache-Speicher ist auf dem CPU-Chip integriert, um einen schnellen Puffer zwischen CPUs und Arbeitsspeicher bereitzustellen. Der Cache ist in mehrere Schichten unterteilt, die üblicherweise als L1, L2, L3 und sogar L4 bezeichnet werden. In Fall von Cache gilt: Je mehr, desto besser.
 \end{itemize}
 	\item \textbf{Kerne (\textit{Cores}):}
 \begin{itemize}
 	\item 	``Kern/Core'' bezieht sich auf eine einzelne CPU. Zusätzlich zum Core, der eine physische CPU darstellt, ermöglicht Hyper-Threading Technology (HTT) einer einzelnen physischen CPU, mehrere Anweisungen gleichzeitig zu verarbeiten, so dass sie praktisch als mehrere physische CPUs fungiert.
-	\item Typischerweise werden mehrere physische Kerne als ein einziger physischer Prozessorchip verbaut. 
+	\item Typischerweise werden mehrere physische Kerne als ein einziger physischer Prozessorchip verbaut.
 	\item Auch hier: Standard Office-Anwendungen beanspruchen einen einzelnen Kern kaum. Daher bringt es für Standardanwendungen nicht viel weitere unbeschäftigte Kerne hinzufügen.
 	\item Mehr Kerne führen nur dann zur Verbesserung des Durchsatzes wenn sie für die Ausführung von Anwendungen, die so geschrieben sind, dass sie mehrere unabhängige Funktionsabläufe aufweisen, wie z.B. Video-Frame-Rendering, Webseiten-Rendering oder parallele numerische Verfahren (HPC: High Performance Computing) mit mehreren Benutzern.
 \end{itemize}
@@ -269,7 +269,7 @@ Die Kernmarkmale:
 			\item Die Platten befinden sich in einem abgedichteten Gehäuse, da Staub oder kleine Partikel die Lese/schreib-Fähigkeit der HDD beeinträchtigen würden.
 		\end{itemize}
 		\item \textbf{SSD}:\begin{itemize}
-			\item  SSDs sind deutlich anspruchsvollere Varianten von USB-Sticks mit wesentlich größerer Kapazität. 
+			\item  SSDs sind deutlich anspruchsvollere Varianten von USB-Sticks mit wesentlich größerer Kapazität.
 			\item Sie speichern Informationen in Mikrochips, so dass es keine beweglichen Bauteile gibt.
 		\end{itemize}
 	\end{itemize}
@@ -284,8 +284,8 @@ Die Kernmarkmale:
 \end{itemize}
 \textbf{Anschlüsse:}
 \begin{itemize}
-	\item SCSI (Small Computer System Interface) 
-	\item SATA (Serial AT Attachment) 
+	\item SCSI (Small Computer System Interface)
+	\item SATA (Serial AT Attachment)
 	\item USB
 \end{itemize}
 Diese Interfaces werden typischerweise durch entsprechende Stecker auf der Hauptplatine unterstützt.\\
@@ -294,12 +294,12 @@ In den Firmware(UEFI/BIOS)-Einstellungen (Bootmenü) können wir die Reihenfolge
 %\textbf{RAID}\\
 %Speichersysteme, die als RAID (Redundant Array of Independent Disks) bezeichnet werden, sind eine gängige Implementierung zur Vermeidung von Datenverlust. Ein RAID-Array besteht aus mehreren physischen Geräten, die doppelte Kopien von Informationen enthalten.
 
-\demo{~\\Speichergeräte lesen und schreiben üblicherweise Daten in Blöcken von Bytes; man spricht daher auch von \textbf{BLockgeräten}. 
+\demo{~\\Speichergeräte lesen und schreiben üblicherweise Daten in Blöcken von Bytes; man spricht daher auch von \textbf{BLockgeräten}.
 ~\\~\\
-Unter Linux:\\~\\	
+Unter Linux:\\~\\
 Mit dem Befehl $$\texttt{\$ lsblk~~~\# ''list block devices''}$$ können Sie die einem System zur Verfügung stehenden Blockdevices auflisten.\\
 %~\\`
-%\textbf{Gerätedateien} liegen im Verzeichnis /dev und identifizieren physische Geräte, Gerätezugriff und unterstützte Treiber. In modernen Systemen, die SCSI- oder SATA-basierte Speichergeräte verwenden, beginnt der Dateiname der Spezifikation üblicherweise mit dem Präfix sd, gefolgt von einem Buchstaben wie a oder b, der auf ein physisches Gerät verweist. Nach dem Präfix und der Gerätekennung kommt eine Nummer, die eine Partition in dem physischen Gerät angibt. /dev/sda würde also auf das gesamte erste Speichermedium verweisen, während /dev/sda3 die Partition 3 im ersten Speicher bezeichnet. 
+%\textbf{Gerätedateien} liegen im Verzeichnis /dev und identifizieren physische Geräte, Gerätezugriff und unterstützte Treiber. In modernen Systemen, die SCSI- oder SATA-basierte Speichergeräte verwenden, beginnt der Dateiname der Spezifikation üblicherweise mit dem Präfix sd, gefolgt von einem Buchstaben wie a oder b, der auf ein physisches Gerät verweist. Nach dem Präfix und der Gerätekennung kommt eine Nummer, die eine Partition in dem physischen Gerät angibt. /dev/sda würde also auf das gesamte erste Speichermedium verweisen, während /dev/sda3 die Partition 3 im ersten Speicher bezeichnet.
 }
 
 ~\\
@@ -310,11 +310,11 @@ Mit dem Befehl $$\texttt{\$ lsblk~~~\# ''list block devices''}$$ können Sie die
 	\begin{itemize}
 		\item Verwaltung des verfügbaren Speichers oder die Unterstützung mehrerer \textbf{Dateisysteme} (ext4, vFAT, NTFS,...).
 		\item Multi-System: Partitionen ermöglichen es, ein einziges Speichergerät zu haben, das unter verschiedenen Betriebssystemen booten kann
-	\end{itemize} 
+	\end{itemize}
 	\item \textbf{Formatierung}:\begin{itemize}
-		\item  Zwar erkennt das Betriebssystem (wie Linux) die Speichersequenz eines Raw-Device, aber ein Raw-Device kann nicht ``einfach so'' verwendet werden. 
+		\item  Zwar erkennt das Betriebssystem (wie Linux) die Speichersequenz eines Raw-Device, aber ein Raw-Device kann nicht ``einfach so'' verwendet werden.
 	\item Um ein Raw-Device zu nutzen, muss es formatiert, d.h., ein Dateisystem muss auf das Gerät geschrieben werden.
-	\item Dann erst ist können Dateioperationen ausgeführt werden. 
+	\item Dann erst ist können Dateioperationen ausgeführt werden.
 	\end{itemize}
 %	Ohne ein Dateisystem kann ein Gerät nicht für dateibezogene Operationen genutzt werden.
 %	\item Vorsicht: Partionen eignen sich nicht für ein fehlertolerantes Design. Wenn das Gerät ausfällt, fallen alle Partitionen aus.
@@ -353,17 +353,17 @@ Wenn eine CPU mit den Endgeräten (z.B. den Laufwerken, Drucker,...) verschieden
 \textbf{Beispielproblem:}
 \begin{itemize}
 	\item Ein Textverarbeitungsprogramm kann nicht im Voraus alle verschiedenen Drucker kennen, die
-es  einmal bedienen soll. 
-\item Wenn der Benutzer den Befehl ``Drucken'' auswählt, soll der Druck funktionieren, egal welcher Drucker angeschlossen ist. 
+es  einmal bedienen soll.
+\item Wenn der Benutzer den Befehl ``Drucken'' auswählt, soll der Druck funktionieren, egal welcher Drucker angeschlossen ist.
 \item Dazu bedient sich das Programm einer Schnittstelle, die im Betriebssystem definiert wird; genauer installiert man ein Programm (Treiber), das der Druckerhersteller für das entsprechende Betriebssystem mitliefert und welches die Druckbefehle in Signale für den Drucker umsetzt.
 %\item Siehe auch: \textbf{Common Unix Printing System (CUPS)}
 \end{itemize}
 ~\\
 \textbf{Allgemein}
 \begin{itemize}
-	\item  Gerätetreiber (\textit{Device Driver }oder kurz \textit{Driver}) akzeptieren einen Standardsatz von Anfragen und übersetzen diese dann in die entsprechenden Steuerungsaktivitäten des Geräts. 
+	\item  Gerätetreiber (\textit{Device Driver }oder kurz \textit{Driver}) akzeptieren einen Standardsatz von Anfragen und übersetzen diese dann in die entsprechenden Steuerungsaktivitäten des Geräts.
 \item Ein Treiber ermöglicht einem Anwendungsprogramm die Benutzung einer
-Komponente, \textbf{ohne} deren detaillierten Aufbau zu kennen. 
+Komponente, \textbf{ohne} deren detaillierten Aufbau zu kennen.
 \item Die Anforderungen eines
 Anwendungsprogramms an das zugehörige Gerät werden dann vom Betriebssystem an den entsprechenden Treiber umgeleitet, dieser wiederum sorgt für die korrekte Ansteuerung des
 Druckers.
@@ -402,7 +402,7 @@ Druckers.
 }
 
 \newpage
-\subsection{Betriebssysteme} 
+\subsection{Betriebssysteme}
 \textit{\small(siehe auch \cite[Kap. 2]{gumm2}, \cite[Kap. 6 ]{gumm3})}\\~\\
 Zugeschnitten auf die vorhandene Prozessor-Architektur werden Betriebssysteme (genauer Betriebsystemkerne) entwickelt, die Hardware-Ressourcen des Rechners (Speicher, Prozessorleistung, externe Geräte) dem Benutzer zur Verfügung stellen; siehe auch Abb. \ref{fig:betriebssystem}.
 Ein Betriebssystem ist damit letztlich ein Programm, das dem Benutzer (\textit{user}) und den Anwendungsprogrammen (\textit{app}) grundlegende Dienste bereitstellt. Diese Dienste  machen das aus, was der Rechner in den Augen eines Nutzers kann.\\
@@ -414,13 +414,13 @@ Ein Betriebssystem ist damit letztlich ein Programm, das dem Benutzer (\textit{u
 %\end{figure}
 ~\\
 \textbf{Beispiele}\\
-Die meisten Rechner werden zusammen mit einem bereits vorinstallierten Betriebssystem verkauft. 
+Die meisten Rechner werden zusammen mit einem bereits vorinstallierten Betriebssystem verkauft.
 \begin{itemize}
 	\item Auf PCs dominiert immer noch \textbf{Microsoft Windows} (aktuell (2022) mit Version Windows 11)
 	\item Gefolgt von \textbf{macOS} (exklusiv auf den Rechnern der Firma Apple).
 	\item \textbf{Linux} (ein freies, quelloffenes Betriebssystem) dominiert auf Servern und im wissenschaftlichen Bereich.
-	\item Auf kleineren Rechnern (Netbooks, Tablets oder Smartphones) ist das auf Linux basierende \textbf{Android} der Firma Google sehr beliebt. 
-\end{itemize} 
+	\item Auf kleineren Rechnern (Netbooks, Tablets oder Smartphones) ist das auf Linux basierende \textbf{Android} der Firma Google sehr beliebt.
+\end{itemize}
 Wir werden uns die folgenden Komponenten eines Betriebssystem näher anschauen und anhand von Linux praktisch kennenlernen:
 \begin{itemize}
 	\item \textbf{Betriebssystemkern}
@@ -453,9 +453,9 @@ Ein \link{https://en.wikipedia.org/wiki/Kernel\_(operating\_system)}{Betriebssys
 \end{itemize}
 
 \demo{\begin{itemize}
-		\item Um herauszufinden welcher Linux-Kernel verwendet wird: $$\texttt{\$ uname -r   \#(kernel release)}$$ 
-		oder 
-		$$\texttt{\$ uname -a   \#(all)}$$ 
+		\item Um herauszufinden welcher Linux-Kernel verwendet wird: $$\texttt{\$ uname -r   \#(kernel release)}$$
+		oder
+		$$\texttt{\$ uname -a   \#(all)}$$
 		Output:\\
 		5 : Kernel version\\
 		8 : Major revision\\
@@ -463,12 +463,12 @@ Ein \link{https://en.wikipedia.org/wiki/Kernel\_(operating\_system)}{Betriebssys
 		44 : Patch level\\
 		generic : Linux distro/kernel specific additional info
 		\item Das GitHub Repository zum Kernel verwaltet vom Linux-Vater Linus Torvalds:
-		$$\text{\url{https://github.com/torvalds/linux}}$$	
+		$$\text{\url{https://github.com/torvalds/linux}}$$
 \end{itemize}}
 
 \subsubsection{Dateisysteme (\textit{file system})}
 Unter den elementarsten Diensten eines jeden Betriebssystems befinden sich solche, die den
-Umgang mit \textbf{Dateien} (engl.: \textit{files}) (=Folge von Bytes) organisieren. 
+Umgang mit \textbf{Dateien} (engl.: \textit{files}) (=Folge von Bytes) organisieren.
 \begin{itemize}
 	\item Dateien müssen erzeugt, verändert,
 	abgespeichert, umbenannt und gelöscht werden
@@ -488,7 +488,7 @@ Dateien können zu einem \textbf{Verzeichnis} (engl. \textbf{directory}) zusamme
 \item Zugriffsrechte (Besitzer, ggf. Passwort, wer hat Lese- oder Schreibrechte)
 \item Datum (Erstellung, Änderung, evtl. Verfallsdatum).
 \end{itemize}
-\demo{ 
+\demo{
 	\begin{itemize}
 	\item Partitionen nochmal anschauen, Dateisystem?
 		$$\texttt{\$ lsblk -f ~~~\# ( | grep sd)} $$
@@ -517,34 +517,34 @@ Wir klären zunächst folgende Begrifflichkeiten:
 Eine Kommandozeilen-Schnittstelle (\textit{command-line interface}) (CLI)  bezeichnet die Verwendung von Kommandozeilen (Textzeilen) für die Interaktion mit einem Benutzer. Das Programm, welches diese Schnittstelle verwaltet nennt man \textbf{Kommandozeileninterpreter} (z.B. Shell für Betriebssysteme).
 %
 \item \textbf{GUI:} \textit{Graphical User Interface}\\
-Grafische Benutzeroberfläche oder auch grafische Benutzerschnittstelle bezeichnet eine Benutzerschnittstelle mittels grafischer Symbole und Steuerelemente (Widgets). Dies geschieht 
+Grafische Benutzeroberfläche oder auch grafische Benutzerschnittstelle bezeichnet eine Benutzerschnittstelle mittels grafischer Symbole und Steuerelemente (Widgets). Dies geschieht
 \begin{itemize}
 	\item bei Computern: mittels einer Maus als Steuergerät,
-	\item bei Smartphones, Tablets und Kiosksystemen:  durch Berührung eines Sensorbildschirms. 
+	\item bei Smartphones, Tablets und Kiosksystemen:  durch Berührung eines Sensorbildschirms.
 \end{itemize}
 \end{itemize}
 
 \subsubsection*{CLI: Shell}
 Als \textbf{Shell} wird der Kommandozeileninterpreter bezeichnet, mittels dessen ein Benutzer über Kommandozeilen mit einem Betriebssystem interagiert. Die Shell (englisch für „Schale“ oder „Hülle“) ist anschaulich die Außenschicht des Betriebssystemkerns.
 \begin{itemize}
-	\item Kommandozeilen waren historisch die ersten Methoden zur Interaktion mit Betriebssystemen und benötigen lediglich den Textmodus. 
+	\item Kommandozeilen waren historisch die ersten Methoden zur Interaktion mit Betriebssystemen und benötigen lediglich den Textmodus.
 	\item Kommandozeileninterpreter sind bei modernen Betriebssystemen auch im Grafikmodus verfügbar, etwa als Terminalemulation (siehe unten).
 %Ein Kommandozeilenprogramm läuft somit typischerweise mit den gegebenen Parametern einmal ab, bevor eine erneute Befehlseingabe möglich ist. Ein automatisiertes Abarbeiten mehrerer Kommandos wird auf Unix-artigen Betriebssystemen als Shell-Script bezeichnet.
 \end{itemize}
 
 \subsubsection*{GUI: Desktop-Umgebung}
-Heute starten die meisten Betriebssysteme unmittelbar mit einer \link{https://en.wikipedia.org/wiki/Graphical_user_interface}{grafischen \textbf{Benutzeroberfläche}} (\textbf{GUI:} Graphical User Interface), der sogenannten \link{https://de.wikipedia.org/wiki/Desktop-Umgebung}{\textbf{Desktopumgebung}}; die technische Umsetzung der sogennanten \textbf{Schreibtischmetapher}\footnote{Die Idee der graphischen Benutzeroberfläche und des Desktops entstand in den 1970er bei Xerox im Palo Alto Research Center (Xerox PARC). Das Konzept von Xerox wurde von der damals noch kleinen Firma Apple übernommen. Nach einem anfänglichen Misserfolg mit dem System Apple Lisa trat der Macintosh seit den frühen 80er Jahren seinen Erfolgszug an.}: 
+Heute starten die meisten Betriebssysteme unmittelbar mit einer \link{https://en.wikipedia.org/wiki/Graphical_user_interface}{grafischen \textbf{Benutzeroberfläche}} (\textbf{GUI:} Graphical User Interface), der sogenannten \link{https://de.wikipedia.org/wiki/Desktop-Umgebung}{\textbf{Desktopumgebung}}; die technische Umsetzung der sogennanten \textbf{Schreibtischmetapher}\footnote{Die Idee der graphischen Benutzeroberfläche und des Desktops entstand in den 1970er bei Xerox im Palo Alto Research Center (Xerox PARC). Das Konzept von Xerox wurde von der damals noch kleinen Firma Apple übernommen. Nach einem anfänglichen Misserfolg mit dem System Apple Lisa trat der Macintosh seit den frühen 80er Jahren seinen Erfolgszug an.}:
 \begin{itemize}
-	\item Der Rechner präsentiert grafisch einen Schreibtisch (desktop), auf dem Akten und Ordner (Dateien und Verzeichnisse) herumliegen. Diese Akten können geöffnet und verändert (edit), kopiert (copy) oder in einen Papierkorb geworfen werden (delete). 
+	\item Der Rechner präsentiert grafisch einen Schreibtisch (desktop), auf dem Akten und Ordner (Dateien und Verzeichnisse) herumliegen. Diese Akten können geöffnet und verändert (edit), kopiert (copy) oder in einen Papierkorb geworfen werden (delete).
 	\item Man kann die Objekte des Schreibtisches anfassen, verschieben oder aus Ordnern neue Akten herausholen.
-\end{itemize} 
+\end{itemize}
 \begin{itemize}
 	\item Erst den grafischen Betriebssystemoberflächen ist es zu verdanken, dass heute
-	jeder einen Rechner irgendwie bedienen kann!% und dass es auch leicht ist, mit einem 	bisher unbekannten Programm zu arbeiten, ohne vorher dicke Handbücher zu wälzen. 
+	jeder einen Rechner irgendwie bedienen kann!% und dass es auch leicht ist, mit einem 	bisher unbekannten Programm zu arbeiten, ohne vorher dicke Handbücher zu wälzen.
 	\item 	Genau genommen handelt es sich bei den grafischen Oberflächen um Betriebssystemaufsätze\\
-	$\to$ Es gibt Betriebsysteme meist in einer desktop und server version (mit oder ohne Desktop-Umgebung; siehe zB \url{https://ubuntu.com/\#download}) 
+	$\to$ Es gibt Betriebsysteme meist in einer desktop und server version (mit oder ohne Desktop-Umgebung; siehe zB \url{https://ubuntu.com/\#download})
 %	$\to$ Kann  bei unixoiden Systemen vom Benutzer frei ausgewählt werden (nicht vom Hersteller des Betriebssystems vorgegeben – wie bei Windows oder macOS)
-	\item Beispiel GNOME (GNU Network Object Model Environment) 3.36 ist Standard bei Ubuntu 20.04 
+	\item Beispiel GNOME (GNU Network Object Model Environment) 3.36 ist Standard bei Ubuntu 20.04
 \end{itemize}
 %
 ~\\
@@ -563,17 +563,17 @@ Ein Dateimanager (englisch File Manager) ist ein Computerprogramm zum Verwalten 
  ~\\
 \textbf{Aufgaben:}
 \begin{itemize}
-	\item übersichtliche Darstellung in Form einer (oft grafischen) Benutzerschnittstelle 
+	\item übersichtliche Darstellung in Form einer (oft grafischen) Benutzerschnittstelle
 	\item Navigation (über Buttons; ähnlich wie im Webbrowser)
 	\item Auflisten, das Umbenennen und Verschieben, das Kopieren und das Löschen von Dateien und Verzeichnissen zu den Grundfunktionen
 	\item Bearbeitung von Metadaten unterstützter Dateisysteme, wie beispielsweise Dateiattribute, Dateiberechtigungen und Verknüpfung
-	\item Netzwerkverbindungen via protocols, such as FTP, HTTP, NFS, SMB or WebDAV. How? browse for a file server (connecting and accessing the server's file system like a local file system) or by providing its own full client implementations for file server protocols. 
+	\item Netzwerkverbindungen via protocols, such as FTP, HTTP, NFS, SMB or WebDAV. How? browse for a file server (connecting and accessing the server's file system like a local file system) or by providing its own full client implementations for file server protocols.
 \end{itemize}
 \textbf{Bekannte Beispiele:} %(siehe auch Abb. \ref{fig:filesystem})
 \begin{itemize}
-	\item \textbf{Nautilus} ist ein freier \textbf{Dateimanager} für unixoide Systeme. Standard-Dateimanager der Desktop-Umgebung \textbf{Gnome}.	Der Quelltext ist gemäß der GNU General Public License (GPL) frei verfügbar. 
-	\item Der \textbf{Windows-Explorer} (\url{https://en.wikipedia.org/wiki/File_Explorer}) bildet den voreingestellten Dateimanager in der Windows-Betriebssystemsfamilie seit Windows 95. 
-	\item Der \textbf{apple Finder} ist der Standard-Dateimanager des aktuellen Apple-Betriebssystems macOS (OS X, Mac OS X; ab 2001) und des klassischen Mac OS (1984–2001). 
+	\item \textbf{Nautilus} ist ein freier \textbf{Dateimanager} für unixoide Systeme. Standard-Dateimanager der Desktop-Umgebung \textbf{Gnome}.	Der Quelltext ist gemäß der GNU General Public License (GPL) frei verfügbar.
+	\item Der \textbf{Windows-Explorer} (\url{https://en.wikipedia.org/wiki/File_Explorer}) bildet den voreingestellten Dateimanager in der Windows-Betriebssystemsfamilie seit Windows 95.
+	\item Der \textbf{apple Finder} ist der Standard-Dateimanager des aktuellen Apple-Betriebssystems macOS (OS X, Mac OS X; ab 2001) und des klassischen Mac OS (1984–2001).
 \end{itemize}
 \demo{\begin{itemize}
 		\item Features anhand von Nautilus demonstrieren.
@@ -600,14 +600,14 @@ Ein Dateimanager (englisch File Manager) ist ein Computerprogramm zum Verwalten 
 %\subsubsection{1970er/80er Unfreie Software (proprietär)}
 %Proprietary software, also known as non-free software,~\\
 %Proprietäre Software bezeichnet eine Software, die das Recht und die Möglichkeiten der Wieder- und Weiterverwendung sowie Änderung und Anpassung durch Nutzer und Dritte stark einschränkt. Ursprünglich war dies durch eine Abhängigkeit der Software von der Hardware bedingt. Die Praxis, Quelltexte von Computerprogrammen unter Verschluss und damit im engeren Sinne „proprietär“ zu halten, kam mit der zunehmenden öffentlichen Verbreitung von Computern mit gleichen Mikroprozessoren in den frühen 1980er Jahren auf.[1] Es gibt zahlreiche Mechanismen, die eine Software „proprietär“ machen und halten können: durch Softwarepatente, das Urheberrecht, Lizenzbedingungen (EULAs), das Aufbauen der Software auf herstellerspezifischen, nicht veröffentlichten Standards und die Behandlung des Quelltextes als Betriebsgeheimnis (englisch closed source)
-%Sind eine oder mehrere Bedingungen der von der FSF aufgelisteten Freiheiten nicht erfüllt, wird die Software als proprietär oder „unfrei“ (im Sinne fehlender Freiheiten) bezeichnet. 
+%Sind eine oder mehrere Bedingungen der von der FSF aufgelisteten Freiheiten nicht erfüllt, wird die Software als proprietär oder „unfrei“ (im Sinne fehlender Freiheiten) bezeichnet.
 %\subsubsection{1980er: Freie Software (FSF) und GNU}
 %~\\
 %die Freiheit der Kontrolle über die Software (und zwar uneingeschränkte Freiheit der Kontrolle und Unabhängigkeit durch Erhalt des genauen Quellcodes, um Analysen und Änderungen der Software zu erlauben[Anm. 2]),
 %die soziale Freiheit der Kollaboration, um aktiv mit beliebigen anderen Nutzern und Entwicklern kooperieren zu können (die Software darf kopiert und weitergegeben werden,[Anm. 3] im Original oder mit Veränderung).
 %~\\
 %Um dem GNU-Projekt einen logistischen, juristischen und finanziellen Rahmen zu geben, gründete Stallman 1985 die gemeinnützige \textit{Free Software Foundation} (FSF).~\\
-%Der ältere Begriff Freie Software wird bereits seit den 1980ern von der Free Software Foundation (FSF) verwendet. Eine Fehlassoziation von Freier Software mit Freeware war häufig, da im Englischen frei für kostenlos wie auch Freiheit stehen kann[16] und außerdem freie Software in den meisten Fällen wirklich auch kostenlos erhältlich ist. Da mit Frei aber wirklich nur Freiheit von der FSF gemeint war, prägte diese den Slogan, „free speech, not free beer“ – „freie Meinungsäußerung, nicht Freibier“, um einer Assoziation von Freier Software mit kostenloser Software entgegenzuwirken. 
+%Der ältere Begriff Freie Software wird bereits seit den 1980ern von der Free Software Foundation (FSF) verwendet. Eine Fehlassoziation von Freier Software mit Freeware war häufig, da im Englischen frei für kostenlos wie auch Freiheit stehen kann[16] und außerdem freie Software in den meisten Fällen wirklich auch kostenlos erhältlich ist. Da mit Frei aber wirklich nur Freiheit von der FSF gemeint war, prägte diese den Slogan, „free speech, not free beer“ – „freie Meinungsäußerung, nicht Freibier“, um einer Assoziation von Freier Software mit kostenloser Software entgegenzuwirken.
 %
 %Zitat: “The word ‘free’ in our name does not refer to price; it refers to freedom.
 %
@@ -615,10 +615,10 @@ Ein Dateimanager (englisch File Manager) ist ein Computerprogramm zum Verwalten 
 %Second, the freedom to change a program, so that you can control it instead of it controlling you; for this, the source code must be made available to you.”
 %~\\~\\
 %Das GNU-Projekt entwickelt das Betriebssystem GNU, das von Richard Stallman mit dem Ziel gegründet wurde, ein freies, unixähnliches Betriebssystem zu schaffen, das sicherstellt, dass die Endbenutzer die Freiheiten haben, es verwenden, untersuchen, verbreiten (kopieren) und verändern zu dürfen. Software, deren Lizenz diese Freiheiten garantiert, wird Freie Software (engl. Free Software) genannt, GNU ist in diesem Sinne frei.\\~\\
-%Die \textbf{GNU General Public License }(kurz GNU GPL oder GPL; aus dem Englischen wörtlich für allgemeine Veröffentlichungserlaubnis oder -genehmigung) ist die am weitesten verbreitete Softwarelizenz, die einem gewährt, die Software auszuführen, zu studieren, zu ändern und zu verbreiten (kopieren). Software, die diese Freiheitsrechte gewährt, wird Freie Software genannt; Die GNU GPL wurde im Januar 1989 von Richard Stallman, dem Gründer des GNU-Projekts, geschrieben. 
+%Die \textbf{GNU General Public License }(kurz GNU GPL oder GPL; aus dem Englischen wörtlich für allgemeine Veröffentlichungserlaubnis oder -genehmigung) ist die am weitesten verbreitete Softwarelizenz, die einem gewährt, die Software auszuführen, zu studieren, zu ändern und zu verbreiten (kopieren). Software, die diese Freiheitsrechte gewährt, wird Freie Software genannt; Die GNU GPL wurde im Januar 1989 von Richard Stallman, dem Gründer des GNU-Projekts, geschrieben.
 %\subsubsection{1990er: Open Source (OSI)}
-%Der Begriff Open Source (zu deutsch „quelloffen“) wurde 1998 von den Gründern der Open Source Initiative (OSI) eingeführt: Eric S. Raymond, Bruce Perens und Tim O’Reilly. Sie wollten den pragmatischeren Ansatz derartiger Software in den Mittelpunkt stellen, statt auf eine (aus ihrer Sicht) möglicherweise abschreckend wirkende, moralisch aufgeladene und polarisierende Freie-Software-Idee zu setzen.[15][16] Quelloffene Software wird von ihnen als vorteilhaftes Entwicklungsmodell beschrieben, wobei die Frage, ob Software quelloffen sein sollte, dort eine rein praktische und keine ethische Frage ist. 
-%Als Open Source (aus englisch open source, wörtlich offene Quelle) wird Software bezeichnet, deren Quelltext öffentlich und von Dritten eingesehen, geändert und genutzt werden kann. Open-Source-Software kann meistens kostenlos genutzt werden. 
+%Der Begriff Open Source (zu deutsch „quelloffen“) wurde 1998 von den Gründern der Open Source Initiative (OSI) eingeführt: Eric S. Raymond, Bruce Perens und Tim O’Reilly. Sie wollten den pragmatischeren Ansatz derartiger Software in den Mittelpunkt stellen, statt auf eine (aus ihrer Sicht) möglicherweise abschreckend wirkende, moralisch aufgeladene und polarisierende Freie-Software-Idee zu setzen.[15][16] Quelloffene Software wird von ihnen als vorteilhaftes Entwicklungsmodell beschrieben, wobei die Frage, ob Software quelloffen sein sollte, dort eine rein praktische und keine ethische Frage ist.
+%Als Open Source (aus englisch open source, wörtlich offene Quelle) wird Software bezeichnet, deren Quelltext öffentlich und von Dritten eingesehen, geändert und genutzt werden kann. Open-Source-Software kann meistens kostenlos genutzt werden.
 % Der Begriff Open Source assoziiert die Verfügbarkeit des Quelltextes, sagt aber nichts über die gewährten Verwendungsrechte und Nutzungsfreiheiten aus
 % Die Open Source Initiative (OSI) wendet den Begriff Open Source auf all die Software an, deren Lizenzverträge den folgenden drei charakteristischen Merkmalen entsprechen und die zehn Punkte der Open Source Definition erfüllen:
 %\subsubsection{Freeware}
@@ -629,7 +629,7 @@ Ein Dateimanager (englisch File Manager) ist ein Computerprogramm zum Verwalten 
 %
 %Freeware räumt dem Benutzer nicht die von der Free Software Foundation aufgelisteten Freiheiten ein, sondern die der individuellen Lizenzvereinbarung mit dem Urheber. Daher gilt sie als „unfreie“ Software.
 %
-%Freie Software enthält hingegen die genannten Freiheiten und kann, muss aber nicht kostenlos sein. 
+%Freie Software enthält hingegen die genannten Freiheiten und kann, muss aber nicht kostenlos sein.
 %}
 
 %{\color{gray}
@@ -872,7 +872,7 @@ Ein Dateimanager (englisch File Manager) ist ein Computerprogramm zum Verwalten 
 %
 %Android ist eine freie Software.[1] Ausgeliefert werden die meisten Android-Geräte allerdings mit vorinstallierter proprietärer Software,[4] darunter meist die Google Mobile-Dienste (kurz GMD; ugs. „Google-Apps“)[5] wie Google Chrome, Google Maps, Google Play und Google Play Services. Ein Großteil der derzeit in Betrieb befindlichen Android-Geräte sind solche „Google-Androids“;[6] konkurrierende Android-Betriebssysteme sind unter anderem Fire OS von Amazon sowie das freie Betriebssystem LineageOS. Da der Name „Android“ sowie das dazugehörige Logo aber von Google als Marken geschützt werden, dürfen diese anderen auf Android basierenden Betriebssysteme nicht als „Android“ vermarktet werden.[7][8]
 %
-%Im Gegensatz zu herkömmlichen Desktop-Computern hat man bei Android-Geräten nicht das vollständige Administrationsrecht. Von Nutzern unerwünschte Applikationen können nicht in jedem Fall von ihm entfernt werden, solche Rechte legt der Hersteller der mobilen Endgeräte fest. 
+%Im Gegensatz zu herkömmlichen Desktop-Computern hat man bei Android-Geräten nicht das vollständige Administrationsrecht. Von Nutzern unerwünschte Applikationen können nicht in jedem Fall von ihm entfernt werden, solche Rechte legt der Hersteller der mobilen Endgeräte fest.
 %
 %}
 %
@@ -901,9 +901,9 @@ nutzen zu können.\\ Beispiele:
 \begin{itemize}
 	\item \textbf{Lokales Netz} (\textbf{LAN} = Local Area Network): dient zur Verbindung von Rechnern
 	und Servern in einem räumlich begrenzten Gebiet (Ausdehnung von wenigen Kilometern) über Leitungen, für die nur der Betreiber (also
-	nicht etwa die Telekom) verantwortlich ist. 
+	nicht etwa die Telekom) verantwortlich ist.
 	\item \textbf{Drahtloses lokales Netz} (\textbf{WLAN} = Wireless Local Area
-	Network): Kommunikation nicht über Leitungen sondern drahtlos. 
+	Network): Kommunikation nicht über Leitungen sondern drahtlos.
 	\item \textbf{Internet}: Spezielles \textit{globales} Netz, das mittlerweile weltweit leitungsgebunden und drahtlos nutzbar ist.
 	\item \textbf{Virtuelles privates Netz} (\textbf{VPN} = Virtual Privat Network): verbindet eine Benutzergruppe innerhalb eines ``unkontrollierten'' Netzwerks (meist im Internet) durch ein spezielles Zugangs-	und Übertragungsprotokoll derart, dass nur \textit{berechtigte} Teilnehmer Zugang zu diesem VPN erhalten.
 \end{itemize}
@@ -915,7 +915,7 @@ z.B. um eine \textit{Netzüberlastung} zu vermeiden oder aus Gründen der \texti
 Beispiel: Von besonderem Interesse ist in den letzten Jahren der Anschluss an das weltweite Internet geworden (\textit{Heimnetz} $\to$ \textit{Internet}).\\~\\
 Die Verbindung zwischen Netzen erfolgt durch \textbf{Vermittlungsrechner} (VR):
 \begin{itemize}
-	\item \textbf{Switches} verbinden mehrere Subnetze (=Segmente eines LANs). 
+	\item \textbf{Switches} verbinden mehrere Subnetze (=Segmente eines LANs).
 	\item \textbf{Router} (auch IP-Switch) haben diesselbe Funktion wie Switches und verbinden darüberhinaus Subnetze des Internets (typischerweise \textit{(Heim)Netz} $\to$ \textit{Internet}).
 	\begin{itemize}
 		\item haben die Aufgabe der optimalen Paketvermittlung für das IP-Protokoll
@@ -955,20 +955,20 @@ Jeder Rechner, der am Internet angeschlossen ist, benötigt eine Adresse. Überw
 Eine IPv4 Adressee setzt sich zusammen aus:
 
 \begin{itemize}
-	\item \textbf{Netzadresse des Subnetzes}, in dem der Rechner sich	befindet, z.B. $$\texttt{136.199.*.*} ~~= ~~\texttt{uni-trier.de}.$$ 
+	\item \textbf{Netzadresse des Subnetzes}, in dem der Rechner sich	befindet, z.B. $$\texttt{136.199.*.*} ~~= ~~\texttt{uni-trier.de}.$$
 	Paketvermittlung im Internet zwischen verschiedenen Netzwerken erfolgt ausschließlich über die Netzadressen.
-	\item \textbf{Hostadresse}: Adresse innerhalb dieses Subnetzes, z.B. $$\texttt{*.*.235.16 ~~=~~ math.uni-trier.de}.$$ 
+	\item \textbf{Hostadresse}: Adresse innerhalb dieses Subnetzes, z.B. $$\texttt{*.*.235.16 ~~=~~ math.uni-trier.de}.$$
 	Sobald das Paket den Vermittlungsrechner des Zielnetzwerkes erreicht hat, kann dieser sich mit dem dezidierten Zielgerät über die Hostadresse verbinden.\\~\\
 \end{itemize}
 
 ~\\
 \textbf{Internetadresse (IPv4-Adresse)} = \textbf{Netzadresse} + \textbf{Hostadresse}.\\~\\[-0.2cm]
-Diese wird als 32-Bit-Zahl codiert und der besseren Lesbarkeit wegen in der Form 
+Diese wird als 32-Bit-Zahl codiert und der besseren Lesbarkeit wegen in der Form
 $$\texttt{A.B.C.D}$$
-notiert: 
+notiert:
 \begin{itemize}
 	\item dabei stehen \texttt{A, B, C, D} jeweils für die dezimalen Äquivalente der vier Bytes
-	\item Per Konvention findet sich 
+	\item Per Konvention findet sich
 	\begin{itemize}
 		\item die \textbf{Netzadresse} am Anfang der Gesamtadresse
 		\item die \textbf{Hostadresse} ergibt sich aus den restlichen Bits
@@ -980,9 +980,9 @@ Die Netzadresse aller IPs von Rechnern im Netz der Uni Trier lautet
 $$\texttt{136.199},$$
 für die Subnetze des Fachs Mathematiks haben wir die Hostadressen:
 \begin{itemize}
-	\item \texttt{123.*} (Mitarbeiter selbst verwaltet $\to$ sichtbar nur innerhalb VPN), 
-	\item \texttt{234.*} (Mitarbeiter zentral verwaltet $\to$ komplett isoliert), 
-	\item \texttt{235.*} (www-Server $\to$ nach außen sichtbar), 
+	\item \texttt{123.*} (Mitarbeiter selbst verwaltet $\to$ sichtbar nur innerhalb VPN),
+	\item \texttt{234.*} (Mitarbeiter zentral verwaltet $\to$ komplett isoliert),
+	\item \texttt{235.*} (www-Server $\to$ nach außen sichtbar),
 	\item \texttt{236.*} (Testwiese).
 \end{itemize}
 Wir können im internen Mathe-Netz also maximal \texttt{4$\cdot$256=1024} Rechner mit \textit{festen} IPs versehen.
@@ -1035,12 +1035,12 @@ Wir beobachten:
 d.h. wir können mit der Bitfolge \texttt{{\color{blue}11111111.111}00000.00000000.00000000} diese ersten 11 Bits filtern.
 \end{enumerate}
 ~\\
-Als \textbf{(Sub)netzmaske} bezeichnet man die 32-Bit Binärzahl, die an den zur Netzadresse gehörenden Bitpositionen eine 1 hat, überall sonst eine 0. 
+Als \textbf{(Sub)netzmaske} bezeichnet man die 32-Bit Binärzahl, die an den zur Netzadresse gehörenden Bitpositionen eine 1 hat, überall sonst eine 0.
 Für den Netzadressbereich der Deutschen Telekom können wir also verkürzt schreiben (\textit{Classless Inter-Domain Routing (CIDR)}).
 $$\texttt{\color{red}217.224.0.0/\color{blue}11},$$
 wobei \texttt{\color{blue}11} die Anzahl der mit 1 besetzten ersten Bits der Netzmaske angibt, dh. die Subnetzmaske lautet
 $$\texttt{{\color{blue}11111111.111}00000.00000000.00000000 = 255.224.0.0}.$$
- 
+
 \demo{
 \begin{itemize}
 	\item Beispiel: Der Netzadressbereich der Uni Trier ist
@@ -1048,10 +1048,10 @@ $$\texttt{{\color{blue}11111111.111}00000.00000000.00000000 = 255.224.0.0}.$$
 	mit Netzmaske
 	$$\ttt{255.255.0.0}~~~\text{also}~~~\ttt{111111111.111111111.000000000.000000000}.$$
 	Für Subnetze wie das 123-er Mathenetz
-	$$\texttt{136.199.123.0/8}  $$ 
+	$$\texttt{136.199.123.0/8}  $$
 	mit Netzmaske
 	$$\ttt{255.255.255.0}~~~\text{also}~~~\ttt{111111111.111111111.111111111.000000000}.$$
-	~\\\item 	Beispiel: Manuelle (bzw. statische) IPv4 Einstellungen für einen Rechner im Mathe-Subnetz \texttt{136.199.123.*}\\~\\	
+	~\\\item 	Beispiel: Manuelle (bzw. statische) IPv4 Einstellungen für einen Rechner im Mathe-Subnetz \texttt{136.199.123.*}\\~\\
 	\begin{tabular}{ll}
 		DHCP/IPv4 Methode: &manuell\\
 		IPv4 Addresse: &136.199.123.108\\
@@ -1079,14 +1079,14 @@ Eine Teilmenge des IPv4 Adressraums ist für bestimmte Zwecke reserviert; zum Be
 %
 Da jedes Netzwerk Adressen aus diesen Teilmengen verwenden kann, sind sie nicht eindeutig und dienen nicht dem Routing über das Internet. Die meisten Netzwerke (insbesondere zuhause) nutzen diese privaten Adressen. Mit der Außenwelt wird dann über einer einzigen ``extern eindeutigen'' IP vermittelt, welche zuhause typischerweise Ihrem Router zugeordnet ist.
 \begin{itemize}
-	\item[$\to$] Router mappen dann alle internen Adressen auf diese einzige externe Adresse, wenn sie Pakte ins Internet weiterleiten. 
+	\item[$\to$] Router mappen dann alle internen Adressen auf diese einzige externe Adresse, wenn sie Pakte ins Internet weiterleiten.
 \item[$\to$] Diesen Vorgang nennt man ``\textit{Network Address Translation (NAT)}''
 \end{itemize}
 %
 %
 ~\\~\\
 \textbf{Konfiguration von IP-Adressen}\\
-Jedem Subnetz steht ein begrenztes \textbf{Kontingent von Hostadressen} zur Verfügung. Diese können bestimmten Rechnern \textit{fest/statisch} oder \textit{temporär/dynamisch} vergeben werden. 
+Jedem Subnetz steht ein begrenztes \textbf{Kontingent von Hostadressen} zur Verfügung. Diese können bestimmten Rechnern \textit{fest/statisch} oder \textit{temporär/dynamisch} vergeben werden.
 \begin{itemize}
 	\item \textbf{Statisch:} Rechner, die ständig im Netz sind, z.B. Server (wie \texttt{vpn.uni-trier.de}), erhalten immer eine feste Adresse.
 	\item \textbf{Dynamisch:} Rechnern, die nicht ständig online sind, kann bei Bedarf eine
@@ -1094,7 +1094,7 @@ Jedem Subnetz steht ein begrenztes \textbf{Kontingent von Hostadressen} zur Verf
 	$\to$ geschieht meist mit dem \textbf{Dynamic Host Configuration Protocol (DHCP)}\\
 	$\to$ zuhause spielt meist der Router die Rolle des DHCP-Servers\\
 	$\to$ Vorteil: Bei begrenzter Anzahl von Hostadressen, kann so dynamisch eine potenziell größere Zahl von Rechnern bedient werden
-\end{itemize} 
+\end{itemize}
 %
 ~\\~\\
 \textbf{Das System der Domain-Namen.}\\
@@ -1102,7 +1102,7 @@ Anstatt der 32-Bit IP-Adresse möchte man einen Rechner lieber über einen Namen
 \begin{itemize}
 	\item Zu Beginn hat man das manuell gelöst über Textdatei \texttt{hosts.txt}.
 	\item Ab etwa 1980 wurde als Alternative eine verteilte Datenbanklösung zur Verwaltung von Namen im Internet
-	entwickelt. 
+	entwickelt.
 	\item 1984 wurde sie unter dem Namen DNS \textbf{(domain name service)} eingeführt
 \end{itemize}
 Beim Konzept \textbf{DNS} hatte man die Vorstellung, dass jedes Subnetz des Internets einen \textit{Bereich} (\textit{domain}) von Namen verwaltet und selbst einen \textit{Bereichsnamen} (\textit{domain name}) hat.
@@ -1111,13 +1111,13 @@ Beim Konzept \textbf{DNS} hatte man die Vorstellung, dass jedes Subnetz des Inte
 ~\\
 Domain-Namen im Internet bestehen aus mindestens zwei Komponenten, die durch Punkte getrennt sind:
 $$\texttt{domain.ToplevelDomain}$$
-oder 
+oder
 $$\texttt{subdomain.domain.ToplevelDomain}.$$
 \begin{itemize}
 	\item Am weitesten rechts steht der Name einer \textbf{Toplevel-Domain} (abgekürzt: TLD). Zum Beispiel Länderspezifisch \texttt{.de} oder generisch wie \texttt{.com} für \textit{commercial} (ursprünglich für Unternehmen)
 	\item  Die zweite Komponente (von rechts) beinhaltet den eigentlichen \textbf{Domain-Namen}, zB \texttt{uni-trier}
 	\item dann folgt eine Einteilung in Unterbereiche (\textbf{subdomains}), zB \texttt{math}\\~\\
-	$\to$ Beachte: Groß- und Kleinbuchstaben werden nicht unterschieden. 
+	$\to$ Beachte: Groß- und Kleinbuchstaben werden nicht unterschieden.
 \end{itemize}
 
 
@@ -1125,7 +1125,7 @@ $$\texttt{subdomain.domain.ToplevelDomain}.$$
 \textbf{Firewall}. \\
 Eine Firewall realisiert u.a. die folgenden Schutzmaßnahmen:
 \begin{itemize}
-	\item Der Zugriff aus dem Intranet (= ein in sich geschlossenes Netz) auf Rechner im Internet wird nur für bestimmte Netzadressen ermöglicht. 
+	\item Der Zugriff aus dem Intranet (= ein in sich geschlossenes Netz) auf Rechner im Internet wird nur für bestimmte Netzadressen ermöglicht.
 	\item Verbindungen zu den von außen zugänglichen Servern werden gefiltert, um Angriffe auf diese Rechner zu verhindern; Beispiel: Im Falle eines E-Mail-Servers unerwünschte Mails filtern.
 \end{itemize}
 
@@ -1154,7 +1154,7 @@ Häufig benutzte Dienste:
 		\item \ttt{sftp} secure file transfer protocol (\ttt{ftp} mit \ttt{ssh})
 		\item scp
 		\item \ttt{nfs}:// network file system
-		\item \ttt{smb}:// Server Message Block\\ 
+		\item \ttt{smb}:// Server Message Block\\
 		$\to$ in einer Ur-Version auch als Common Internet File System (CIFS)\\
 		$\to$ wird vom frei verfügbaren Softwareprojekt Samba
 		\item \ttt{dav}:// WebDAV
@@ -1175,7 +1175,7 @@ Häufig benutzte Dienste:
 \demo{
 \begin{itemize}
 	\item \ttt{ssh syrma.uni-trier.de}
-	\item \ttt{rsync} remote (e.g. \ttt{ssh syrma.uni-trier.de}) to local 
+	\item \ttt{rsync} remote (e.g. \ttt{ssh syrma.uni-trier.de}) to local
 	\item \ttt{ping}
 \end{itemize}
 }
@@ -1194,7 +1194,7 @@ Häufig benutzte Dienste:
 		\item Wie sind diese Geräte miteinander verbunden (\textit{wire(less)})? Welches Protokoll verwenden Ihre Geräte im WLAN? Was ist eigentlich ein WLAN-Schlüssel?
 		\item Finden Sie heraus, welche IP-Adresse Ihr Rechner oder Smartphone von Ihrem Router aktuell zugeordnet bekommen hat. Wie lautet die Netzadresse? Geben Sie diese Netzadresse in Google ein: Was ist die Besonderheit dieser Netzadresse (Stichwort: Private IP-Adresse)?
 		\item Falls Sie Zugang haben sollten: Schauen Sie sich auch mal in der Browser-Maske Ihres Routers um (zB \url{http://fritz.box/}). Welche Internetadresse hat Ihr Router (Freigaben festgelegt für Erreichbarkeit von außen)?\\
-		Meiner besitzt (aktuell) als Netzadressen-Anteil: \texttt{217.251} mit Gateway \link{https://ipinfo.io/217.251.34.1}{\texttt{217.251.34.1}}, ein Gateway in Trier von der Deutsche Telekom AG 
+		Meiner besitzt (aktuell) als Netzadressen-Anteil: \texttt{217.251} mit Gateway \link{https://ipinfo.io/217.251.34.1}{\texttt{217.251.34.1}}, ein Gateway in Trier von der Deutsche Telekom AG
 		\item Falls Sie Zugang haben sollten: Können Sie Ihren Geräte feste IPs zuweisen? Zum Beispiel sinnvoll, um den eigenen Netzwerk-Drucker stets unter der selben IP zu erreichen.
 			\item Schauen Sie in ihrem Dateimanager nach den Optionen nfs://, smb://, sftp://, ftp://, dav://
 	\end{itemize}
@@ -1209,7 +1209,7 @@ Zur Unterscheidung echter und virtueller Umgebungen werden diese  Wirt (\textit{
 \begin{itemize}
 	\item \textbf{Wirt} (\textit{host}): bezeichnet immer die Ebene (oder Schicht), welche der physischen Hardware am nächsten ist
 	\item \textbf{Gast} (\textit{guest}): die auf dem Wirt ausgeführte Umgebung
-\end{itemize} 
+\end{itemize}
 ~\\
 \textit{Anwendungsbeispiel:} Betriebssystem innerhalb eines anderen ausführen.
 \begin{itemize}
@@ -1225,7 +1225,7 @@ Zur Unterscheidung echter und virtueller Umgebungen werden diese  Wirt (\textit{
 	\item Agilität durch \textbf{Unabhängigkeit} von der physischen Hardwareinfrastruktur\\
 	$\to$ Abstraktionsschicht täuscht (andere) physische Gegebenheiten vor
 	\item Agilität durch \textbf{Modularisierung} (eine virtuelle Machine bekommt nur eine einzige Aufgabe; kann schnell ausgetauscht werden)
-\end{itemize} 
+\end{itemize}
 \demo{
 \begin{itemize}
 	\item Fallbeispiel: Mathe-Netz (abstrakt und proxmox)
@@ -1255,9 +1255,9 @@ Als virtuelle Maschine (VM) wird in der Informatik die Software-technische Kapse
 	\item Bekannte Umsetzungen:
 	\begin{itemize}
 		\item Oracles \link{https://de.wikipedia.org/wiki/VirtualBox}{VirtualBox},
-		\item VMwares \link{https://de.wikipedia.org/wiki/VMware_vSphere}{vSphere}. 
+		\item VMwares \link{https://de.wikipedia.org/wiki/VMware_vSphere}{vSphere}.
 	\end{itemize}
-\end{itemize}  
+\end{itemize}
 %\begin{figure}[h!]
 %	\centering
 %	\includegraphics[width=0.9\linewidth]{./media/containerVSvm3}
@@ -1297,7 +1297,7 @@ Als virtuelle Maschine (VM) wird in der Informatik die Software-technische Kapse
 	\begin{enumerate}
 		\item VirtualBox installieren (gui): \url{https://www.virtualbox.org/wiki/Downloads}
 		\item Ubuntu 20.04 als VM installieren
-		\item Ggf müssen Sie Virtualisierung auf Ihrer CPU zunächst erlauben:\\ 
+		\item Ggf müssen Sie Virtualisierung auf Ihrer CPU zunächst erlauben:\\
 		Enable Virtual Hardware in BIOS/UEFI.\\
 		Press F2 (or other F- ..) key at startup BIOS/UEFI Setup.\\
 		Switch to the Advanced Mode tab then choose CPU Configuration option.\\
@@ -1321,9 +1321,9 @@ Durch die physikalisch angeklemmte Hardware entsteht über Router, Switches, Rec
 Um das Netzwerk in einzelne Teilbereiche (sog. Subnetze) \textit{unabhängig von der phsysischen Gegebenheit} zu unterteilen, bedarf es einer geeigneten Virtualisierung. Damit bleibt man auch hier agil und flexibel. Ein \link{https://de.wikipedia.org/wiki/Virtual_Local_Area_Network}{Virtual Local Area Network (VLAN)} ist ein logisches Subnetz welches sich über mehrere Switches hinweg ausdehnen kann.\\~\\
 \textit{Anwendungsbeispiel:} Das Netz der Universität Trier kann folgende IPs vergeben $$\texttt{136.199.XXX.YYY}.$$ Dabei können feste Zahlen \texttt{XXX} als Subnetze/VLANs verstanden werden, in denen dann 256 verschiedene IPs für Rechner, Drucker, Server etc vergeben werden können. Zum Beispiel betreiben wir in der Mathematik die Subnetze:
 \begin{itemize}
-	\item \texttt{136.199.123.YYY} (Mitarbeiter selbst verwaltet), 
-	\item \texttt{136.199.234.YYY} (Mitarbeiter zentral verwaltet, CIP Pools), 
-	\item \texttt{136.199.235.YYY} (www-Server), 
+	\item \texttt{136.199.123.YYY} (Mitarbeiter selbst verwaltet),
+	\item \texttt{136.199.234.YYY} (Mitarbeiter zentral verwaltet, CIP Pools),
+	\item \texttt{136.199.235.YYY} (www-Server),
 	\item \texttt{136.199.236.YYY} (Testwiese).
 \end{itemize}
 Durch geeignete Firewall-Regeln kann zudem der Zugriff aus und auf die Subnetze geregelt werden. So sollte zum Beispiel ein Web-Server im Subnetz \texttt{136.199.235.YYY} nach außen sichtbar sein und http(s)-Anfragen o.ä. von beliebigen IP-Adressen beantworten. Auf Knoten im Mitarbeiter-Netz \texttt{136.199.234.YYY} können hingegen nur einige priviligierte IP-Adressen außerhalb der Range \texttt{136.199.234.YYY} zugreifen.
@@ -1333,7 +1333,7 @@ Andererseits möchte man auch über Knoten (wie Router, Switches,..), die nicht 
 ~\\
 \textit{Anwendungsbeispiel:}
 \begin{itemize}
-	\item Der Computer eines Studierenden kann von zu Hause aus Zugriff auf das Uni-Trier-Netz erlangen. Aus Sicht der VPN-Verbindung dienen die dazwischen liegenden Netze (sein Heimnetz sowie das Internet) als Verlängerungskabels, das den Computer (VPN-Partner) ausschließlich mit dem zugeordneten Netz verbindet (VPN-Gateway). 
+	\item Der Computer eines Studierenden kann von zu Hause aus Zugriff auf das Uni-Trier-Netz erlangen. Aus Sicht der VPN-Verbindung dienen die dazwischen liegenden Netze (sein Heimnetz sowie das Internet) als Verlängerungskabels, das den Computer (VPN-Partner) ausschließlich mit dem zugeordneten Netz verbindet (VPN-Gateway).
 \item Der sich daraus ergebende Nutzen eines VPNs kann je nach verwendetem VPN-Protokoll durch eine Verschlüsselung ergänzt werden, die eine abhör- und manipulationssichere Kommunikation zwischen den VPN-Partnern ermöglicht.
 \item Ein verschlüsseltes VPN über ein unverschlüsseltes Netzwerk herzustellen, ist mit eine der Hauptgründe für die Verwendung eines VPNs.
 \end{itemize}
@@ -1345,7 +1345,7 @@ Andererseits möchte man auch über Knoten (wie Router, Switches,..), die nicht 
 %	\label{fig:vpn1}
 %\end{figure}
 %~\\
-Sobald ein Computer eine VPN-Verbindung aufbaut, ist der Vorgang vergleichbar mit dem Umstecken seines Netzwerkkabels von seinem ursprünglichen Netz an das neu zugeordnete Netz, mit allen Auswirkungen wie geänderten IP-Adressen und Unterschieden beim Routing. 
+Sobald ein Computer eine VPN-Verbindung aufbaut, ist der Vorgang vergleichbar mit dem Umstecken seines Netzwerkkabels von seinem ursprünglichen Netz an das neu zugeordnete Netz, mit allen Auswirkungen wie geänderten IP-Adressen und Unterschieden beim Routing.
 
 \inclass{
 	\textbf{Eigenes VPN}
@@ -1354,7 +1354,7 @@ Sobald ein Computer eine VPN-Verbindung aufbaut, ist der Vorgang vergleichbar mi
 	\end{itemize}
 }
 
-\homework{\textbf{Hausaufgabe: 
+\homework{\textbf{Hausaufgabe:
 		\begin{center}
 		\large	VPN + Anmeldung auf dem Remote Server
 	\end{center}}
@@ -1363,6 +1363,3 @@ Sobald ein Computer eine VPN-Verbindung aufbaut, ist der Vorgang vergleichbar mi
 	\item Melden Sie sich auf dem Server \remoteServer\ an. [Siehe Anleitung auf der Titelseite.]
 \end{enumerate}
 }
-
-
-
