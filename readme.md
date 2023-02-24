@@ -57,21 +57,6 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
 The Latex code and the Python sample programs are licensed under [GPL-3.0](https://github.com/cvollmann-teaching/richardson-pagerank/blob/main/LICENSE) and the content of the lecture notes is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
 
-
-## General Project Instructions
-
-- Strukturieren Sie Ihre Implementierung sinnvoll. Orientieren Sie sich dabei an der
-  während des Kurses entwickelten Modularisierung.
-- Testen Sie jede einzelne Funktion ausführlich.
-- Verwenden Sie für sämtliche Vektor-- und Matrix--Rechenoperationen nur die von Ihnen
-  implementierten Python--Funktionen (und keine externen Pakete wie z.B. Numpy).
-- Numpy und Scipy können verwendet werden, um die Implementierung zu überprüfen.
-- Bonus\*: Versuchen Sie mögliche Fehleingaben des Nutzers zu antizipieren und mit
-  geeigneten Fehlermeldungen abzupuffern. (Zum Beispiel könnten Dimensionen von $A$ und
-  $b$ nicht zusammenpassen, ein Nutzer könnte die Matrix im falschem Format übergeben,
-  sodass das übergebene Objekt nicht die drei Attribute 'data', 'indices','indptr'
-  aufweist, etc.)
-
 ## Secure Shell (SSH)
 
 1. Find out the IP or hostname of your neighbor's computer and log in via
