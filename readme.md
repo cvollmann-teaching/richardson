@@ -182,24 +182,27 @@
 3. Set up a **PyCharm Project**: https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
    - Open the directory `code`using the application PyCharm or to play around create any other project.
 
-4. Set up **virtual environment**: https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html
+4. Overview on **Project Files:** https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
+5. Set up **virtual environment**: https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html
    - Optional: You may want to inherit site-packages from local Python installation
    - Install some packages
    - Add it to `.gitignore`
-5. **Run Code**: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
+6. **Run Code**: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
    - Familiarize with Python and run some code.
    - Create a Run Configuration
-6. Use the **Debugger**: https://www.jetbrains.com/help/pycharm/debugging-code.html
-7. Sync **`requirements.txt`**: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
+7. Use the **Debugger**: https://www.jetbrains.com/help/pycharm/debugging-code.html
+8. Sync **`requirements.txt`**: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
    - Tools| Sync Python requirements
    - Import some package and update the `requirements.txt`. Did it work?
-8. **git in PyCharm**
+9. **git** in PyCharm
    - https://www.jetbrains.com/help/pycharm/set-up-a-git-repository.html#e1c9b3f9
 
-9. Check out the hidden project directory `.idea`
+10. Check out the hidden project directory `.idea`
    - Add it to `.gitignore`
 
-10. Further reading:
+11. Further reading:
+
+   - pytest: https://www.jetbrains.com/help/pycharm/pytest.html
 
    - seek and destroy: https://www.jetbrains.com/help/pycharm/auto-completing-code.html
 
@@ -207,7 +210,7 @@
 
    - Code Completion https://www.jetbrains.com/help/pycharm/auto-completing-code.html
 
-   - Konsole https://www.jetbrains.com/help/pycharm/working-with-consoles.html
+   - Console https://www.jetbrains.com/help/pycharm/working-with-consoles.html
 
    - Local History https://www.jetbrains.com/help/pycharm/local-history.html
 
@@ -498,8 +501,6 @@ Implement:
 1. Implement a function `power_iteration(A,...)`
 2. Re-run your Page-Rank using the power iteration and the Google matrix.
 
-
-
 ## Code Documentation with Sphinx
 
 1.  Consult the official documentation: https://www.sphinx-doc.org/en/master/index.html
@@ -536,72 +537,49 @@ create a python package.
 
 ## Write a Paper with LaTeX (optional)
 
-Read the Overleaf Tutorials by starting here: https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+### Resources
 
-9.4
-Setzen von Text
-https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.3
-9.5
-Setzen von mathematischen Formeln
-https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.4
-9.6
-Setzen von Bildern
-https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.5
-9.7
-Seitenaufbau
-https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
-
-
+- Read the Overleaf Tutorials by starting here: https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+- Short textbook: https://dante-ev.github.io/l2kurz/l2kurz.pdf
 
 ### Warmup: LaTeX via Command Line
 
- \
-(evlt. inclass vorführen mit GUI und Terminal nebeneinander)
+1. In the home directory:\
+   Create a .tex script with an editor, e.g., nano
 
-1. VPN Verbindung herstellen
+   `$ nano text.tex`
 
-2. ssh auf remote (syrma.uni-trier.de) \[ggf. über web-interface
-   guacamole\]
+   and insert a few LaTeX commands. Minimal example:
 
-3. im home-Verzeichnis:\
-   Ein .tex-Skript mit einem Editor, zB nano, anlegen
+   ```latex
+   \documentclass{article}
+   \begin{document}
+   \section{My First LaTex Document}
+   % content
+   \end{document}
+   ```
 
-   \$ nano text.tex
+1. apply LaTeX compiler, here `pdflatex`, to this file
 
-   und ein paar LaTeX-Befehle wie einbauen; Minimalbeispiel\
-   \
-   \
-   \
-   \...\
-   \
+   `$ pdflatex text.tex`
 
-4. LaTeX-Compiler, hier `pdflatex`, auf diese Datei anwenden
+1. view file in terminal e.g. via
 
-   \$ pdflatex text.tex
+   `$ less text.pdf`
 
-5. Datei im Terminal anschauen z.B. via
+   or, if X-Window is available, view with a pdf viewer, e.g:
 
-   \$ less text.pdf
-
-   oder, falls X-Window vorhanden, mit einem pdf-Betrachter anschauen, zB:
-
-   \$ xdg-open text.pdf
-
-6. .pdf Datei auf die lokale Maschine kopieren, zB via sftp
-
-   \$ sftp vollmann@syrma.uni-trier.de
-
-   oder im Dateimanager:
-
-   sftp://vollmann@syrma.uni-trier.de
+   `$ xdg-open text.pdf`
 
 ### Working Environment: The IWE TexStudio
 
-1.  Laden Sie  herunter und installiere es auf Deinem System: <https://www.texstudio.org/#Download>
+1.  Install <https://www.texstudio.org/#Download>
 
-2.  Führen Sie die Schritte von oben nun mit  TexStudio anstatt über die Konsole aus.
+2.  Now perform the steps from above using TexStudio instead of the command line.
 
 ### Plan Modularity
+
+For example:
 
 ```bash
 |-- text/
@@ -632,103 +610,99 @@ https://dante-ev.github.io/l2kurz/l2kurz.pdf#section.6
     |-- main.tex
 ```
 
+1. `<PATH>/meta.tex`
+
+   - Set at least the following variables:\
+       `\title{<projectName>}`
+       `\author{name}` with `\thanks{}`
+       `\date{year (, date, today)}`
+
+2. `<PATH>/usepackages.tex`
+
+   - here you can load all needed packages
+   - `\usepackage[ngerman]{babel}`...
+
+3. `<PATH>/style.tex`
+
+   - Here you can configure everything that influences the appearance of the text.
+       of the text.
+
+   - Examples: Colors, theorem environments, links,\....
+
+4. `<PATH>/commands.tex`
+
+   - Here all defined constructs can be collected centrally.
+
+5. `<PATH>/literature.bib`
+
+   - In this database the literature is collected.
+
+   - Set at least one entry here, which will then be cited in the text.
+
+   - In the directory `<PATH>/literature/` the pdf files can be stored for example.
+
+6. `<PATH>/abstract.tex`
+
+   - Write a small abstract of your essay. \...
+
+7. `<PATH>/<content>.tex`
+
+   - Here we write the actual content.
+   - The content can again be distributed to several building blocks.
+   - quote at least one bib entry
+
+8. `<PATH>/main.tex`
+
+   - main input file with the help of which we glue everything together. 
+   - import .tex building blocks via (or , ,\...)
+   - Title page with abstract
+   - Table of Content
+   - List of Figures with at least one entry (create at least one graphic)
+   - List of Tables with at least one entry (create at least one table)
+   - Bibliography with at least one entry (cite at least one textbook that fits the project)
+   
+   - Example:
+   
+     ```latex
+     \documentclass{article} % mandatory start of a .tex file; determines type of text
+     % Preamble: Load packages, ...
+     \input{<PATH>/usepackages}
+     \input{<PATH>/meta}
+     \input{<PATH>/style}
+     \input{<PATH>/commands}
+     \input{....}
+     %
+     \begin{document}
+     % TITLEPAGE with ABSTRACT
+     \maketitle
+     \input{<PATH>/abstract}
+     % ToC, LoF, LoT
+     \pagestyle{empty}
+     \newpage\tableofcontents
+     \newpage\listoffigures
+     \newpage\listoftables
+     \newpage
+     % CONTENT
+     \pagenumbering{arabic}
+     \pagestyle{plain}
+     \input{<PATH>/Content1}
+     % ...
+     % BIBLIOGRAPHY
+     \newpage
+     \bibliographystyle{plain}
+     \bibliography{<PATH>/literature.bib}
+     %
+     \end{document} % everything after this command is ignored by LaTex
+     ```
+   
+     
+
+### Write a Small Paper
+
+1. Write a short mathematical paper using LaTeX about the Richardson method and present your numerical results. Modularize your LaTeX project in a meaningful way and implement the minimum requirements mentioned above.
 
 
-
-
-Legen Sie die folgenden Verzeichnisse und Dateien von Abbildung
-[\[fig:vz-struktur-text\]](#fig:vz-struktur-text){reference-type="ref"
-reference="fig:vz-struktur-text"} an:
-
-1.  `<PATH>/meta.tex`
-
-    -   Mindestens folgende Variablen setzen:\
-        `\title{<ProjektName>}`\
-        `\author{Name}` mit\
-        `\date{Jahr (, Datum, today)}`
-
-2.  `<PATH>/usepackages.tex`
-
-    -   hier können alle benötigten Pakete geladen werden
-
-    -
-
-3.  `<PATH>/style.tex`
-
-    -   Hier kann alles konfiguriert werden, was das Erscheinigungsbild
-        des Textes beeinflusst.
-
-    -   Beispiele: Farben, Theorem-Umgebungen, Links,\...
-
-4.  `<PATH>/commands.tex`
-
-    -   Hier können alle definierten Konstrukte zentral gesammelt
-        werden\
-        , , , \...
-
-5.  `<PATH>/literature.bib`
-
-    -   In dieser Datenbank wird die Literatur gesammelt.
-
-    -   Setzen Sie hier mindestens einen Eintrag, der dann im Text
-        zitiert wird.
-
-    -   In dem Verzeichnis `<PATH>/literature/` können beispielsweise
-        auch die pdf Dateien dazu aufbewahrt werden
-
-6.  `<PATH>/abstract.tex`
-
-    -   Schreiben Sie eine kleine Zusammenfassung Ihres Aufsatzes. \...
-
-7.  `<PATH>/<InhaltsBaustein>.tex`
-
-    -   Hier verfassen wir den eigentlichen Inhalt.
-
-    -   Der Inhalt kann wiederum auf mehrere Bausteine verteilt werden.
-
-    -   In dieser Datei: ``
-
-    -   mindestens einen bib Eintrag zitieren
-
-8.  `<PATH>/main.tex`\
-    Haupteingabedatei mithilfe derer wir alles zusammenkleben. Siehe
-    Abbildung [\[fig:main.tex\]](#fig:main.tex){reference-type="ref"
-    reference="fig:main.tex"} für einen möglichen Aufbau.\
-    Die **Mindestanforderungen** an das Projekt sind:
-
-    -   importiere .tex-Bausteine via (oder , ,\...)
-
-    -   Titelseite mit Abstract
-
-    -   Table of Content
-
-    -   List of Figures mit mindestens einem Eintrag (erstellen Sie
-        mindestens eine Grafik)
-
-    -   List of Tables mit mindestens einem Eintrag (erstellen Sie
-        mindestens eine Tabelle)
-
-    -   \|
-
-    -   Inhalt\
-        \>\> Setzen Sie einen Link auf Ihre HTML-Dokumentation (z.B.
-        mithilfe eines geeigneten BibTex--Eintrags)
-
-    -   \|
-
-    -   Literaturverzeichnis mit mindestens einem Eintrag (zitieren Sie
-        mindestens ein Lehrbuch, das zum Projekt passt)
-
-**Bemerkung:** Projekt-spezifisch sind im Wesentlichen die Dateien
-`meta.tex, abtract.tex, <InhaltsBaustein>.tex, literature.bib`. Sofern
-der Kontext ähnlich ist, müssen wir für ein neues Projekt nur diese
-Dateien austauschen!
-
-**Mathematischer Aufsatz**
-Verfassen Sie einen kurzen mathematischen Aufsatz
-
-$$\texttt{<PATH>/text/}$$
-
-mit LaTeX über das Richardson--Verfahren und stellen Sie Ihre numerischen Ergebnisse vor. Modularisieren Sie Ihr LaTeX--Projekt sinnvoll und setzen Sie die oben erwähnten **Mindestanforderungen** um.
 
 ## Run your examples with Scipy Stack (optional)
+
+1. Instead of using your own classes for vectors and csr_matrices you can use the respective data types from the SciPy Stack and re-run your experiments.
