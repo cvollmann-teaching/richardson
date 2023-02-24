@@ -20,10 +20,11 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
 
 - Our examples will include
 
-  | **Heat equation**                                            | **PageRank**                                                 | **Optimization**                                             |
-    | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | *Richardson as explicit Euler*                               | *Richardson as power iteraton*                               | *Richardson as gradient descent*                             |
-  | <img src="examples/out/static/heat_equation.gif" alt="heat_equation" style="zoom:60%;" /> | <img src="examples/out/static/pagerank_small.gif" alt="pagerank_small" style="zoom:80%;" /> | <img src="examples/out/static/gradient.png" alt="heat_equation" style="zoom:35%;" /> |
+
+| **Heat equation**                                            | **PageRank**                                                 | **Optimization**                                             |
+| :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| *Richardson as explicit Euler*                               | *Richardson as power iteraton*                               | *Richardson as gradient descent*                             |
+| <img src="examples/out/static/heat_equation.gif" alt="heat_equation" style="zoom:60%;" /> | <img src="examples/out/static/pagerank_small.gif" alt="pagerank_small" style="zoom:90%;" /> | <img src="examples/out/static/gradient.png" alt="heat_equation" style="zoom:10%;" /> |
 
 ## Syllabus
 
