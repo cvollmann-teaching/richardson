@@ -10,9 +10,9 @@
   from scratch, which is an iterative solver for linear systems $Ax=b$ and is defined as
   follows:
 
-  $$
-  x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
-  $$
+```math
+x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
+```
 
 - We will implement our own classes for vectors and CSR matrices and overload common
   operators such as `+/-, *, @` (later you can easily substitute them with the
