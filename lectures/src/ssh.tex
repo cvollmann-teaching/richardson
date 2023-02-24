@@ -10,35 +10,35 @@ Was ist SSH?
 Warum ist das für uns interessant?
 \begin{itemize}
 	\item Für rechenintensive Programme verwenden wir \textit{number cruncher} (Remote-Server mit viel Rechenleistung). Dafür müssen Dateien wie Quellcode, Inputdaten etc. verschlüsselt zwischen Rechnern transferiert werden.
-	\item Wir verwalten unser Projekt auf \url{github.com}. Wir transferieren unsere Dateien sicher über einen verschlüsselten SSH--Tunnel zwischen diesem Server und unserer lokalen Maschine. 
+	\item Wir verwalten unser Projekt auf \url{github.com}. Wir transferieren unsere Dateien sicher über einen verschlüsselten SSH--Tunnel zwischen diesem Server und unserer lokalen Maschine.
 \end{itemize}
 Demo:
 \begin{itemize}
 	\item  ssh auf remote
-\item remote: Programm ausführen
- \item scp zum kopieren von Daten
+	\item remote: Programm ausführen
+	\item scp zum kopieren von Daten
 \end{itemize}
 Weitere Bemerkungen:
 \begin{itemize}
 	\item SSH wurde erstmals 1995 von dem finnischen Informatiker Tatu Ylönen entwickelt und ist heute die gängigste Methode für den Zugriff auf Remote-Linux-Server.
 	\item SSH ist das allgemeine Protokoll. Die de facto Standardimplementierung ist OpenSSH (1999 von den OpenBSD-Entwicklern als Open-Source-Software veröffentlicht).
 	\item Client Server Modell
-	\begin{itemize}
-		\item client (lokal): ssh
-		\item server (entfernt): sshd
-	\end{itemize}
+	      \begin{itemize}
+		      \item client (lokal): ssh
+		      \item server (entfernt): sshd
+	      \end{itemize}
 \end{itemize}
 Wiederholung Public-Key-Verschlüsselungsverfahren (asymmetrisch)
 \begin{itemize}
 	\item Schlüsselpaar $(k_\text{pub}, k_\text{priv})$
-	\begin{itemize}
-		\item öffentlicher Schlüssel $k_\text{pub}$ kann geteilt werden
-		\item privater Schlüssel $k_\text{priv}$ muss geheim gehalten werden
-	\end{itemize}
-		\item Verschlüsselung mit öffentlichem Schlüssel: $y = E(x, k_\text{pub})$
-\item Entschlüsselung mit privatem Schlüssel: $D(y, k_\text{priv}) = x$
-\item Vorteil gegenüber symmetrischer Verschlüsselung (bei der für $E$ und $D$ derselbe Schlüssel verwendet wird): Alice und Bob müssen sich vor Kommunikation nicht nachts im Wald treffen, um sich auf ein Geheimnis zu einigen
-\item Berühmtes Beispiel: RSA (siehe etwa Zertifikate im Browser)
+	      \begin{itemize}
+		      \item öffentlicher Schlüssel $k_\text{pub}$ kann geteilt werden
+		      \item privater Schlüssel $k_\text{priv}$ muss geheim gehalten werden
+	      \end{itemize}
+	\item Verschlüsselung mit öffentlichem Schlüssel: $y = E(x, k_\text{pub})$
+	\item Entschlüsselung mit privatem Schlüssel: $D(y, k_\text{priv}) = x$
+	\item Vorteil gegenüber symmetrischer Verschlüsselung (bei der für $E$ und $D$ derselbe Schlüssel verwendet wird): Alice und Bob müssen sich vor Kommunikation nicht nachts im Wald treffen, um sich auf ein Geheimnis zu einigen
+	\item Berühmtes Beispiel: RSA (siehe etwa Zertifikate im Browser)
 \end{itemize}
 %
 %
@@ -58,24 +58,24 @@ $ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
 \textbf{Schlüsselbasierte Authentifizierung:}
 \begin{itemize}
 	\item Erstellen eines Schlüsselpaars
-	\begin{verbatim}
+	      \begin{verbatim}
 	ssh-keygen -t ed25519 -f [FILENAME] -C "your_email@example.com"
 	\end{verbatim}
-	-- Speicherort: \texttt{\$HOME/.ssh}\\
-	-- Passphrase, um den privaten Schlüssel zu schützen
+	      -- Speicherort: \texttt{\$HOME/.ssh}\\
+	      -- Passphrase, um den privaten Schlüssel zu schützen
 	\item Dateien anschauen
-	\begin{verbatim}
+	      \begin{verbatim}
 	cd ~/.ssh
 	ls -al
 	cat [FILENAME]
 	\end{verbatim}
 	\item Schlüssel auf remote kopieren
-	\begin{verbatim}
+	      \begin{verbatim}
 	ssh-copy-id -i [FILENAME] [IP_ADDRESS or HOSTNAME]	
 	\end{verbatim}
-	Server speichert den öffentlichen Schlüssel in \texttt{.ssh/authorized\_keys}
+	      Server speichert den öffentlichen Schlüssel in \texttt{.ssh/authorized\_keys}
 	\item Nun einfach:
-	\begin{verbatim}
+	      \begin{verbatim}
 	$ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
 	\end{verbatim}
 \end{itemize}

@@ -7,9 +7,9 @@ repos:
       - id: black
   - repo: local
     hooks:
-      - id: pylint-error-count
+      - id: latexindent
         name: latexindent
-        entry: bash -c 'latexindent --overwrite --cruft=lectures/build lectures/src/main.tex'
+        entry: bash -c 'latexindent --overwrite --cruft=lectures/build lectures/src/documentation.tex'
         language: system
         types: [ python ]
         pass_filenames: false
