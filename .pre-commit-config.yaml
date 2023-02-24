@@ -1,7 +1,15 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
--   repo: https://github.com/psf/black
+  - repo: https://github.com/psf/black
     rev: 22.10.0
     hooks:
-    -   id: black
+      - id: black
+  - repo: local
+    hooks:
+      - id: pylint-error-count
+        name: pylint-error-count
+        entry: bash -c 'latexindent --overwrite --cruft=lectures/build lectures/src/instructions.tex'
+        language: system
+        types: [ python ]
+        pass_filenames: false
