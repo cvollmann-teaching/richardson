@@ -195,6 +195,8 @@
    - Tools| Sync Python requirements
    - Import some package and update the `requirements.txt`. Did it work?
 8. **git in PyCharm**
+   - https://www.jetbrains.com/help/pycharm/set-up-a-git-repository.html#e1c9b3f9
+
 9. Check out the hidden project directory `.idea`
    - Add it to `.gitignore`
 

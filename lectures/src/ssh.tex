@@ -1,9 +1,10 @@
 % !TeX spellcheck = de_AT_frami
 \section{Secure Shell (SSH)}
-SSH ist ein Protokoll für \textit{verschlüsselte} Verbindungen auf andere Rechner:
+Was ist SSH?
 \begin{itemize}
-	\item SSH kann die Kommandozeile eines entfernten Rechners lokal zur Verfügung stellen,
-	\item SSH kann Dateien über das Netzwerk transferieren,
+	\item SSH ist ein Protokoll für \textit{verschlüsselte} Verbindungen zwischen zwei Rechnern.
+	\item SSH kann die Kommandozeile eines entfernten Rechners lokal zur Verfügung stellen.
+	\item SSH kann Dateien über das Netzwerk transferieren.
 	\item SSH kann grafische Fenster des entfernten Rechners anzeigen.
 \end{itemize}
 Warum ist das für uns interessant?
@@ -56,9 +57,9 @@ $ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
 ~\\
 \textbf{Schlüsselbasierte Authentifizierung:}
 \begin{itemize}
-	\item Erstellen eines Schlüsselpaars: SSH-Schlüssel werden typischerweise auf dem lokalen Computer erstellt:
+	\item Erstellen eines Schlüsselpaars
 	\begin{verbatim}
-	ssh-keygen -t ed25519 -C "your_email@example.com"
+	ssh-keygen -t ed25519 -f [FILENAME] -C "your_email@example.com"
 	\end{verbatim}
 	-- Speicherort: \texttt{\$HOME/.ssh}\\
 	-- Passphrase, um den privaten Schlüssel zu schützen
@@ -70,7 +71,7 @@ $ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
 	\end{verbatim}
 	\item Schlüssel auf remote kopieren
 	\begin{verbatim}
-	ssh-copy-id -i [PUBKEY] [IP_ADDRESS or HOSTNAME]
+	ssh-copy-id -i [FILENAME] [IP_ADDRESS or HOSTNAME]	
 	\end{verbatim}
 	Server speichert den öffentlichen Schlüssel in \texttt{.ssh/authorized\_keys}
 	\item Nun einfach:
@@ -78,7 +79,8 @@ $ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
 	$ ssh [USERNAME]@[IP_ADDRESS or HOSTNAME]
 	\end{verbatim}
 \end{itemize}
-
+%
+~\\ \textbf{ssh-agent (skip)}
 
 
 
