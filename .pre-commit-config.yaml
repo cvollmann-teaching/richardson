@@ -9,7 +9,7 @@ repos:
     hooks:
       - id: latexindent
         name: latexindent
-        entry: bash -c 'latexindent --overwrite --cruft=lectures/build lectures/src/documentation.tex'
+        entry: bash -c 'latexindent --overwrite --cruft=lectures/build/ lectures/src/documentation.tex'
         language: system
         types: [ python ]
         pass_filenames: false
