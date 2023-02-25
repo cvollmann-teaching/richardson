@@ -1,58 +1,77 @@
+**(Under Construction)**
+
 # Python Project: Richardson Iteration from Scratch applied to Heat Equation and the PageRank
 
-**(Under Construction!)**
-
-- This repo contains: the small tutorials (lead sheets for in-class development, in
-  german), the corresponding instructions (below) and the almost complete worked examples.
-
-- In this project we will implement
-  the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration)
-  from scratch, which is an iterative solver for linear systems $Ax=b$ and is defined as
-  follows:
+- This repo contains material for a 5 days project based Python course: small tutorials (lead sheets for in-class development, in german), the corresponding instructions (below) and some worked examples.
+  
+- In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch, which is an iterative solver for linear systems $Ax=b$ given by
 
 ```math
 x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
 ```
 
-- We will implement our own classes for vectors and CSR matrices and overload common
-  operators such as `+/-, *, @` (later you can easily substitute them with the
-  corresponding numpy.ndarray and scipy.sparse.csr_matrix).
-
+- Among others, we will implement our own classes for vectors and CSR matrices and overload common operators such as `+/-, *, @`.
+  
 - Our examples will include
 
 
 | **Heat equation**                                            | **PageRank**                                                 | **Optimization**                                             |
 | :----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| *Richardson as explicit Euler*                               | *Richardson as power iteraton*                               | *Richardson as gradient descent*                             |
-| <img src="examples/out/static/heat_equation.gif" alt="heat_equation" style="zoom:60%;" /> | <img src="examples/out/static/pagerank_small.gif" alt="pagerank_small" style="zoom:90%;" /> | <img src="examples/out/static/gradient.png" alt="heat_equation" style="zoom:10%;" /> |
+| *Richardson as explicit Euler*                               | *Richardson as power iteration*                              | *Richardson as gradient descent*                             |
+| <img src="examples/out/static/heat_equation.gif" alt="heat_equation" style="zoom:60%;" /> | <img src="examples/out/static/pagerank_small.gif" alt="pagerank_small" style="zoom:90%;" /> | <img src="examples/out/static/gradient.png" alt="heat_equation" width="450" /> |
+
+## Objectives
+
+- **Richardson iteration** as an example for an iterative solver
+  - Understand strength of an iterative solver in combination with **sparse formats** (here CSR)
+  - Examples: **heat equation**, **PageRank**, **gradient descent**
+- tools
+  - **ssh**, keys
+  - **git** and **github**
+- Python language
+  - Build own data types via **classes** and **operator overloading**
+  - software project and **modularity**
+  - **networkx**: load real data into python, plot graphs
+  - Intro to SciPy Stack (**NumPy**, **SciPy**, **matplotlib**)
+  - **virtual environment**
+  - **PyCharm**
+  - Software tests with **pytest**
+- Code documentation with **sphinx**
+  - **docstrings** formats
+  - publish via github pages
+- Clean code
+  - **PEP 8**
+  - **black**
+  - **pre-commit**
+- **LaTex**
 
 ## Syllabus
 
-| Time      | start | end | Content                                                                     | Section | Instructions                        |
-|:----------|-------|-----|-----------------------------------------------------------------------------|---------|-------------------------------------|
-| **Day 1** |       |     |                                                                             |         |                                     |
-| Session 1 | 10:00 |     | Mathematical Background I                                                   |         |                                     |
-| Session 2 |       |     | Project Planing (short)                                                     |         |                                     |
-| Session 3 |       |     | ssh, working remote, ssh keys                                               |         |                                     |
-| Session 3 |       |     | git, github, commit hooks                                                   |         | [git](#initialize-a-git-repository) |
-| **Day 2** |       |     |                                                                             |         |                                     |
-| Session 1 |       |     | Working Environment                                                         |         |                                     |
-| Session 2 |       |     | Clean Code, Formatting and pre-commit hooks (short)                         |         |                                     |
-| Session 3 |       |     | Software Tests (short)                                                      |         |                                     |
-| Session 4 |       |     | Implementation: `linalg`                                                    |         |                                     |
-| **Day 3** |       |     |                                                                             |         |                                     |
-| Session 1 |       |     | Code Documentation with Sphinx                                              |         |                                     |
-| Session 2 |       |     | Implementation:  `linalg`, `iterative_solver`, `example` (Heat Equation 1d) |         |                                     |
-| **Day 4** |       |     |                                                                             |         |                                     |
-| Session 1 |       |     | Mathematical Background II: PageRank                                        |         |                                     |
-| Session 2 |       |     | Implementation: Pagerank utilities and Examples                             |         |                                     |
-| Session 3 |       |     | Misc: License, readme, docs,...                                             |         |                                     |
-| **Day 5** |       |     |                                                                             |         |                                     |
-| Session 1 |       |     | Numpy                                                                       |         |                                     |
-| Session 2 |       |     | Scipy                                                                       |         |                                     |
-| Session 3 |       |     | Matplotlib                                                                  |         |                                     |
+| Time      | start | end  | Content                                                      | Section | Instructions                                     |
+| :-------- | ----- | ---- | ------------------------------------------------------------ | ------- | ------------------------------------------------ |
+| **Day 1** |       |      |                                                              |         |                                                  |
+| Session 1 | 10:00 |      | Mathematical Background I                                    | 1.1-1.4 | --                                               |
+| Session 2 |       |      | Project planing                                              | 2       | [plan](#plan-modularity)                         |
+| Session 3 |       |      | ssh, working remote, ssh keys                                | 3       | [ssh](#secure-shell-(ssh))                       |
+| Session 3 |       |      | git, github                                                  | 4       | [git](#initialize-a-git-repository)              |
+| **Day 2** |       |      |                                                              |         |                                                  |
+| Session 1 |       |      | Working Environment                                          | 5       | [pycharm](#Working-Environment:-The IDE-PyCharm) |
+| Session 2 |       |      | Clean Code, Formatting and pre-commit hooks                  | --      |                                                  |
+| Session 3 |       |      | Software Tests                                               | --      |                                                  |
+| Session 4 |       |      | Implementation: `linalg`                                     | --      |                                                  |
+| **Day 3** |       |      |                                                              |         |                                                  |
+| Session 1 |       |      | Code Documentation with Sphinx                               | 6       |                                                  |
+| Session 2 |       |      | Implementation:  `linalg`, `iterative_solver`, `example` (Heat Equation 1d) | --      |                                                  |
+| **Day 4** |       |      |                                                              |         |                                                  |
+| Session 1 |       |      | Mathematical Background II: PageRank                         | 1.5     |                                                  |
+| Session 2 |       |      | Implementation: Pagerank utilities and Examples              | --      |                                                  |
+| Session 3 |       |      | Misc: License, readme, docs,...                              | --      |                                                  |
+| **Day 5** |       |      |                                                              |         |                                                  |
+| Session 1 |       |      | Numpy                                                        |         |                                                  |
+| Session 2 |       |      | Scipy                                                        |         |                                                  |
+| Session 3 |       |      | Matplotlib                                                   |         |                                                  |
 
-### License
+## License
 
 The Latex code and the Python sample programs are licensed under [GPL-3.0](https://github.com/cvollmann-teaching/richardson-pagerank/blob/main/LICENSE) and the content of the lecture notes is licensed under [CC-BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
 
@@ -121,7 +140,7 @@ The Latex code and the Python sample programs are licensed under [GPL-3.0](https
 4. local machine: git clone
 5. .gitignore
 
-## Plan modularity and setup directory structure
+## Plan modularity
 
 ```bash
 |-- code
@@ -148,36 +167,29 @@ The Latex code and the Python sample programs are licensed under [GPL-3.0](https
 
 ## Working Environment: The IDE PyCharm
 
-1. Get **educational account** with
-   JetBrains: https://www.jetbrains.com/shop/eform/students
+1. Get **educational account** with JetBrains: https://www.jetbrains.com/shop/eform/students
 2. **Install PyCharm** (Professional
    edition): https://www.jetbrains.com/help/pycharm/installation-guide.html
-3. Set up a **PyCharm Project
-   **: https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
+3. Set up a **PyCharm Project**: https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
     - Open the directory `code`using the application PyCharm or to play around create any
       other project.
-
-4. Overview on **Project Files:
-   ** https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
-5. Set up **virtual environment
-   **: https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html
-
+   
+4. Overview on **Project Files:** https://www.jetbrains.com/help/pycharm/setting-up-your-project.html
+5. Set up **virtual environment**: https://www.jetbrains.com/help/pycharm/creating-virtual-environment.html
+   
     - Optional: You may want to inherit site-packages from local Python installation
     - Install some packages
     - Add it to `.gitignore`
-6. **Run Code
-   **: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
+6. **Run Code**: https://www.jetbrains.com/help/pycharm/running-without-any-previous-configuring.html
     - Familiarize with Python and run some code.
     - Create a Run Configuration
 7. Use the **Debugger**: https://www.jetbrains.com/help/pycharm/debugging-code.html
-8. Sync **`requirements.txt`
-   **: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
+8. Sync **`requirements.txt`**: https://www.jetbrains.com/help/pycharm/managing-dependencies.html
     - Tools| Sync Python requirements
     - Import some package and update the `requirements.txt`. Did it work?
 9. **git** in PyCharm
-
     - https://www.jetbrains.com/help/pycharm/set-up-a-git-repository.html#e1c9b3f9
-
+    
 10. Check out the hidden project directory `.idea`
 - Add it to `.gitignore`
 
