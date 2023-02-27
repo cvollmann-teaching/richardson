@@ -58,18 +58,18 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
 | Session 1 |       |      | Working Environment                                          | 5       | [pycharm](#Working-Environment:-The IDE-PyCharm) |
 | Session 2 |       |      | Clean Code, Formatting and pre-commit hooks                  | --      |                                                  |
 | Session 3 |       |      | Software Tests                                               | --      |                                                  |
-| Session 4 |       |      | Implementation: `linalg`                                     | --      |                                                  |
+| Session 4 |       |      | *Implementation*: `linalg`                                   | --      |                                                  |
 | **Day 3** |       |      |                                                              |         |                                                  |
 | Session 1 |       |      | Code Documentation with Sphinx                               | 6       |                                                  |
-| Session 2 |       |      | Implementation:  `linalg`, `iterative_solver`, `example` (Heat Equation 1d) | --      |                                                  |
+| Session 2 |       |      | *Implementation*:  `linalg`, `iterative_solver`, `example` (Heat Equation 1d) | --      |                                                  |
 | **Day 4** |       |      |                                                              |         |                                                  |
 | Session 1 |       |      | Mathematical Background II: PageRank                         | 1.5     |                                                  |
-| Session 2 |       |      | Implementation: Pagerank utilities and Examples              | --      |                                                  |
+| Session 2 |       |      | *Implementation*: Pagerank utilities and Examples            | --      |                                                  |
 | Session 3 |       |      | (Misc: License, readme, docs,...)                            | --      |                                                  |
 | **Day 5** |       |      |                                                              |         |                                                  |
 | Session 1 |       |      | Project presentations                                        |         |                                                  |
 | Session 2 |       |      | (SciPy Stack)                                                |         |                                                  |
-|           |       |      |                                                              |         |                                                  |
+|           |       |      | (note on exam)                                               |         |                                                  |
 
 ## License
 
@@ -134,11 +134,25 @@ The Latex code and the Python sample programs are licensed under [GPL-3.0](https
 
 ## VCS: git and GitHub
 
-1. get account on github
-2. set up ssh keys
-3. create repo
-4. local machine: git clone
-5. .gitignore
+1. **git**: familiarize with git on your local machine
+   1. useful shell commands and tools: `mkdir, cd, ls, mv, rm, man, nano`
+   2. initialize git repo `a`: `git init`
+      1. add and edit files and play with: `git status, git add, git commit, git log, git checkout`...
+      2. `.gitignore`
+
+   3. initialize git repo `b`:  
+      1. set repo `a` as remote and upstream repo: `git branch`
+      2. `git push, git pull`
+
+   4. clone repo `a` : `git clone`
+
+2. **GitHub**
+   1. get account
+   2. set up ssh keys
+   3. create repo
+   4. local machine: git clone
+   5. .gitignore
+
 
 ## Plan modularity
 
@@ -151,9 +165,9 @@ The Latex code and the Python sample programs are licensed under [GPL-3.0](https
     |   |-- iterative_methods.py
     |   |-- utils.py
     |-- examples
-    |   |-- confEx1.py
-    |   |-- confEx2.py
-    |   |-- confTest.py
+    |   |-- heat_equation.py
+    |   |-- pagerank.py
+    |   |-- gradient_descent.py
     |-- tests
     |   |-- test_csr.py
     |-- output

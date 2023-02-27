@@ -40,7 +40,7 @@ Was ist git?
 \begin{itemize}
 	\item \texttt{blob} : Datei
 	\item \texttt{tree} : Verzeichnis
-	\item \texttt{commit} : snapshot of top-level tree (immutable!)
+	\item \texttt{commit} : snapshot of top-level tree
 	\begin{itemize}
 		\item Date
 		\item Author
@@ -80,7 +80,7 @@ Was ist git?
 ~\\
 \textbf{Staging area:} Wie erstellen wir \texttt{commits}? 
 \begin{itemize}
-	\item Eine Möglichkeit: Snapshot (\texttt{commit}) auf der Grundlage des aktuellen Zustands des Projektverzeichnisses erstellen.
+	\item Eine Möglichkeit wäre: Snapshot (\texttt{commit}) auf der Grundlage des aktuellen Zustands des Projektverzeichnisses erstellen.
 	\item Warum das zu grobkörnig ist:
 	\begin{itemize}
 		\item Beispiel 1: Angenommen wir haben zwei verschiedene Features implementiert und wollen dafür zwei \texttt{commits} erstellen, wobei der erste das erste Feature einführt und der nächste das zweite. 
