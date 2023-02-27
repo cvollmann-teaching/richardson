@@ -31,18 +31,19 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
 - Python language
   - Build own data types via **classes** and **operator overloading**
   - software project and **modularity**
-  - **networkx**: load real data into python, plot graphs
+  - **`networkx`**: load real data into python, plot graphs
   - **virtual environment**
   - **PyCharm**
-  - Software tests with **pytest**
+  - Software tests with **`pytest`**
   - Intro to SciPy Stack (**NumPy**, **SciPy**, **matplotlib**)
+  - **`tabulate`**
 - Code documentation with **sphinx**
   - **docstrings** formats
   - publish via github pages
 - Clean code
   - **PEP 8**
-  - **black**
-  - **pre-commit**
+  - **`black`**
+  - **`pre-commit`**
 - **LaTex**
 
 ## Syllabus
@@ -317,10 +318,7 @@ In `src/linalg.py`:
 
 In `src/linalg.py`:
 
-In order to run some examples later on, it would be nice to have a function which creates
-certain CSR-tuples. For matrices with some particular structure the CSR-lists can be
-easily obtained. In fact, we implement a function which
-builds [tridiagonal Toeplitz matrices](https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix).
+In order to run some examples later on, it would be nice to have a function which creates certain CSR-tuples. For matrices with some particular structure  the CSR-lists can be easily obtained. In fact, we implement a function which builds [tridiagonal Toeplitz matrices](https://de.wikipedia.org/wiki/Tridiagonal-Toeplitz-Matrix).
 
 1. Implement a function
 
@@ -328,8 +326,7 @@ builds [tridiagonal Toeplitz matrices](https://de.wikipedia.org/wiki/Tridiagonal
   csr_tridiag_toep(n : int, data : tuple) -> csr_matrix
   ```
 
-that automatically instantiates an object `A`of the above class `csr\_matrix` for a
-tridiagonal matrix whose diagonals are constant:
+that automatically instantiates an object `A`of the above class `csr\_matrix` for a tridiagonal matrix whose diagonals are constant:
 
 ```math
   \begin{pmatrix}
@@ -341,14 +338,9 @@ tridiagonal matrix whose diagonals are constant:
   \end{pmatrix}\in \mathbb{R}^{n \times n}.
 ```
 
-- Accordingly, the parameter `n` specifies the dimension of the square matrix and the
-  parameter `data` contains the corresponding diagonal entries in the form of a
-  tuple `data = (a,b,c)`.
-
-- First consider how the three CSR- lists `data, indices, indptr` look like for general
-  parameters `(n, data)` and then implement them as a function depending on `(n, data)`.
-  For instantiation, you then just need to pass these three lists to the constructor of
-  the above class `csr\_matrix`.
+- Accordingly, the parameter `n` specifies the dimension of the square matrix and the parameter `data` contains the corresponding diagonal entries in the form of a tuple `data = (a,b,c)`.
+  
+- First consider how the three CSR- lists `data, indices, indptr` look like for general parameters `(n, data)` and then implement them as a function depending on `(n, data)`. For instantiation, you then just need to pass these three lists to the constructor of the above class `csr\_matrix`.
 
 2. Write appropriate test files `test_*.py` which you put into the directory `tests`
 
@@ -444,29 +436,18 @@ $$
 A_2 = A_1 + \delta I
 $$
 
-for $\delta > 0$ and $I \in \mathbb{R}^{n\times n}$ the identity matrix. Run your examples
-from 1. again with different $\delta$. Observe the number of iterations needed as $\delta$
-increases. What about the convergence now?
+for $\delta > 0$ and $I \in \mathbb{R}^{n\times n}$ the identity matrix. Run your examples from 1. again with different $\delta$. Observe the number of iterations needed as $\delta$ increases. What about the convergence now?
 
 **Remarks:**
 
-- Put the configuration for these examples in `examples/example1.py` etc. and run your
-  examples in `main.py` where you mainly call the function `richardson`with the input
-  parameters defined in the example files.
-
-- If your method does not converge, try it with a (very) small relaxation parameter
-  $\theta$ and a large
-  maximum number of iterations `maxiter`. The matrix $A_1$ above is "ill-conditioned" and
-  the Richardson method may need (very!) many iterations to achieve a sufficiently small
-  error. For matrix $A_2$, on the other hand, you should observe a significant improvement
-  for increasing $\delta$.
-
-- The matrices $A_1$ and $A_2$ are respectively tridiagonal--Toeplitz- matrices. So you
-  can use your `csrTridiagToep` function from above to instantiate the `csr_matrix` class.
-
-- You will recognize the matrix $A_1$ later as a finite-difference discretization of the
-  one-dimensional Poisson equation on regular grids with homogeneous Dirichlet boundary
-  values. And the matrix $A_2$ as a Tikhonov-regularization of it.
+- Put the configuration for these examples in `examples/example1.py` etc. and run your examples in `main.py` where you mainly call the function `richardson`with the input parameters defined in the example files.
+  
+- If your method does not converge, try it with a (very) small relaxation parameter $\theta$ and a large
+  maximum number of iterations `maxiter`. The matrix $A_1$ above is "ill-conditioned" and the Richardson method may need (very!) many iterations to achieve a sufficiently small error. For matrix $A_2$, on the other hand, you should observe a significant improvement for increasing $\delta$.
+  
+- The matrices $A_1$ and $A_2$ are respectively tridiagonal--Toeplitz- matrices. So you can use your `csrTridiagToep` function from above to instantiate the `csr_matrix` class.
+  
+- You will recognize the matrix $A_1$ later as a finite-difference discretization of the one-dimensional Poisson equation on regular grids with homogeneous Dirichlet boundary values. And the matrix $A_2$ as a Tikhonov-regularization of it.
 
 ## Utils
 
@@ -474,58 +455,44 @@ In `src/utils.py`:
 
 Implement:
 
-1. A function to plot a univariate function (in our case the vector of residuals `error`)
-   using `matplotlib.pyplot`.
-
-   Erstellen Sie mindestens einen Plot. Zum Beispiel könnten Sie die Funktion
-   k 7→ kAx k − bk 2 (= error[k]),
-   also den Fehler-Verlauf, zeichnen. Speichern Sie die Grafik mit einem aussagekräftigen
-   Namen als .pdf-Datei
-   im Ordner ‘code/output/’, um sie in Ihr L A TEX-Dokument zu importieren.
-   → Dafür benötigen Sie die Liste error und das Modul matplotlib.pyplot (savefig()).
-
+1. A function to plot a univariate function (in our case the vector of residuals `error`) using `matplotlib.pyplot`. 
+   
     - matplotlib.pyplot.savefig()
-
-2. Optional: A function that uses the Python package `tabulate`to generate a LaTex table
-   into an external text file with two columns being iteration number and corresponding
-   entry in the residual vector `error` that you can import later on into your paper. (
-   Optional third column would be the rate of convergence)
+   
+2. Optional: A function that uses the Python package `tabulate`to generate a LaTex table into an external text file with two columns being iteration number and corresponding entry in the residual vector `error` that you can import later on into your paper. (Optional third column would be the rate of convergence)
 
 ## Utils for PageRank
 
-- Recommended
-  Reading: [Deeper Inside PageRank](https://www.stat.uchicago.edu/~lekheng/meetings/mathofranking/ref/langville.pdf)
-  by Langville and Meyer.
+1. Recommended Reading: [Deeper Inside PageRank](https://www.stat.uchicago.edu/~lekheng/meetings/mathofranking/ref/langville.pdf) by Langville and Meyer.
 
-- create a script `src.pagerank_utils` (or similar)
+2. create a script `src.pagerank_utils` (or similar)
+
+   1. Read edgle list into scipy sparse csr
+
+   1. Normalize rows
+
+   1. Deal with dangling nodes (pdf pages or similar)
+
+   1. Implement google_matrix as class with correct matmul
+
+   1. For richardson: Implement a second version with the following adatption
+
+3. Combine everything:
+
+   1. Write appropriate test files `test_*.py` which you put into the directory `tests`
+
+   2. Create Run Configuration for your tests
+
+   3. Optional: Write further utils to draw the graphs, create a video, ...
 
 
-1. Read edgle list into scipy sparse csr
-
-2. Normalize rows
-
-3. Deal with dangling nodes (pdf pages or similar)
-
-4. Implement google_matrix as class with correct matmul
-
-5. For richardson: Implement a second version with the following adatption
-
-6. combine everything
-
-7. Write appropriate test files `test_*.py` which you put into the directory `tests`
-
-    - Create Run Configuration for your tests
-
-8. Optional: Write further utils to draw the graphs, create a video, ...
-
-## Compute the Pagerank
+## Compute the PageRank
 
 1. **PageRank of your own Graph**
     1. Draw your own small and write the corresponding list of edges
        textfile: `examples/pagerank_small.edges`
     2. Create an example config like `example/pagerank_small`
-    3.
-
+    
 2. **Download real data:** https://networkrepository.com/web.php
 
 ## Implement the Power Iteration (optional)
@@ -572,8 +539,7 @@ create a python package.
 
 ### Resources
 
-- Read the Overleaf Tutorials by starting
-  here: https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
+- Read the Overleaf Tutorials by starting here: https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes
 - Short textbook: https://dante-ev.github.io/l2kurz/l2kurz.pdf
 
 ### Warmup: LaTeX via Command Line
