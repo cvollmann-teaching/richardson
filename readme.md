@@ -7,10 +7,10 @@
 - In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch, which is an iterative solver for linear systems $Ax=b$ given by
 
 ```math
-x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
+x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
 ```
 
-- Among others, we will implement our own classes for vectors and CSR matrices and overload common operators such as `+/-, *, @`.
+- Among others, we will implement our own classes for vectors and CSR matrices and overload common operators such as `+, -, *, /, @`.
   
 - Our examples will include
 
@@ -32,10 +32,10 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
   - Build own data types via **classes** and **operator overloading**
   - software project and **modularity**
   - **networkx**: load real data into python, plot graphs
-  - Intro to SciPy Stack (**NumPy**, **SciPy**, **matplotlib**)
   - **virtual environment**
   - **PyCharm**
   - Software tests with **pytest**
+  - Intro to SciPy Stack (**NumPy**, **SciPy**, **matplotlib**)
 - Code documentation with **sphinx**
   - **docstrings** formats
   - publish via github pages
@@ -65,11 +65,11 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}
 | **Day 4** |       |      |                                                              |         |                                                  |
 | Session 1 |       |      | Mathematical Background II: PageRank                         | 1.5     |                                                  |
 | Session 2 |       |      | Implementation: Pagerank utilities and Examples              | --      |                                                  |
-| Session 3 |       |      | Misc: License, readme, docs,...                              | --      |                                                  |
+| Session 3 |       |      | (Misc: License, readme, docs,...)                            | --      |                                                  |
 | **Day 5** |       |      |                                                              |         |                                                  |
-| Session 1 |       |      | Numpy                                                        |         |                                                  |
-| Session 2 |       |      | Scipy                                                        |         |                                                  |
-| Session 3 |       |      | Matplotlib                                                   |         |                                                  |
+| Session 1 |       |      | Project presentations                                        |         |                                                  |
+| Session 2 |       |      | (SciPy Stack)                                                |         |                                                  |
+|           |       |      |                                                              |         |                                                  |
 
 ## License
 
