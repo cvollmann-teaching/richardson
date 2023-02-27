@@ -1,4 +1,4 @@
-**(Under Construction)**
+**(Under Development)**
 
 # Python Project: Richardson Iteration from Scratch applied to Heat Equation and the PageRank
 
@@ -232,13 +232,11 @@ The Latex code and the Python sample programs are licensed under [GPL-3.0](https
 
 ## Clean Code, Formatting and Pre-Commit
 
-1. Revisit the PEP8 Style Guide: https://www.python.org/dev/peps/pep-0008/
+1. Revisit the PEP 8 Style Guide: https://www.python.org/dev/peps/pep-0008/
 2. Use meaningful, self-documenting names.
 3. Use inline comments only when necessary.
-4. Use Docstrings in a consistent format (NumPy, Google, reStructuredText) for all
-   functions and objects.
-5. Checkout code inspection options in
-   PyCharm: https://www.jetbrains.com/help/pycharm/tutorial-code-quality-assistance-tips-and-tricks.html#ddc30fc6
+4. Use docstrings in a consistent format (NumPy, Google, reStructuredText) for all functions and objects.
+5. Checkout code inspection options in PyCharm: https://www.jetbrains.com/help/pycharm/tutorial-code-quality-assistance-tips-and-tricks.html#ddc30fc6
 6. Checkout the Python formatter: `black`
 7. Checkout `pre-commit` hooks, install and use it.
 
@@ -252,11 +250,9 @@ In `src/linalg.py`:
    class vector(list)
    ```
 
-   We use mutable data type `list()`over `tuple()`as we will later manipulate entries in
-   the vector.
-
-2. Overload the operators `+, -, @` and `*` by implementing the following magic methods
-   which all expect another vector- or scalar-type say `other`:
+   We use mutable data type `list()`over `tuple()`as we will later manipulate entries in the vector.
+   
+2. Overload the operators `+, -, @` and `*` by implementing the following magic methods which all expect another vector- or scalar-type say `other`:
     - `__add__(self, other)` ($x+y$)
     - `__sub__(self, other)` ($x-y$)
     - `__matmul__(self, other)` ($x^Ty$)
@@ -265,7 +261,7 @@ In `src/linalg.py`:
     - Side remark: Also See Level 1 BLAS Routines:
         - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
         - http://www.netlib.org/blas
-
+   
 3. Write appropriate test files `test_*.py` which you put into the directory `tests`
 
     - Create Run Configuration for your tests
@@ -274,8 +270,7 @@ In `src/linalg.py`:
 
 In `src/linalg.py`:
 
-1. Implement a function `norm(x, order=2)` which expects a vector `x` and computes its
-   $p$-Norm:
+1. Implement a function `norm(x, order=2)` which expects a vector `x` and computes its $p$-Norm:
 
 $$
 \mathbb{R}^n \to [0,+\infty),~x \mapsto \|x\|_2 := \left({\sum_{i=1}^n |x_i|^p}\right)
@@ -286,10 +281,8 @@ $$
 
 In `src/linalg.py`:
 
-1. initialize with CSR-Format (Compressed Sparse Row) tuple `(data, indices,indptr)`
-   and `shape`. Implement at least the following attributes:
-   attributes: `data, indices, indptr, shape`. You can use the following code snippet.
-
+1. initialize with CSR-Format (Compressed Sparse Row) tuple `(data, indices,indptr)` and `shape`. Implement at least the following attributes: `data, indices, indptr, shape`. You can start with the following code snippet.
+   
    ```python
    class csr_matrix:
        """
@@ -302,24 +295,20 @@ In `src/linalg.py`:
            self.indices = _indices
            self.indptr = _indptr
    ```
-
-2. Implement magic methods
+   
+2. Implement magic methods:
     1. `__matmul__(self, x : vector) -> vector`
 
-    - This magic method expects a vector `x` and computes the matrix--vector product
-      $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we
-      then have:
+    - This magic method expects a vector `x` and computes the matrix--vector product $A\cdot x$. By operator overloading, for an object `A`  of the class `csr_matrix` we then have:
     - `A @ x = A.__matmul__(x)`
-    - For simplicity we neglect the capability of evaluating also the matrix--matrix
-      product.
-    - Side remark: This next level of complexity can be classified into Level 2 BLAS
-      routines:
+    - For simplicity we neglect the capability of evaluating also the matrix--matrix product.
+    - Side remark: This next level of complexity can be classified into Level 2 BLAS routines:
         - https://de.wikipedia.org/wiki/Basic_Linear_Algebra_Subprograms
         - http://www.netlib.org/blas
-
+    
     2. `__toarray__(self, col_dim)`
         - A method which outputs a list with the rows of the matrix (again as a list).
-
+    
 3. Write appropriate test files `test_*.py` which you put into the directory `tests`
 
     - Create Run Configuration for your tests
