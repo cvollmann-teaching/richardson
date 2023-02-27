@@ -13,13 +13,6 @@ Die Inhalte sind fast baugleich entnommen aus den Lehrbüchern \cite{gumm3} und 
 %
 %
 \subsection{Hardwarekomponenten}
-\begin{figure}[h!]
-	\centering
-%	\includegraphics[width=0.5\linewidth]{./media/HP-Z240-Tower-Interior}
-	\caption[HP Z240 Workstation]{
-	Das Innere des Modells HP Z240 Workstation: Mein aktueller Rechner im Büro. Quelle: \url{https://develop3d.com/reviews/review-hp-z240-tower-workstation/}.}
-	\label{fig:hp-z240}
-\end{figure}
 %~\\
 \begin{itemize}
 	\item Aus Benutzersicht präsentiert sich der Computer (Stand-PC, Laptop, Tablet, Smartphone, Fahrradcomputer,...) über die Anwendungssoftware (\textit{apps}), die wir auf ihm ausführen und verwenden.
@@ -28,7 +21,7 @@ Die Inhalte sind fast baugleich entnommen aus den Lehrbüchern \cite{gumm3} und 
 	%
 	\begin{figure}[h!]
 		\centering
-%		\includegraphics[width=0.5\linewidth]{./media/betriebssystem}
+		\includegraphics[width=0.5\linewidth]{./media/betriebssystem}
 		\caption[Schnittstellen]{Zwischen diesen Schichten müssen geeignete Schnittstellen definiert und implementiert werden. Quelle: \cite[Abb. 1.25]{gumm2}}
 		\label{fig:betriebssystem}
 	\end{figure}
@@ -55,7 +48,7 @@ Wir schauen uns einige Hardwarekomponenten als eigenständige physische Geräte 
 \begin{minipage}[t]{0.3\textwidth}
 	\centering
 	~\\
-%	\includegraphics[width=1\linewidth]{./media/netzteil}\\
+	\includegraphics[width=1\linewidth]{./media/netzteil}\\
 	\tiny
 	Quelle: \url{https://de.wikipedia.org/wiki/PC-Netzteil}
 \end{minipage}
@@ -65,7 +58,7 @@ Wir schauen uns einige Hardwarekomponenten als eigenständige physische Geräte 
 	\begin{figure}[h!]
 		\centering
 		~\\~\\
-%		\includegraphics[width=0.5\linewidth]{./media/motherboard} \\
+		\includegraphics[width=0.5\linewidth]{./media/motherboard} \\
 		\caption[Hauptplatine]{Hauptplatine. Quelle: https://de.wikipedia.org/wiki/Hauptplatine}
 	\end{figure}
 	\begin{itemize}
@@ -86,12 +79,6 @@ In diesem Zusammenhang gibt es zwei wichtige Begriffe:
 \begin{itemize}
 	\item Im Laufe der rasanten Hardwareentwicklung wurde auch die Firmware erweitert: Um größere Festplatten, Diagnosewerkzeuge, grafische Oberflächen, Netzwerke, usw.
 	\item Mit dem Ziel die Schnittstelle zwischen Platinen--Firmware und Betriebssystem zu standardisieren wurde das Unified Extensible Firmware Interface (kurz UEFI, englisch für Vereinheitlichte erweiterbare Firmware-Schnittstelle) entwickelt (angeregt von Intel Ende der 90er mit EFI und vereinheitlicht zu UEFI von einem Konsortium von PC-Herstellern in 2006).
-	\begin{figure}[h!]
-		\centering
-%		\includegraphics[width=0.3\linewidth]{./media/uefi_interface}
-		\caption[UEFI als Schnittstelle]{UEFI Schnittstelle}
-		\label{fig:uefiinterface}
-	\end{figure}
 	\item UEFI hat sich als Nachfolger des BIOS etabliert und wird heute von den meisten Motherboards verwendet.
 \end{itemize}
 \end{itemize}
@@ -102,13 +89,7 @@ Unabhängig davon bezeichnen viele die Firmware des Motherboards immer noch als 
 	\item UEFI-kompatible Firmware des Motherboards (oft einfach als \textit{UEFI} bezeichnet) wird ausgeführt. Je nach Hersteller kann dabei ein optionales \textbf{Einstellungsmenü (\textbf{Bootmenü})} durch Drücken einer (F--)Funktionstasten eingeblendet werden. In der Praxis meist von Nöten, wenn man einen Rechner ``neu aufsetzen'' oder inspizieren möchte und dazu die Bootreihenfolge ändern muss (um ein Betriebssystem-Image von einem USB-Stick zu laden).
 	\item Dann wird nach einem UEFI-kompatiblen \textbf{Bootloader} gesucht. Ein Bootloader (manchmal auch \textbf{Bootmanager} genannt) ist eine spezielle Software, die gewöhnlich durch die Firmware des Motherboards von einem wechselbaren veränderlichen Datenspeicher geladen und anschließend ausgeführt wird. Der Bootloader ist meist das erste Programm, das nach der unveränderlichen Firmware von einem wechselbaren veränderlichen Datenspeicher geladen wird.\\~\\
 	Beispiel für Linux und weitere unixoide Betriebssysteme:\\ \textbf{Grand Unified Bootloader} (kurz \textbf{GRUB}, \textit{Großer vereinheitlichter Bootloader}), aktuell \textbf{GRUB2}.
-\item Der Bootloader lädt dann weitere Teile des Betriebssystems, gewöhnlich einen Kernel. Es können mehrere Betriebssysteme zur Verfügung stehen. In diesem Fall erscheint meist ein Prompt\footnote{\hyperref{https://de.wikipedia.org/wiki/Prompt}{}{}{https://de.wikipedia.org/wiki/Prompt}: Als englisch prompt wird in der IT eine Aufforderung an den Benutzer bezeichnet, eine Eingabe (input) zu tätigen.}, welches den Benutzer auffordert eine Auswahl zu treffen. Damit können erweiterte Funktionen und unterschiedliche Startmodi realisiert werden. Siehe Abb. \ref{fig:bootloadergrub}.
-\begin{figure}[h!]
-	\centering
-%	\includegraphics[width=0.5\linewidth]{./media/bootloader_grub}
-	\caption[\textbf{GRUB} Linux Bootloader]{\textbf{GRUB:} Grand Unified Bootloader (GRUB und GRUB2) für Linux und weitere unixoide Betriebssysteme.\\ Quelle: \url{https://de.wikipedia.org/wiki/Bootmenü}}
-	\label{fig:bootloadergrub}
-\end{figure}
+\item Der Bootloader lädt dann weitere Teile des Betriebssystems, gewöhnlich einen Kernel. Es können mehrere Betriebssysteme zur Verfügung stehen. In diesem Fall erscheint meist ein Prompt\footnote{\hyperref{https://de.wikipedia.org/wiki/Prompt}{}{}{https://de.wikipedia.org/wiki/Prompt}: Als englisch prompt wird in der IT eine Aufforderung an den Benutzer bezeichnet, eine Eingabe (input) zu tätigen.}, welches den Benutzer auffordert eine Auswahl zu treffen. Damit können erweiterte Funktionen und unterschiedliche Startmodi realisiert werden.
 \end{enumerate}
 \clearpage
 \demo{~\\
@@ -137,23 +118,10 @@ Unabhängig davon bezeichnen viele die Firmware des Motherboards immer noch als 
 		\item Im Verzeichnis \texttt{/boot} finden wir den Link auf den Kernel
 		$$\texttt{vmlinuz-5.11.0-44-generic}$$
 \end{itemize}}
-%\inclass{
-%	\begin{enumerate}
-%		\item Welche Firmware wird auf Ihrem System verwendet?
-%	\end{enumerate}
-%}
-
-%\begin{figure}[h!]
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{./media/prompt_chooseOS}
-%	\caption[Windows Bootmanager zur Auswahl des Betriebssystems]{Windows Bootmanager zur Auswahl des Betriebssystems.}
-%	\label{fig:promptchooseos}
-%\end{figure}
 
 
-~\\~\\
+
 %SYSTEMSPEICHER (RAM)
-\begin{minipage}[t]{0.7\textwidth}
 	\subsubsection{Arbeitsspeicher (RAM)}
 	\begin{itemize}
 		\item Der Arbeitsspeicher enthält die Daten und den Programmcode der aktuell laufenden Anwendungen.
@@ -161,14 +129,6 @@ Unabhängig davon bezeichnen viele die Firmware des Motherboards immer noch als 
 		\item  4 GB ist für die meisten Standardanwendungen der minimale Arbeitsspeicher.
 		\item Swap Space: Was geschieht, wenn eine Anwendung mehr als den verfügbaren Arbeitsspeicher benötigt? In diesem Fall verschiebt Linux ungenutzte Anwendungen aus dem Arbeitsspeicher in einen speziellen Plattenbereich, den Swap Space, und ungenutzte Anwendungen aus dem Swap Space zurück in den Arbeitsspeicher, wenn sie ausgeführt werden müssen.
 	\end{itemize}
-\end{minipage}
-\begin{minipage}[t]{0.3\textwidth}
-\centering
-~\\
-%\includegraphics[width=1\linewidth]{./media/ram} \\
-\tiny
-Quelle: https://de.wikipedia.org/wiki/RAM
-\end{minipage}
 \demo{
 	Unter Linux: Wie viel Speicherplatz steht zur Verfügung?
 \begin{itemize}
@@ -183,9 +143,8 @@ Quelle: https://de.wikipedia.org/wiki/RAM
 \begin{figure}[h!]
 	\centering
 	~\\
-%	\includegraphics[width=0.3\linewidth]{./media/i7} \\
-\caption[Intel Core i7]{	Intel Core i7.
-	Quelle: \url{https://tr.wikipedia.org/wiki/Intel_Core}}
+	\includegraphics[width=0.3\linewidth]{./media/i7} \\
+\caption[Intel Core i7]{ Rainer Knäpper, Free Art License (http://artlibre.org/licence/lal/en/), \url{https://commons.wikimedia.org/wiki/File:Intel_core_i7-975_bottom_R7309730_wp.jpg}}
 \end{figure}
 
 	\begin{itemize}
@@ -258,7 +217,7 @@ Die Kernmarkmale:
 		\includegraphics[width=0.5\linewidth]{./media/hdd} \\
 		\tiny
 		Hard Disk Drive (HDD)\\
-		Quelle: \url{https://de.wikipedia.org/wiki/Festplattenlaufwerk}
+		Quelle: Eric Gaba, Wikimedia Commons user, \url{https://de.wikipedia.org/wiki/Festplattenlaufwerk}
 	\end{figure}
 	\begin{itemize}
 		\item Speichergeräte dienen der Aufbewahrung von Programmen und Daten.
@@ -322,8 +281,6 @@ Mit dem Befehl $$\texttt{\$ lsblk~~~\# ''list block devices''}$$ können Sie die
 
 %
 %PERIPHERIEGERÄTE
-~\\
-\begin{minipage}[t]{0.7\textwidth}
 	\subsubsection{Peripheriegeräte}
 	\begin{itemize}
 		\item Ein Computersystem braucht lediglich eine Kombination aus CPU, Arbeitsspeicher und Speicher. \\
@@ -336,16 +293,7 @@ Mit dem Befehl $$\texttt{\$ lsblk~~~\# ''list block devices''}$$ können Sie die
 %		-- USB-Anschlüsse (Universal Serial Bus) für die meisten anderen Alltagsgeräte
 %		\item Einige Systeme enthalten Peripheriegeräte. Laptops ähneln Workstations, verfügen aber über standardmäßige Anzeige-, Tastatur- und Mausperipheriegeräte.
 	\end{itemize}
-\end{minipage}
-\begin{minipage}[t]{0.3\textwidth}
-	\centering
-	~\\
-%	\includegraphics[width=1\linewidth]{./media/keyboard} \\
-%		\includegraphics[width=1\linewidth]{./media/printer}\\
-	\tiny
-	Quellen:\\ \url{https://de.wikipedia.org/wiki/Tastatur}\\
-	\url{https://de.wikipedia.org/wiki/Drucker_(Ger\%C3\%A4t)}
-\end{minipage}
+
 ~\\~\\
 \subsubsection{(Geräte-)Treiber}
 Wenn eine CPU mit den Endgeräten (z.B. den Laufwerken, Drucker,...) verschiedenster Hersteller zusammenarbeiten soll, dann muss man sich zunächst auf eine gemeinsame Schnittstelle verständigen: Eine Konvention, die eine Verbindung verschiedener Bauteile festlegt.\\
@@ -371,7 +319,7 @@ Druckers.
 %
 \begin{figure}[h!]
 	\centering
-%	\includegraphics[width=0.5\linewidth]{./media/treiber}
+	\includegraphics[width=0.5\linewidth]{./media/treiber}
 	\caption[Treiber]{Hardware, Treiber und Betriebsystem; Quelle: \cite[Abb. 1.27]{gumm1}}
 	\label{fig:treiber}
 \end{figure}
@@ -406,12 +354,12 @@ Druckers.
 \textit{\small(siehe auch \cite[Kap. 2]{gumm2}, \cite[Kap. 6 ]{gumm3})}\\~\\
 Zugeschnitten auf die vorhandene Prozessor-Architektur werden Betriebssysteme (genauer Betriebsystemkerne) entwickelt, die Hardware-Ressourcen des Rechners (Speicher, Prozessorleistung, externe Geräte) dem Benutzer zur Verfügung stellen; siehe auch Abb. \ref{fig:betriebssystem}.
 Ein Betriebssystem ist damit letztlich ein Programm, das dem Benutzer (\textit{user}) und den Anwendungsprogrammen (\textit{app}) grundlegende Dienste bereitstellt. Diese Dienste  machen das aus, was der Rechner in den Augen eines Nutzers kann.\\
-%\begin{figure}[h!]
-%	\centering
-%	\includegraphics[width=0.2\linewidth]{./media/wiki_os}
-%	\caption{Quelle: \url{https://de.wikipedia.org/wiki/Betriebssystem}}
-%	\label{fig:wikios}
-%\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\linewidth]{./media/wiki_os}
+	\caption{Quelle: \url{https://de.wikipedia.org/wiki/Betriebssystem}}
+	\label{fig:wikios}
+\end{figure}
 ~\\
 \textbf{Beispiele}\\
 Die meisten Rechner werden zusammen mit einem bereits vorinstallierten Betriebssystem verkauft.
@@ -496,15 +444,6 @@ Dateien können zu einem \textbf{Verzeichnis} (engl. \textbf{directory}) zusamme
 \end{itemize}
 }
 
-%\textbf{Hierarchische Dateisysteme.} (siehe Abb. \ref{fig:filesystem})
-%In Windows ist jedes Laufwerk die Wurzel eines eigenen Dateibaums. Sie wird
-%mit einem „Laufwerksbuchstaben“ (A: , C: , etc.) benannt. In UNIX sind die Dateisysteme aller Laufwerke Unterbäume eines globalen Dateibaumes, dessen Wurzel root heißt.
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{./media/filesystem}
-%	\caption[Hierarchische Dateisysteme]{Hierarchische Dateisysteme von UNIX, macOS und Windows; \url{https://de.wikipedia.org/wiki/Dateisystem}. Bei DOS/Windows gibt es Laufwerksbuchstaben gefolgt von einem Doppelpunkt, die den Pfaden innerhalb des Dateisystems vorangestellt werden. Jeder Datenträger bekommt seinen eigenen Buchstaben, zum Beispiel meist C: für die erste Partition der ersten Festplatte. Bei Unix gibt es keine Laufwerksbuchstaben, sondern nur einen einzigen Verzeichnisbaum. Die einzelnen Datenträger werden dort an bestimmten Stellen im Baum eingehängt (Kommando mount), so dass alle Datenträger zusammen den Gesamtbaum ergeben.}
-%	\label{fig:filesystem}
-%\end{figure}
 
 
 
@@ -1166,7 +1105,7 @@ Häufig benutzte Dienste:
 	% TODO: \usepackage{graphicx} required
 	\begin{figure}[h]
 		\centering
-%		\includegraphics[width=0.7\linewidth]{./media/ping_google}
+		\includegraphics[width=0.7\linewidth]{./media/ping_google}
 		\caption[\texttt{ping} an Google]{\texttt{ping} an www.google.de.}
 		\label{fig:pinggoogle}
 	\end{figure}
@@ -1258,12 +1197,6 @@ Als virtuelle Maschine (VM) wird in der Informatik die Software-technische Kapse
 		\item VMwares \link{https://de.wikipedia.org/wiki/VMware_vSphere}{vSphere}.
 	\end{itemize}
 \end{itemize}
-%\begin{figure}[h!]
-%	\centering
-%	\includegraphics[width=0.9\linewidth]{./media/containerVSvm3}
-%	\caption[Virtualisierungskonzepte]{Virtualisierungskonzepte: Auf Software-Ebene (links) und auf Hardware-Ebene (rechts). \url{https://medium.com/@anilktalla/why-container-virtualization-abb8bfc04048}}
-%	\label{fig:containervsvm3}
-%\end{figure}
 ~\\~\\
 \textbf{Container: Systemvirtualisierung mittels OS-Container}\\
 \link{https://de.wikipedia.org/wiki/Containervirtualisierung}{Containervirtualisierung} (oder Containering) ist eine Methode, um mehrere Instanzen eines Betriebssystems (als Gäste) isoliert voneinander den Kernel des Hosts nutzen zu lassen.
@@ -1283,12 +1216,6 @@ Als virtuelle Maschine (VM) wird in der Informatik die Software-technische Kapse
 	\end{itemize}
 \end{itemize}
 
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=0.3\linewidth]{./media/containerVSvm2}
-%	\caption[Machinenvirtualisierung VS Containervirtualisierung]{Machinenvirtualisierung VS Containervirtualisierung; \url{https://blog.netapp.com/blogs/containers-vs-vms/}}
-%	\label{fig:containervsvm2}
-%\end{figure}
 
 \inclass{
 %	\textbf{Wer Lust hat:}\\
@@ -1337,14 +1264,6 @@ Andererseits möchte man auch über Knoten (wie Router, Switches,..), die nicht 
 \item Der sich daraus ergebende Nutzen eines VPNs kann je nach verwendetem VPN-Protokoll durch eine Verschlüsselung ergänzt werden, die eine abhör- und manipulationssichere Kommunikation zwischen den VPN-Partnern ermöglicht.
 \item Ein verschlüsseltes VPN über ein unverschlüsseltes Netzwerk herzustellen, ist mit eine der Hauptgründe für die Verwendung eines VPNs.
 \end{itemize}
-%\begin{figure}[h!]
-%	\centering
-%	\includegraphics[width=0.5\linewidth]{./media/vpn1}
-%	\caption[VPN]{Struktur eines konventionellen VPNs: Unten abgebildet sind Heimarbeitsplätze („Remote / roaming users“), die sich per VPN durch das Internet hindurch in den Hauptsitz einer Firma einwählen („Head-office“), wobei der blaue Kasten ein VPN-Gateway ist (auch VPN-Einwahlknoten genannt). Darüber hinaus ist der Hauptsitz per VPN auch mit zwei seiner Filialen verbunden („Regional Office“), wobei das dazwischen liegende Netz auch hier das Internet ist, das dem VPN als Transportweg dient (aus Sicht der VPN-Verbindung wird das Internet auf die Funktion eines Verlängerungskabels reduziert).\\
-%	Quelle: \url{https://de.wikipedia.org/wiki/Virtual_Private_Network}}
-%	\label{fig:vpn1}
-%\end{figure}
-%~\\
 Sobald ein Computer eine VPN-Verbindung aufbaut, ist der Vorgang vergleichbar mit dem Umstecken seines Netzwerkkabels von seinem ursprünglichen Netz an das neu zugeordnete Netz, mit allen Auswirkungen wie geänderten IP-Adressen und Unterschieden beim Routing.
 
 \inclass{
