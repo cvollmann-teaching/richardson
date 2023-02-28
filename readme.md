@@ -49,13 +49,13 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
 ## Syllabus
 
 | Time      | start | end   | Content                                                      | Section | Instructions                                         |
-| :-------- | ----- | ----- | ------------------------------------------------------------ | ------- | ---------------------------------------------------- |
+| :-------- | ----- |-------| ------------------------------------------------------------ | ------- | ---------------------------------------------------- |
 | **Day 1** |       |       |                                                              |         |                                                      |
 | Session 1 | 10:00 | 13:30 | Mathematical Background I                                    | 1.1-1.4 | --                                                   |
 | Session 2 | 13:30 | 14:00 | Project planing                                              | 2       | [plan](#plan-modularity)                             |
 | Session 3 | 14:00 | 15:30 | ssh, working remote, ssh keys                                | 3       | [ssh](#secure-shell-(ssh))                           |
 | **Day 2** |       |       |                                                              |         |                                                      |
-| Session 1 | 10:00 | 12:00 | git, github                                                  | 4       | [git](#initialize-a-git-repository)                  |
+| Session 1 | 10:00 | 13:30 | git, github                                                  | 4       | [git](#initialize-a-git-repository)                  |
 | Session 2 |       |       | Working Environment and Implementation                       | 5       | [pycharm](#Working-Environment:-The IDE-PyCharm)     |
 | Session 3 |       |       | Clean Code, Formatting and pre-commit hooks                  | --      | [clean code](#clean-code,-formatting-and-pre-commit) |
 | Session 4 |       |       | Software Tests                                               | --      | --                                                   |
