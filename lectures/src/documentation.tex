@@ -485,3 +485,14 @@ Zum Beispiel können wir auch mit dem Builder \texttt{latex} eine PDF--Dokumenta
 	\item
 	      Alternativ im Verzeichnis \texttt{code/}: \texttt{\$ sphinx-build\ -b\ latex\ docs/source/\ docs/build/latex/}
 \end{itemize}
+
+
+
+%%
+\subsection{Veröffentlichen mit Github-Pages}
+\begin{enumerate}
+	\item ggf. neuer branch "gh-pages"
+	\item index.html in /docs mit redirect auf /build/html/index
+	\item in docs/: .nojekyll
+	\item unter Setting/Pages "gh-pages" und "docs" auswählen
+\end{enumerate}
