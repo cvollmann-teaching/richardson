@@ -31,12 +31,12 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
 - Python language
   - Build own data types via **classes** and **operator overloading**
   - software project and **modularity**
-  - **`networkx`**: load real data into python, plot graphs
-  - **virtual environment**
+  - virtual environment: **`venv`**
   - **PyCharm**
   - Software tests with **`pytest`**
-  - Intro to SciPy Stack (**NumPy**, **SciPy**, **matplotlib**)
+  - Intro to SciPy Stack (**`numpy`**, **`scipy`**, **`matplotlib`**)
   - **`tabulate`**
+  - **`networkx`**: load real data into python, plot graphs
 - Code documentation with **sphinx**
   - **docstrings** formats
   - publish via github pages
@@ -45,31 +45,10 @@ x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
   - **`black`**
   - **`pre-commit`**
 - **LaTex**
-
-## Syllabus
-
-| Time      | start | end   | Content                                                      | Section | Instructions                                         |
-| :-------- | ----- |-------| ------------------------------------------------------------ | ------- | ---------------------------------------------------- |
-| **Day 1** |       |       |                                                              |         |                                                      |
-| Session 1 | 10:00 | 13:30 | Mathematical Background I                                    | 1.1-1.4 | --                                                   |
-| Session 2 | 13:30 | 14:00 | Project planing                                              | 2       | [plan](#plan-modularity)                             |
-| Session 3 | 14:00 | 15:30 | ssh, working remote, ssh keys                                | 3       | [ssh](#secure-shell-(ssh))                           |
-| **Day 2** |       |       |                                                              |         |                                                      |
-| Session 1 | 10:00 | 13:30 | git, github                                                  | 4       | [git](#initialize-a-git-repository)                  |
-| Session 2 |       |       | Working Environment and Implementation                       | 5       | [pycharm](#Working-Environment:-The IDE-PyCharm)     |
-| Session 3 |       |       | Clean Code, Formatting and pre-commit hooks                  | --      | [clean code](#clean-code,-formatting-and-pre-commit) |
-| Session 4 |       |       | Software Tests                                               | --      | --                                                   |
-| **Day 3** |       |       |                                                              |         |                                                      |
-| Session 1 |       |       | Code Documentation with Sphinx                               | 6       |                                                      |
-| Session 2 |       |       | Implementation:  `linalg`, `iterative_solver`, `example` (Heat Equation 1d) | --      |                                                      |
-| **Day 4** |       |       |                                                              |         |                                                      |
-| Session 1 |       |       | Mathematical Background II: PageRank                         | 1.5     |                                                      |
-| Session 2 |       |       | Implementation: Pagerank utilities and Examples              | --      |                                                      |
-| Session 3 |       |       | (Misc: License, readme, docs,...)                            | --      |                                                      |
-| **Day 5** |       |       |                                                              |         |                                                      |
-| Session 1 |       |       | Project presentations                                        |         |                                                      |
-| Session 2 |       |       | (SciPy Stack)                                                |         |                                                      |
-|           |       |       | (note on exam)                                               |         |                                                      |
+- Misc: 
+  - **License** (FSF, OSI, CC,...)
+  - readme
+  - ...
 
 ## License
 
