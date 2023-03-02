@@ -184,31 +184,17 @@ The Latex code and the Python sample programs are licensed under [GPL-3.0](https
     - https://www.jetbrains.com/help/pycharm/set-up-a-git-repository.html#e1c9b3f9
     
 10. Check out the hidden project directory `.idea`
-- Add it to `.gitignore`
+    - Add it to `.gitignore`
 
 11. Further reading:
-
     - pytest: https://www.jetbrains.com/help/pycharm/pytest.html
-
-       - seek and destroy: https://www.jetbrains.com/help/pycharm/auto-completing-code.html
-
-
-       - refactor https://www.jetbrains.com/help/pycharm/refactoring-source-code.html
-
-
-       - Code Completion https://www.jetbrains.com/help/pycharm/auto-completing-code.html
-
-
-       - Console https://www.jetbrains.com/help/pycharm/working-with-consoles.html
-
-
-       - Local History https://www.jetbrains.com/help/pycharm/local-history.html
-
-
-       - Compare Files https://www.jetbrains.com/help/pycharm/comparing-files-and-folders.html
-
-
-       - Code Inspection https://www.jetbrains.com/help/pycharm/code-inspection.html
+    - seek and destroy: https://www.jetbrains.com/help/pycharm/auto-completing-code.html
+    - refactor https://www.jetbrains.com/help/pycharm/refactoring-source-code.html
+    - Code Completion https://www.jetbrains.com/help/pycharm/auto-completing-code.html
+    - Console https://www.jetbrains.com/help/pycharm/working-with-consoles.html
+    - Local History https://www.jetbrains.com/help/pycharm/local-history.html
+    - Compare Files https://www.jetbrains.com/help/pycharm/comparing-files-and-folders.html
+    - Code Inspection https://www.jetbrains.com/help/pycharm/code-inspection.html
 
 ## Clean Code, Formatting and Pre-Commit
 
@@ -331,9 +317,9 @@ In `src/iterative_solver.py`:
 
 1. Implement the relaxed Richardson iteration
 
-   $$
+```math
    x_{k+1} = x_k - \theta (Ax_k -b)
-   $$
+```
 
    as a function
 
@@ -343,31 +329,20 @@ In `src/iterative_solver.py`:
 
    which expects as input
 
-    - `A` : invertible matrix in $\mathbb{R}^{n\times n}$ as object of class *
-      *`csr_matrix`**
-
+    - `A` : invertible matrix in $\mathbb{R}^{n\times n}$ as object of class **`csr_matrix`**
     - `b` : rhs in $\mathbb{R}^n$ as object of class `vector` of size $n$
-
     - `x0` : initial guess in $\mathbb{R}^n$ as object of class `vector` of size $n$
-
     - `theta` : relax. parameter/stepsize $\theta$ as `float`
-
     - `maxiter` : maximal number of iterations as `int`
-
     - `tol` : error tolerance as `float`
 
    and outputs
 
-    - `x` : the last iterate (approxiamte solution) as object of class `vector` of size
-      $n$
-
+    - `x` : the last iterate (approxiamte solution) as object of class `vector` of siz $n$
     - `error` : Python list of all residuals $\|Ax_k-b\|_2$
-
     - `numiter` : number of iterations that have been performed
 
-   The procedure should terminate as soon as the residual is sufficiently small, i.e.
-   $\|Ax_k-b\|_2 < \texttt{tol}$ or the maximum number `maxiter` of iteration steps is
-   reached.
+   The procedure should terminate as soon as the residual is sufficiently small, i.e. $\|Ax_k-b\|_2 < \texttt{tol}$ or the maximum number `maxiter` of iteration steps is reached.
 
 2. Write appropriate test files `test_*.py` which you put into the directory `tests`
 
@@ -446,23 +421,17 @@ Implement:
 
 2. create a script `src.pagerank_utils` (or similar)
 
-   1. Read edgle list into scipy sparse csr
-
-   1. Normalize rows
-
-   1. Deal with dangling nodes (pdf pages or similar)
-
-   1. Implement google_matrix as class with correct matmul
-
-   1. For richardson: Implement a second version with the following adatption
+   - Read edgle list into scipy sparse csr
+   - Normalize rows
+   - Deal with dangling nodes (pdf pages or similar)
+   - Implement google_matrix as class with correct matmul
+   - For richardson: Implement a second version with the following adatption
 
 3. Combine everything:
 
-   1. Write appropriate test files `test_*.py` which you put into the directory `tests`
-
-   2. Create Run Configuration for your tests
-
-   3. Optional: Write further utils to draw the graphs, create a video, ...
+   - Write appropriate test files `test_*.py` which you put into the directory `tests`
+   - Create Run Configuration for your tests
+   - Optional: Write further utils to draw the graphs, create a video, ...
 
 
 ## Compute the PageRank
@@ -482,30 +451,21 @@ Implement:
 ## Code Documentation with Sphinx
 
 1. Consult the official documentation: https://www.sphinx-doc.org/en/master/index.html
-
 2. Generate an html documentation of your code using `sphinx`. Implement at least the
    following points:
 
     - Deliberately choose an `html_theme`
-
     - At a minimum, use the following directives:
 
         - `.. toctree::`
-
         - `.. autosummary::`
-
         - `.. code-block::`
-
         - `.. autofunction::`
-
         - `.. autoclass::`
-
         - `.. math::`
 
     - Use the extension `sphinx.ext.viewcode`
-
     - Create at least one more subpage and link to it.
-
     - Use consistent docstrings in a fixed format.
 3. Use github pages to expose your documentation.
 4. Link your documentation later on in your paper.
