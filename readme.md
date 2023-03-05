@@ -4,7 +4,7 @@
 
 - This repo contains material for a 5 days project based Python course: small tutorials (lead sheets for in-class development, in german), the corresponding instructions (below) and some worked examples.
   
-- In this project we will implement the [Richardson iteraton](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch, which is an iterative solver for linear systems $Ax=b$ given by
+- In this project we will implement the [Richardson iteration](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch, which is an iterative solver for linear systems $Ax=b$ given by
 
 ```math
 x^{k+1} = x^k - \theta\cdot(Ax^k - b),~~~~\theta > 0~\text{small}.
