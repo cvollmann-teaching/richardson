@@ -1,6 +1,6 @@
 **(Under Development)**
 
-# Python Project: Richardson Iteration from Scratch applied to Heat Equation and the PageRank
+# Python Project: Richardson Iteration from Scratch
 
 - This repo contains material for a 5 days project based Python course: small tutorials (lead sheets for in-class development, in german), the corresponding instructions (below) and some worked examples.
   
@@ -329,18 +329,18 @@ In `src/iterative_solver.py`:
 
    which expects as input
 
-    - `A` : invertible matrix in $\mathbb{R}^{n\times n}$ as object of class **`csr_matrix`**
-    - `b` : rhs in $\mathbb{R}^n$ as object of class `vector` of size $n$
-    - `x0` : initial guess in $\mathbb{R}^n$ as object of class `vector` of size $n$
-    - `theta` : relax. parameter/stepsize $\theta$ as `float`
-    - `maxiter` : maximal number of iterations as `int`
-    - `tol` : error tolerance as `float`
+- `A` : invertible matrix in $\mathbb{R}^{n\times n}$ as object of class **`csr_matrix`**
+- `b` : rhs in $\mathbb{R}^n$ as object of class `vector` of size $n$
+- `x0` : initial guess in $\mathbb{R}^n$ as object of class `vector` of size $n$
+- `theta` : relax. parameter/stepsize $\theta$ as `float`
+- `maxiter` : maximal number of iterations as `int`
+- `tol` : error tolerance as `float`
 
    and outputs
 
-    - `x` : the last iterate (approxiamte solution) as object of class `vector` of siz $n$
-    - `error` : Python list of all residuals $\|Ax_k-b\|_2$
-    - `numiter` : number of iterations that have been performed
+- `x` : the last iterate (approxiamte solution) as object of class `vector` of siz $n$
+- `error` : Python list of all residuals $\|Ax_k-b\|_2$
+- `numiter` : number of iterations that have been performed
 
    The procedure should terminate as soon as the residual is sufficiently small, i.e. $\|Ax_k-b\|_2 < \texttt{tol}$ or the maximum number `maxiter` of iteration steps is reached.
 
@@ -490,13 +490,13 @@ create a python package.
 
    and insert a few LaTeX commands. Minimal example:
 
-   ```latex
-   \documentclass{article}
-   \begin{document}
-   \section{My First LaTex Document}
-   % content
-   \end{document}
-   ```
+ ```latex
+ \documentclass{article}
+ \begin{document}
+ \section{My First LaTex Document}
+ % content
+ \end{document}
+ ```
 
 1. apply LaTeX compiler, here `pdflatex`, to this file
 
