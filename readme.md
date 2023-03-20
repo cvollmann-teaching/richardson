@@ -2,7 +2,7 @@
 
 # Python Project: Richardson Iteration from Scratch
 
-- This repo contains material for a 5 days project based Python course: small tutorials (lead sheets for in-class development, in german), the corresponding instructions (below) and some worked examples.
+- This repo contains material for a 5 days project based Python course: small tutorials (lead sheets for in-class development, in German), the corresponding instructions (below) and some worked examples.
   
 - In this project we will implement the [Richardson iteration](https://en.wikipedia.org/wiki/Modified_Richardson_iteration) from scratch, which is an iterative solver for linear systems $Ax=b$ given by
 
